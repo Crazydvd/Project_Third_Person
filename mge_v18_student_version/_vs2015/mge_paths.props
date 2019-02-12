@@ -5,10 +5,10 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\SCHOOL\MGE\visualstudio2017_v3_2017_2018\vs_extended\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\visualstudio2017_v3_2017_2018\vs_extended\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\SCHOOL\MGE\visualstudio2017_v3_2017_2018\vs_extended\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\visualstudio2017_v3_2017_2018\vs_extended\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

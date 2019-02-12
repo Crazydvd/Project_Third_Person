@@ -1,2 +1,38 @@
-﻿  TPerson.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT THIRD PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+﻿  main.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\abstractgame.hpp(4): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  RotatingBehaviour.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  AbstractGame.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\abstractgame.hpp(4): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Camera.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  GameObject.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Light.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Mesh.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\mesh.hpp(5): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Renderer.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\renderer.hpp(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  ShaderProgram.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\shaderprogram.hpp(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  Texture.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\texture.cpp(4): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  World.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  AbstractMaterial.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  ColorMaterial.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  TextureMaterial.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  MGEDemo.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  DebugHud.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\util\debughud.cpp(4): fatal error C1083: Cannot open include file: 'GL/glew.h': No such file or directory
+  TPerson.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\glm.hpp(8): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Generating Code...
