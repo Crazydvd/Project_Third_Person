@@ -50,14 +50,14 @@ void TPerson::_initializeScene()
     //F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
     Mesh* planeMeshDefault = Mesh::load (config::THIRDPERSON_MODEL_PATH+"plane.obj");
     Mesh* cubeMeshF = Mesh::load (config::THIRDPERSON_MODEL_PATH+"cube_flat.obj");
-    Mesh* sphereMeshS = Mesh::load (config::THIRDPERSON_MODEL_PATH+"sphere_smooth.obj");
+    Mesh* sphereMeshS = Mesh::load (config::THIRDPERSON_MODEL_PATH+"LUUKSPYRAMID.obj");
 
     //MATERIALS
 
     //create some materials to display the cube, the plane and the light
     AbstractMaterial* lightMaterial = new ColorMaterial (glm::vec3(1,1,0));
-    AbstractMaterial* runicStoneMaterial = new TextureMaterial (Texture::load (config::THIRDPERSON_TEXTURE_PATH+"runicfloor.png"));
-
+    AbstractMaterial* runicStoneMaterial = new TextureMaterial (Texture::load (config::THIRDPERSON_TEXTURE_PATH+"runicfloor.png")); 
+	AbstractMaterial* frogMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "LUUKSPYRAMID_initialShadingGroup_AlbedoTransparency.png"));
     //SCENE SETUP
 
    //add camera first (it will be updated last)
@@ -71,13 +71,14 @@ void TPerson::_initializeScene()
     plane->scale(glm::vec3(5,5,5));
     plane->setMesh(planeMeshDefault);
     plane->setMaterial(runicStoneMaterial);
+	plane->setBehaviour(new RotatingBehaviour());
     _world->add(plane);
 
     //add a spinning sphere
     GameObject* sphere = new GameObject ("sphere", glm::vec3(0,0,0));
     sphere->scale(glm::vec3(2.5,2.5,2.5));
     sphere->setMesh (sphereMeshS);
-    sphere->setMaterial(runicStoneMaterial);
+    sphere->setMaterial(frogMaterial);
     sphere->setBehaviour (new RotatingBehaviour());
     _world->add(sphere);
 
@@ -103,6 +104,8 @@ void TPerson::_render() {
 void TPerson::_updateHud() {
     std::string debugInfo = "";
     debugInfo += std::string ("FPS:") + std::to_string((int)_fps)+"\n";
+
+	
 
     _hud->setDebugInfo(debugInfo);
     _hud->draw();
