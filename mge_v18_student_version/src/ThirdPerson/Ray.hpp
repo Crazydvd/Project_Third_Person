@@ -32,5 +32,4 @@ private:
 	glm::vec3 calculateDirection();
 
 };
-
 #endif // RAY_HPP
