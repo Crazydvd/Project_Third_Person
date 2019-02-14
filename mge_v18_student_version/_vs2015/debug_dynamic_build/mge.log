@@ -1,2 +1,31 @@
+<<<<<<< HEAD
 ﻿  Ray.cpp
   mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  RotatingBehaviour.cpp
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  main.cpp
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  TextureMaterial.cpp
+  MGEDemo.cpp
+  DebugHud.cpp
+  TPerson.cpp
+  Generating Code...
+  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 1bb6763ef03cd15ef2436ff8accd27f6b5722d6d
+>>>>>>> 4d6dd93b1d0512ca938c515dfadd12a6a4147cd4
