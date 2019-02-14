@@ -23,6 +23,7 @@
 
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
+#include "ThirdPerson/Ray.hpp"
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson() :AbstractGame(), _hud(0)
@@ -77,7 +78,7 @@ void TPerson::_initializeScene()
 	//add a spinning sphere
 	GameObject* sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
 	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	sphere->setMesh(sphereMeshS);
+	sphere->setMesh(cubeMeshF);
 	sphere->setMaterial(runicStoneMaterial);
 	sphere->setBehaviour(new RotatingBehaviour());
 	_world->add(sphere);
@@ -93,7 +94,6 @@ void TPerson::_initializeScene()
 	light->setMaterial(lightMaterial);
 	light->setBehaviour(new KeysBehaviour(25));
 	_world->add(light);
-
 }
 
 void TPerson::_render()
