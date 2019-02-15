@@ -18,6 +18,7 @@
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/MouseRotatingBehaviour.hpp"
 
 #include "mge/util/DebugHud.hpp"
 
@@ -58,7 +59,8 @@ void TPerson::_initializeScene()
 
 	//create some materials to display the cube, the plane and the light
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
-	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "runicfloor.png"));
+	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
+	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
 
 	//SCENE SETUP
 
@@ -69,31 +71,41 @@ void TPerson::_initializeScene()
 	_world->setMainCamera(camera);
 
 	//add the floor
-	GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
+	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
 	plane->scale(glm::vec3(5, 5, 5));
 	plane->setMesh(planeMeshDefault);
 	plane->setMaterial(runicStoneMaterial);
-	_world->add(plane);
-
-	//add a spinning sphere
-	GameObject* sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	sphere->setMesh(cubeMeshF);
-	sphere->setMaterial(runicStoneMaterial);
-	sphere->setBehaviour(new RotatingBehaviour());
-	_world->add(sphere);
+	_world->add(plane);*/
 
 	//add a light. Note that the light does ABSOLUTELY ZIP! NADA ! NOTHING !
-	//It's here as a place holder to get you started.
-	//Note how the texture material is able to detect the number of lights in the scene
-	//even though it doesn't implement any lighting yet!
 
+	//even though it doesn't implement any lighting yet!
 	Light* light = new Light("light", glm::vec3(0, 4, 0));
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->setMesh(cubeMeshF);
 	light->setMaterial(lightMaterial);
 	light->setBehaviour(new KeysBehaviour(25));
 	_world->add(light);
+
+	//add a cube sphere
+	GameObject* cube = new GameObject("cube", glm::vec3(-2, 0, -2));
+	cube->scale(glm::vec3(2.5, 2.5, 2.5));
+	cube->setMesh(cubeMeshF);
+	cube->setMaterial(runicStoneMaterial);
+	cube->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	_world->add(cube);
+
+	//add a sphere
+	GameObject* sphere = new GameObject("sphere", glm::vec3(2,0,0));
+	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
+	sphere->setMesh(sphereMeshS);
+	sphere->setMaterial(landMaterial);
+	sphere->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	_world->add(sphere);
+
+
+
+	
 }
 
 void TPerson::_render()

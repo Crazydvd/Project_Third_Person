@@ -1,10 +1,2 @@
-<<<<<<< HEAD
-﻿  MouseRotatingBehaviour.cpp
+﻿  TPerson.cpp
   mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  Ray.cpp
-  TPerson.cpp
-  Generating Code...
-  LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> d7e992e25e8020a82bd7324af772f48cd4e1c345

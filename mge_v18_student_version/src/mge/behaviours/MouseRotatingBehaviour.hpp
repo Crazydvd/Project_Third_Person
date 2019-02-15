@@ -9,15 +9,19 @@
 class MouseRotatingBehaviour : public AbstractBehaviour
 {
 	public:
-		MouseRotatingBehaviour();
+		MouseRotatingBehaviour(sf::RenderWindow* pWindow, World* pWorld);
 		virtual void update(float pStep);
 
 	private:
 		float _rotation;
 		glm::mat4 _oldRotation;
 		sf::Vector2i _oldPos;
-		sf::Vector2i _latestPos;
 		bool _rotating;
+
+		sf::RenderWindow* _window;
+		World* _world;
+
+		bool _mousePressed;
 };
 
 
