@@ -91,6 +91,9 @@
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -152,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp">
       <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
