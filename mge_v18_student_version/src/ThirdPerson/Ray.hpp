@@ -24,6 +24,7 @@ public:
 	glm::vec4 ToVec4();
 	static Ray ToRay(glm::vec3);
 	static Ray ToRay(glm::vec4);
+	Ray Clone();
 
 private:
 	glm::vec3 _start;

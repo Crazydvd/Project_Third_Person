@@ -69,7 +69,13 @@ glm::vec3 Ray::calculateDirection()
 bool Ray::HitObject(const GameObject* pTarget, const float pRadius)
 {
 	glm::vec3 differenceVector = pTarget->getWorldPosition() - _start;
-	glm::vec3 projection = glm::dot(differenceVector, _direction) * _direction;
+
+	//cloning the ray so that we can normalize without modifying the original
+	Ray clone = Clone();
+	glm::vec3 direction = clone.ToVec3();
+	direction =  glm::normalize(direction);
+
+	glm::vec3 projection = glm::dot(differenceVector, direction) * direction;
 	glm::vec3 distanceVector = differenceVector - projection;
 
 	float distance = glm::length(distanceVector);
@@ -101,6 +107,12 @@ Ray Ray::ToRay(glm::vec3 pVec3)
 Ray Ray::ToRay(glm::vec4 pVec4)
 {
 	return Ray((glm::vec3) pVec4);
+}
+
+Ray Ray::Clone()
+{
+	glm::vec3 clone = ToVec3();
+	return Ray(clone.x, clone.y, clone.z);
 }
 
 Ray::~Ray()
