@@ -88,6 +88,38 @@ bool Ray::HitObject(const GameObject* pTarget, const float pRadius)
 	return false;
 }
 
+GameObject* Ray::GetCollision(GameObject* pObjects[], int pSize)
+{
+	GameObject* closestCollision = NULL;
+	float lengthToClosestCollision = 0;
+
+	for (int i = 0; i < pSize; i++)
+	{
+		GameObject* testObj = pObjects[i];
+
+		if (HitObject(testObj, 4))
+		{
+			if (closestCollision == NULL)
+			{
+				closestCollision = testObj;
+			}
+			else
+			{
+				lengthToClosestCollision = (closestCollision == 0)? glm::length(closestCollision ->getWorldPosition() - _start) : lengthToClosestCollision;
+				float newLength = glm::length(testObj->getWorldPosition() - _start);
+
+				if (lengthToClosestCollision < newLength)
+				{
+					closestCollision = testObj;
+					lengthToClosestCollision = newLength;
+				}
+			}
+		}
+	}
+
+	return closestCollision;
+}
+
 glm::vec3 Ray::ToVec3()
 {
 	return glm::vec3(_direction.x, _direction.y, _direction.z);
