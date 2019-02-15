@@ -187,6 +187,7 @@
     <ClInclude Include="..\src\mge\MGEDemo.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
     <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +210,7 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\MGEDemo.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
