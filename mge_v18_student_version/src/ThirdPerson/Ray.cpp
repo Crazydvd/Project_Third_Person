@@ -26,7 +26,6 @@ Ray::Ray(float pX, float pY, float pZ) : Ray::Ray(glm::vec3(pX, pY, pZ))
 
 Ray Ray::MouseRay(const sf::RenderWindow* pWindow, const float pCameraFOV, World* pWorld)
 {
-	/**/
 	sf::Vector2u size = pWindow->getSize();
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*pWindow);
 	glm::vec2 MouseRelativeToScreenCenter = glm::vec2(
