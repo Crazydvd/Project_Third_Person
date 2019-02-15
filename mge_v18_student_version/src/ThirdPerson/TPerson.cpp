@@ -18,6 +18,7 @@
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/behaviours/MouseRotatingBehaviour.hpp"
 
 #include "mge/util/DebugHud.hpp"
 
@@ -27,7 +28,7 @@
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson():AbstractGame (),_hud(0)
 {
-
+	
 }
 
 void TPerson::initialize() {
@@ -50,7 +51,7 @@ void TPerson::_initializeScene()
     //F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
     Mesh* planeMeshDefault = Mesh::load (config::THIRDPERSON_MODEL_PATH+"plane.obj");
     Mesh* cubeMeshF = Mesh::load (config::THIRDPERSON_MODEL_PATH+"cube_flat.obj");
-    Mesh* sphereMeshS = Mesh::load (config::THIRDPERSON_MODEL_PATH+"sphere_smooth.obj");
+    Mesh* sphereMeshS = Mesh::load (config::THIRDPERSON_MODEL_PATH+"CylinderCM1Tri.obj");
 
     //MATERIALS
 
@@ -78,7 +79,8 @@ void TPerson::_initializeScene()
     sphere->scale(glm::vec3(2.5,2.5,2.5));
     sphere->setMesh (sphereMeshS);
     sphere->setMaterial(runicStoneMaterial);
-    sphere->setBehaviour (new RotatingBehaviour());
+    //sphere->setBehaviour (new RotatingBehaviour());
+	sphere->setBehaviour(new MouseRotatingBehaviour());
     _world->add(sphere);
 
     //add a light. Note that the light does ABSOLUTELY ZIP! NADA ! NOTHING !

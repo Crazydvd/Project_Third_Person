@@ -1,21 +1,2 @@
-﻿  main.cpp
-  AbstractBehaviour.cpp
-  KeysBehaviour.cpp
-  RotatingBehaviour.cpp
-  AbstractGame.cpp
-  Camera.cpp
-  GameObject.cpp
-  Light.cpp
-  Mesh.cpp
-  Renderer.cpp
-  ShaderProgram.cpp
-  Texture.cpp
-  World.cpp
-  AbstractMaterial.cpp
-  ColorMaterial.cpp
-  TextureMaterial.cpp
-  MGEDemo.cpp
-  DebugHud.cpp
-  TPerson.cpp
-  Generating Code...
+﻿  MouseRotatingBehaviour.cpp
   mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
