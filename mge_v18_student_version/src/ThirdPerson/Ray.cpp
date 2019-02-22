@@ -140,7 +140,7 @@ Ray Ray::ToRay(glm::vec4 pVec4)
 	return Ray((glm::vec3) pVec4);
 }
 
-Ray Ray::Clone()
+Ray Ray::Clone() //TODO: srsly Daniel...? rework that 2nd line.
 {
 	glm::vec3 clone = ToVec3();
 	return Ray(clone.x, clone.y, clone.z);
