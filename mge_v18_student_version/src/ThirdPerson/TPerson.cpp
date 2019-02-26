@@ -62,8 +62,8 @@ void TPerson::_initializeScene()
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
-	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1,0,0));
-	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0,0,1));
+	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
+	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
 
 	//SCENE SETUP
 
@@ -73,16 +73,9 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	//add the floor
-	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(runicStoneMaterial);
-	_world->add(plane);*/
+	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
-	//add a light. Note that the light does ABSOLUTELY ZIP! NADA ! NOTHING !
-
-	//even though it doesn't implement any lighting yet!
+	//a light to light the scene!
 	Light* light = new Light("light", glm::vec3(0, 4, 0), LightType::AMBIENT);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->setMesh(cubeMeshF);
@@ -90,6 +83,13 @@ void TPerson::_initializeScene()
 	light->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(light);
 	LitMaterial::AddLight(light);
+
+	//add the floor
+	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
+	plane->scale(glm::vec3(5, 5, 5));
+	plane->setMesh(planeMeshDefault);
+	plane->setMaterial(runicStoneMaterial);
+	_world->add(plane);*/
 
 	//add a cube sphere
 	GameObject* cube = new GameObject("cube", glm::vec3(-2, 0, -2));
@@ -100,7 +100,7 @@ void TPerson::_initializeScene()
 	_world->add(cube);
 
 	//add a sphere
-	GameObject* sphere = new GameObject("sphere", glm::vec3(2,0,0));
+	GameObject* sphere = new GameObject("sphere", glm::vec3(2, 0, 0));
 	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
 	sphere->setMesh(sphereMeshS);
 	sphere->setMaterial(litMaterialB);
