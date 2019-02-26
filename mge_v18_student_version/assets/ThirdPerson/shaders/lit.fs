@@ -4,18 +4,7 @@
 
 uniform mat4 viewMatrix;
 
-//uniform vec3 ambientLightColor;
 uniform vec3 diffuseColor;
-//uniform vec3 specularColor;
-
-//uniform vec3 lightPosition;
-//uniform vec3 lightForward;
-//uniform vec3 lightColor;
-//uniform int lightType;
-
-//uniform float coneAngle;
-//uniform float fallOffAngle;
-
 uniform int lightCount;
 uniform int shininess;
 
