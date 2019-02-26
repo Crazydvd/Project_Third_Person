@@ -1,7 +1,7 @@
 #include "glm.hpp"
 
 #include "ColorMaterial.hpp"
-#include "mge/config.hpp"
+#include "ThirdPerson/config.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/ShaderProgram.hpp"
@@ -18,8 +18,8 @@ void ColorMaterial::_lazyInitializeShader() {
     //this shader contains everything the material can do (it can render something in 3d using a single color)
     if (!_shader) {
         _shader = new ShaderProgram();
-        _shader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"color.vs");
-        _shader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"color.fs");
+        _shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH+"color.vs");
+        _shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH+"color.fs");
         _shader->finalize();
     }
 }

@@ -7,7 +7,7 @@
 #include "mge/core/Mesh.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/ShaderProgram.hpp"
-#include "mge/config.hpp"
+#include "ThirdPerson/config.hpp"
 
 ShaderProgram* TextureMaterial::_shader = NULL;
 
@@ -27,8 +27,8 @@ TextureMaterial::~TextureMaterial() {}
 void TextureMaterial::_lazyInitializeShader() {
     if (!_shader) {
         _shader = new ShaderProgram();
-        _shader->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"texture.vs");
-        _shader->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"texture.fs");
+        _shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH+"texture.vs");
+        _shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH+"texture.fs");
         _shader->finalize();
 
         //cache all the uniform and attribute indexes

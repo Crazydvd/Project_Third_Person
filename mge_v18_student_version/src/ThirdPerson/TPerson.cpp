@@ -15,6 +15,7 @@
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
+#include "mge/materials/LitMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
@@ -61,8 +62,10 @@ void TPerson::_initializeScene()
 
 	//create some materials to display the cube, the plane and the light
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
-	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "Frog.png"));
-	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "Frog.png"));
+	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
+	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
+	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
+	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
 
 	//SCENE SETUP
 
@@ -72,6 +75,17 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
+	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
+
+	//a light to light the scene!
+	Light* light = new Light("light", glm::vec3(0, 4, 0), LightType::AMBIENT);
+	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
+	light->setMesh(cubeMeshF);
+	light->setMaterial(lightMaterial);
+	light->setBehaviour(new KeysBehaviour(25, 90));
+	_world->add(light);
+	LitMaterial::AddLight(light);
+
 	//add the floor
 	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
 	plane->scale(glm::vec3(5, 5, 5));
@@ -79,35 +93,24 @@ void TPerson::_initializeScene()
 	plane->setMaterial(runicStoneMaterial);
 	_world->add(plane);*/
 
-	//add a light. Note that the light does ABSOLUTELY ZIP! NADA ! NOTHING !
-
-	//even though it doesn't implement any lighting yet!
-	Light* light = new Light("light", glm::vec3(0, 4, 0));
-	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
-	light->setMesh(cubeMeshF);
-	light->setMaterial(lightMaterial);
-	light->setBehaviour(new KeysBehaviour(25));
-	_world->add(light);
-
 	//add a cube sphere
 	GameObject* cube = new GameObject("cube", glm::vec3(2, 0, -4));
 	cube->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 	cube->setMesh(cubeMeshF);
-	cube->setMaterial(runicStoneMaterial);
+	cube->setMaterial(litMaterialR);
 	cube->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(cube);
 
 	//add a sphere
 	GameObject* sphere = new GameObject("sphere", glm::vec3(2, 0, 0));
-	sphere->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
 	sphere->setMesh(sphereMeshS);
-	sphere->setMaterial(landMaterial);
+	sphere->setMaterial(litMaterialB);
 	sphere->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(sphere);
 
 	puzzleObjects.push_back(sphere);
 	puzzleObjects.push_back(cube);
-
 }
 
 void TPerson::_render()

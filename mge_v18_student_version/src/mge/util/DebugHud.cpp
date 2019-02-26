@@ -4,13 +4,13 @@
 #include <GL/glew.h>
 #include <SFML/Graphics/Text.hpp>
 #include "mge/util/DebugHud.hpp"
-#include "mge/config.hpp"
+#include "ThirdPerson/config.hpp"
 
 DebugHud::DebugHud( sf::RenderWindow * aWindow ): _window( aWindow ), _debugInfo(), _font(), _debugText()
 {
 	assert ( _window != NULL );
 
-    if (!_font.loadFromFile(config::MGE_FONT_PATH+ "arial.ttf")) {
+    if (!_font.loadFromFile(config::THIRDPERSON_FONT_PATH+ "arial.ttf")) {
         std::cout << "Could not load font, exiting..." << std::endl;
         return;
     }

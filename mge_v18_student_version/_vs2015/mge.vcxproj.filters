@@ -73,12 +73,6 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\MGEDemo.hpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\config.hpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Light.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -93,6 +87,9 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\LitMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,9 +141,6 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\MGEDemo.cpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Light.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
@@ -158,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\LitMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
