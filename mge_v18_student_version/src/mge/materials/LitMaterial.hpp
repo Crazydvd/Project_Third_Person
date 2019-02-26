@@ -28,6 +28,8 @@ class LitMaterial : public AbstractMaterial
 
 		static void AddLight(Light* pLight);
 		static void RemoveLight(Light* pLight);
+		static int GetLightCount();
+		static std::vector<Light*> getLights();
 
     private:
         //all the static properties are shared between instances of LitMaterial

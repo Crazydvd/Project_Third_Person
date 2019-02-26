@@ -74,6 +74,16 @@ void LitMaterial::RemoveLight(Light* pLight)
 	}
 }
 
+int LitMaterial::GetLightCount()
+{
+	return LitMaterial::_lightCount;
+}
+
+std::vector<Light*> LitMaterial::getLights()
+{
+	return _lights;
+}
+
 
 void LitMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
 {
