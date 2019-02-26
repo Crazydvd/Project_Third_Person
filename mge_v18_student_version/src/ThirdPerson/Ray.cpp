@@ -78,8 +78,7 @@ bool Ray::HitObject(const GameObject* pTarget, const float pRadius)
 	glm::vec3 distanceVector = differenceVector - projection;
 
 	float distance = glm::length(distanceVector);
-	std::cout << distance << std::endl;
-
+	
 	if (distance <= pRadius)
 	{
 		return true;
@@ -97,7 +96,7 @@ GameObject* Ray::GetCollision(GameObject* pObjects[], int pSize)
 	{
 		GameObject* testObj = pObjects[i];
 
-		if (HitObject(testObj, 4))
+		if (HitObject(testObj, 2))
 		{
 			if (closestCollision == NULL)
 			{
@@ -105,10 +104,10 @@ GameObject* Ray::GetCollision(GameObject* pObjects[], int pSize)
 			}
 			else
 			{
-				lengthToClosestCollision = (closestCollision == 0)? glm::length(closestCollision ->getWorldPosition() - _start) : lengthToClosestCollision;
+				lengthToClosestCollision = (lengthToClosestCollision == 0)? glm::length(closestCollision ->getWorldPosition() - _start) : lengthToClosestCollision;
 				float newLength = glm::length(testObj->getWorldPosition() - _start);
 
-				if (lengthToClosestCollision < newLength)
+				if (newLength < lengthToClosestCollision)
 				{
 					closestCollision = testObj;
 					lengthToClosestCollision = newLength;

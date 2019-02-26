@@ -26,6 +26,8 @@
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Ray.hpp"
 
+std::vector<GameObject*> TPerson::puzzleObjects = std::vector<GameObject*>();
+
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson() :AbstractGame(), _hud(0)
 {
@@ -52,15 +54,15 @@ void TPerson::_initializeScene()
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
 	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	Mesh* cubeMeshF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cube_flat.obj");
-	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
+	Mesh* cubeMeshF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
+	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 
 	//MATERIALS
 
 	//create some materials to display the cube, the plane and the light
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
-	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
-	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
+	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "Frog.png"));
+	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "Frog.png"));
 
 	//SCENE SETUP
 
@@ -88,24 +90,24 @@ void TPerson::_initializeScene()
 	_world->add(light);
 
 	//add a cube sphere
-	GameObject* cube = new GameObject("cube", glm::vec3(-2, 0, -2));
-	cube->scale(glm::vec3(2.5, 2.5, 2.5));
+	GameObject* cube = new GameObject("cube", glm::vec3(2, 0, -4));
+	cube->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 	cube->setMesh(cubeMeshF);
 	cube->setMaterial(runicStoneMaterial);
 	cube->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(cube);
 
 	//add a sphere
-	GameObject* sphere = new GameObject("sphere", glm::vec3(2,0,0));
-	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
+	GameObject* sphere = new GameObject("sphere", glm::vec3(2, 0, 0));
+	sphere->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 	sphere->setMesh(sphereMeshS);
 	sphere->setMaterial(landMaterial);
 	sphere->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(sphere);
 
+	puzzleObjects.push_back(sphere);
+	puzzleObjects.push_back(cube);
 
-
-	
 }
 
 void TPerson::_render()

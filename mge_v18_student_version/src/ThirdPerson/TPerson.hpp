@@ -2,6 +2,7 @@
 #define TPERSON_HPP
 
 #include "mge/core/AbstractGame.hpp"
+#include "mge/core/GameObject.hpp"
 
 class DebugHud;
 
@@ -18,6 +19,8 @@ public:
 
 	//override initialize so we can add a DebugHud
 	virtual void initialize();
+	
+	static std::vector<GameObject*> puzzleObjects;
 
 protected:
 	//override so we can construct the actual scene
