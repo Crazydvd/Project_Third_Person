@@ -79,7 +79,7 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
+ 	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
 	//a light to light the scene!
 	Light* light = new Light("light", glm::vec3(-5.85, 2, -2.30), LightType::POINT);
