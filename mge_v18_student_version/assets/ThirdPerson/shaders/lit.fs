@@ -29,7 +29,7 @@ struct Light
  };
  
 //array to store all lights
-uniform Light Lights[99];
+uniform Light Lights[30];
 
 
 //global variables

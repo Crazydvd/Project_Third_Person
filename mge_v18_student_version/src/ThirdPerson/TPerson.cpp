@@ -55,8 +55,11 @@ void TPerson::_initializeScene()
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
 	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	Mesh* cubeMeshF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
-	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
+	Mesh* sphereMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
+	Mesh* pliersDown = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
+	Mesh* pliersUp = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
+	Mesh* umbrellaMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Umbrella.obj");
+	Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
 
 	//MATERIALS
 
@@ -65,6 +68,7 @@ void TPerson::_initializeScene()
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
 	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
+	AbstractMaterial* litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
 	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
 
 	//SCENE SETUP
@@ -78,39 +82,49 @@ void TPerson::_initializeScene()
 	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
 	//a light to light the scene!
-	Light* light = new Light("light", glm::vec3(0, 4, 0), LightType::AMBIENT);
+	Light* light = new Light("light", glm::vec3(-5.85, 2, -2.30), LightType::POINT);
+	light->SetLightIntensity(1.5f);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
-	light->setMesh(cubeMeshF);
+	light->setMesh(sphereMesh);
 	light->setMaterial(lightMaterial);
 	light->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(light);
 	LitMaterial::AddLight(light);
 
 	//add the floor
-	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
+	GameObject* plane = new GameObject("plane", glm::vec3(0, -4, 0));
+	plane->scale(glm::vec3(15, 15, 15));
 	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(runicStoneMaterial);
-	_world->add(plane);*/
+	plane->setMaterial(litMaterialG);
+	_world->add(plane);
+
+	//add a desk
+	GameObject* desk = new GameObject("desk", glm::vec3(-3, 0, -3));
+	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
+	desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
+	desk->setMesh(deskMesh);
+	desk->setMaterial(litMaterialB);
+	_world->add(desk);
+
 
 	//add a cube sphere
-	GameObject* cube = new GameObject("cube", glm::vec3(2, 0, -4));
-	cube->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-	cube->setMesh(cubeMeshF);
-	cube->setMaterial(litMaterialR);
-	cube->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	_world->add(cube);
+	GameObject* umbrella = new GameObject("cube", glm::vec3(0, 0, 0));
+	umbrella->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+	umbrella->setMesh(umbrellaMesh);
+	umbrella->setMaterial(litMaterialR);
+	umbrella->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	_world->add(umbrella);
 
 	//add a sphere
-	GameObject* sphere = new GameObject("sphere", glm::vec3(2, 0, 0));
-	sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	sphere->setMesh(sphereMeshS);
+	GameObject* sphere = new GameObject("sphere", glm::vec3(20, 0, 0));
+	sphere->scale(glm::vec3(0.5, 0.5, 0.5));
+	sphere->setMesh(pliersUp);
 	sphere->setMaterial(litMaterialB);
 	sphere->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	_world->add(sphere);
+	//_world->add(sphere);
 
-	puzzleObjects.push_back(sphere);
-	puzzleObjects.push_back(cube);
+	//puzzleObjects.push_back(sphere);
+	puzzleObjects.push_back(umbrella);
 }
 
 void TPerson::_render()

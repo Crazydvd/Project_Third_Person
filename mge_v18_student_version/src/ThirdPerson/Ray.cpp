@@ -94,7 +94,8 @@ GameObject* Ray::GetCollision(GameObject* pObjects[], int pSize)
 
 	for (int i = 0; i < pSize; i++)
 	{
-		GameObject* testObj = pObjects[i];
+		GameObject* testObj = pObjects[i];				
+
 
 		if (HitObject(testObj, 2))
 		{
