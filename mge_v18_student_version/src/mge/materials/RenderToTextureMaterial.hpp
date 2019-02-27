@@ -11,11 +11,11 @@ class Texture;
  * This material is already a little bit more complicated, instead of a color we can pass in a texture,
  * all attributes and uniforms are cached and we precompute the MVP matrix passing it in as one entity.
  */
-class RenderTextureMaterial : public AbstractMaterial
+class RenderToTextureMaterial : public AbstractMaterial
 {
     public:
-        RenderTextureMaterial (Texture* pDiffuseTexture, glm::vec3 pSpecularColor = glm::vec3(1,1,1));
-        virtual ~RenderTextureMaterial ();
+        RenderToTextureMaterial (Texture* pDiffuseTexture, glm::vec3 pSpecularColor = glm::vec3(1,1,1));
+        virtual ~RenderToTextureMaterial ();
 
         virtual void render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
 
@@ -45,8 +45,8 @@ class RenderTextureMaterial : public AbstractMaterial
 
 		bool _overrideSpecularLight = false;
 
-        RenderTextureMaterial(const RenderTextureMaterial&);
-        RenderTextureMaterial& operator=(const RenderTextureMaterial&);
+        RenderToTextureMaterial(const RenderToTextureMaterial&);
+        RenderToTextureMaterial& operator=(const RenderToTextureMaterial&);
 };
 
 #endif // TEXTUREMATERIAL_HPP

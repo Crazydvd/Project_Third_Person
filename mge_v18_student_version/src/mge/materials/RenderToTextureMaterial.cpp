@@ -12,23 +12,23 @@
 #include "mge/materials/RenderToTextureMaterial.hpp"
 #include "ThirdPerson/config.hpp"
 
-ShaderProgram* RenderTextureMaterial::_shader = NULL;
+ShaderProgram* RenderToTextureMaterial::_shader = NULL;
 
-GLint RenderTextureMaterial::_uMVPMatrix = 0;
-GLint RenderTextureMaterial::_uDiffuseTexture = 0;
+GLint RenderToTextureMaterial::_uMVPMatrix = 0;
+GLint RenderToTextureMaterial::_uDiffuseTexture = 0;
 
-GLint RenderTextureMaterial::_aVertex = 0;
-GLint RenderTextureMaterial::_aNormal = 0;
-GLint RenderTextureMaterial::_aUV = 0;
+GLint RenderToTextureMaterial::_aVertex = 0;
+GLint RenderToTextureMaterial::_aNormal = 0;
+GLint RenderToTextureMaterial::_aUV = 0;
 
-RenderTextureMaterial::RenderTextureMaterial(Texture * pDiffuseTexture, glm::vec3 pSpecularColor) :_diffuseTexture(pDiffuseTexture), _specularColor(pSpecularColor)
+RenderToTextureMaterial::RenderToTextureMaterial(Texture * pDiffuseTexture, glm::vec3 pSpecularColor) :_diffuseTexture(pDiffuseTexture), _specularColor(pSpecularColor)
 {
 	_lazyInitializeShader();
 }
 
-RenderTextureMaterial::~RenderTextureMaterial() {}
+RenderToTextureMaterial::~RenderToTextureMaterial() {}
 
-void RenderTextureMaterial::_lazyInitializeShader()
+void RenderToTextureMaterial::_lazyInitializeShader()
 {
 	if (!_shader) 
 	{
@@ -47,12 +47,12 @@ void RenderTextureMaterial::_lazyInitializeShader()
 	}
 }
 
-void RenderTextureMaterial::setDiffuseTexture(Texture* pDiffuseTexture)
+void RenderToTextureMaterial::setDiffuseTexture(Texture* pDiffuseTexture)
 {
 	_diffuseTexture = pDiffuseTexture;
 }
 
-void RenderTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
+void RenderToTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
 {
 	if (!_diffuseTexture) return;
 

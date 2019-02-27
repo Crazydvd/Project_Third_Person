@@ -60,7 +60,7 @@ void TPerson::_initializeScene()
 	Mesh* pliersDown = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
 	Mesh* pliersUp = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 	Mesh* umbrellaMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Umbrella.obj");
-	//Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
+	Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
 
 	//MATERIALS
 
@@ -71,47 +71,60 @@ void TPerson::_initializeScene()
 	litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
 	litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
 	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
-	shadowMaterial = new LitMaterial(glm::vec3(0, 0, 0));
-	test = new TextureMaterial(renderToTexture->getTexture());
+	blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
+	greyMaterial = new ColorMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
+	shadowMaterial = new TextureMaterial(renderToTexture->getTexture());
 
 	//SCENE SETUP
 
    //add camera first (it will be updated last)
-	camera = new Camera("camera", glm::vec3(0, 6, 15));
-	camera->rotate(glm::radians(-40.0f), glm::vec3(1, 0, 0));
+	camera = new Camera("camera", glm::vec3(0, 4, 15));
+	camera->rotate(glm::radians(-15.0f), glm::vec3(1, 0, 0));
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
- 	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
+	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
 	//a light to light the scene!
-	Light* light = new Light("light", glm::vec3(-5.85, 2, -2.30), LightType::POINT);
+	light = new Light("light", glm::vec3(7.65f, 2, 7.55f), LightType::POINT);
 	light->SetLightIntensity(1.5f);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
+	light->rotate(glm::radians(45.0f), glm::vec3(0,1,0));
 	light->setMesh(sphereMesh);
 	light->setMaterial(lightMaterial);
 	light->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(light);
+	//light->SetLightColor(glm::vec3(1, 0, 0.8f));
 	LitMaterial::AddLight(light);
 
-	//add the floor
-	plane = new GameObject("plane", glm::vec3(0, -4, 0));
-	plane->scale(glm::vec3(15, 15, 15));
+	//add the plane
+	plane = new GameObject("plane", glm::vec3(-4.5f, 2, -0.5f));
+	plane->scale(glm::vec3(5, 5, 5));
+	plane->rotate(glm::radians(-90.0f), glm::vec3(0,0,1));
+	plane->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
+	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));
 	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(test);
+	plane->setMaterial(shadowMaterial);
 	_world->add(plane);
 
+	//add the floor
+	GameObject* floor = new GameObject("floor", glm::vec3(0, -2.5f, 0));
+	floor->scale(glm::vec3(15, 15, 15));
+	floor->setMesh(planeMeshDefault);
+	floor->setMaterial(greyMaterial);
+	_world->add(floor);
+
 	//add a desk
-	/*GameObject* desk = new GameObject("desk", glm::vec3(-3, 0, -3));
+	desk = new GameObject("desk", glm::vec3(5, 0, -4));
 	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
-	desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
+	//desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	desk->setMesh(deskMesh);
 	desk->setMaterial(litMaterialB);
-	_world->add(desk);*/
+	_world->add(desk);
 
 
-	//add a cube sphere
-	umbrella = new GameObject("cube", glm::vec3(0, 0, 0));
+	//add a cube umbrella
+	umbrella = new GameObject("umbrella", glm::vec3(0, 3, 1));
 	umbrella->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 	umbrella->setMesh(umbrellaMesh);
 	umbrella->setMaterial(litMaterialR);
@@ -134,29 +147,23 @@ void TPerson::_render()
 {
 	glm::mat4 transform = camera->getTransform();
 	renderToTexture->bindFramebuffer();
-	glClearColor(0, 0, 0, 1);
+	glClearColor(0.5f, 0.5f, 0.5f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	camera->setTransform(glm::mat4(1.0));
-	camera->translate(glm::vec3(0, 15, 0));
-	camera->rotate(glm::radians(270.0f), glm::vec3(1, 0, 0));
-	umbrella->setMaterial(shadowMaterial);
-	plane->setMaterial(litMaterialG);
+	camera->setTransform(light->getTransform());
+	umbrella->setMaterial(blackMaterial);
+	desk->setMaterial(blackMaterial);
+	plane->setMaterial(greyMaterial);
 	AbstractGame::_render();
-	umbrella->setMaterial(litMaterialR);
-	plane->setMaterial(test);
 	renderToTexture->unbindFramebuffer();
+
+	umbrella->setMaterial(litMaterialR);
+	desk->setMaterial(litMaterialB);
+	plane->setMaterial(shadowMaterial);
 	camera->setTransform(transform);
 	glClearColor(0.2f, 0.2f, 0.2f, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	AbstractGame::_render();
-
-	/*GLenum err;
-	if ((err = glGetError()) != GL_NO_ERROR)
-	{
-		std::cerr << err;
-	}*/
-	//
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	AbstractGame::_render();	
 	_updateHud();
 }
 

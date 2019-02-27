@@ -34,7 +34,7 @@ Renderer::~Renderer()
 
 void Renderer::setClearColor(GLbyte pR, GLbyte pG, GLbyte pB)
 {
-	glClearColor(255, (float)pG / 0xff, (float)pB / 0xff, 1.0f);
+	glClearColor((float)pR / 0xff, (float)pG / 0xff, (float)pB / 0xff, 1.0f);
 }
 
 void Renderer::render(World* pWorld)

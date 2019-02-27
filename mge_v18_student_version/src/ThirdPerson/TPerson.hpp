@@ -7,6 +7,7 @@
 
 class DebugHud;
 class Camera;
+class Light;
 
 /**
  * An example subclass of AbstractGame showing how we can setup a scene.
@@ -35,13 +36,16 @@ private:
 	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
 	Camera* camera;
+	Light* light;
 	GameObject* plane;
 	GameObject* umbrella;
+	GameObject* desk;
 	AbstractMaterial* litMaterialR;
 	AbstractMaterial* litMaterialG;
 	AbstractMaterial* litMaterialB;
+	AbstractMaterial* blackMaterial;
+	AbstractMaterial* greyMaterial;
 	AbstractMaterial* shadowMaterial;
-	AbstractMaterial* test;
 
 	float trick = 0;
 
