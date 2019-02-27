@@ -7,5 +7,7 @@ out vec4 fragment_color;
 
 void main( void ) 
 {
-	fragment_color = texture(diffuseTexture,texCoord);
+	vec4 color = texture(diffuseTexture,texCoord);
+	color.a = 1.0;
+	fragment_color = color;
 }

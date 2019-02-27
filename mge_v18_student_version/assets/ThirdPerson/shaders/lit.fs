@@ -26,7 +26,7 @@ struct Light
 	
 	float coneAngle;
 	float fallOffAngle;
- };
+};
  
 //array to store all lights
 uniform Light Lights[30];

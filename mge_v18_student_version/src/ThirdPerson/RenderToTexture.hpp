@@ -6,8 +6,11 @@
 class RenderToTexture
 {
 public:
-
 	RenderToTexture();
+
+	void bindFramebuffer();
+	void unbindFramebuffer();
+	Texture* getTexture() { return _renderedTexture; };
 
 private:
 	void createFramebuffer();
@@ -15,7 +18,6 @@ private:
 	void createDepthbuffer();
 	void configureFramebuffer();
 	bool checkFramebuffer();
-	void bindFramebuffer();
 
 	Texture* _renderedTexture; //The texture that we're going to render to.
 	GLuint _framebufferName; // The framebuffer, which regroups 0, 1, or more textures, and 0 or 1 depth buffer.

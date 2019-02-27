@@ -3,8 +3,10 @@
 
 #include "mge/core/AbstractGame.hpp"
 #include "mge/core/GameObject.hpp"
+#include "ThirdPerson/RenderToTexture.hpp"
 
 class DebugHud;
+class Camera;
 
 /**
  * An example subclass of AbstractGame showing how we can setup a scene.
@@ -30,7 +32,18 @@ protected:
 	virtual void _render();
 
 private:
+	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
+	Camera* camera;
+	GameObject* plane;
+	GameObject* umbrella;
+	AbstractMaterial* litMaterialR;
+	AbstractMaterial* litMaterialG;
+	AbstractMaterial* litMaterialB;
+	AbstractMaterial* shadowMaterial;
+	AbstractMaterial* test;
+
+	float trick = 0;
 
 	void _updateHud();
 

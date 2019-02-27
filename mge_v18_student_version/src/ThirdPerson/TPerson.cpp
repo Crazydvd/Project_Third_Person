@@ -26,6 +26,7 @@
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Ray.hpp"
+#include "ThirdPerson/RenderToTexture.hpp"
 
 std::vector<GameObject*> TPerson::puzzleObjects = std::vector<GameObject*>();
 
@@ -50,7 +51,7 @@ void TPerson::initialize()
 void TPerson::_initializeScene()
 {
 	//MESHES
-
+	this->renderToTexture = new RenderToTexture();
 	//load a bunch of meshes we will be using throughout this demo
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
@@ -59,7 +60,7 @@ void TPerson::_initializeScene()
 	Mesh* pliersDown = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
 	Mesh* pliersUp = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 	Mesh* umbrellaMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Umbrella.obj");
-	Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
+	//Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
 
 	//MATERIALS
 
@@ -67,14 +68,16 @@ void TPerson::_initializeScene()
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
-	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
-	AbstractMaterial* litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
-	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
+	litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
+	litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
+	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
+	shadowMaterial = new LitMaterial(glm::vec3(0, 0, 0));
+	test = new TextureMaterial(renderToTexture->getTexture());
 
 	//SCENE SETUP
 
    //add camera first (it will be updated last)
-	Camera* camera = new Camera("camera", glm::vec3(0, 6, 7));
+	camera = new Camera("camera", glm::vec3(0, 6, 15));
 	camera->rotate(glm::radians(-40.0f), glm::vec3(1, 0, 0));
 	_world->add(camera);
 	_world->setMainCamera(camera);
@@ -92,23 +95,23 @@ void TPerson::_initializeScene()
 	LitMaterial::AddLight(light);
 
 	//add the floor
-	GameObject* plane = new GameObject("plane", glm::vec3(0, -4, 0));
+	plane = new GameObject("plane", glm::vec3(0, -4, 0));
 	plane->scale(glm::vec3(15, 15, 15));
 	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(litMaterialG);
+	plane->setMaterial(test);
 	_world->add(plane);
 
 	//add a desk
-	GameObject* desk = new GameObject("desk", glm::vec3(-3, 0, -3));
+	/*GameObject* desk = new GameObject("desk", glm::vec3(-3, 0, -3));
 	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
 	desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	desk->setMesh(deskMesh);
 	desk->setMaterial(litMaterialB);
-	_world->add(desk);
+	_world->add(desk);*/
 
 
 	//add a cube sphere
-	GameObject* umbrella = new GameObject("cube", glm::vec3(0, 0, 0));
+	umbrella = new GameObject("cube", glm::vec3(0, 0, 0));
 	umbrella->scale(glm::vec3(0.5f, 0.5f, 0.5f));
 	umbrella->setMesh(umbrellaMesh);
 	umbrella->setMaterial(litMaterialR);
@@ -129,7 +132,31 @@ void TPerson::_initializeScene()
 
 void TPerson::_render()
 {
+	glm::mat4 transform = camera->getTransform();
+	renderToTexture->bindFramebuffer();
+	glClearColor(0, 0, 0, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	camera->setTransform(glm::mat4(1.0));
+	camera->translate(glm::vec3(0, 15, 0));
+	camera->rotate(glm::radians(270.0f), glm::vec3(1, 0, 0));
+	umbrella->setMaterial(shadowMaterial);
+	plane->setMaterial(litMaterialG);
 	AbstractGame::_render();
+	umbrella->setMaterial(litMaterialR);
+	plane->setMaterial(test);
+	renderToTexture->unbindFramebuffer();
+	camera->setTransform(transform);
+	glClearColor(0.2f, 0.2f, 0.2f, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	AbstractGame::_render();
+
+	/*GLenum err;
+	if ((err = glGetError()) != GL_NO_ERROR)
+	{
+		std::cerr << err;
+	}*/
+	//
 	_updateHud();
 }
 
