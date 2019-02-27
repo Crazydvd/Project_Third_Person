@@ -184,10 +184,12 @@
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\LitMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\LitTextureMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -209,9 +211,11 @@
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\LitMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\LitTextureMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

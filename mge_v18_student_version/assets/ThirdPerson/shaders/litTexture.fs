@@ -15,17 +15,7 @@ in vec2 texCoord;
 
 out vec4 fragment_color;
 
-/*
-void main( void ) 
-{
-	vec3 color = vec3(texture(diffuseTexture,texCoord));
-	
-	fragment_color = vec4(color, 1);
-}
-*/
 
-
-/**/
 struct Light
 {
 	vec3 lightColor;
@@ -177,5 +167,3 @@ vec3 calculateColor()
 	
 	return (ambientTerm + diffuseTerm + specularTerm) * Intensity;
 }
-
-/**/

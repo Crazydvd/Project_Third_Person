@@ -4,6 +4,7 @@
 #include "glm.hpp"
 
 #include "mge/core/Renderer.hpp"
+#include "ThirdPerson/RenderToTexture.hpp"
 
 #include "mge/core/Mesh.hpp"
 #include "mge/core/World.hpp"
@@ -56,14 +57,17 @@ void TPerson::_initializeScene()
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
 	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	Mesh* cubeMeshF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
-	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
+	Mesh* cubeMeshF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cube_smooth.obj");
+	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
+	Mesh* pliersDownF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
+	Mesh* pliersUpF = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 
 	//MATERIALS
 
 	//create some materials to display the cube, the plane and the light
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
-	AbstractMaterial* runicStoneMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
+	AbstractMaterial* runicStoneMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "runicfloor.jpg"));
+	AbstractMaterial* brickMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
 	AbstractMaterial* litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
 	AbstractMaterial* litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
@@ -81,31 +85,31 @@ void TPerson::_initializeScene()
 	//a light to light the scene!
 	Light* light = new Light("light", glm::vec3(0, 1, 0), LightType::POINT);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
-	light->setMesh(cubeMeshF);
+	light->setMesh(sphereMeshS);
 	light->setMaterial(lightMaterial);
 	light->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(light);
 	LitMaterial::AddLight(light);
 
-	//add the floor
-	/*GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(runicStoneMaterial);
-	_world->add(plane);*/
+	////add the floor
+	//GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
+	//plane->scale(glm::vec3(5, 5, 5));
+	//plane->setMesh(planeMeshDefault);
+	//plane->setMaterial(runicStoneMaterial);
+	//_world->add(plane);
 
 	//add a cube sphere
 	GameObject* cube = new GameObject("cube", glm::vec3(2, 0, -4));
 	cube->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-	cube->setMesh(cubeMeshF);
-	cube->setMaterial(runicStoneMaterial);
+	cube->setMesh(pliersDownF);
+	cube->setMaterial(brickMaterial);
 	cube->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(cube);
 
 	//add a sphere
 	GameObject* sphere = new GameObject("sphere", glm::vec3(2, 0, 0));
 	sphere->scale(glm::vec3(.5, .5, .5));
-	sphere->setMesh(sphereMeshS);
+	sphere->setMesh(pliersUpF);
 	sphere->setMaterial(landMaterial);
 	sphere->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(sphere);

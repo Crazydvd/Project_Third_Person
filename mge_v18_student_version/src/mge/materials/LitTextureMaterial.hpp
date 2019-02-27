@@ -36,7 +36,6 @@ class LitTextureMaterial : public AbstractMaterial
 
         Texture* _diffuseTexture;
 
-		/**/
 		//this one is unique per instance of color material
 		glm::vec3 _diffuseColor;
 		glm::vec3 _ambientColor;
@@ -45,7 +44,6 @@ class LitTextureMaterial : public AbstractMaterial
 		int _shininess = 4;
 
 		bool _overrideSpecularLight = false;
-		/**/
 
         LitTextureMaterial(const LitTextureMaterial&);
         LitTextureMaterial& operator=(const LitTextureMaterial&);
