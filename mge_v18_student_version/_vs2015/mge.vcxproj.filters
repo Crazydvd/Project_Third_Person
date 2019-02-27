@@ -91,6 +91,15 @@
     <ClInclude Include="..\src\mge\materials\LitMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\materials\LitTextureMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -154,6 +163,15 @@
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\LitMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\LitTextureMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
   </ItemGroup>

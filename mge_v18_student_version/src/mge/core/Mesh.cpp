@@ -85,7 +85,7 @@ Mesh* Mesh::load(std::string pFilename)
 		std::map <FaceIndexTriplet, unsigned int> mappedTriplets;
 
 		std::string line; // to store each line in
-		while (getline(file, line))
+		while (getline(file, line)) 
 		{
 
 			// c-type string to store cmd read from obj file (cmd is v, vt, vn, f)
@@ -103,7 +103,7 @@ Mesh* Mesh::load(std::string pFilename)
 
 			//so... start processing lines
 			//are we reading a vertex line? straightforward copy into local vertices vector
-			if (strcmp(cmd, "v") == 0)
+			if (strcmp(cmd, "v") == 0) 
 			{
 				glm::vec3 vertex;
 				sscanf(line.c_str(), "%10s %f %f %f ", cmd, &vertex.x, &vertex.y, &vertex.z);
@@ -111,7 +111,7 @@ Mesh* Mesh::load(std::string pFilename)
 
 				//or are we reading a normal line? straightforward copy into local normal vector
 			}
-			else if (strcmp(cmd, "vn") == 0)
+			else if (strcmp(cmd, "vn") == 0) 
 			{
 				glm::vec3 normal;
 				sscanf(line.c_str(), "%10s %f %f %f ", cmd, &normal.x, &normal.y, &normal.z);
@@ -119,7 +119,7 @@ Mesh* Mesh::load(std::string pFilename)
 
 				//or are we reading a uv line? straightforward copy into local uv vector
 			}
-			else if (strcmp(cmd, "vt") == 0)
+			else if (strcmp(cmd, "vt") == 0) 
 			{
 				glm::vec2 uv;
 				sscanf(line.c_str(), "%10s %f %f ", cmd, &uv.x, &uv.y);
@@ -128,7 +128,7 @@ Mesh* Mesh::load(std::string pFilename)
 				//this is where it gets nasty. After having read all vertices, normals and uvs into
 				//their own buffer
 			}
-			else if (strcmp(cmd, "f") == 0)
+			else if (strcmp(cmd, "f") == 0) 
 			{
 
 				//an f lines looks like
@@ -143,11 +143,11 @@ Mesh* Mesh::load(std::string pFilename)
 				int count = sscanf(line.c_str(), "%10s %d/%d/%d %d/%d/%d %d/%d/%d", cmd, &vertexIndex[0], &uvIndex[0], &normalIndex[0], &vertexIndex[1], &uvIndex[1], &normalIndex[1], &vertexIndex[2], &uvIndex[2], &normalIndex[2]);
 
 				//Have we read exactly 10 elements?
-				if (count == 10)
+				if (count == 10) 
 				{
 
 					//process 3 triplets, one for each vertex (which is first element of the triplet)
-					for (int i = 0; i < 3; ++i)
+					for (int i = 0; i < 3; ++i) 
 					{
 						//create key out of the triplet and check if we already encountered this before
 						FaceIndexTriplet triplet(vertexIndex[i], uvIndex[i], normalIndex[i]);
@@ -178,7 +178,7 @@ Mesh* Mesh::load(std::string pFilename)
 						}
 					}
 				}
-				else
+				else 
 				{
 					//If we read a different amount, something is wrong
 					std::cout << "Error reading obj, needing v,vn,vt" << std::endl;
@@ -195,7 +195,7 @@ Mesh* Mesh::load(std::string pFilename)
 		std::cout << "Mesh loaded and buffered:" << (mesh->_indices.size() / 3.0f) << " triangles." << std::endl;
 		return mesh;
 	}
-	else
+	else 
 	{
 		std::cout << "Could not read " << pFilename << std::endl;
 		delete mesh;
@@ -217,7 +217,7 @@ void Mesh::_buffer()
 	glBindBuffer(GL_ARRAY_BUFFER, _normalBufferId);
 	glBufferData(GL_ARRAY_BUFFER, _normals.size() * sizeof(glm::vec3), &_normals[0], GL_STATIC_DRAW);
 
-	glGenBuffers(1, &_uvBufferId);   
+	glGenBuffers(1, &_uvBufferId);
 	glBindBuffer(GL_ARRAY_BUFFER, _uvBufferId);
 	glBufferData(GL_ARRAY_BUFFER, _uvs.size() * sizeof(glm::vec2), &_uvs[0], GL_STATIC_DRAW);
 
@@ -226,21 +226,21 @@ void Mesh::_buffer()
 
 void Mesh::streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib)
 {
-	if (pVerticesAttrib != -1)
+	if (pVerticesAttrib != -1) 
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferId);
 		glEnableVertexAttribArray(pVerticesAttrib);
 		glVertexAttribPointer(pVerticesAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	}
 
-	if (pNormalsAttrib != -1)
+	if (pNormalsAttrib != -1) 
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _normalBufferId);
 		glEnableVertexAttribArray(pNormalsAttrib);
 		glVertexAttribPointer(pNormalsAttrib, 3, GL_FLOAT, GL_TRUE, 0, 0);
 	}
 
-	if (pUVsAttrib != -1)
+	if (pUVsAttrib != -1) 
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _uvBufferId);
 		glEnableVertexAttribArray(pUVsAttrib);
@@ -272,11 +272,9 @@ void Mesh::drawDebugInfo(const glm::mat4& pModelMatrix, const glm::mat4& pViewMa
 
 	glBegin(GL_LINES);
 	//for each index draw the normal starting at the corresponding vertex
-	for (size_t i = 0; i < _indices.size(); i++)
-	{
+	for (size_t i = 0; i < _indices.size(); i++){
 		//draw normal for vertex
-		if (true)
-		{
+		if (true) {
 			//now get normal end
 			glm::vec3 normal = _normals[_indices[i]];
 			glColor3fv(glm::value_ptr(normal));

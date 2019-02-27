@@ -12,6 +12,8 @@ class Texture
 
 		GLuint getId();
 
+		static Texture* GetEmptyTexture();
+
 	protected:
 	    Texture();
 		virtual ~Texture();

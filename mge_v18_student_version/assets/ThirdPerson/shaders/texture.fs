@@ -5,6 +5,7 @@ uniform sampler2D diffuseTexture;
 in vec2 texCoord;
 out vec4 fragment_color;
 
-void main( void ) {
+void main( void ) 
+{
 	fragment_color = texture(diffuseTexture,texCoord);
 }

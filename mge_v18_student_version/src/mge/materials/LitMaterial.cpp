@@ -74,9 +74,20 @@ void LitMaterial::RemoveLight(Light* pLight)
 	}
 }
 
+int LitMaterial::GetLightCount()
+{
+	return LitMaterial::_lightCount;
+}
+
+std::vector<Light*> LitMaterial::getLights()
+{
+	return _lights;
+}
+
 
 void LitMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
 {
+
 	_shader->use();
 	//set the material color
 	glUniform3fv(_shader->getUniformLocation("diffuseColor"), 1, glm::value_ptr(_diffuseColor));
@@ -86,6 +97,7 @@ void LitMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatr
 
 	glm::vec3 specularColor = _specularColor;
 
+	//TODO: change this so you actually use the lights array from World class
 	//pass in the light properties
 	for (int i = 0; i < LitMaterial::_lights.size(); i++)
 	{
