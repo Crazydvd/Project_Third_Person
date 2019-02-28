@@ -38,7 +38,9 @@ private:
 	Camera* camera;
 	Light* light;
 	GameObject* plane;
-	GameObject* umbrella;
+	GameObject* puzzleObject;
+	GameObject* puzzleObject1;
+	GameObject* puzzleObject2;
 	GameObject* desk;
 	AbstractMaterial* litMaterialR;
 	AbstractMaterial* litMaterialG;

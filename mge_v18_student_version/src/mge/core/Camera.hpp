@@ -21,6 +21,7 @@ public:
 	virtual ~Camera();
 
 	glm::mat4& getProjection();
+	void SetFOV(float pAngleDegrees);
 
 private:
 	glm::mat4 _projection;
