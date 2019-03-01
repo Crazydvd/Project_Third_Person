@@ -57,6 +57,7 @@ void TPerson::_initializeScene()
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
 	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
 	Mesh* sphereMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
+	Mesh* umbrellaMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Umbrella.obj");
 	Mesh* pliersDown = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersDown.obj");
 	Mesh* pliersUp = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 	Mesh* puzzleObjectMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Syringe.obj");
@@ -68,6 +69,7 @@ void TPerson::_initializeScene()
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
+	AbstractMaterial* umbrellaMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "AlbedoUmbrella.png"));
 	litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
 	litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
 	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
@@ -78,8 +80,8 @@ void TPerson::_initializeScene()
 	//SCENE SETUP
 
    //add camera first (it will be updated last)
-	camera = new Camera("camera", glm::vec3(-1, 4, 15));
-	camera->rotate(glm::radians(-15.0f), glm::vec3(1, 0, 0));
+	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
+	camera->rotate(glm::radians(-45.0f), glm::vec3(1, 0, 0));
 	camera->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(camera);
 	_world->setMainCamera(camera);
@@ -87,11 +89,11 @@ void TPerson::_initializeScene()
 	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
 	//a light to light the scene!
-	light = new Light("light", glm::vec3(6.65f, 2.5f, 10.55f), LightType::POINT);
-	light->SetLightIntensity(1.5f);
+	light = new Light("light", glm::vec3(0, 4.0f, 0), LightType::POINT);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
-	light->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
+	light->rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	light->translate(glm::vec3(0, 0, 3));
+	light->SetLightIntensity(1.5f);
 	light->setMesh(sphereMesh);
 	light->setMaterial(lightMaterial);
 	//light->setBehaviour(new KeysBehaviour(25, 90));
@@ -100,11 +102,11 @@ void TPerson::_initializeScene()
 	LitMaterial::AddLight(light);
 
 	//add the plane
-	plane = new GameObject("plane", glm::vec3(-4.5f, 2, -0.5f));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
+	plane = new GameObject("plane", glm::vec3(-0, 0.9f, -0));
+	plane->scale(glm::vec3(1, 1, 1));
+	/*plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
 	plane->rotate(glm::radians(25.0f), glm::vec3(1, 0, 0));
-	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));
+	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));*/
 	plane->setMesh(planeMeshDefault);
 	plane->setMaterial(shadowMaterial);
 	_world->add(plane);
@@ -117,7 +119,7 @@ void TPerson::_initializeScene()
 	_world->add(floor);
 
 	//add a desk
-	desk = new GameObject("desk", glm::vec3(5, 0, -4));
+	desk = new GameObject("desk", glm::vec3(0, 0, 0));
 	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
 	//desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	desk->setMesh(deskMesh);
@@ -135,21 +137,21 @@ void TPerson::_initializeScene()
 	//_world->add(puzzleObject);
 
 	//add two puzzle objects
-	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(-0.5f, 3, 4.5f));
-	puzzleObject1->scale(glm::vec3(0.25, 0.25, 0.25));
-	puzzleObject1->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
-	puzzleObject1->setMesh(pliersUp);
-	puzzleObject1->setMaterial(litMaterialR);
+	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 1.5f, 0));
+	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
+	//puzzleObject1->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
+	puzzleObject1->setMesh(umbrellaMesh);
+	puzzleObject1->setMaterial(umbrellaMaterial);
 	puzzleObject1->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(puzzleObject1);
 
-	puzzleObject2 = new GameObject("puzzleObject2", glm::vec3(1.5f, 3, 5.5f));
+	puzzleObject2 = new GameObject("puzzleObject2", glm::vec3(-0.5f, 3, 4.5f));
 	puzzleObject2->scale(glm::vec3(0.25, 0.25, 0.25));
 	puzzleObject2->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
 	puzzleObject2->setMesh(pliersDown);
 	puzzleObject2->setMaterial(litMaterialR);
 	puzzleObject2->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	_world->add(puzzleObject2);
+	//_world->add(puzzleObject2);
 
 	//puzzleObjects.push_back(puzzleObject);
 	puzzleObjects.push_back(puzzleObject1);
@@ -166,7 +168,7 @@ void TPerson::_render()
 	camera->setTransform(light->getTransform());
 	camera->SetFOV(30.0f);
 	puzzleObject->setMaterial(blackMaterial);
-	puzzleObject1->setMaterial(blackMaterial);
+	//puzzleObject1->setMaterial(blackMaterial);
 	puzzleObject2->setMaterial(blackMaterial);
 	desk->setMaterial(blackMaterial);
 	plane->setMaterial(greyMaterial);
@@ -174,7 +176,7 @@ void TPerson::_render()
 	renderToTexture->unbindFramebuffer();
 
 	puzzleObject->setMaterial(litMaterialR);
-	puzzleObject1->setMaterial(litMaterialR);
+	//puzzleObject1->setMaterial(litMaterialR);
 	puzzleObject2->setMaterial(litMaterialR);
 	desk->setMaterial(litMaterialB);
 	plane->setMaterial(shadowMaterial);
@@ -184,6 +186,13 @@ void TPerson::_render()
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	AbstractGame::_render();
 	_updateHud();
+	_checkPuzzle();
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(0, 0, 1));
+	}
 }
 
 void TPerson::_updateHud()
@@ -193,6 +202,25 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
+}
+
+void TPerson::_checkPuzzle()
+{
+	glm::vec3 rotation = puzzleObject1->getWorldRotation();// -glm::vec3(solutionDegreesX, solutionDegreesY, solutionDegreesZ);
+	float tolerance = glm::length(rotation);
+
+	//std::cout << tolerance << std::endl;
+	std::cout << solutionDegreesX << ", ";
+	//std::cout << solutionDegreesY << ", ";
+	//std::cout << solutionDegreesZ << std::endl;
+	std::cout << rotation.x << std::endl;
+	//std::cout << rotation.y << ", ";
+	//std::cout << rotation.z << std::endl;
+
+	if ((rotation.x <= solutionDegreesX + 10 && rotation.x >= solutionDegreesX - 10) && (rotation.y <= solutionDegreesY + 10 && rotation.y >= solutionDegreesY - 10) && (rotation.z <= solutionDegreesZ + 10 && rotation.z >= solutionDegreesZ - 10))
+	{
+		std::cout << "BITCH LASAGNA" << std::endl;
+	}
 }
 
 TPerson::~TPerson()

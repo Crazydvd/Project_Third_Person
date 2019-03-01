@@ -48,13 +48,7 @@ void TextureMaterial::setDiffuseTexture (Texture* pDiffuseTexture) {
 void TextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
     if (!_diffuseTexture) return;
 
-    _shader->use();
-
-    //Print the number of lights in the scene and the position of the first light.
-    //It is not used, but this demo is just meant to show you THAT materials can access the lights in a world
-    if (pWorld->getLightCount() > 0) {
-        std::cout << "TextureMaterial has discovered light is at position:" << pWorld->getLightAt(0)->getLocalPosition() << std::endl;
-    }
+    _shader->use(); 
 
     //setup texture slot 0
     glActiveTexture(GL_TEXTURE0);

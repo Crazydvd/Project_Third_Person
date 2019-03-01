@@ -157,6 +157,20 @@ glm::mat4 GameObject::getWorldTransform() const
 	else return _parent->getWorldTransform() * _transform;
 }
 
+glm::vec3 GameObject::getWorldRotation() const
+{
+	float dot = glm::dot(glm::normalize(getTransform()[0]), glm::vec4(1, 0, 0, 1));
+	float degreesX = glm::degrees(glm::acos(dot));
+
+	dot = glm::dot(glm::normalize(getTransform()[1]), glm::vec4(0, 1, 0, 1));
+	float degreesY = glm::degrees(glm::acos(dot));
+
+	dot = glm::dot(glm::normalize(getTransform()[2]), glm::vec4(0, 0, 1, 1));
+	float degreesZ = glm::degrees(glm::acos(dot));
+
+	return glm::vec3(degreesX, degreesY, degreesZ);
+}
+
 ////////////
 
 void GameObject::translate(glm::vec3 pTranslation)

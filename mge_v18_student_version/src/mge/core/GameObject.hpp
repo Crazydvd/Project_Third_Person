@@ -33,6 +33,7 @@ public:
 	//get the objects world position by combining transforms, SLOW use with care
 	glm::vec3 getWorldPosition() const;
 	glm::mat4 getWorldTransform() const;
+	glm::vec3 getWorldRotation() const;
 
 	//change LOCAL position, rotation, scaling
 	void translate(glm::vec3 pTranslation);
