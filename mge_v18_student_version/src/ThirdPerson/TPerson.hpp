@@ -4,6 +4,7 @@
 #include "mge/core/AbstractGame.hpp"
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/RenderToTexture.hpp"
+#include "ThirdPerson/Room.hpp"
 
 class DebugHud;
 class Camera;
@@ -22,6 +23,9 @@ public:
 
 	//override initialize so we can add a DebugHud
 	virtual void initialize();
+
+	void MoveToNextLevel();
+	void MoveToPreviousLevel();
 	
 	static std::vector<GameObject*> puzzleObjects;
 
@@ -33,6 +37,8 @@ protected:
 	virtual void _render();
 
 private:
+	int _levelIndex;
+	Room* room;
 	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
 	Camera* camera;

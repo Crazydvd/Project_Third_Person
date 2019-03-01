@@ -100,6 +100,12 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Room.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -174,5 +180,22 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Room.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\ThirdPerson\level1.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\level2.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\room.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
   </ItemGroup>
 </Project>

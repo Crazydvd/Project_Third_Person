@@ -19,7 +19,7 @@ Ray::Ray(glm::vec3 pDirection) : Ray::Ray(glm::vec3(0, 0, 0), pDirection)
 
 Ray::Ray(float pX, float pY, float pZ) : Ray::Ray(glm::vec3(pX, pY, pZ))
 {
-
+	
 }
 
 
