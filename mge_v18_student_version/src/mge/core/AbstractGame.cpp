@@ -34,7 +34,7 @@ void AbstractGame::initialize()
 void AbstractGame::_initializeWindow()
 {
 	std::cout << "Initializing window..." << std::endl;
-	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "My Game!", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
+	_window = new sf::RenderWindow(sf::VideoMode(1200, 900), "My Game!", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
 	//_window->setVerticalSyncEnabled(true);
 	std::cout << "Window initialized." << std::endl << std::endl;
 }
@@ -96,8 +96,8 @@ void AbstractGame::run()
 	int frameCount = 0;
 	float timeSinceLastFPSCalculation = 0;
 
-	//settings to make sure the update loop runs at 60 fps
-	sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);
+	//settings to make sure the update loop runs at 144 fps baby
+	sf::Time timePerFrame = sf::seconds(1.0f / 144.0f);
 	sf::Clock updateClock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 

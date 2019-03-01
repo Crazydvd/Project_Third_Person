@@ -73,12 +73,6 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\MGEDemo.hpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\config.hpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Light.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -86,6 +80,30 @@
       <Filter>ThirdPerson</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\config.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Ray.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\LitMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\LitTextureMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Room.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,14 +156,46 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\MGEDemo.cpp">
-      <Filter>MGE Source files\mge</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Light.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Ray.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\LitMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\LitTextureMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp">
+      <Filter>MGE Source files\mge\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Room.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\ThirdPerson\level1.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\level2.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\room.lua">
+      <Filter>ThirdPerson</Filter>
+    </None>
   </ItemGroup>
 </Project>

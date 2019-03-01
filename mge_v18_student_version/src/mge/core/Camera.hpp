@@ -11,23 +11,24 @@
  */
 class Camera : public GameObject
 {
-	public:
-		Camera(
-            std::string pName = "camera",
-            glm::vec3 pPosition = glm::vec3( 0.0f, 3.0f, 5.0f ),
-            glm::mat4 pProjectionMatrix = glm::perspective (glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f  )
-        );
+public:
+	Camera(
+		std::string pName = "camera",
+		glm::vec3 pPosition = glm::vec3(0.0f, 3.0f, 5.0f),
+		glm::mat4 pProjectionMatrix = glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.1f, 1000.0f)
+	);
 
-		virtual ~Camera();
+	virtual ~Camera();
 
-        glm::mat4& getProjection();
+	glm::mat4& getProjection();
+	void SetFOV(float pAngleDegrees);
 
-	private:
-		glm::mat4 _projection;
+private:
+	glm::mat4 _projection;
 
-    private:
-        Camera (const Camera&);
-		Camera& operator= (const Camera&);
+private:
+	Camera(const Camera&);
+	Camera& operator= (const Camera&);
 };
 
 #endif // CAMERA_HPP
