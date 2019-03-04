@@ -47,7 +47,7 @@ void MouseRotatingBehaviour::update(float pStep)
 		{
 			//get the rotation matrix
 			_direction = glm::normalize(_direction);
-			glm::mat4 _rotationMatrix = glm::rotate(glm::mat4(), pStep * glm::radians(_rotation * 10.0f), glm::vec3(_direction));
+			glm::mat4 _rotationMatrix = glm::rotate(glm::mat4(), pStep * glm::radians(_rotation * 20.0f), glm::vec3(_direction));
 
 			//get the inverse translate
 			glm::mat4 translationMatrix = glm::mat4(1);
