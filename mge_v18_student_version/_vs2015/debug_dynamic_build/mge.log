@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 ﻿  TPerson.cpp
   mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  MenuButton.cpp
+  UserInterface.cpp
+  Generating Code...
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 3100b64bc4e1e192cab7f239c762f300d7c6b1c7
