@@ -52,14 +52,12 @@ void TPerson::initialize()
 //build the game _world
 void TPerson::_initializeScene()
 {
-<<<<<<< HEAD
 	renderToTexture = new RenderToTexture();
 	renderToTexture->setTPerson(this);
-=======
+	
 	//UI
 	_userInterface = new UserInterface(_window);
 	_world->add(_userInterface);
->>>>>>> 3100b64bc4e1e192cab7f239c762f300d7c6b1c7
 
 	//MESHES
 

@@ -17,8 +17,8 @@ UserInterface::UserInterface(sf::RenderWindow * aWindow, std::string pName, glm:
 	UITexture* texture = new UITexture(_window, "corkboard.png");
 
 	MenuButton* startGame = new MenuButton(_window, "newgamepin.png");
-	//this->Add(texture);
 	this->Add(startGame);
+	//this->Add(texture);
 }
 
 void UserInterface::update(float pStep) {
