@@ -189,6 +189,10 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
@@ -222,6 +226,10 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />

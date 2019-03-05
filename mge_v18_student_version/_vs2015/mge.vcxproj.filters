@@ -23,6 +23,9 @@
     <Filter Include="ThirdPerson">
       <UniqueIdentifier>{576a6bee-4963-4af8-9100-f9262d580e7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ThirdPerson\buttons">
+      <UniqueIdentifier>{8efaa409-f8e4-4474-b644-165936fa694e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -118,6 +121,18 @@
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -209,6 +224,18 @@
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp">
       <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp">
+      <Filter>ThirdPerson\buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp">
+      <Filter>ThirdPerson\buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

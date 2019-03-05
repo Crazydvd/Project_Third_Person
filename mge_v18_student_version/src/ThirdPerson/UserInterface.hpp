@@ -2,8 +2,10 @@
 #define USERINTERFACE_HPP
 
 #include <SFML/Graphics.hpp>
-#include "ThirdPerson/UITexture.hpp"
 #include "mge/core/GameObject.hpp"
+#include "ThirdPerson/UITexture.hpp"
+#include "ThirdPerson/MenuButton.hpp"
+
 #include <iostream>
 
 /**
@@ -16,12 +18,14 @@ public:
 		glm::vec3 pPosition = glm::vec3(0.0f, 0.0f, 0.0f));
 	virtual ~UserInterface();
 	void Add(UITexture* pObject);
+	void AddButton(MenuButton* pObject);
 	void draw();
 	virtual void update(float pStep);
 
 private:
 	sf::RenderWindow * _window;
 	std::vector<UITexture*> _objects;
+	std::vector<MenuButton*> _buttons;
 
 	UserInterface(const UserInterface&);
 	UserInterface& operator=(const UserInterface&);
