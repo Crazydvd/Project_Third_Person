@@ -37,6 +37,8 @@ public:
 
 	void Render();
 
+	Renderer* getRenderer(void) const;
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();

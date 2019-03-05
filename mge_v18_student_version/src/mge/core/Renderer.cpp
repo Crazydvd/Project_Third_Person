@@ -9,6 +9,7 @@ Renderer::Renderer() :debug(false)
 {
 	//make sure we test the depthbuffer
 	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
 
 	//tell opengl which vertex winding is considered to be front facing
 	glFrontFace(GL_CCW);
@@ -75,7 +76,8 @@ void Renderer::renderChildren(World* pWorld, GameObject* pGameObject, AbstractMa
 
 void Renderer::render(World* pWorld, Mesh* pMesh, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
 {
-	if (pMesh != nullptr && pMaterial != nullptr) pMaterial->render(pWorld, pMesh, pModelMatrix, pViewMatrix, pProjectionMatrix);
+	if (pMesh != nullptr && pMaterial != nullptr) 
+		pMaterial->render(pWorld, pMesh, pModelMatrix, pViewMatrix, pProjectionMatrix);
 }
 
 void Renderer::renderMeshDebugInfo(Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)

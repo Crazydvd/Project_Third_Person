@@ -56,8 +56,8 @@ void TPerson::_initializeScene()
 	renderToTexture->setTPerson(this);
 	
 	//UI
-	_userInterface = new UserInterface(_window);
-	_world->add(_userInterface);
+	//_userInterface = new UserInterface(_window);
+	//_world->add(_userInterface);
 
 	//MESHES
 
@@ -93,7 +93,7 @@ void TPerson::_initializeScene()
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
 	camera->rotate(glm::radians(-45.0f), glm::vec3(1, 0, 0));
-	camera->setBehaviour(new KeysBehaviour(25, 90));
+	//camera->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
@@ -107,10 +107,10 @@ void TPerson::_initializeScene()
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	light->translate(glm::vec3(0, 0, 3));
+
 	light->SetLightIntensity(1.5f);
-	light->setMesh(sphereMesh);
+	//light->setMesh(sphereMesh);
 	light->setMaterial(lightMaterial);
-	//light->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(light);
 	//light->SetLightColor(glm::vec3(1, 0, 0.8f));
 	LitMaterial::AddLight(light);
@@ -142,14 +142,14 @@ void TPerson::_initializeScene()
 	_world->add(desk);
 
 
-	//add a puzzle object
-	puzzleObject = new GameObject("puzzleObject", glm::vec3(0.5f, 3, 4.5f));
-	puzzleObject->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-	puzzleObject->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
-	puzzleObject->setMesh(puzzleObjectMesh);
-	puzzleObject->setMaterial(litMaterialR);
-	puzzleObject->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	_world->add(puzzleObject);
+	////add a puzzle object
+	//puzzleObject = new GameObject("puzzleObject", glm::vec3(0.5f, 3, 4.5f));
+	//puzzleObject->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+	//puzzleObject->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
+	//puzzleObject->setMesh(puzzleObjectMesh);
+	//puzzleObject->setMaterial(litMaterialR);
+	//puzzleObject->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	//_world->add(puzzleObject);
 
 	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 1.5f, 0));
 	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
@@ -170,8 +170,6 @@ void TPerson::_initializeScene()
 	//puzzleObjects.push_back(puzzleObject);
 	puzzleObjects.push_back(puzzleObject1);
 	puzzleObjects.push_back(puzzleObject2);
-
-	camera->setTransform(light->getWorldTransform()); //TODO: remove this line
 }
 
 void TPerson::Render()
@@ -179,13 +177,15 @@ void TPerson::Render()
 	AbstractGame::_render();
 }
 
+Renderer* TPerson::getRenderer(void) const
+{
+	return this->_renderer;
+}
+
 void TPerson::_render()
 {
-	std::vector<GameObject*> excluded;
-	//excluded.push_back(desk);
-	//excluded.push_back(puzzleObject1);
-	excluded.push_back(plane);
-	renderToTexture->Render(puzzleObjects, blackMaterial, excluded, light->getTransform());
+	glm::mat4 lightTransform = light->getTransform();
+	renderToTexture->Render(puzzleObjects, blackMaterial, lightTransform);
 
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -209,7 +209,7 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
-	_userInterface->draw();
+	//_userInterface->draw();
 }
 
 void TPerson::_checkPuzzle()

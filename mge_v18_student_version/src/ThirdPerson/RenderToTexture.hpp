@@ -22,9 +22,6 @@ public:
 	void setTPerson(TPerson* pTPerson);
 
 	void Render(std::vector<GameObject*> pObjects, AbstractMaterial* pRenderMaterial, glm::mat4 pTransform);
-	void Render(std::vector<GameObject*> pObjects, glm::mat4 pTransform);
-	void Render(std::vector<GameObject*> pObjects, AbstractMaterial* pRenderMaterial, std::vector<GameObject*> pExcludedObjects, glm::mat4 pTransform);
-	void Render(std::vector<GameObject*> pObjects, std::vector<GameObject*> pExcludedObjects, glm::mat4 pTransform);
 
 private:
 	void createFramebuffer();

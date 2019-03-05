@@ -21,7 +21,7 @@ GLint RenderToTextureMaterial::_aVertex = 0;
 GLint RenderToTextureMaterial::_aNormal = 0;
 GLint RenderToTextureMaterial::_aUV = 0;
 
-RenderToTextureMaterial::RenderToTextureMaterial(Texture * pDiffuseTexture, glm::vec3 pSpecularColor) :_diffuseTexture(pDiffuseTexture), _specularColor(pSpecularColor)
+RenderToTextureMaterial::RenderToTextureMaterial(Texture* pDiffuseTexture, Texture* pRenderTexture, glm::vec3 pSpecularColor) :_diffuseTexture(pDiffuseTexture), _specularColor(pSpecularColor)
 {
 	_lazyInitializeShader();
 }
@@ -33,8 +33,8 @@ void RenderToTextureMaterial::_lazyInitializeShader()
 	if (!_shader) 
 	{
 		_shader = new ShaderProgram();
-		_shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH + "litTexture.vs");
-		_shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH + "litTexture.fs");
+		_shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH + "litRenderToTexture.vs");
+		_shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH + "litRenderToTexture.fs");
 		_shader->finalize();
 
 		//cache all the uniform and attribute indexes
