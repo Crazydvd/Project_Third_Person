@@ -29,6 +29,12 @@ public:
 	
 	static std::vector<GameObject*> puzzleObjects;
 
+	Camera* GetMainCamera();
+	sf::RenderWindow* GetWindow();
+	World* GetWorld();
+
+	void Render();
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();

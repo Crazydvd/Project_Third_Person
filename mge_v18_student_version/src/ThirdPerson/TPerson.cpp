@@ -51,8 +51,11 @@ void TPerson::initialize()
 //build the game _world
 void TPerson::_initializeScene()
 {
+	renderToTexture = new RenderToTexture();
+	renderToTexture->setTPerson(this);
+
 	//MESHES
-	this->renderToTexture = new RenderToTexture();
+
 	//load a bunch of meshes we will be using throughout this demo
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
@@ -63,6 +66,8 @@ void TPerson::_initializeScene()
 	Mesh* pliersUp = Mesh::load(config::THIRDPERSON_MODEL_PATH + "PliersUp.obj");
 	Mesh* puzzleObjectMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Syringe.obj");
 	Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
+	//Mesh* plunger1 = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Toilet_plunger_2.obj");
+	//Mesh* plunger2 = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Toilet_plunger_1.obj");
 
 	//MATERIALS
 
@@ -89,8 +94,8 @@ void TPerson::_initializeScene()
 
 	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
 
-	room = new Room(this, _world, _window, _levelIndex);
-	_world->add(room);
+	//room = new Room(this, _world, _window, _levelIndex);
+	//_world->add(room);
 
 	//a light to light the scene!
 	light = new Light("light", glm::vec3(0, 4.0f, 0), LightType::POINT);
@@ -106,8 +111,9 @@ void TPerson::_initializeScene()
 	LitMaterial::AddLight(light);
 
 	//add the plane
-	plane = new GameObject("plane", glm::vec3(-0, 0.9f, -0));
+	plane = new GameObject("plane", glm::vec3(0, 0.9f, -0));
 	plane->scale(glm::vec3(1, 1, 1));
+
 	/*plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
 	plane->rotate(glm::radians(25.0f), glm::vec3(1, 0, 0));
 	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));*/
@@ -115,19 +121,19 @@ void TPerson::_initializeScene()
 	plane->setMaterial(shadowMaterial);
 	_world->add(plane);
 
-	//add the floor
-	GameObject* floor = new GameObject("floor", glm::vec3(0, -2.5f, 0));
-	floor->scale(glm::vec3(15, 15, 15));
-	floor->setMesh(planeMeshDefault);
-	floor->setMaterial(greyMaterial);
-	_world->add(floor);
+	////add the floor
+	//GameObject* floor = new GameObject("floor", glm::vec3(0, -2.5f, 0));
+	//floor->scale(glm::vec3(15, 15, 15));
+	//floor->setMesh(planeMeshDefault);
+	//floor->setMaterial(greyMaterial);
+	//_world->add(floor);
 
 	//add a desk
 	desk = new GameObject("desk", glm::vec3(0, 0, 0));
 	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
 	//desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	desk->setMesh(deskMesh);
-	desk->setMaterial(litMaterialB);
+	desk->setMaterial(runicStoneMaterial);
 	_world->add(desk);
 
 
@@ -138,7 +144,7 @@ void TPerson::_initializeScene()
 	puzzleObject->setMesh(puzzleObjectMesh);
 	puzzleObject->setMaterial(litMaterialR);
 	puzzleObject->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	//_world->add(puzzleObject);
+	_world->add(puzzleObject);
 
 	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 1.5f, 0));
 	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
@@ -159,35 +165,28 @@ void TPerson::_initializeScene()
 	//puzzleObjects.push_back(puzzleObject);
 	puzzleObjects.push_back(puzzleObject1);
 	puzzleObjects.push_back(puzzleObject2);
+
+	camera->setTransform(light->getWorldTransform()); //TODO: remove this line
+}
+
+void TPerson::Render()
+{
+	AbstractGame::_render();
 }
 
 void TPerson::_render()
 {
-	glm::mat4 transform = camera->getTransform();
-	renderToTexture->bindFramebuffer();
-	glClearColor(0.5f, 0.5f, 0.5f, 1);
+	std::vector<GameObject*> excluded;
+	//excluded.push_back(desk);
+	//excluded.push_back(puzzleObject1);
+	excluded.push_back(plane);
+	renderToTexture->Render(puzzleObjects, blackMaterial, excluded, light->getTransform());
+
+	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	camera->setTransform(light->getTransform());
-	camera->SetFOV(30.0f);
-	puzzleObject->setMaterial(blackMaterial);
-	//puzzleObject1->setMaterial(blackMaterial);
-	puzzleObject2->setMaterial(blackMaterial);
-	desk->setMaterial(blackMaterial);
-	plane->setMaterial(greyMaterial);
 	AbstractGame::_render();
-	renderToTexture->unbindFramebuffer();
 
-	puzzleObject->setMaterial(litMaterialR);
-	//puzzleObject1->setMaterial(litMaterialR);
-	puzzleObject2->setMaterial(litMaterialR);
-	desk->setMaterial(litMaterialB);
-	plane->setMaterial(shadowMaterial);
-	camera->setTransform(transform);
-	camera->SetFOV(60.0f);
-	glClearColor(0.2f, 0.2f, 0.2f, 1);
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	AbstractGame::_render();
+
 	_updateHud();
 	_checkPuzzle();
 
@@ -244,6 +243,21 @@ void TPerson::MoveToNextLevel()
 	delete(room);
 	room = new Room(this, _world, _window, _levelIndex);
 	_world->add(room);
+}
+
+Camera* TPerson::GetMainCamera()
+{
+	return _world->getMainCamera();
+}
+
+sf::RenderWindow* TPerson::GetWindow()
+{
+	return _window;
+}
+
+World* TPerson::GetWorld()
+{
+	return _world;
 }
 
 TPerson::~TPerson()
