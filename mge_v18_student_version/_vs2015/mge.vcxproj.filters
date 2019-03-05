@@ -106,6 +106,18 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\ClickBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -184,6 +196,18 @@
       <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\ClickBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,6 +5,8 @@
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/RenderToTexture.hpp"
 #include "ThirdPerson/Room.hpp"
+#include "ThirdPerson/UITexture.hpp"
+#include "ThirdPerson/UserInterface.hpp"
 
 class DebugHud;
 class Camera;
@@ -38,9 +40,11 @@ protected:
 
 private:
 	int _levelIndex;
+	UserInterface* _userInterface;
 	Room* room;
 	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
+	UITexture* _texture;
 	Camera* camera;
 	Light* light;
 	GameObject* plane;

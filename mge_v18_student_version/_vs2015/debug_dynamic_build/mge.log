@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-﻿  Room.cpp
-  TPerson.cpp
-  main.cpp
-  MouseRotatingBehaviour.cpp
+﻿  MenuButton.cpp
+  UserInterface.cpp
   Generating Code...
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  TPerson.cpp
-  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 58f51078ce69eae016d42ef80b0658afd39cb8f7

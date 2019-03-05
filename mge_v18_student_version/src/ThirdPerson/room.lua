@@ -1,12 +1,12 @@
 objects =
 {
-  plane = {
-  	  texture = "land.jpg",
-	  model = "plane.obj",
-	  position = { x = -4.5, y = 2, z = -0.5,},
-	  scale = { x = 5, y = 5, z = 5,},
-	  rotation = { x = 25, y = 90, z = -90,},
-  },
+  --plane = {
+  --	  texture = "land.jpg",
+	--  model = "plane.obj",
+	--  position = { x = -4.5, y = 2, z = -0.5,},
+	--  scale = { x = 5, y = 5, z = 5,},
+	--  rotation = { x = 25, y = 90, z = -90,},
+  --},
   floor = {
   	  texture = "land.jpg",
 	  model = "plane.obj",
