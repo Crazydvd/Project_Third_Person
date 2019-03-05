@@ -106,6 +106,9 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">

@@ -14,7 +14,8 @@ GameObject::~GameObject()
 	//detach all children
 	std::cout << "GC running on:" << _name << std::endl;
 
-	while (_children.size() > 0) {
+	while (_children.size() > 0)
+	{
 		GameObject* child = _children[0];
 		remove(child);
 		delete child;
@@ -87,12 +88,14 @@ AbstractBehaviour* GameObject::getBehaviour() const
 void GameObject::setParent(GameObject* pParent)
 {
 	//remove from previous parent
-	if (_parent != nullptr) {
+	if (_parent != nullptr)
+	{
 		_parent->_innerRemove(this);
 	}
 
 	//set new parent
-	if (pParent != nullptr) {
+	if (pParent != nullptr)
+	{
 		pParent->_innerAdd(this);
 	}
 
@@ -101,10 +104,12 @@ void GameObject::setParent(GameObject* pParent)
 	//if we have been attached to a parent, make sure
 	//the world reference for us and all our children is set to our parent world reference
 	//(this could still be null if the parent or parent's parent is not attached to the world)
-	if (_parent == nullptr) {
+	if (_parent == nullptr)
+	{
 		_setWorldRecursively(nullptr);
 	}
-	else {
+	else
+	{
 		//might still not be available if our parent is not part of the world
 		_setWorldRecursively(_parent->_world);
 	}
@@ -112,8 +117,10 @@ void GameObject::setParent(GameObject* pParent)
 
 void GameObject::_innerRemove(GameObject* pChild)
 {
-	for (auto i = _children.begin(); i != _children.end(); ++i) {
-		if (*i == pChild) {
+	for (auto i = _children.begin(); i != _children.end(); ++i)
+	{
+		if (*i == pChild)
+		{
 			_children.erase(i);
 			pChild->_parent = nullptr;
 			return;
@@ -157,6 +164,7 @@ glm::mat4 GameObject::getWorldTransform() const
 	else return _parent->getWorldTransform() * _transform;
 }
 
+
 glm::vec3 GameObject::getWorldRotation() const
 {
 	float dot = glm::dot(glm::normalize(getTransform()[0]), glm::vec4(1, 0, 0, 1));
@@ -169,6 +177,21 @@ glm::vec3 GameObject::getWorldRotation() const
 	float degreesZ = glm::degrees(glm::acos(dot));
 
 	return glm::vec3(degreesX, degreesY, degreesZ);
+}
+
+void GameObject::setWorldRotation(glm::vec3 pRotation)
+{
+	glm::mat4 xRotation = glm::rotate(glm::mat4(), pRotation.x, glm::vec3(1, 0, 0));
+	glm::mat4 yRotation = glm::rotate(glm::mat4(), pRotation.y, glm::vec3(0, 1, 0));
+	glm::mat4 zRotation = glm::rotate(glm::mat4(), pRotation.z, glm::vec3(0, 0, 1));
+
+	glm::mat4 matrix = zRotation * yRotation * xRotation;
+	matrix[0] = matrix[0] * glm::length(getTransform()[0]);
+	matrix[1] = matrix[1] * glm::length(getTransform()[1]);
+	matrix[2] = matrix[2] * glm::length(getTransform()[2]);
+	matrix[3] = getTransform()[3];
+
+	setTransform(matrix);
 }
 
 ////////////
@@ -191,11 +214,13 @@ void GameObject::rotate(float pAngle, glm::vec3 pAxis)
 void GameObject::update(float pStep)
 {
 	//make sure behaviour is updated after worldtransform is set
-	if (_behaviour) {
+	if (_behaviour)
+	{
 		_behaviour->update(pStep);
 	}
 
-	for (int i = _children.size() - 1; i >= 0; --i) {
+	for (int i = _children.size() - 1; i >= 0; --i)
+	{
 		_children[i]->update(pStep);
 	}
 }
@@ -204,7 +229,8 @@ void GameObject::_setWorldRecursively(World* pWorld)
 {
 	_world = pWorld;
 
-	for (int i = _children.size() - 1; i >= 0; --i) {
+	for (int i = _children.size() - 1; i >= 0; --i)
+	{
 		_children[i]->_setWorldRecursively(pWorld);
 	}
 }

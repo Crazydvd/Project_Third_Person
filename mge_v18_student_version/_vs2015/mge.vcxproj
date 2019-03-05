@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />

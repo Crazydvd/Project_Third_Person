@@ -34,6 +34,7 @@ public:
 	glm::vec3 getWorldPosition() const;
 	glm::mat4 getWorldTransform() const;
 	glm::vec3 getWorldRotation() const;
+	void setWorldRotation(glm::vec3 pRotation);
 
 	//change LOCAL position, rotation, scaling
 	void translate(glm::vec3 pTranslation);

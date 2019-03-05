@@ -16,11 +16,7 @@ void MouseRotatingBehaviour::update(float pStep)
 		Ray mouseray = Ray::MouseRay(_window, 60.0f, _world);
 
 		//Get objects array
-		GameObject* objects[2];
-		objects[0] = TPerson::puzzleObjects.at(0);
-		objects[1] = TPerson::puzzleObjects.at(1);
-
-		if (mouseray.GetCollision(objects, 2) == _owner)
+		if (mouseray.GetCollision(TPerson::puzzleObjects) == _owner)
 		{
 			_oldPos = sf::Mouse::getPosition();
 			_oldRotation = _owner->getTransform();
