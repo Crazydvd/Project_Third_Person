@@ -19,6 +19,12 @@ glm::mat4& Camera::getProjection()
 
 void Camera::SetFOV(float pAngleDegrees)
 {
+	_FOV = pAngleDegrees;
 	_projection = glm::perspective(glm::radians(pAngleDegrees), 4.0f / 3.0f, 0.1f, 1000.0f);
+}
+
+float Camera::GetFOV()
+{
+	return _FOV;
 }
 

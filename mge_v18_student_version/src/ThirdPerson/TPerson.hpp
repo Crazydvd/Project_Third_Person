@@ -5,6 +5,8 @@
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/RenderToTexture.hpp"
 #include "ThirdPerson/Room.hpp"
+#include "ThirdPerson/UITexture.hpp"
+#include "ThirdPerson/UserInterface.hpp"
 
 class DebugHud;
 class Camera;
@@ -29,6 +31,14 @@ public:
 	
 	static std::vector<GameObject*> puzzleObjects;
 
+	Camera* GetMainCamera();
+	sf::RenderWindow* GetWindow();
+	World* GetWorld();
+
+	void Render();
+
+	Renderer* getRenderer(void) const;
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();
@@ -38,9 +48,11 @@ protected:
 
 private:
 	int _levelIndex;
+	UserInterface* _userInterface;
 	Room* room;
 	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
+	UITexture* _texture;
 	Camera* camera;
 	Light* light;
 	GameObject* plane;

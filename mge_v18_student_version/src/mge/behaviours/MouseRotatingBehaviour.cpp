@@ -23,7 +23,7 @@ void MouseRotatingBehaviour::update(float pStep)
 			_rotating = true;
 		}
 	}
-	//Not roatating with mouse
+	//Not rotating with mouse
 	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	{
 		_oldPos.x = 0;
