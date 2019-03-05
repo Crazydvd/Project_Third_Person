@@ -31,6 +31,14 @@ public:
 	
 	static std::vector<GameObject*> puzzleObjects;
 
+	Camera* GetMainCamera();
+	sf::RenderWindow* GetWindow();
+	World* GetWorld();
+
+	void Render();
+
+	Renderer* getRenderer(void) const;
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();
@@ -59,20 +67,10 @@ private:
 	AbstractMaterial* greyMaterial;
 	AbstractMaterial* shadowMaterial;
 
-	glm::mat4 puzzleSolution1 = glm::transpose( glm::mat4{ 
-										-0.1, +0.2, -0.1, +1.5,
-										+0.2, +0.1, -0.1, +3.0,
-										+0.0, -0.2, -0.2, +5.5,
-										+0.0, +0.0, +0.0, +1.0 });
-
-	float solutionDegreesX = glm::degrees(glm::acos(glm::dot(glm::normalize(puzzleSolution1[0]), glm::vec4(1, 0, 0, 1))));
-	float solutionDegreesY = glm::degrees(glm::acos(glm::dot(glm::normalize(puzzleSolution1[1]), glm::vec4(0, 1, 0, 1))));
-	float solutionDegreesZ = glm::degrees(glm::acos(glm::dot(glm::normalize(puzzleSolution1[2]), glm::vec4(0, 0, 1, 1))));
-
-	float trick = 0;
+	bool completed = false;
 
 	void _updateHud();
-	void _checkPuzzle();
+	void _checkOnePuzzle();
 
 	TPerson(const TPerson&);
 	TPerson& operator=(const TPerson&);

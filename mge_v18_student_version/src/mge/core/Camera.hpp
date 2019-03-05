@@ -22,6 +22,8 @@ public:
 
 	glm::mat4& getProjection();
 	void SetFOV(float pAngleDegrees);
+	float GetFOV();
+
 
 private:
 	glm::mat4 _projection;
@@ -29,6 +31,8 @@ private:
 private:
 	Camera(const Camera&);
 	Camera& operator= (const Camera&);
+
+	float _FOV = 60.0f;
 };
 
 #endif // CAMERA_HPP

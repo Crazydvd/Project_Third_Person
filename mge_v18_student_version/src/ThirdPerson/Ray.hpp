@@ -6,6 +6,7 @@
 #include "mge/core/AbstractGame.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/Camera.hpp"
+#include <vector>
 
 class Ray
 {
@@ -22,7 +23,7 @@ public:
 	// \brief a way to check if a Ray is colliding with a given Gameobject with pRadius
 	bool HitObject(const GameObject* pTarget, const float pRadius);
 
-	GameObject* GetCollision(GameObject* pObjects[], int pSize);
+	GameObject* GetCollision(std::vector<GameObject*> pObjects);
 
 	// \brief get the ray from the camera to the world mouse position
 	static Ray MouseRay(const sf::RenderWindow* pWindow, const float pCameraFOV, World* pWorld);

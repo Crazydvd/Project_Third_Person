@@ -14,7 +14,7 @@ class Texture;
 class RenderToTextureMaterial : public AbstractMaterial
 {
     public:
-        RenderToTextureMaterial (Texture* pDiffuseTexture, glm::vec3 pSpecularColor = glm::vec3(1,1,1));
+        RenderToTextureMaterial (Texture* pDiffuseTexture, Texture* pRenderTexture, glm::vec3 pSpecularColor = glm::vec3(1,1,1));
         virtual ~RenderToTextureMaterial ();
 
         virtual void render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;

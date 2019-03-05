@@ -28,7 +28,8 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex,
 	Initialize(pIndex);
 }
 
-void Room::Initialize(int levelIndex) {
+void Room::Initialize(int levelIndex)
+{
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
 
@@ -60,10 +61,10 @@ void Room::Initialize(int levelIndex) {
 
 	lua_getglobal(L, "texture");
 	std::string texture = lua_tostring(L, -1);
-	
+
 	lua_close(L);
 
-	
+
 	//load a bunch of meshes we will be using throughout this demo
 	//each mesh only has to be loaded once, but can be used multiple times:
 	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
@@ -92,7 +93,8 @@ void Room::Initialize(int levelIndex) {
 	**/
 }
 
-void Room::update(float pStep){
+void Room::update(float pStep)
+{
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
 		_game->MoveToNextLevel();
 	}
@@ -109,11 +111,13 @@ void Room::print_table(lua_State *L)
 {
 	lua_pushnil(L);
 	std::string params[2][2];
-	glm::vec3 vectors[3] = { glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1} };
+	glm::vec3 vectors[3] = {glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1}};
 	int index = 0;
 
-	while (lua_next(L, -2) != 0) {
-		if (lua_isstring(L, -1)) {
+	while (lua_next(L, -2) != 0) 
+	{
+		if (lua_isstring(L, -1)) 
+		{
 			params[index][0] = lua_tostring(L, -2);
 			params[index][1] = lua_tostring(L, -1);
 			index++;
@@ -122,26 +126,31 @@ void Room::print_table(lua_State *L)
 			printf("%s = %d", lua_tostring(L, -2), (int)lua_tonumber(L, -1));
 		}
 		else if (lua_istable(L, -1)) {
-			if ((std::string)lua_tostring(L, -2) == "position") {
+			if ((std::string)lua_tostring(L, -2) == "position") 
+			{
 				glm::vec3* position = fill_vector3(L);
 				vectors[0] = *position;
 			}
-			else if ((std::string)lua_tostring(L, -2) == "scale") {
+			else if ((std::string)lua_tostring(L, -2) == "scale") 
+			{
 				glm::vec3* scale = fill_vector3(L);
 				vectors[1] = *scale;
 			}
-			else if ((std::string)lua_tostring(L, -2) == "rotation") {
+			else if ((std::string)lua_tostring(L, -2) == "rotation") 
+			{
 				glm::vec3* rotation = fill_vector3(L);
 				vectors[2] = *rotation;
 			}
-			else {
+			else 
+			{
 				print_table(L);
 			}
 		}
 		lua_pop(L, 1);
 
 	}
-	if (params[0][0] != "") {
+	if (params[0][0] != "") 
+	{
 		addObject(params, vectors);
 	}
 }
@@ -152,15 +161,20 @@ glm::vec3* Room::fill_vector3(lua_State *L)
 	glm::vec3* vector = new glm::vec3();
 	int index = 0;
 
-	while (lua_next(L, -2) != 0) {
-		if (lua_isnumber(L, -1)) {
-			if ((std::string)lua_tostring(L, -2) == "x") {
+	while (lua_next(L, -2) != 0) 
+	{
+		if (lua_isnumber(L, -1)) 
+		{
+			if ((std::string)lua_tostring(L, -2) == "x") 
+			{
 				vector->x = (float)lua_tonumber(L, -1);
 			}
-			else if((std::string)lua_tostring(L, -2) == "y") {
+			else if ((std::string)lua_tostring(L, -2) == "y") 
+			{
 				vector->y = (float)lua_tonumber(L, -1);
 			}
-			else if((std::string)lua_tostring(L, -2) == "z") {
+			else if ((std::string)lua_tostring(L, -2) == "z") 
+			{
 				vector->z = (float)lua_tonumber(L, -1);
 			}
 		}
@@ -170,10 +184,11 @@ glm::vec3* Room::fill_vector3(lua_State *L)
 	return vector;
 }
 
-void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3]) {
+void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
+{
 	int h = 2 + (std::rand() % (5 - 2 + 1));
 	GameObject* object = new GameObject("object", pVectors[0]);
-	
+
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
 	AbstractMaterial* material = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
 

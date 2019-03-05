@@ -87,17 +87,17 @@ bool Ray::HitObject(const GameObject* pTarget, const float pRadius)
 	return false;
 }
 
-GameObject* Ray::GetCollision(GameObject* pObjects[], int pSize)
+GameObject* Ray::GetCollision(std::vector<GameObject*> pObjects)
 {
 	GameObject* closestCollision = NULL;
 	float lengthToClosestCollision = 0;
 
-	for (int i = 0; i < pSize; i++)
+	for (int i = 0; i < pObjects.size(); i++)
 	{
 		GameObject* testObj = pObjects[i];				
 
 
-		if (HitObject(testObj, 2))
+		if (HitObject(testObj, 0.3f))
 		{
 			if (closestCollision == NULL)
 			{
@@ -140,10 +140,10 @@ Ray Ray::ToRay(glm::vec4 pVec4)
 	return Ray((glm::vec3) pVec4);
 }
 
-Ray Ray::Clone() //TODO: srsly Daniel...? rework that 2nd line.
+Ray Ray::Clone()
 {
 	glm::vec3 clone = ToVec3();
-	return Ray(clone.x, clone.y, clone.z);
+	return Ray(clone);
 }
 
 Ray::~Ray()

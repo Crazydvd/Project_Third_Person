@@ -109,9 +109,10 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\ClickBehaviour.hpp">
+    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
@@ -133,6 +134,8 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp">
       <Filter>ThirdPerson\buttons</Filter>
     </ClInclude>
+=======
+>>>>>>> 729c802f024d24d0b51140f9a6102e0fef77c498
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -213,6 +216,7 @@
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="..\src\mge\behaviours\ClickBehaviour.cpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
@@ -237,6 +241,8 @@
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp">
       <Filter>ThirdPerson\buttons</Filter>
     </ClCompile>
+=======
+>>>>>>> 729c802f024d24d0b51140f9a6102e0fef77c498
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\ThirdPerson\level1.lua">

@@ -1,5 +1,12 @@
-#include "ThirdPerson/RenderToTexture.hpp"
 #include <iostream>
+#include "ThirdPerson/RenderToTexture.hpp"
+#include "mge/core/Texture.hpp"
+#include "mge/core/GameObject.hpp"
+#include "mge/materials/AbstractMaterial.hpp"
+#include "mge/core/Camera.hpp"
+#include "ThirdPerson/TPerson.hpp"
+#include "mge/materials/ColorMaterial.hpp"
+#include "mge/core/Renderer.hpp"
 
 RenderToTexture::RenderToTexture()
 {
@@ -8,6 +15,36 @@ RenderToTexture::RenderToTexture()
 	configureFramebuffer();
 	checkFramebuffer();
 	unbindFramebuffer();
+}
+
+void RenderToTexture::setTPerson(TPerson* pTPerson)
+{
+	_tPerson = pTPerson;
+}
+
+void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial* pRenderMaterial, glm::mat4 pTransform)
+{
+	Camera* camera = _tPerson->GetMainCamera();
+	glm::mat4 camTransform = camera->getWorldTransform();
+	bindFramebuffer();
+	glClearColor(1, 1, 1, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	camera->setTransform(pTransform);
+	float cameraFOV = camera->GetFOV();
+	camera->SetFOV(30.0f);
+	Renderer* renderer = _tPerson->getRenderer();
+	World* world = _tPerson->GetWorld();
+
+	for (int i = 0; i < pObjects.size(); i++)
+	{
+		renderer->render(world, pObjects[i], pRenderMaterial, camera, true);
+	}
+	
+	unbindFramebuffer();
+
+	camera->setTransform(camTransform);
+	camera->SetFOV(cameraFOV);
 }
 
 void RenderToTexture::createFramebuffer()
