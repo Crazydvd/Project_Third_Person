@@ -10,6 +10,7 @@
 #include <lua.hpp>
 
 class TPerson;
+class Puzzle;
 
 class Room : public GameObject
 {
@@ -30,6 +31,8 @@ private:
 	glm::vec3* fill_vector3(lua_State* L);
 	void addObject(std::string pProperties[2][2], glm::vec3 pVectors[3]);
 	void Initialize(int levelIndex);
+
+	Puzzle* _puzzle;
 };
 
 #endif

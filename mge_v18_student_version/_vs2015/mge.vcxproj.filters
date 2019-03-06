@@ -23,6 +23,9 @@
     <Filter Include="ThirdPerson">
       <UniqueIdentifier>{576a6bee-4963-4af8-9100-f9262d580e7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ThirdPerson\Buttons">
+      <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -118,7 +121,19 @@
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-    <ClInclude Include="Puzzle.hpp">
+    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
   </ItemGroup>
@@ -208,6 +223,21 @@
       <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
   </ItemGroup>
