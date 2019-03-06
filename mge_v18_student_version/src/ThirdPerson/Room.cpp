@@ -14,6 +14,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
+#include "ThirdPerson/Puzzle.hpp"
 
 #include "Room.hpp"
 
@@ -26,6 +27,8 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex,
 	_game = pGame;
 	_roomWorld = pWorld;
 	Initialize(pIndex);
+
+	_puzzle = new Puzzle(pWindow, pWorld);
 }
 
 void Room::Initialize(int levelIndex)
@@ -48,22 +51,23 @@ void Room::Initialize(int levelIndex)
 	print_table(L);
 
 	lua_close(L);
-
+	
 	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	//luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
+	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
 
-	////puts(lua_tostring(L, -1));
+	puts(lua_tostring(L, -1));
 
-	//lua_call(L, 0, 0);
+	lua_call(L, 0, 0);
 
-	//lua_getglobal(L, "model");
-	//std::string model = lua_tostring(L, -1);
+	lua_getglobal(L, "model");
+	std::string model = lua_tostring(L, -1);
 
-	//lua_getglobal(L, "texture");
-	//std::string texture = lua_tostring(L, -1);
+	lua_getglobal(L, "texture");
+	std::string texture = lua_tostring(L, -1);
 
-	//lua_close(L);
+	lua_close(L);
 
+	_puzzle->LoadObject(model, texture);
 
 	////load a bunch of meshes we will be using throughout this demo
 	////each mesh only has to be loaded once, but can be used multiple times:
@@ -95,13 +99,16 @@ void Room::Initialize(int levelIndex)
 
 void Room::update(float pStep)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
+	{
 		_game->MoveToNextLevel();
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) 
+	{
 		_game->MoveToPreviousLevel();
 	}
-	else {
+	else 
+	{
 		// Set timer
 		_timer->SetTime(_timer->GetTime() + pStep);
 	}

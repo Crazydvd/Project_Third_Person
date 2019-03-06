@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 ﻿MenuButton.obj : error LNK2019: unresolved external symbol "public: __thiscall UITexture::UITexture(class sf::RenderWindow *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec2<float,0>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0UITexture@@QAE@PAVRenderWindow@sf@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec2@M$0A@@glm@@1@Z) referenced in function "public: __thiscall MenuButton::MenuButton(class sf::RenderWindow *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec2<float,0>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0MenuButton@@QAE@PAVRenderWindow@sf@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1U?$tvec2@M$0A@@glm@@1@Z)
 UserInterface.obj : error LNK2001: unresolved external symbol "public: __thiscall UITexture::UITexture(class sf::RenderWindow *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct glm::tvec2<float,0>,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0UITexture@@QAE@PAVRenderWindow@sf@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$tvec2@M$0A@@glm@@1@Z)
 debug_dynamic_exe/mge.exe : fatal error LNK1120: 1 unresolved externals
+=======
+﻿  Puzzle.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> d80e696b0fe99a73b0b4dba502fbd059ce4ddce5
