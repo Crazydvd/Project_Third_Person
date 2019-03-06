@@ -37,9 +37,6 @@
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\core\Camera.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
@@ -109,6 +106,21 @@
     <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\core\Camera.hpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
+    <ClInclude Include="Puzzle.hpp">
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -122,9 +134,6 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Camera.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -187,6 +196,18 @@
       <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Camera.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
   </ItemGroup>

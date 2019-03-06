@@ -3,7 +3,7 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
-#include "mge/core/Camera.hpp"
+#include "mge/core//Camera.hpp"
 #include "ThirdPerson/TPerson.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/core/Renderer.hpp"
@@ -40,7 +40,7 @@ void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial
 	{
 		renderer->render(world, pObjects[i], pRenderMaterial, camera, true);
 	}
-	
+
 	unbindFramebuffer();
 
 	camera->setTransform(camTransform);

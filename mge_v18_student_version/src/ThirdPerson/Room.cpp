@@ -49,48 +49,48 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
-	/** TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
+	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
+	//luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
 
-	//puts(lua_tostring(L, -1));
+	////puts(lua_tostring(L, -1));
 
-	lua_call(L, 0, 0);
+	//lua_call(L, 0, 0);
 
-	lua_getglobal(L, "model");
-	std::string model = lua_tostring(L, -1);
+	//lua_getglobal(L, "model");
+	//std::string model = lua_tostring(L, -1);
 
-	lua_getglobal(L, "texture");
-	std::string texture = lua_tostring(L, -1);
+	//lua_getglobal(L, "texture");
+	//std::string texture = lua_tostring(L, -1);
 
-	lua_close(L);
+	//lua_close(L);
 
 
-	//load a bunch of meshes we will be using throughout this demo
-	//each mesh only has to be loaded once, but can be used multiple times:
-	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
-	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
+	////load a bunch of meshes we will be using throughout this demo
+	////each mesh only has to be loaded once, but can be used multiple times:
+	////F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
+	//Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
+	//Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
 
-	//MATERIALS
+	////MATERIALS
 
-	//create some materials to display the cube, the plane and the light
-	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
+	////create some materials to display the cube, the plane and the light
+	//AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
 
-	//add the floor
-	GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(runicStoneMaterial);
-	_roomParent->add(plane);
+	////add the floor
+	//GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
+	//plane->scale(glm::vec3(5, 5, 5));
+	//plane->setMesh(planeMeshDefault);
+	//plane->setMaterial(runicStoneMaterial);
+	//_roomParent->add(plane);
 
-	//add a spinning sphere
-	_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-	_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	_sphere->setMesh(sphereMeshS);
-	_sphere->setMaterial(runicStoneMaterial);
-	_sphere->setBehaviour(new RotatingBehaviour());
-	_roomParent->add(_sphere);
-	**/
+	////add a spinning sphere
+	//_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
+	//_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
+	//_sphere->setMesh(sphereMeshS);
+	//_sphere->setMaterial(runicStoneMaterial);
+	//_sphere->setBehaviour(new RotatingBehaviour());
+	//_roomParent->add(_sphere);
+	
 }
 
 void Room::update(float pStep)

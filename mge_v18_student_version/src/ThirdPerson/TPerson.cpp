@@ -20,11 +20,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/MouseRotatingBehaviour.hpp"
-<<<<<<< HEAD
 #include "mge/behaviours/EmptyBehaviour.hpp"
-=======
-#include "mge/behaviours/ClickBehaviour.hpp"
->>>>>>> c1c3214872bc6867715a2be42ea765d06327fa41
 
 #include "mge/util/DebugHud.hpp"
 
@@ -32,6 +28,8 @@
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Ray.hpp"
 #include "ThirdPerson/RenderToTexture.hpp"
+#include "ThirdPerson/UserInterface.hpp"
+
 
 std::vector<GameObject*> TPerson::puzzleObjects = std::vector<GameObject*>();
 
@@ -58,10 +56,10 @@ void TPerson::_initializeScene()
 {
 	renderToTexture = new RenderToTexture();
 	renderToTexture->setTPerson(this);
-	
+
 	//UI
-	//_userInterface = new UserInterface(_window);
-	//_world->add(_userInterface);
+	_userInterface = new UserInterface(_window);
+	_world->add(_userInterface);
 
 	//MESHES
 
@@ -101,21 +99,18 @@ void TPerson::_initializeScene()
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
 	camera->rotate(glm::radians(-45.0f), glm::vec3(1, 0, 0));
-	//camera->setBehaviour(new KeysBehaviour(25, 90));
+	camera->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	//add a light. Note that the light ABSOLUTELY WORKS! YES ! REALLY !
-
-	//room = new Room(this, _world, _window, _levelIndex);
-	//_world->add(room);
+	room = new Room(this, _world, _window, _levelIndex);
+	_world->add(room);
 
 	//a light to light the scene!
 	light = new Light("light", glm::vec3(0, 4.0f, 0), LightType::POINT);
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	light->translate(glm::vec3(0, 0, 3));
-
 	light->SetLightIntensity(1.5f);
 	//light->setMesh(sphereMesh);
 	light->setMaterial(lightMaterial);
@@ -126,7 +121,6 @@ void TPerson::_initializeScene()
 	//add the plane
 	plane = new GameObject("plane", glm::vec3(0, 0.9f, -0));
 	plane->scale(glm::vec3(1, 1, 1));
-
 	/*plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
 	plane->rotate(glm::radians(25.0f), glm::vec3(1, 0, 0));
 	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));*/
@@ -261,6 +255,7 @@ void TPerson::_checkOnePuzzle()
 	{
 		//do stuff	
 		//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
+		
 	}
 }
 

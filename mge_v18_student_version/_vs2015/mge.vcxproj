@@ -190,11 +190,15 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
     <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Room.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp" />
     <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp" />
+    <ClInclude Include="Puzzle.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
@@ -218,11 +222,14 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Room.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp" />
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\ThirdPerson\level1.lua" />
