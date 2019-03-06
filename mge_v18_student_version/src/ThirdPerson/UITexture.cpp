@@ -6,7 +6,7 @@
 #include "ThirdPerson/UITexture.hpp"
 #include "ThirdPerson/config.hpp"
 
-UITexture::UITexture(sf::RenderWindow * aWindow, std::string fileName, std::string pName) : _window(aWindow), _name(pName), _texture(), _sprite()
+UITexture::UITexture(sf::RenderWindow * aWindow, std::string fileName, glm::vec2 pPosition, std::string pName) : _window(aWindow), _name(pName), _texture(), _sprite()
 {
 	assert(_window != NULL);
 
@@ -18,10 +18,23 @@ UITexture::UITexture(sf::RenderWindow * aWindow, std::string fileName, std::stri
 	_sprite.setTexture(_texture);
 	std::cout << _sprite.getTextureRect().height;
 
+	_sprite.setPosition(sf::Vector2f(pPosition.x, pPosition.y));
+}
+
+void UITexture::SetPosition(glm::vec2 pPosition) {
+	_sprite.setPosition(sf::Vector2f(pPosition.x, pPosition.y));
 }
 
 void UITexture::OnClick() {
 	std::cout << _name << "click";
+}
+
+void UITexture::OnHover() {
+	//hover default
+}
+
+void UITexture::OnStopHover() {
+	//stop hover default
 }
 
 sf::IntRect UITexture::GetRect() {

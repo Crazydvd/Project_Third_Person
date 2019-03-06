@@ -1,5 +1,5 @@
-#ifndef MenuButton_HPP
-#define MenuButton_HPP
+#ifndef MENUBUTTON_HPP
+#define MENUBUTTON_HPP
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -12,15 +12,18 @@
 class MenuButton : public UITexture
 {
 public:
-	MenuButton(sf::RenderWindow* aWindow, std::string pfileName, std::string pName = "MenuButton");
+	MenuButton(sf::RenderWindow* aWindow, std::string pfileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName = "MenuButton");
 	virtual ~MenuButton();
 	//void draw();
-	void OnClick();
+	virtual void OnClick();
+	void OnHover();
+	void OnStopHover();
 
 private:
+	sf::Texture _hoverTexture;
 	MenuButton(const MenuButton&);
 	MenuButton& operator=(const MenuButton&);
 protected:
 };
 
-#endif // DEBUGHUD_HPP
+#endif // MENUBUTTON_HPP
