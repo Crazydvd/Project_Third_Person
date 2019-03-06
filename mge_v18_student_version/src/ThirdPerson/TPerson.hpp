@@ -47,7 +47,7 @@ protected:
 	virtual void _render();
 
 private:
-	int _levelIndex;
+	int _levelIndex = 1;
 	UserInterface* _userInterface;
 	Room* room;
 	RenderToTexture* renderToTexture;

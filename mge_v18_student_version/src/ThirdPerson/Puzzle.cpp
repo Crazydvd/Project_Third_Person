@@ -19,6 +19,7 @@ GameObject* Puzzle::LoadObject(std::string pModel, std::string pTexture)
 	object->setMaterial(new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pTexture)));
 	object->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(object);
+	TPerson::puzzleObjects.push_back(object);
 
 	return object;
 }
