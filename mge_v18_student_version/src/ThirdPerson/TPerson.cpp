@@ -232,7 +232,6 @@ void TPerson::_updateHud()
 void TPerson::_checkOnePuzzle()
 {
 	glm::vec3 rotation = puzzleObject1->getWorldRotation();// -glm::vec3(solutionDegreesX, solutionDegreesY, solutionDegreesZ);
-	float tolerance = glm::length(rotation);
 
 	//std::cout << tolerance << std::endl;
 	//std::cout << solutionDegreesX << ", ";
@@ -246,7 +245,7 @@ void TPerson::_checkOnePuzzle()
 	if (rotation.y <= 10 || rotation.y >= 170)
 	{
 		std::cout << "BITCH LASAGNA" << std::endl;
-		//puzzleObject1->setBehaviour(new EmptyBehaviour());
+		puzzleObject1->setBehaviour(new EmptyBehaviour());
 
 		completed = true;
 	}
@@ -255,7 +254,18 @@ void TPerson::_checkOnePuzzle()
 	{
 		//do stuff	
 		//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
-		
+
+		if (rotation.x >= 10 && rotation.z >=10)
+		{
+			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(0, 1, 0));
+		}
+		else
+		{
+			puzzleObject1->setWorldRotation(glm::vec3(0,0,0));
+			completed = false;
+			//UITexture* winScreen = new UITexture(_window, "corkboard.png");
+			//_userInterface->Add(winScreen);
+		}
 	}
 }
 

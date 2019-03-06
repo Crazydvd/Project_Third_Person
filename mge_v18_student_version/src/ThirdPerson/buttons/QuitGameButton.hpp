@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "glm.hpp"
-#include "ThirdPerson/MenuButton.hpp"
+#include "ThirdPerson/buttons/MenuButton.hpp"
 
 class QuitGameButton : public MenuButton
 {

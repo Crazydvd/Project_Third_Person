@@ -191,11 +191,18 @@
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
+<<<<<<< HEAD
+    <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\config.hpp" />
+=======
     <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp" />
+>>>>>>> d80e696b0fe99a73b0b4dba502fbd059ce4ddce5
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
     <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Room.hpp" />
@@ -228,10 +235,16 @@
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
+=======
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
+>>>>>>> d80e696b0fe99a73b0b4dba502fbd059ce4ddce5
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Room.cpp" />

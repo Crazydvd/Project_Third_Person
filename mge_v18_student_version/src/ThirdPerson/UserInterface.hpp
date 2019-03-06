@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/UITexture.hpp"
-#include "ThirdPerson/MenuButton.hpp"
+#include "ThirdPerson/buttons/MenuButton.hpp"
 
 #include <iostream>
 
