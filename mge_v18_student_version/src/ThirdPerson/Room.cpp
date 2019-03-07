@@ -16,12 +16,13 @@
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Puzzle.hpp"
 
+#include "ThirdPerson/RenderToTexture.hpp"
 #include "Room.hpp"
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName, glm::vec3 pPosition, RenderToTexture* pRender)
+	: GameObject(pName, pPosition), _renderToTexture(pRender)
 {
 	_timer = new Timer(pWindow);
 	_game = pGame;
@@ -67,7 +68,7 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
-	_puzzle->LoadObject(model, texture /*, scale*/);
+	GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
 
 	////load a bunch of meshes we will be using throughout this demo
 	////each mesh only has to be loaded once, but can be used multiple times:

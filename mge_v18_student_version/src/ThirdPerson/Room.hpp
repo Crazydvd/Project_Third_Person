@@ -11,12 +11,13 @@
 
 class TPerson;
 class Puzzle;
+class RenderToTexture;
 
 class Room : public GameObject
 {
 public:
 	Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName = "room",
-		glm::vec3 pPosition = glm::vec3(0.0f, 0.0f, 0.0f));
+		glm::vec3 pPosition = glm::vec3(0.0f, 0.0f, 0.0f), RenderToTexture* pRender);
 	virtual ~Room();
 	virtual void update(float pStep);
 	virtual void _render();
@@ -33,6 +34,7 @@ private:
 	void Initialize(int levelIndex);
 
 	Puzzle* _puzzle;
+	RenderToTexture* _renderToTexture;
 };
 
 #endif
