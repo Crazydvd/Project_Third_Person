@@ -53,7 +53,7 @@ void Room::Initialize(int levelIndex)
 	lua_close(L);
 	
 	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
+	/*luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
 
 	puts(lua_tostring(L, -1));
 
@@ -67,7 +67,7 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
-	_puzzle->LoadObject(model, texture);
+	_puzzle->LoadObject(model, texture);*/
 
 	////load a bunch of meshes we will be using throughout this demo
 	////each mesh only has to be loaded once, but can be used multiple times:

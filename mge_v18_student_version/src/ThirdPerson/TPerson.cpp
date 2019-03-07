@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Time.h"
 
 #include "glm.hpp"
 
@@ -16,6 +17,7 @@
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
 #include "mge/materials/LitMaterial.hpp"
+#include "mge/materials/LitTextureMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
@@ -87,6 +89,7 @@ void TPerson::_initializeScene()
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
 	AbstractMaterial* umbrellaMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "AlbedoUmbrella.png"));
+	AbstractMaterial* deskMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "DeskBase.png"));
 	litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
 	litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
 	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
@@ -136,11 +139,11 @@ void TPerson::_initializeScene()
 	//_world->add(floor);
 
 	//add a desk
-	desk = new GameObject("desk", glm::vec3(0, 0, 0));
-	desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
+	desk = new GameObject("desk", glm::vec3(0, -0.5f, 0));
+	desk->scale(glm::vec3(3.0f, 3.0f, 3.0f));
 	//desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	desk->setMesh(deskMesh);
-	desk->setMaterial(runicStoneMaterial);
+	desk->setMaterial(deskMaterial);
 	_world->add(desk);
 
 	//add a puzzle object
@@ -155,7 +158,7 @@ void TPerson::_initializeScene()
 	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 2, 0));
 	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
 	puzzleObject1->rotate(glm::radians(95.0f), glm::vec3(1, 0.5f, 0.6f));
-	puzzleObject1->setMesh(bottleMesh);
+	puzzleObject1->setMesh(syringeMesh);
 	puzzleObject1->setMaterial(umbrellaMaterial);
 	puzzleObject1->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(puzzleObject1);
@@ -226,7 +229,7 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
-	//_userInterface->draw();
+	_userInterface->draw();
 }
 
 void TPerson::_checkOnePuzzle()
@@ -242,7 +245,7 @@ void TPerson::_checkOnePuzzle()
 	std::cout << rotation.z << std::endl;
 
 
-	if (rotation.y <= 10 || rotation.y >= 170)
+	if (rotation.y <= 8 || rotation.y >= 172)
 	{
 		std::cout << "BITCH LASAGNA" << std::endl;
 		puzzleObject1->setBehaviour(new EmptyBehaviour());
@@ -252,20 +255,29 @@ void TPerson::_checkOnePuzzle()
 
 	if (completed)
 	{
-		//do stuff	
-		//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
 
-		if (rotation.x >= 10 && rotation.z >=10)
-		{
-			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(0, 1, 0));
-		}
+		/*if (rotation.y >= 5 && rotation.y <= 175)
+		{*/
+			glm::vec3 yAxis = puzzleObject1->getTransform()[1];
+			glm::vec3 diffirenceVec = yAxis - glm::vec3(0, 1, 0);
+			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(diffirenceVec));
+			//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
+
+		/*}
 		else
-		{
-			puzzleObject1->setWorldRotation(glm::vec3(0,0,0));
-			completed = false;
-			//UITexture* winScreen = new UITexture(_window, "corkboard.png");
-			//_userInterface->Add(winScreen);
-		}
+		{*/
+			++victoryDelay;
+
+			if (victoryDelay >= 240)
+			{
+				UITexture* winScreen = new UITexture(_window, "winscreen.png");
+				winScreen->SetPosition(glm::vec3((_window->getSize().x - winScreen->GetRect().width) / 2, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
+				_userInterface->Add(winScreen);
+
+				victoryDelay = 0;
+				completed = false;
+			}
+		//}
 	}
 }
 
