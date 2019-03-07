@@ -14,11 +14,12 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld) : _window(pWindow), _wo
 
 GameObject* Puzzle::LoadObject(std::string pModel, std::string pTexture)
 {
-	GameObject* object = new GameObject("puzzleObject1", glm::vec3(0, 0, 0));
+	GameObject* object = new GameObject("puzzleObject", glm::vec3(0, 0, 0));
 	object->setMesh(Mesh::load(config::THIRDPERSON_MODEL_PATH + pModel));
 	object->setMaterial(new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pTexture)));
 	object->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(object);
+	TPerson::puzzleObjects.push_back(object);
 
 	return object;
 }

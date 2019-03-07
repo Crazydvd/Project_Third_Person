@@ -16,19 +16,20 @@
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Puzzle.hpp"
 
+#include "ThirdPerson/RenderToTexture.hpp"
 #include "Room.hpp"
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
+	: GameObject(pName, pPosition), _renderToTexture(pRender)
 {
 	_timer = new Timer(pWindow);
 	_game = pGame;
 	_roomWorld = pWorld;
-	Initialize(pIndex);
-
 	_puzzle = new Puzzle(pWindow, pWorld);
+
+	Initialize(pIndex);
 }
 
 void Room::Initialize(int levelIndex)
@@ -50,12 +51,12 @@ void Room::Initialize(int levelIndex)
 
 	print_table(L);
 
-	lua_close(L);
+	//lua_close(L);
 	
 	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	/*luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
+	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
 
-	puts(lua_tostring(L, -1));
+	//puts(lua_tostring(L, -1));
 
 	lua_call(L, 0, 0);
 
@@ -67,7 +68,7 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
-	_puzzle->LoadObject(model, texture);*/
+	GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
 
 	////load a bunch of meshes we will be using throughout this demo
 	////each mesh only has to be loaded once, but can be used multiple times:
