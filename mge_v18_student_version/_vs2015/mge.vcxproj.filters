@@ -130,11 +130,10 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp">
-=======
+      <Filter>ThirdPerson</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
->>>>>>> 08fb91d13e28824ed2a9ea088293b1399411524a
       <Filter>ThirdPerson</Filter>
     </ClInclude>
   </ItemGroup>
@@ -255,5 +254,10 @@
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="paper2.wav">
+      <Filter>ThirdPerson</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -29,11 +29,15 @@
 #include "ThirdPerson/Ray.hpp"
 #include "ThirdPerson/RenderToTexture.hpp"
 #include "ThirdPerson/UserInterface.hpp"
+#include "ThirdPerson/Audio.hpp"
 
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson() :AbstractGame(), _hud(0)
 {
+	Audio* audio = new Audio(SoundType::MUSIC, "ThirdPerson/sounds/paper2.wav");
 
+	audio->SetLoop(true);
+	audio->Play();
 }
 
 void TPerson::initialize()
