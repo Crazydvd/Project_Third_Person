@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-﻿  AbstractGame.cpp
+﻿  UserInterface.cpp
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  MouseRotatingBehaviour.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 729c802f024d24d0b51140f9a6102e0fef77c498

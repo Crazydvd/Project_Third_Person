@@ -101,13 +101,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../src;C:\Mycourses\2ndyear\3rdPersonProject\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../src;D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Mycourses\2ndyear\3rdPersonProject\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -169,7 +169,6 @@
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
@@ -189,21 +188,19 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
-<<<<<<< HEAD
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
-=======
->>>>>>> 729c802f024d24d0b51140f9a6102e0fef77c498
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
     <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Room.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp" />
     <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
@@ -227,20 +224,18 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
-=======
->>>>>>> 729c802f024d24d0b51140f9a6102e0fef77c498
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Room.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp" />
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\ThirdPerson\level1.lua" />

@@ -20,11 +20,7 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/MouseRotatingBehaviour.hpp"
-<<<<<<< HEAD
 #include "mge/behaviours/EmptyBehaviour.hpp"
-=======
-#include "mge/behaviours/ClickBehaviour.hpp"
->>>>>>> c1c3214872bc6867715a2be42ea765d06327fa41
 
 #include "mge/util/DebugHud.hpp"
 
@@ -60,8 +56,8 @@ void TPerson::_initializeScene()
 	renderToTexture->setTPerson(this);
 	
 	//UI
-	//_userInterface = new UserInterface(_window);
-	//_world->add(_userInterface);
+	_userInterface = new UserInterface(_window);
+	_world->add(_userInterface);
 
 	//MESHES
 
@@ -101,7 +97,7 @@ void TPerson::_initializeScene()
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
 	camera->rotate(glm::radians(-45.0f), glm::vec3(1, 0, 0));
-	//camera->setBehaviour(new KeysBehaviour(25, 90));
+	camera->setBehaviour(new KeysBehaviour(25, 90));
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
@@ -232,7 +228,7 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
-	//_userInterface->draw();
+	_userInterface->draw();
 }
 
 void TPerson::_checkOnePuzzle()
