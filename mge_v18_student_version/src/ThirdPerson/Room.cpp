@@ -198,7 +198,13 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	GameObject* object = new GameObject("object", pVectors[0]);
 
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
-	AbstractMaterial* material = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
+	AbstractMaterial* material;
+	if (pProperties[1][1] == "shadow") {
+		material = new TextureMaterial(_renderToTexture->getTexture());
+	}
+	else {
+		material = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
+	}
 
 	object->setMesh(mesh);
 	object->setMaterial(material);

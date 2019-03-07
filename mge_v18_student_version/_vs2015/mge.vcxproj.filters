@@ -106,15 +106,12 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-<<<<<<< HEAD
-=======
     <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\core\Camera.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
->>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
@@ -213,12 +210,9 @@
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
-<<<<<<< HEAD
-=======
     <ClCompile Include="..\src\mge\core\Camera.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
->>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
