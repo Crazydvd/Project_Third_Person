@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Time.h"
 
 #include "glm.hpp"
 
@@ -16,6 +17,7 @@
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
 #include "mge/materials/LitMaterial.hpp"
+#include "mge/materials/LitTextureMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
@@ -54,18 +56,18 @@ void TPerson::initialize()
 //build the game _world
 void TPerson::_initializeScene()
 {
-	_renderToTexture = new RenderToTexture();
-	_renderToTexture->setTPerson(this);
+	renderToTexture = new RenderToTexture();
+	renderToTexture->setTPerson(this);
 
-	////UI
-	//_userInterface = new UserInterface(_window);
-	//_world->add(_userInterface);
+	//UI
+	_userInterface = new UserInterface(_window);
+	_world->add(_userInterface);
 
-	////MESHES
+	//MESHES
 
-	////load a bunch of meshes we will be using throughout this demo
-	////each mesh only has to be loaded once, but can be used multiple times:
-	////F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
+	//load a bunch of meshes we will be using throughout this demo
+	//each mesh only has to be loaded once, but can be used multiple times:
+	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
 	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
 	Mesh* sphereMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
 	Mesh* umbrellaMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Umbrella.obj");
@@ -77,22 +79,25 @@ void TPerson::_initializeScene()
 	Mesh* scissorMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Scissor.obj");
 	Mesh* bottleMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Bottle.obj");
 	Mesh* deskMesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Desk.obj");
+	//Mesh* plunger1 = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Toilet_plunger_2.obj");
+	//Mesh* plunger2 = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Toilet_plunger_1.obj");
 
-	////MATERIALS
+	//MATERIALS
 
-	////create some materials to display the cube, the plane and the light
+	//create some materials to display the cube, the plane and the light
 	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
 	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* landMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "land.jpg"));
 	AbstractMaterial* umbrellaMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "AlbedoUmbrella.png"));
+	AbstractMaterial* deskMaterial = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "DeskBase.png"));
 	litMaterialR = new LitMaterial(glm::vec3(1, 0, 0));
 	litMaterialG = new LitMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
 	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
 	blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
 	greyMaterial = new ColorMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
-	shadowMaterial = new TextureMaterial(_renderToTexture->getTexture());
+	shadowMaterial = new TextureMaterial(renderToTexture->getTexture());
 
-	////SCENE SETUP
+	//SCENE SETUP
 
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
@@ -101,7 +106,7 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
+	room = new Room(this, _world, _window, _levelIndex);
 	_world->add(room);
 
 	//a light to light the scene!
@@ -116,61 +121,59 @@ void TPerson::_initializeScene()
 	//light->SetLightColor(glm::vec3(1, 0, 0.8f));
 	LitMaterial::AddLight(light);
 
-	////add the plane
-	//plane = new GameObject("plane", glm::vec3(0, 0.9f, -0));
-	//plane->scale(glm::vec3(1, 1, 1));
-	///*plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
-	//plane->rotate(glm::radians(25.0f), glm::vec3(1, 0, 0));
-	//plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));*/
-	//plane->setMesh(planeMeshDefault);
-	//plane->setMaterial(shadowMaterial);
-	//_world->add(plane);
+	//add the plane
+	plane = new GameObject("plane", glm::vec3(0, 0.9f, -0));
+	plane->scale(glm::vec3(1, 1, 1));
+	/*plane->rotate(glm::radians(-90.0f), glm::vec3(0, 0, 1));
+	plane->rotate(glm::radians(25.0f), glm::vec3(1, 0, 0));
+	plane->rotate(glm::radians(90.0f), glm::vec3(0, 1, 0));*/
+	plane->setMesh(planeMeshDefault);
+	plane->setMaterial(shadowMaterial);
+	_world->add(plane);
 
-	//////add the floor
-	////GameObject* floor = new GameObject("floor", glm::vec3(0, -2.5f, 0));
-	////floor->scale(glm::vec3(15, 15, 15));
-	////floor->setMesh(planeMeshDefault);
-	////floor->setMaterial(greyMaterial);
-	////_world->add(floor);
+	////add the floor
+	//GameObject* floor = new GameObject("floor", glm::vec3(0, -2.5f, 0));
+	//floor->scale(glm::vec3(15, 15, 15));
+	//floor->setMesh(planeMeshDefault);
+	//floor->setMaterial(greyMaterial);
+	//_world->add(floor);
 
-	////add a desk
-	//desk = new GameObject("desk", glm::vec3(0, 0, 0));
-	//desk->scale(glm::vec3(3.5f, 3.5f, 3.5f));
-	////desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
-	//desk->setMesh(deskMesh);
-	//desk->setMaterial(runicStoneMaterial);
-	//_world->add(desk);
+	//add a desk
+	desk = new GameObject("desk", glm::vec3(0, -0.5f, 0));
+	desk->scale(glm::vec3(3.0f, 3.0f, 3.0f));
+	//desk->rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
+	desk->setMesh(deskMesh);
+	desk->setMaterial(deskMaterial);
+	_world->add(desk);
 
-	////add a puzzle object
-	////puzzleObject = new GameObject("puzzleObject", glm::vec3(0, 3, 0));
-	////puzzleObject->scale(glm::vec3(0.5f, 0.5f, 0.5f));
-	//////puzzleObject->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
-	////puzzleObject->setMesh(umbrellaMesh);
-	////puzzleObject->setMaterial(litMaterialR);
-	////puzzleObject->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	////_world->add(puzzleObject);
+	//add a puzzle object
+	//puzzleObject = new GameObject("puzzleObject", glm::vec3(0, 3, 0));
+	//puzzleObject->scale(glm::vec3(0.5f, 0.5f, 0.5f));
+	////puzzleObject->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
+	//puzzleObject->setMesh(umbrellaMesh);
+	//puzzleObject->setMaterial(litMaterialR);
+	//puzzleObject->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	//_world->add(puzzleObject);
 
-	//puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 2, 0));
-	//puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
-	//puzzleObject1->rotate(glm::radians(95.0f), glm::vec3(1, 0.5f, 0.6f));
-	//puzzleObject1->setMesh(bottleMesh);
-	//puzzleObject1->setMaterial(umbrellaMaterial);
-	//puzzleObject1->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	//_world->add(puzzleObject1);
+	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 2, 0));
+	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
+	puzzleObject1->rotate(glm::radians(95.0f), glm::vec3(1, 0.5f, 0.6f));
+	puzzleObject1->setMesh(syringeMesh);
+	puzzleObject1->setMaterial(umbrellaMaterial);
+	puzzleObject1->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	_world->add(puzzleObject1);
 
-	////puzzleObject2 = new GameObject("puzzleObject2", glm::vec3(-0.23, 1.785, 0.1));
-	////puzzleObject2->scale(glm::vec3(0.1, 0.1, 0.1));
-	////puzzleObject2->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
-	////puzzleObject2->setMesh(plunger2);
-	////puzzleObject2->setMaterial(litMaterialR);
-	////puzzleObject2->setBehaviour(new MouseRotatingBehaviour(_window, _world));
-	////_world->add(puzzleObject2);
+	//puzzleObject2 = new GameObject("puzzleObject2", glm::vec3(-0.23, 1.785, 0.1));
+	//puzzleObject2->scale(glm::vec3(0.1, 0.1, 0.1));
+	//puzzleObject2->rotate(glm::radians(45.0f), glm::vec3(1, 0.5f, 0));
+	//puzzleObject2->setMesh(plunger2);
+	//puzzleObject2->setMaterial(litMaterialR);
+	//puzzleObject2->setBehaviour(new MouseRotatingBehaviour(_window, _world));
+	//_world->add(puzzleObject2);
 
-	////puzzleObjects.push_back(puzzleObject);
-	//puzzleObjects.push_back(puzzleObject1);
-	////puzzleObjects.push_back(puzzleObject2);
-
-	puzzleObject1 = puzzleObjects[0];
+	//puzzleObjects.push_back(puzzleObject);
+	puzzleObjects.push_back(puzzleObject1);
+	//puzzleObjects.push_back(puzzleObject2);
 }
 
 void TPerson::Render()
@@ -186,7 +189,7 @@ Renderer* TPerson::getRenderer(void) const
 void TPerson::_render()
 {
 	glm::mat4 lightTransform = light->getTransform();
-	_renderToTexture->Render(puzzleObjects, blackMaterial, lightTransform);
+	renderToTexture->Render(puzzleObjects, blackMaterial, lightTransform);
 
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -226,7 +229,7 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
-	//_userInterface->draw();
+	_userInterface->draw();
 }
 
 void TPerson::_checkOnePuzzle()
@@ -242,7 +245,7 @@ void TPerson::_checkOnePuzzle()
 	std::cout << rotation.z << std::endl;
 
 
-	if (rotation.y <= 10 || rotation.y >= 170)
+	if (rotation.y <= 8 || rotation.y >= 172)
 	{
 		std::cout << "BITCH LASAGNA" << std::endl;
 		puzzleObject1->setBehaviour(new EmptyBehaviour());
@@ -252,20 +255,29 @@ void TPerson::_checkOnePuzzle()
 
 	if (completed)
 	{
-		//do stuff	
-		//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
 
-		if (rotation.x >= 10 && rotation.z >=10)
-		{
-			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(0, 1, 0));
-		}
+		/*if (rotation.y >= 5 && rotation.y <= 175)
+		{*/
+			glm::vec3 yAxis = puzzleObject1->getTransform()[1];
+			glm::vec3 diffirenceVec = yAxis - glm::vec3(0, 1, 0);
+			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(diffirenceVec));
+			//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
+
+		/*}
 		else
-		{
-			puzzleObject1->setWorldRotation(glm::vec3(0,0,0));
-			completed = false;
-			//UITexture* winScreen = new UITexture(_window, "corkboard.png");
-			//_userInterface->Add(winScreen);
-		}
+		{*/
+			++victoryDelay;
+
+			if (victoryDelay >= 240)
+			{
+				UITexture* winScreen = new UITexture(_window, "winscreen.png");
+				winScreen->SetPosition(glm::vec3((_window->getSize().x - winScreen->GetRect().width) / 2, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
+				_userInterface->Add(winScreen);
+
+				victoryDelay = 0;
+				completed = false;
+			}
+		//}
 	}
 }
 
@@ -275,7 +287,7 @@ void TPerson::MoveToPreviousLevel()
 	if (_levelIndex < 1) { _levelIndex = 1; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
+	room = new Room(this, _world, _window, _levelIndex);
 	_world->add(room);
 }
 
@@ -285,7 +297,7 @@ void TPerson::MoveToNextLevel()
 	if (_levelIndex > 2) { _levelIndex = 2; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
+	room = new Room(this, _world, _window, _levelIndex);
 	_world->add(room);
 }
 

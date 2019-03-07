@@ -68,6 +68,7 @@ private:
 	AbstractMaterial* shadowMaterial;
 
 	bool completed = false;
+	float victoryDelay = 0;
 
 	void _updateHud();
 	void _checkOnePuzzle();
