@@ -227,9 +227,9 @@
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
-    <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />

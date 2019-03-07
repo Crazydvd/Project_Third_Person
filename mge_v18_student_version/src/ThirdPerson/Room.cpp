@@ -21,7 +21,7 @@
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName, glm::vec3 pPosition, RenderToTexture* pRender)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
 	: GameObject(pName, pPosition), _renderToTexture(pRender)
 {
 	_timer = new Timer(pWindow);

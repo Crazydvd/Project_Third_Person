@@ -54,8 +54,8 @@ void TPerson::initialize()
 //build the game _world
 void TPerson::_initializeScene()
 {
-	renderToTexture = new RenderToTexture();
-	renderToTexture->setTPerson(this);
+	_renderToTexture = new RenderToTexture();
+	_renderToTexture->setTPerson(this);
 
 	////UI
 	//_userInterface = new UserInterface(_window);
@@ -90,7 +90,7 @@ void TPerson::_initializeScene()
 	litMaterialB = new LitMaterial(glm::vec3(0, 0, 1));
 	blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
 	greyMaterial = new ColorMaterial(glm::vec3(0.5f, 0.5f, 0.5f));
-	shadowMaterial = new TextureMaterial(renderToTexture->getTexture());
+	shadowMaterial = new TextureMaterial(_renderToTexture->getTexture());
 
 	////SCENE SETUP
 
@@ -101,7 +101,7 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
 	_world->add(room);
 
 	//a light to light the scene!
@@ -186,7 +186,7 @@ Renderer* TPerson::getRenderer(void) const
 void TPerson::_render()
 {
 	glm::mat4 lightTransform = light->getTransform();
-	renderToTexture->Render(puzzleObjects, blackMaterial, lightTransform);
+	_renderToTexture->Render(puzzleObjects, blackMaterial, lightTransform);
 
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -275,7 +275,7 @@ void TPerson::MoveToPreviousLevel()
 	if (_levelIndex < 1) { _levelIndex = 1; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
 	_world->add(room);
 }
 
@@ -285,7 +285,7 @@ void TPerson::MoveToNextLevel()
 	if (_levelIndex > 2) { _levelIndex = 2; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, _renderToTexture);
 	_world->add(room);
 }
 
