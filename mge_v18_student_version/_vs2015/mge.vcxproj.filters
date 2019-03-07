@@ -106,9 +106,6 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Camera.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -132,6 +129,9 @@
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
+      <Filter>ThirdPerson</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Audio.cpp">
+      <Filter>ThirdPerson</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
