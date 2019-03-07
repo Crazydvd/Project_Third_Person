@@ -14,17 +14,21 @@
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
+#include "ThirdPerson/Puzzle.hpp"
 
+#include "ThirdPerson/RenderToTexture.hpp"
 #include "Room.hpp"
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
+	: GameObject(pName, pPosition), _renderToTexture(pRender)
 {
 	_timer = new Timer(pWindow);
 	_game = pGame;
 	_roomWorld = pWorld;
+	_puzzle = new Puzzle(pWindow, pWorld);
+
 	Initialize(pIndex);
 }
 
@@ -47,9 +51,9 @@ void Room::Initialize(int levelIndex)
 
 	print_table(L);
 
-	lua_close(L);
-
-	/** TODO: Replace this by make a new "puzzle object" class and load the objects in there
+	//lua_close(L);
+	
+	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
 	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
 
 	//puts(lua_tostring(L, -1));
@@ -64,44 +68,48 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
+	GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
 
-	//load a bunch of meshes we will be using throughout this demo
-	//each mesh only has to be loaded once, but can be used multiple times:
-	//F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
-	Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
+	////load a bunch of meshes we will be using throughout this demo
+	////each mesh only has to be loaded once, but can be used multiple times:
+	////F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
+	//Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
+	//Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
 
-	//MATERIALS
+	////MATERIALS
 
-	//create some materials to display the cube, the plane and the light
-	AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
+	////create some materials to display the cube, the plane and the light
+	//AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
 
-	//add the floor
-	GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(runicStoneMaterial);
-	_roomParent->add(plane);
+	////add the floor
+	//GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
+	//plane->scale(glm::vec3(5, 5, 5));
+	//plane->setMesh(planeMeshDefault);
+	//plane->setMaterial(runicStoneMaterial);
+	//_roomParent->add(plane);
 
-	//add a spinning sphere
-	_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-	_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	_sphere->setMesh(sphereMeshS);
-	_sphere->setMaterial(runicStoneMaterial);
-	_sphere->setBehaviour(new RotatingBehaviour());
-	_roomParent->add(_sphere);
-	**/
+	////add a spinning sphere
+	//_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
+	//_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
+	//_sphere->setMesh(sphereMeshS);
+	//_sphere->setMaterial(runicStoneMaterial);
+	//_sphere->setBehaviour(new RotatingBehaviour());
+	//_roomParent->add(_sphere);
+	
 }
 
 void Room::update(float pStep)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
+	{
 		_game->MoveToNextLevel();
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) 
+	{
 		_game->MoveToPreviousLevel();
 	}
-	else {
+	else 
+	{
 		// Set timer
 		_timer->SetTime(_timer->GetTime() + pStep);
 	}

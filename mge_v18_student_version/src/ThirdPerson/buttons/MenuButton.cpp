@@ -3,7 +3,7 @@
 
 #include <GL/glew.h>
 #include <SFML/Graphics.hpp>
-#include "ThirdPerson/MenuButton.hpp"
+#include "ThirdPerson/buttons/MenuButton.hpp"
 #include "ThirdPerson/config.hpp"
 
 MenuButton::MenuButton(sf::RenderWindow * aWindow, std::string fileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName) : UITexture(aWindow, fileName, pPosition, pName)

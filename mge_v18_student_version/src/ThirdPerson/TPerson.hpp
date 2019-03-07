@@ -47,10 +47,10 @@ protected:
 	virtual void _render();
 
 private:
-	int _levelIndex;
+	int _levelIndex = 1;
 	UserInterface* _userInterface;
 	Room* room;
-	RenderToTexture* renderToTexture;
+	RenderToTexture* _renderToTexture;
 	DebugHud* _hud;                   //hud display
 	UITexture* _texture;
 	Camera* camera;

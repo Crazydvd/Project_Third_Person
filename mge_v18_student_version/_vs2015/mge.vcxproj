@@ -101,13 +101,21 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+<<<<<<< HEAD
       <AdditionalIncludeDirectories>../src;D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>../src;D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+<<<<<<< HEAD
       <AdditionalLibraryDirectories>D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+=======
+      <AdditionalLibraryDirectories>D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -190,16 +198,24 @@
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
+<<<<<<< HEAD
     <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
+=======
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
     <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Room.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp" />
     <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -226,15 +242,24 @@
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
+=======
+    <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
     <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Room.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp" />
     <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
+<<<<<<< HEAD
+=======
+    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>

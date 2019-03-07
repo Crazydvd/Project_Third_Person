@@ -181,9 +181,9 @@ glm::vec3 GameObject::getWorldRotation() const
 
 void GameObject::setWorldRotation(glm::vec3 pRotation)
 {
-	glm::mat4 xRotation = glm::rotate(glm::mat4(), pRotation.x, glm::vec3(1, 0, 0));
-	glm::mat4 yRotation = glm::rotate(glm::mat4(), pRotation.y, glm::vec3(0, 1, 0));
-	glm::mat4 zRotation = glm::rotate(glm::mat4(), pRotation.z, glm::vec3(0, 0, 1));
+	glm::mat4 xRotation = glm::rotate(glm::mat4(), glm::radians(pRotation.x), glm::vec3(1, 0, 0));
+	glm::mat4 yRotation = glm::rotate(glm::mat4(), glm::radians(pRotation.y), glm::vec3(0, 1, 0));
+	glm::mat4 zRotation = glm::rotate(glm::mat4(), glm::radians(pRotation.z), glm::vec3(0, 0, 1));
 
 	glm::mat4 matrix = zRotation * yRotation * xRotation;
 	matrix[0] = matrix[0] * glm::length(getTransform()[0]);

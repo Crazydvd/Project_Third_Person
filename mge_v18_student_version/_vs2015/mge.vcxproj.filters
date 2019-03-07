@@ -23,8 +23,8 @@
     <Filter Include="ThirdPerson">
       <UniqueIdentifier>{576a6bee-4963-4af8-9100-f9262d580e7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ThirdPerson\buttons">
-      <UniqueIdentifier>{8efaa409-f8e4-4474-b644-165936fa694e}</UniqueIdentifier>
+    <Filter Include="ThirdPerson\Buttons">
+      <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,9 +39,6 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Camera.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -109,26 +106,35 @@
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="..\src\mge\behaviours\EmptyBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Camera.hpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\MenuButton.hpp">
-      <Filter>ThirdPerson</Filter>
+    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp">
-      <Filter>ThirdPerson\buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +149,6 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Camera.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -210,26 +213,35 @@
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="..\src\mge\core\Camera.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+>>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\MenuButton.cpp">
-      <Filter>ThirdPerson</Filter>
+    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp">
-      <Filter>ThirdPerson\buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp">
-      <Filter>ThirdPerson\buttons</Filter>
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp">
+      <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
