@@ -83,7 +83,7 @@ void RenderToTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4
 	std::vector<Light*> _lights = LitMaterial::getLights();
 
 	//pass in the light properties
-	for (int i = 0; i < _lights.size(); i++)
+	for (size_t i = 0; i < _lights.size(); i++)
 	{
 		if (!_overrideSpecularLight)
 		{

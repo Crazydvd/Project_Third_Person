@@ -1,2 +1,4 @@
-model = "cone_flat.obj"
-texture = "land.jpg"
+model = "Bottle.obj"
+texture = "AlbedoBottle.png"
+model2 = ""
+texture2 = ""

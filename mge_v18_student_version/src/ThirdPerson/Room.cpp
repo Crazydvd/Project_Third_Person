@@ -10,32 +10,35 @@
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
+#include "mge/materials/LitMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
-#include "ThirdPerson/Puzzle.hpp"
 
 #include "ThirdPerson/RenderToTexture.hpp"
 #include "Room.hpp"
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition), _renderToTexture(pRender)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
+	: GameObject(pName, pPosition), _renderToTexture(pRender), _window(pWindow)
 {
-	_timer = new Timer(pWindow);
 	_game = pGame;
 	_roomWorld = pWorld;
-	_puzzle = new Puzzle(pWindow, pWorld);
+	_puzzle = new Puzzle(pWindow, pWorld, _levelIndex);
+	_blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
+	_levelIndex = 1;
 
-	Initialize(pIndex);
+	Initialize(_levelIndex);
 }
 
 void Room::Initialize(int levelIndex)
 {
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
+
+	_roomParent->add(_puzzle);
 
 	/* Load LUA */
 	lua_State* L = luaL_newstate();
@@ -51,67 +54,33 @@ void Room::Initialize(int levelIndex)
 
 	print_table(L);
 
-	//lua_close(L);
-	
-	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
+	lua_close(L);	
 
-	//puts(lua_tostring(L, -1));
 
-	lua_call(L, 0, 0);
 
-	lua_getglobal(L, "model");
-	std::string model = lua_tostring(L, -1);
-
-	lua_getglobal(L, "texture");
-	std::string texture = lua_tostring(L, -1);
-
-	lua_close(L);
-
-	GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
-
-	////load a bunch of meshes we will be using throughout this demo
-	////each mesh only has to be loaded once, but can be used multiple times:
-	////F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
-	//Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	//Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
-
-	////MATERIALS
-
-	////create some materials to display the cube, the plane and the light
-	//AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
-
-	////add the floor
-	//GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	//plane->scale(glm::vec3(5, 5, 5));
-	//plane->setMesh(planeMeshDefault);
-	//plane->setMaterial(runicStoneMaterial);
-	//_roomParent->add(plane);
-
-	////add a spinning sphere
-	//_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-	//_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	//_sphere->setMesh(sphereMeshS);
-	//_sphere->setMaterial(runicStoneMaterial);
-	//_sphere->setBehaviour(new RotatingBehaviour());
-	//_roomParent->add(_sphere);
-	
+	//a light to light the scene!
+	AbstractMaterial* lightMaterial = new ColorMaterial(glm::vec3(1, 1, 0));
+	light = new Light("light", glm::vec3(0, 4.0f, 0), LightType::POINT);
+	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
+	light->rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
+	light->translate(glm::vec3(0, 0, 3));
+	light->SetLightIntensity(1.5f);
+	//light->setMesh(sphereMesh);
+	light->setMaterial(lightMaterial);
+	_world->add(light);
+	//light->SetLightColor(glm::vec3(1, 0, 0.8f));
+	LitMaterial::AddLight(light);
 }
 
 void Room::update(float pStep)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
 	{
-		_game->MoveToNextLevel();
+		MoveToNextLevel();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) 
 	{
-		_game->MoveToPreviousLevel();
-	}
-	else 
-	{
-		// Set timer
-		_timer->SetTime(_timer->GetTime() + pStep);
+		MoveToPreviousLevel();
 	}
 }
 
@@ -215,9 +184,33 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
+void Room::MoveToPreviousLevel()
+{
+	_levelIndex--;
+	if (_levelIndex < 1) { _levelIndex = 1; return; }
+	_roomParent->remove(_puzzle);
+	delete(_puzzle);
+	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_world->add(_puzzle);
+}
+
+void Room::MoveToNextLevel()
+{
+	_levelIndex++;
+	if (_levelIndex > 2) { _levelIndex = 2; return; }
+	_roomParent->remove(_puzzle);
+	delete(_puzzle);
+	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_roomParent->add(_puzzle);
+}
+
+
 void Room::_render()
 {
-	_timer->draw();
+	glm::mat4 lightTransform = light->getTransform();
+	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
+
+	_puzzle->PuzzleTimer->draw();
 }
 
 

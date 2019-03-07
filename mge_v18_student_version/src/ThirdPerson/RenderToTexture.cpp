@@ -36,7 +36,7 @@ void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial
 	Renderer* renderer = _tPerson->getRenderer();
 	World* world = _tPerson->GetWorld();
 
-	for (int i = 0; i < pObjects.size(); i++)
+	for (size_t i = 0; i < pObjects.size(); i++)
 	{
 		renderer->render(world, pObjects[i], pRenderMaterial, camera, true);
 	}

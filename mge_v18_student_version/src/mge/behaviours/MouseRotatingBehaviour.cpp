@@ -3,7 +3,7 @@
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Ray.hpp"
 
-MouseRotatingBehaviour::MouseRotatingBehaviour(sf::RenderWindow* pWindow, World* pWorld) : AbstractBehaviour(), _window(pWindow), _world(pWorld)
+MouseRotatingBehaviour::MouseRotatingBehaviour(sf::RenderWindow* pWindow, World* pWorld, std::vector<GameObject*> pPuzzleObject) : AbstractBehaviour(), _puzzleObjects(pPuzzleObject), _window(pWindow), _world(pWorld)
 {
 }
 
@@ -16,7 +16,7 @@ void MouseRotatingBehaviour::update(float pStep)
 		Ray mouseray = Ray::MouseRay(_window, 60.0f, _world);
 
 		//Get objects array
-		if (mouseray.GetCollision(TPerson::puzzleObjects) == _owner)
+		if (mouseray.GetCollision(_puzzleObjects) == _owner)
 		{
 			_oldPos = sf::Mouse::getPosition();
 			_oldRotation = _owner->getTransform();

@@ -20,6 +20,7 @@
  */
 int main()
 {
+	std::srand(time(NULL));
     std::cout << "Starting Game" << std::endl;
 
     AbstractGame* game = new TPerson();

@@ -26,11 +26,6 @@ public:
 	//override initialize so we can add a DebugHud
 	virtual void initialize();
 
-	void MoveToNextLevel();
-	void MoveToPreviousLevel();
-	
-	static std::vector<GameObject*> puzzleObjects;
-
 	Camera* GetMainCamera();
 	sf::RenderWindow* GetWindow();
 	World* GetWorld();
@@ -47,14 +42,12 @@ protected:
 	virtual void _render();
 
 private:
-	int _levelIndex = 1;
 	UserInterface* _userInterface;
 	Room* room;
 	RenderToTexture* _renderToTexture;
 	DebugHud* _hud;                   //hud display
 	UITexture* _texture;
 	Camera* camera;
-	Light* light;
 	GameObject* plane;
 	GameObject* puzzleObject;
 	GameObject* puzzleObject1;
@@ -63,9 +56,6 @@ private:
 	AbstractMaterial* litMaterialR;
 	AbstractMaterial* litMaterialG;
 	AbstractMaterial* litMaterialB;
-	AbstractMaterial* blackMaterial;
-	AbstractMaterial* greyMaterial;
-	AbstractMaterial* shadowMaterial;
 
 	bool completed = false;
 	float victoryDelay = 0;

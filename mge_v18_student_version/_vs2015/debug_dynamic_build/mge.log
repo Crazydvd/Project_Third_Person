@@ -1,19 +1,2 @@
-<<<<<<< HEAD
-﻿  Room.cpp
-  TPerson.cpp
-  Generating Code...
+﻿  Puzzle.cpp
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  TPerson.cpp
-  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  UserInterface.cpp
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  MenuButton.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 4a30a13596ff8f177ff5e30b9527e80ea7e76b4f
->>>>>>> 3c7b7ad64986ea542d86cc2ca3c8312e0ffabd76
->>>>>>> 71cadc62186521c2df8c866c24f9b8397bee9ef2

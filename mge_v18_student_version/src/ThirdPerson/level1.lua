@@ -1,2 +1,2 @@
-model = "sphere_smooth.obj"
-texture = "runicfloor.png"
+model = "Umbrella.obj"
+texture = "AlbedoUmbrella.png"
