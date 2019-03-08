@@ -1,14 +1,14 @@
 puzzle = {
 	object = {
-		texture = "AlbedoComb1.png",
-		model = "Comb1.obj",
-		position = { x = 0, y = 2,355, z = 0},
-		scale = { x = 0.1, y = 0.1, z = 0.1},
+		texture = "AlbedoToiletPlunger1.png",
+		model = "Toilet plunger1.obj",
+		position = { x = 0, y = 1.403, z = 0},
+		scale = { x = 0.08361702, y = 0.08361702, z = 0.08361702},
 	},
 	object2 = {
-		texture = "AlbedoComb2.png",
-		model = "Comb2.obj",
-		position = { x = 0, y = 3, z = 0},
-		scale = { x = 0.1, y = 0.1, z = 0.1},
+		texture = "AlbedoToiletPlunger2.png",
+		model = "Toilet plunger2.obj",
+		position = { x = -0.26468, y = 0.952, z = 0.1302889},
+		scale = { x = 0.0973652, y = 0.0973652, z = 0.0973652},
 	},
 }
