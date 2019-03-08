@@ -172,7 +172,7 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
 	AbstractMaterial* material;
 	if (pProperties[1][1] == "shadow") {
-		material = new RenderToTextureMaterial(_renderToTexture->getTexture());
+		material = new RenderToTextureMaterial(_renderToTexture->getTexture()); //Very important
 	}
 	else {
 		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
