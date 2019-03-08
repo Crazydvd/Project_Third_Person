@@ -92,11 +92,6 @@ void TPerson::_render()
 
 	_updateHud();
 	room->_render();
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
-	}
 }
 
 void TPerson::_updateHud()

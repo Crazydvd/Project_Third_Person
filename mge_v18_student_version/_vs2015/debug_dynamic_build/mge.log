@@ -1,2 +1,51 @@
+<<<<<<< HEAD
 ﻿  TPerson.cpp
   mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  main.cpp
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  LitMaterial.cpp
+  LitTextureMaterial.cpp
+  RenderToTextureMaterial.cpp
+  TextureMaterial.cpp
+  Generating Code...
+  Compiling...
+  DebugHud.cpp
+  Audio.cpp
+  ContinueButton.cpp
+  LevelSelectButton.cpp
+  MenuButton.cpp
+  NewGameButton.cpp
+  QuitGameButton.cpp
+  UITexture.cpp
+  Puzzle.cpp
+  Ray.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+  RenderToTexture.cpp
+  Room.cpp
+  Timer.cpp
+  TPerson.cpp
+  UserInterface.cpp
+  Generating Code...
+  LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Puzzle.cpp
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 4ab520f9dd88325f8f3275c9ade307f9d941e30f
+>>>>>>> a30d4f03c96896e4e2e149a50d9713dbd6d3183c
