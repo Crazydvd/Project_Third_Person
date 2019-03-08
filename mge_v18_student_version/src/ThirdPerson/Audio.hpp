@@ -14,15 +14,15 @@ public:
 	Audio(SoundType pType, std::string pFilePath);
 	~Audio();
 
-	void Play();
-	void Pause();
-	void Stop();
-	sf::SoundSource::Status GetStatus();
+	void Play(); //Plays the audio
+	void Pause(); //Pauses the audio
+	void Stop(); //Stops playing the audio and resets position to beginning
+	sf::SoundSource::Status GetStatus(); //Get the current status of the audio (stopped, paused, playing)
 	
-	void SetPitch(float pPitch);
-	void SetPlayingOffset(sf::Time pSeconds);
-	void SetVolume(float pVolume);
-	void SetLoop(bool pLoop);
+	void SetPitch(float pPitch); //Set the pitch of the audio (also changes playback speed)
+	void SetPlayingOffset(sf::Time pSeconds); //Set the current position in the audio file (e.g. start playing at 1 minute)
+	void SetVolume(float pVolume); //Set the volume of the audio [0 - 100]; default is 100
+	void SetLoop(bool pLoop); //Set whether the audio loops or not
 
 
 private:

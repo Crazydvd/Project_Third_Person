@@ -34,8 +34,8 @@
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson() :AbstractGame(), _hud(0)
 {
-	Audio* audio = new Audio(SoundType::MUSIC, "ThirdPerson/sounds/paper2.wav");
-
+	Audio* audio = new Audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Don't do this, for more information ask Daniel.
+	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Use lines like this instead.
 	audio->SetLoop(true);
 	audio->Play();
 }

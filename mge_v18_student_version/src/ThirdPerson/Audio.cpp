@@ -13,6 +13,18 @@ Audio::Audio(SoundType pType, std::string pFilePath) : _type(pType)
 	}
 }
 
+Audio::~Audio()
+{
+	if (_type == SoundType::SOUND)
+	{
+		_sound.stop();
+	}
+	else
+	{
+		_music.stop();
+	}
+}
+
 void Audio::Play()
 {
 	if (_type == SoundType::SOUND)
