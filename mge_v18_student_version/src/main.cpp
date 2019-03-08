@@ -20,7 +20,7 @@
  */
 int main()
 {
-	std::srand(time(NULL));
+	std::srand((unsigned int)time(NULL));
     std::cout << "Starting Game" << std::endl;
 
     AbstractGame* game = new TPerson();

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <glm/glm.hpp>
+#include <lua.hpp>
 #include "SFML/Graphics/RenderWindow.hpp"
 #include <mge/core/GameObject.hpp>
 #include "ThirdPerson/Timer.hpp"
@@ -18,18 +19,21 @@ class Puzzle : public GameObject
 
 		virtual ~Puzzle();
 		virtual void update(float pStep);
-		void LoadObject(std::string pModel, std::string pTexture);
 		std::vector<GameObject*> getObjects();
 
 		Timer* PuzzleTimer;
 	private:
+		void loadObject(std::string pProperties[2][2], glm::vec3 pVectors[2]);
+		void getPuzzles(lua_State* L);
+		glm::vec3* fill_vector3(lua_State* L);
+		void checkOnePuzzle();
+
 		bool _completed;
 		int _levelIndex;
 		int _victoryDelay;
 		World* _world;
 		std::vector<GameObject*> _puzzleObjects;
 		sf::RenderWindow* _window;
-		void checkOnePuzzle();
 };
 
 #endif // !PUZZLE_HPP

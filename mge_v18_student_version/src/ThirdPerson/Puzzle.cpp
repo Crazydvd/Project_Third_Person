@@ -17,38 +17,33 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
 	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(_levelIndex) + ".lua").c_str());
-
-	//puts(lua_tostring(L, -1));
 
 	lua_call(L, 0, 0);
 
-	lua_getglobal(L, "model");
-	std::string model = lua_tostring(L, -1);
+	lua_getglobal(L, "puzzle");
 
-	lua_getglobal(L, "texture");
-	std::string texture = lua_tostring(L, -1);
-
-	LoadObject(model, texture);
+	getPuzzles(L);
 
 	lua_close(L);
 
-	_puzzleObjects[0]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
-
-	this->add(_puzzleObjects[0]);
+	for (size_t i = 0; i < _puzzleObjects.size(); i++) {
+		_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+	}
 }
 
-void Puzzle::LoadObject(std::string pModel, std::string pTexture)
+void Puzzle::loadObject(std::string pProperties[2][2], glm::vec3 pVectors[2])
 {
-	GameObject* object = new GameObject("puzzleObject", glm::vec3(0, 2, 0));
-	object->setMesh(Mesh::load(config::THIRDPERSON_MODEL_PATH + pModel));
-	object->scale(glm::vec3(0.1, 0.1, 0.1));
-	object->setMaterial(new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pTexture)));
-	object->rotate(glm::radians((float)(std::rand() % 160) + 35.0f), glm::vec3(1, 0, 0));
-	object->rotate(glm::radians((float)(std::rand() % 160) + 35.0f), glm::vec3(0, 1, 0));
-	object->rotate(glm::radians((float)(std::rand() % 160) + 35.0f), glm::vec3(0, 0, 1));
-	
+	GameObject* object = new GameObject("puzzleObject", pVectors[0]);
+	object->setMesh(Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]));
+	object->scale(pVectors[1]);
+	object->setMaterial(new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1])));
+	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
+	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
+	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
+
+	this->add(object);
+
 	_puzzleObjects.push_back(object);
 }
 
@@ -70,6 +65,80 @@ void Puzzle::update(float pStep) {
 	checkOnePuzzle();
 	PuzzleTimer->SetTime(PuzzleTimer->GetTime() + pStep);
 }
+
+
+void Puzzle::getPuzzles(lua_State *L)
+{
+	lua_pushnil(L);
+	std::string params[2][2];
+	glm::vec3 vectors[3] = { glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1} };
+	int index = 0;
+
+	while (lua_next(L, -2) != 0)
+	{
+		if (lua_isstring(L, -1))
+		{
+			params[index][0] = lua_tostring(L, -2);
+			params[index][1] = lua_tostring(L, -1);
+			index++;
+		}
+		else if (lua_isnumber(L, -1)) {
+			printf("%s = %d", lua_tostring(L, -2), (int)lua_tonumber(L, -1));
+		}
+		else if (lua_istable(L, -1)) {
+			if ((std::string)lua_tostring(L, -2) == "position")
+			{
+				glm::vec3* position = fill_vector3(L);
+				vectors[0] = *position;
+			}
+			else if ((std::string)lua_tostring(L, -2) == "scale")
+			{
+				glm::vec3* scale = fill_vector3(L);
+				vectors[1] = *scale;
+			}
+			else
+			{
+				getPuzzles(L);
+			}
+		}
+		lua_pop(L, 1);
+
+	}
+	if (params[0][0] != "")
+	{
+		loadObject(params, vectors);
+	}
+}
+
+glm::vec3* Puzzle::fill_vector3(lua_State *L)
+{
+	lua_pushnil(L);
+	glm::vec3* vector = new glm::vec3();
+	int index = 0;
+
+	while (lua_next(L, -2) != 0)
+	{
+		if (lua_isnumber(L, -1))
+		{
+			if ((std::string)lua_tostring(L, -2) == "x")
+			{
+				vector->x = (float)lua_tonumber(L, -1);
+			}
+			else if ((std::string)lua_tostring(L, -2) == "y")
+			{
+				vector->y = (float)lua_tonumber(L, -1);
+			}
+			else if ((std::string)lua_tostring(L, -2) == "z")
+			{
+				vector->z = (float)lua_tonumber(L, -1);
+			}
+		}
+		lua_pop(L, 1);
+		index++;
+	}
+	return vector;
+}
+
 
 std::vector<GameObject*> Puzzle::getObjects() {
 	return _puzzleObjects;
