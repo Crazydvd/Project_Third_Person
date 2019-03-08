@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-﻿  TPerson.cpp
-  mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   KeysBehaviour.cpp
@@ -35,7 +30,7 @@
   UITexture.cpp
   Puzzle.cpp
   Ray.cpp
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
   RenderToTexture.cpp
   Room.cpp
   Timer.cpp
@@ -43,9 +38,4 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdper
   UserInterface.cpp
   Generating Code...
   LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  Puzzle.cpp
-  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 4ab520f9dd88325f8f3275c9ade307f9d941e30f
->>>>>>> a30d4f03c96896e4e2e149a50d9713dbd6d3183c
+  mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe

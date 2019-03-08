@@ -54,7 +54,7 @@ objects =
 	  model = "Revolver.obj",
 	  position = { x = -2.16 , y = 0.92 , z = 0.3,},
 	  scale = { x = 3, y = 3, z = 3,},
-      rotation = { x = 98.5, y = 201, z = 150,},
+      rotation = { x = 100, y = -186, z = -116,},
   },
   whiskeybottle = {
   	  texture = "BottleBase.png",
@@ -71,7 +71,7 @@ objects =
       rotation = { x = 0, y = -7, z = 0,},
   },
   pen = {
-  	  texture = "PenBaseGold.png",
+  	  texture = "PenBaseBlack.png",
 	  model = "Pen.obj",
 	  position = { x = 0.9 , y = 0.9 , z = 0,},
 	  scale = { x = 3, y = 3, z = 3,},
