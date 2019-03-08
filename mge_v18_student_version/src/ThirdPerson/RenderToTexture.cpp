@@ -40,7 +40,6 @@ void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial
 	{
 		renderer->render(world, pObjects[i], pRenderMaterial, camera, true);
 	}
-
 	unbindFramebuffer();
 
 	camera->setTransform(camTransform);

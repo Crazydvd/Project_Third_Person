@@ -14,4 +14,11 @@ objects =
 	  scale = { x = 3, y = 3, z = 3, },
       rotation = { x = 0, y = 0, z = 0,},
   },
+  floor = {
+  	  texture = "OfficeFloorTexture.png",
+	  model = "plane20x20_2048tris_aligned_uvs.obj",
+	  position = { x = 0, y = -2, z = 0},
+	  scale = { x = 3, y = 3, z = 3, },
+      rotation = { x = 0, y = 0, z = 0,},
+  },
 }
