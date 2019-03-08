@@ -1,2 +1,41 @@
-﻿  TPerson.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+﻿  main.cpp
+d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\main.cpp(24): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  LitMaterial.cpp
+  LitTextureMaterial.cpp
+  RenderToTextureMaterial.cpp
+  TextureMaterial.cpp
+  Generating Code...
+  Compiling...
+  DebugHud.cpp
+  Audio.cpp
+  ContinueButton.cpp
+  LevelSelectButton.cpp
+  MenuButton.cpp
+  NewGameButton.cpp
+  QuitGameButton.cpp
+  UITexture.cpp
+  Puzzle.cpp
+  Ray.cpp
+d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+  RenderToTexture.cpp
+  Room.cpp
+  Timer.cpp
+  TPerson.cpp
+  UserInterface.cpp
+  Generating Code...
+  mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
