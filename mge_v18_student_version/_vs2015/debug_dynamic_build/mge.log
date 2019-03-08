@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   KeysBehaviour.cpp
@@ -39,3 +40,7 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdper
   Generating Code...
   LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Puzzle.cpp
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 4ab520f9dd88325f8f3275c9ade307f9d941e30f

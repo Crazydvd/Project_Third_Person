@@ -200,7 +200,7 @@ void Room::MoveToPreviousLevel()
 void Room::MoveToNextLevel()
 {
 	_levelIndex++;
-	if (_levelIndex > 2) { _levelIndex = 2; return; }
+	if (_levelIndex > 10) { _levelIndex = 10; return; }
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
 	_puzzle = new Puzzle(_window, _world, _levelIndex);
