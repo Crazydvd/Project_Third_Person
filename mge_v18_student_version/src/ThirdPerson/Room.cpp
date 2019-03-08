@@ -10,7 +10,9 @@
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
+#include "mge/materials/LitTextureMaterial.hpp"
 #include "mge/materials/LitMaterial.hpp"
+#include "mge/materials/RenderToTextureMaterial.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
@@ -65,7 +67,8 @@ void Room::Initialize(int levelIndex)
 	light->rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	light->translate(glm::vec3(0, 0, 3));
 	light->SetLightIntensity(1.5f);
-	//light->setMesh(sphereMesh);
+	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
+	light->setMesh(mesh);
 	light->setMaterial(lightMaterial);
 	_world->add(light);
 	//light->SetLightColor(glm::vec3(1, 0, 0.8f));
@@ -169,10 +172,10 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
 	AbstractMaterial* material;
 	if (pProperties[1][1] == "shadow") {
-		material = new TextureMaterial(_renderToTexture->getTexture());
+		material = new RenderToTextureMaterial(_renderToTexture->getTexture());
 	}
 	else {
-		material = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
+		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
 	}
 
 	object->setMesh(mesh);

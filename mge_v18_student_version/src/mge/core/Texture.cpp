@@ -48,7 +48,7 @@ Texture* Texture::GetEmptyTexture()
 {
 	Texture* texture = new Texture();
 	glBindTexture(GL_TEXTURE_2D, texture->getId());
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1200, 900, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1920, 1080, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
