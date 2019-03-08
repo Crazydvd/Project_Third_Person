@@ -131,7 +131,7 @@
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp">
-	      <Filter>ThirdPerson</Filter>
+      <Filter>ThirdPerson</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
       <Filter>ThirdPerson</Filter>
@@ -254,5 +254,10 @@
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="paper2.wav">
+      <Filter>ThirdPerson</Filter>
+    </Media>
   </ItemGroup>
 </Project>
