@@ -81,7 +81,7 @@ objects =
   	  texture = "WallTextureRGB.png",
 	  model = "Wall.obj",
 	  position = { x = 0 , y = 2.7 , z = -2.2,},
-	  scale = { x = 1, y = 1, z = 1,},
+	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = 90, z = 0,},
   },
   floor = {
