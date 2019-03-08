@@ -26,6 +26,9 @@
     <Filter Include="ThirdPerson\Buttons">
       <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ThirdPerson\levels">
+      <UniqueIdentifier>{e4dd1be2-b47c-438d-9885-59dd3118f242}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -245,14 +248,38 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\src\ThirdPerson\level1.lua">
-      <Filter>ThirdPerson</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\level2.lua">
-      <Filter>ThirdPerson</Filter>
-    </None>
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level1.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level2.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level3.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level4.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level5.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level6.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level7.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level8.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level9.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level10.lua">
+      <Filter>ThirdPerson\levels</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

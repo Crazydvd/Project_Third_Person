@@ -101,13 +101,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../src;D:\DESKTOP STORAGE\Uni 2\Third Person Repo\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../src;D:\ProjectThirdPerson\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\DESKTOP STORAGE\Uni 2\Third Person Repo\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\ProjectThirdPerson\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -242,8 +242,16 @@
     <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\src\ThirdPerson\level1.lua" />
-    <None Include="..\src\ThirdPerson\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level1.lua" />
+    <None Include="..\src\ThirdPerson\levels\level10.lua" />
+    <None Include="..\src\ThirdPerson\levels\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level3.lua" />
+    <None Include="..\src\ThirdPerson\levels\level4.lua" />
+    <None Include="..\src\ThirdPerson\levels\level5.lua" />
+    <None Include="..\src\ThirdPerson\levels\level6.lua" />
+    <None Include="..\src\ThirdPerson\levels\level7.lua" />
+    <None Include="..\src\ThirdPerson\levels\level8.lua" />
+    <None Include="..\src\ThirdPerson\levels\level9.lua" />
     <None Include="..\src\ThirdPerson\room.lua" />
   </ItemGroup>
   <ItemGroup>

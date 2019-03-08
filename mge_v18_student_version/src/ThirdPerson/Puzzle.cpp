@@ -17,9 +17,9 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 
-	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(_levelIndex) + ".lua").c_str());
+	luaL_loadfile(L, ("../src/ThirdPerson/levels/level" + std::to_string(_levelIndex) + ".lua").c_str());
 
-	lua_call(L, 0, 0);
+	lua_pcall(L, 0, 0, 0);
 
 	lua_getglobal(L, "puzzle");
 
