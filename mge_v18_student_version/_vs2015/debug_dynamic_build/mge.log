@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 ﻿  main.cpp
-d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\main.cpp(24): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   AbstractBehaviour.cpp
   KeysBehaviour.cpp
   MouseRotatingBehaviour.cpp
@@ -32,15 +30,12 @@ d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\main.cpp(
   UITexture.cpp
   Puzzle.cpp
   Ray.cpp
-d:\desktop storage\uni 2\third person repo\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
   RenderToTexture.cpp
   Room.cpp
   Timer.cpp
   TPerson.cpp
   UserInterface.cpp
   Generating Code...
-  mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  RenderToTextureMaterial.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> f65734a149b49f7b8b2a57af5646e9262933e1db
+  LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
