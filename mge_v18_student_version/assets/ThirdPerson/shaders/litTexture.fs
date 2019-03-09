@@ -4,7 +4,6 @@
 uniform sampler2D diffuseTexture;
 uniform mat4 viewMatrix;
 
-uniform vec3 diffuseColor;
 uniform int lightCount;
 uniform int shininess;
 
@@ -39,6 +38,7 @@ float Attenuation;
 vec3 LightVector;
 mat4 Cameramatrix;
 vec3 CameraPosition;
+vec3 diffuseColor;
 
 //Light properties
 vec3 lightColor;
@@ -61,7 +61,8 @@ vec3 calculateColor();
 
 void main(void) 
 {
-	vec3 color = vec3(texture(diffuseTexture,texCoord));
+	vec3 color = vec3(0, 0, 0);
+	diffuseColor = vec3(texture(diffuseTexture,texCoord));
 	Cameramatrix = inverse(viewMatrix);
 	CameraPosition = vec3(Cameramatrix[3]);
 	
