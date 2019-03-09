@@ -63,8 +63,8 @@ void TPerson::_initializeScene()
 	_world->add(_userInterface);
 
    //add camera first (it will be updated last)
-	camera = new Camera("camera", glm::vec3(0, 3, 2.5f));
-	camera->rotate(glm::radians(-45.0f), glm::vec3(1, 0, 0));
+	camera = new Camera("camera", glm::vec3(0, 3, 3.0f));
+	camera->rotate(glm::radians(-35.0f), glm::vec3(1, 0, 0));
 	camera->setBehaviour(new KeysBehaviour(25, 90));
 
 	_world->add(camera);
@@ -93,11 +93,6 @@ void TPerson::_render()
 
 	_updateHud();
 	room->_render();
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
-	}
 }
 
 void TPerson::_updateHud()
