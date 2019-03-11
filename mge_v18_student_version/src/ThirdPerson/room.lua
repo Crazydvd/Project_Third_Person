@@ -3,7 +3,7 @@ objects =
   plane = {
 	  texture = "shadow",
 	  model = "plane.obj",
-	  position = { x = 0, y = 0.9, z = 0,},
+	  position = { x = 0, y = 0.9, z = 0.5,},
 	  scale = { x = 1, y = 1, z = 1, },
       rotation = { x = 0, y = 0, z = 0,},
   },
@@ -38,7 +38,7 @@ objects =
   clipboard = {
   	  texture = "ClipboardBase.png",
 	  model = "Clipboard.obj",
-	  position = { x = 1 , y = 0.9 , z = 0.09 ,},
+	  position = { x = 1.2 , y = 0.9 , z = 0.09 ,},
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = -11.7, z = 0,},
   },
@@ -66,7 +66,7 @@ objects =
   cigarbox = {
   	  texture = "BoxBase.png",
 	  model = "CigarBox.obj",
-	  position = { x = 2.035 , y = 1.074 , z = 0.115 ,},
+	  position = { x = 2.235 , y = 1.074 , z = 0.115 ,},
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = -7, z = 0,},
   },
@@ -78,7 +78,7 @@ objects =
       rotation = { x = 0, y = -25, z = 108,},
   },
   wall = {
-  	  texture = "WallTextureRGB.png",
+  	  texture = "WallTexturegreen2RGB.png",
 	  model = "Wall.obj",
 	  position = { x = 0 , y = 2.7 , z = -2.2,},
 	  scale = { x = 3, y = 3, z = 3,},
