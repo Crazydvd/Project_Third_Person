@@ -22,13 +22,16 @@ class Puzzle : public GameObject
 		std::vector<GameObject*> getObjects();
 
 		Timer* PuzzleTimer;
+		bool Paused = false;
+
 	private:
 		void loadObject(std::string pProperties[2][2], glm::vec3 pVectors[2]);
 		void getPuzzles(lua_State* L);
 		glm::vec3* fill_vector3(lua_State* L);
 		void checkOnePuzzle();
+		void rotateWithKeys();
 
-		bool _completed;
+		bool _completed = false;
 		int _levelIndex;
 		int _victoryDelay;
 		World* _world;

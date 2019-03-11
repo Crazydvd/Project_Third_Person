@@ -6,6 +6,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
+#include "ThirdPerson/UITexture.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
@@ -13,6 +14,7 @@
 #include "mge/materials/LitTextureMaterial.hpp"
 #include "mge/materials/LitMaterial.hpp"
 #include "mge/materials/RenderToTextureMaterial.hpp"
+#include "ThirdPerson/buttons/QuitGameButton.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
@@ -37,10 +39,21 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTex
 
 void Room::Initialize(int levelIndex)
 {
+	// add parent object to world
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
 
+	// add puzzle
 	_roomParent->add(_puzzle);
+
+	// pause menu
+	_gameHud = new UserInterface(_window);
+	_roomParent->add(_gameHud);
+	_gameHud->Paused = true;
+	_gameHud->Add(new UITexture(_window, "pausemenu.png"));
+	_gameHud->AddButton(new QuitGameButton(_window, "Continuepause.png", "continuecelectedpause.png", glm::vec2(150, 250)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Restartpause.png", "restartselectedpause.png", glm::vec2(150, 350)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(150, 500)));
 
 	/* Load LUA */
 	lua_State* L = luaL_newstate();
@@ -63,7 +76,7 @@ void Room::Initialize(int levelIndex)
 	//a light to light the scene!
 	glm::vec3 color(1, 1, 1);
 	AbstractMaterial* lightMaterial = new ColorMaterial(color);
-	light = new Light("light", glm::vec3(0, 4, 0), LightType::SPOT); //0, 4, 0
+	light = new Light("light", glm::vec3(0, 4, .5f), LightType::SPOT); //0, 4, 0
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	//light->translate(glm::vec3(0, 0, 3));
@@ -76,6 +89,14 @@ void Room::Initialize(int levelIndex)
 
 	_roomParent->add(light);
 	LitMaterial::AddLight(light);
+
+	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
+	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
+	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
+
+	AMlight->SetLightIntensity(1.0f);
+	_roomParent->add(AMlight);
+	LitMaterial::AddLight(AMlight);
 }
 
 void Room::update(float pStep)
@@ -83,10 +104,22 @@ void Room::update(float pStep)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		MoveToNextLevel();
+		if(_paused)
+			togglePause();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
 	{
 		MoveToPreviousLevel();
+		if (_paused)
+			togglePause();
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U) && _pauseTimer <= 0)
+	{
+		togglePause();
+	}
+	if (_pauseTimer > 0) {
+		_pauseTimer -= pStep;
 	}
 }
 
@@ -192,6 +225,14 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
+void Room::togglePause() {
+	_pauseTimer = 0.5f;
+
+	_paused = !_paused;
+	_puzzle->Paused = !_puzzle->Paused;
+	_gameHud->Paused = !_gameHud->Paused;
+}
+
 void Room::MoveToPreviousLevel()
 {
 	_levelIndex--;
@@ -212,13 +253,16 @@ void Room::MoveToNextLevel()
 	_roomParent->add(_puzzle);
 }
 
-
 void Room::_render()
 {
 	glm::mat4 lightTransform = light->getWorldTransform();
 	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
 
 	_puzzle->PuzzleTimer->draw();
+	_paused;
+	if (_paused) {
+		_gameHud->draw();
+	}
 }
 
 

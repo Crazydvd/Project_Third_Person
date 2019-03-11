@@ -22,6 +22,8 @@ public:
 	void draw();
 	virtual void update(float pStep);
 
+	bool Paused = false;
+
 private:
 	sf::RenderWindow * _window;
 	std::vector<UITexture*> _objects;

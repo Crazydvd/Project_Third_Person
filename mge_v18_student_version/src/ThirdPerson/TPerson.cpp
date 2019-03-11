@@ -38,7 +38,7 @@ TPerson::TPerson() :AbstractGame(), _hud(0)
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/National_Anthem_of_the_USSR.ogg"); //Use lines like this instead.
 	//audio->SetVolume(50.0f);
 	audio->SetLoop(true);
-	audio->Play();
+	//audio->Play();
 }
 
 void TPerson::initialize()
