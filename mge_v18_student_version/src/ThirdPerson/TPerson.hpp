@@ -45,7 +45,7 @@ protected:
 
 private:
 	Room* room;
-	RenderToTexture* renderToTexture;
+	RenderToTexture* _renderToTexture;
 	DebugHud* _hud;                   //hud display
 	UITexture* _texture;
 	Camera* camera;

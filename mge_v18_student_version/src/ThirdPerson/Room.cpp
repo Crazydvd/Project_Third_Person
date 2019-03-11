@@ -76,7 +76,15 @@ void Room::loadRoom() {
 	_roomParent->add(light);
 	LitMaterial::AddLight(light);
 
-<<<<<<< HEAD
+	//Second light
+	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
+	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
+	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
+
+	AMlight->SetLightIntensity(1.0f);
+	_roomParent->add(AMlight);
+	LitMaterial::AddLight(AMlight);
+
 	// pause menu
 	_gameHud = new UserInterface(_window);
 	_roomParent->add(_gameHud);
@@ -100,15 +108,6 @@ void Room::Deinitialize() {
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
 	_active = false;
-=======
-	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
-	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
-	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
-
-	AMlight->SetLightIntensity(1.0f);
-	_roomParent->add(AMlight);
-	LitMaterial::AddLight(AMlight);
->>>>>>> 192602dc23776345d9dd10214e111fcea1394692
 }
 
 void Room::update(float pStep)
