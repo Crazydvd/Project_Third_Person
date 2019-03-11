@@ -36,11 +36,7 @@ TPerson::TPerson() :AbstractGame(), _hud(0)
 {
 	//Audio* audio = new Audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Don't do this, for more information ask Daniel.
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Use lines like this instead.
-<<<<<<< HEAD
-	audio->SetLoop(true);
-=======
 	//audio->SetLoop(true);
->>>>>>> f3ef27243278a6ce1a9b709594f3e609441cb250
 	//audio->Play();
 }
 
