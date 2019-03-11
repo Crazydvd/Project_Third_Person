@@ -1,43 +1,54 @@
-<<<<<<< HEAD
-﻿  MenuButton.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  Puzzle.cpp
-<<<<<<< HEAD
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(174): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-=======
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
-          with
-          [
-              T=float
-          ]
-<<<<<<< HEAD
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(184): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-=======
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
-          with
-          [
-              T=float
-          ]
-<<<<<<< HEAD
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(231): warning C4018: '<': signed/unsigned mismatch
-  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-  RenderToTexture.cpp
-  Room.cpp
-  TPerson.cpp
-  UserInterface.cpp
+﻿  main.cpp
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  LitMaterial.cpp
+  LitTextureMaterial.cpp
+  RenderToTextureMaterial.cpp
+  TextureMaterial.cpp
+  Generating Code...
+  Compiling...
+  DebugHud.cpp
+  Audio.cpp
   ContinueButton.cpp
+  LevelSelectButton.cpp
   MenuButton.cpp
   NewGameButton.cpp
+  QuitGameButton.cpp
   RestartGameButton.cpp
   ResumeGameButton.cpp
   ReturnToMenuButton.cpp
-  main.cpp
-  MouseRotatingBehaviour.cpp
+  UITexture.cpp
+  Puzzle.cpp
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(243): warning C4018: '<': signed/unsigned mismatch
+  Ray.cpp
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+  RenderToTexture.cpp
+  Room.cpp
+  Timer.cpp
+  TPerson.cpp
+  UserInterface.cpp
   Generating Code...
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
->>>>>>> 885654a27c7f04acc2064633cf244550a8b4158c
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
