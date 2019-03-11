@@ -25,7 +25,7 @@ void RenderToTexture::setTPerson(TPerson* pTPerson)
 void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial* pRenderMaterial, glm::mat4 pTransform)
 {
 	Camera* camera = _tPerson->GetMainCamera();
-	glm::mat4 camTransform = camera->getWorldTransform();
+	glm::mat4 camTransform = camera->getTransform();
 	bindFramebuffer();
 	glClearColor(1, 1, 1, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -33,6 +33,7 @@ void RenderToTexture::Render(std::vector<GameObject*> pObjects, AbstractMaterial
 	camera->setTransform(pTransform);
 	float cameraFOV = camera->GetFOV();
 	camera->SetFOV(30.0f);
+	camera->rotate(glm::radians(180.0f), glm::vec3(1, 0, 0));
 	Renderer* renderer = _tPerson->getRenderer();
 	World* world = _tPerson->GetWorld();
 
