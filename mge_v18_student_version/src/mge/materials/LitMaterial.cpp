@@ -99,7 +99,7 @@ void LitMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatr
 
 	//TODO: change this so you actually use the lights array from World class
 	//pass in the light properties
-	for (int i = 0; i < LitMaterial::_lights.size(); i++)
+	for (size_t i = 0; i < LitMaterial::_lights.size(); i++)
 	{
 		if (!_overrideSpecularLight)
 		{

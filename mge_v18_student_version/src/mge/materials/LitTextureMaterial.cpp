@@ -51,6 +51,17 @@ void LitTextureMaterial::setDiffuseTexture(Texture* pDiffuseTexture)
 	_diffuseTexture = pDiffuseTexture;
 }
 
+void LitTextureMaterial::setSpecularColor(glm::vec3 pSpecularColor)
+{
+	_specularColor = glm::vec3(pSpecularColor);
+	setOverrideSpecularColor(true);
+}
+
+void LitTextureMaterial::setOverrideSpecularColor(bool pOverride)
+{
+	_overrideSpecularLight = pOverride;
+}
+
 void LitTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix)
 {
 	if (!_diffuseTexture) return;
@@ -70,19 +81,16 @@ void LitTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pMo
 	//tell the shader the texture slot for the diffuse texture is slot 0
 	glUniform1i(_uDiffuseTexture, 0);
 
-	/**/
 	//set the material color
-	glUniform3fv(_shader->getUniformLocation("diffuseColor"), 1, glm::value_ptr(_diffuseColor));
 	glUniform1i(_shader->getUniformLocation("shininess"), _shininess);
 	glUniform1i(_shader->getUniformLocation("lightCount"), LitMaterial::GetLightCount());
-
 
 	glm::vec3 specularColor = _specularColor;
 
 	std::vector<Light*> _lights = LitMaterial::getLights();
 
 	//pass in the light properties
-	for (int i = 0; i < _lights.size(); i++)
+	for (size_t i = 0; i < _lights.size(); i++)
 	{
 		if (!_overrideSpecularLight)
 		{
@@ -109,7 +117,6 @@ void LitTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pMo
 	glUniformMatrix4fv(_shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
 	glUniformMatrix4fv(_shader->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
 	glUniformMatrix4fv(_shader->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
-	/**/
 
 	//now inform mesh of where to stream its data
 	pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);

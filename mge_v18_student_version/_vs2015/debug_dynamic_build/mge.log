@@ -1,4 +1,51 @@
+<<<<<<< HEAD
 ﻿  TPerson.cpp
 c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\tperson.cpp(240): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
 c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\tperson.cpp(250): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  Puzzle.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(174): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(184): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  RenderToTexture.cpp
+  Room.cpp
+  TPerson.cpp
+  ResumeGameButton.cpp
+  main.cpp
+  MouseRotatingBehaviour.cpp
+  Generating Code...
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+﻿  TPerson.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  TPerson.cpp
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+>>>>>>> 3b81d33baa4ce30dc9b60abb9f11e0d6af4e920d
+﻿  main.cpp
+  TPerson.cpp
+  Generating Code...
+  LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
+<<<<<<< HEAD
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+  mge.vcxproj -> D:\DESKTOP STORAGE\Uni 2\Third Person Repo\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> f3ef27243278a6ce1a9b709594f3e609441cb250
+>>>>>>> e4c5faaabdd6520038777f5e74ce0fb7991435ff
+>>>>>>> 3b81d33baa4ce30dc9b60abb9f11e0d6af4e920d
+>>>>>>> e0b9e4565df5bd2bf1ff4ed0238f6a514eb9887e
+>>>>>>> 5970939f33afa1a1595745e8e65561ef9943696c

@@ -23,14 +23,12 @@ UserInterface::UserInterface(sf::RenderWindow * aWindow, std::string pName, glm:
 	ContinueButton* continueButton = new ContinueButton(_window, "continue.png", "Continue_selected.png", glm::vec2(100, 300));
 	LevelSelectButton* levelSelect = new LevelSelectButton(_window, "level_select.png", "level_select_selected.png", glm::vec2(100, 620));
 	QuitGameButton* quitGame = new QuitGameButton(_window, "quitpin.png", "quitselected.png", glm::vec2(550, 700));
-	//this->Add(corkBoard);
-	//this->AddButton(newGame);
-	//this->AddButton(continueButton);
-	//this->AddButton(levelSelect);
-	//this->AddButton(quitGame);
 }
 
 void UserInterface::update(float pStep) {
+	if (Paused)
+		return;
+
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
 	//check for hovering over objects
 	for (int i = _buttons.size() - 1; i > -1; i--) {

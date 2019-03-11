@@ -20,6 +20,8 @@ class LitTextureMaterial : public AbstractMaterial
         virtual void render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
+		void setSpecularColor(glm::vec3 pSpecularColor);
+		void setOverrideSpecularColor(bool pOverride);
 
     protected:
     private:
@@ -37,7 +39,6 @@ class LitTextureMaterial : public AbstractMaterial
         Texture* _diffuseTexture;
 
 		//this one is unique per instance of color material
-		glm::vec3 _diffuseColor;
 		glm::vec3 _ambientColor;
 		glm::vec3 _specularColor;
 

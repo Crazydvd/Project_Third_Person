@@ -9,10 +9,11 @@
 class MouseRotatingBehaviour : public AbstractBehaviour
 {
 	public:
-		MouseRotatingBehaviour(sf::RenderWindow* pWindow, World* pWorld);
+		MouseRotatingBehaviour(sf::RenderWindow* pWindow, World* pWorld, std::vector<GameObject*> pPuzzleObject);
 		virtual void update(float pStep);
 
 	private:
+		std::vector<GameObject*> _puzzleObjects;
 		float _rotation;
 		glm::mat4 _oldRotation;
 		sf::Vector2i _oldPos;

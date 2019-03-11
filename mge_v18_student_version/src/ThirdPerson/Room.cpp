@@ -6,36 +6,54 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
+#include "ThirdPerson/UITexture.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
+#include "mge/materials/LitTextureMaterial.hpp"
+#include "mge/materials/LitMaterial.hpp"
+#include "mge/materials/RenderToTextureMaterial.hpp"
+#include "ThirdPerson/buttons/QuitGameButton.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
 #include "ThirdPerson/TPerson.hpp"
-#include "ThirdPerson/Puzzle.hpp"
 
 #include "ThirdPerson/RenderToTexture.hpp"
 #include "Room.hpp"
 
 GameObject* _sphere;
 
-Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, int pIndex, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition), _renderToTexture(pRender)
+Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
+	: GameObject(pName, pPosition), _renderToTexture(pRender), _window(pWindow)
 {
-	_timer = new Timer(pWindow);
 	_game = pGame;
 	_roomWorld = pWorld;
-	_puzzle = new Puzzle(pWindow, pWorld);
+	_puzzle = new Puzzle(pWindow, pWorld, _levelIndex);
+	_blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
+	_levelIndex = 1;
 
-	Initialize(pIndex);
+	Initialize(_levelIndex);
 }
 
 void Room::Initialize(int levelIndex)
 {
+	// add parent object to world
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
+
+	// add puzzle
+	_roomParent->add(_puzzle);
+
+	// pause menu
+	_gameHud = new UserInterface(_window);
+	_roomParent->add(_gameHud);
+	_gameHud->Paused = true;
+	_gameHud->Add(new UITexture(_window, "pausemenu.png"));
+	_gameHud->AddButton(new QuitGameButton(_window, "Continuepause.png", "continuecelectedpause.png", glm::vec2(150, 250)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Restartpause.png", "restartselectedpause.png", glm::vec2(150, 350)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(150, 500)));
 
 	/* Load LUA */
 	lua_State* L = luaL_newstate();
@@ -51,67 +69,49 @@ void Room::Initialize(int levelIndex)
 
 	print_table(L);
 
-	//lua_close(L);
-	
-	//TODO: Replace this by make a new "puzzle object" class and load the objects in there
-	luaL_loadfile(L, ("../src/ThirdPerson/level" + std::to_string(levelIndex) + ".lua").c_str());
-
-	//puts(lua_tostring(L, -1));
-
-	lua_call(L, 0, 0);
-
-	lua_getglobal(L, "model");
-	std::string model = lua_tostring(L, -1);
-
-	lua_getglobal(L, "texture");
-	std::string texture = lua_tostring(L, -1);
-
 	lua_close(L);
 
-	//GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
 
-	////load a bunch of meshes we will be using throughout this demo
-	////each mesh only has to be loaded once, but can be used multiple times:
-	////F is flat shaded, S is smooth shaded (normals aligned or not), check the models folder!
-	//Mesh* planeMeshDefault = Mesh::load(config::THIRDPERSON_MODEL_PATH + "plane.obj");
-	//Mesh* sphereMeshS = Mesh::load(config::THIRDPERSON_MODEL_PATH + model);
 
-	////MATERIALS
+	//a light to light the scene!
+	glm::vec3 color(1, 1, 1);
+	AbstractMaterial* lightMaterial = new ColorMaterial(color);
+	light = new Light("light", glm::vec3(0, 4, 0), LightType::SPOT); //0, 4, 0
+	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
+	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
+	//light->translate(glm::vec3(0, 0, 3));
+	light->SetLightIntensity(2);
+	light->setAmbientContribution(0.2f);
+	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
+	light->setMesh(mesh);
+	light->setMaterial(lightMaterial);
+	light->SetLightColor(color); //1, 0, 0.8f
 
-	////create some materials to display the cube, the plane and the light
-	//AbstractMaterial* runicStoneMaterial = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + texture));
-
-	////add the floor
-	//GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	//plane->scale(glm::vec3(5, 5, 5));
-	//plane->setMesh(planeMeshDefault);
-	//plane->setMaterial(runicStoneMaterial);
-	//_roomParent->add(plane);
-
-	////add a spinning sphere
-	//_sphere = new GameObject("sphere", glm::vec3(0, 0, 0));
-	//_sphere->scale(glm::vec3(2.5, 2.5, 2.5));
-	//_sphere->setMesh(sphereMeshS);
-	//_sphere->setMaterial(runicStoneMaterial);
-	//_sphere->setBehaviour(new RotatingBehaviour());
-	//_roomParent->add(_sphere);
-	
+	_roomParent->add(light);
+	LitMaterial::AddLight(light);
 }
 
 void Room::update(float pStep)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
-		_game->MoveToNextLevel();
+		MoveToNextLevel();
+		if(_paused)
+			togglePause();
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) 
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
 	{
-		_game->MoveToPreviousLevel();
+		MoveToPreviousLevel();
+		if (_paused)
+			togglePause();
 	}
-	else 
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U) && _pauseTimer <= 0)
 	{
-		// Set timer
-		_timer->SetTime(_timer->GetTime() + pStep);
+		togglePause();
+	}
+	if (_pauseTimer > 0) {
+		_pauseTimer -= pStep;
 	}
 }
 
@@ -122,9 +122,9 @@ void Room::print_table(lua_State *L)
 	glm::vec3 vectors[3] = {glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1}};
 	int index = 0;
 
-	while (lua_next(L, -2) != 0) 
+	while (lua_next(L, -2) != 0)
 	{
-		if (lua_isstring(L, -1)) 
+		if (lua_isstring(L, -1))
 		{
 			params[index][0] = lua_tostring(L, -2);
 			params[index][1] = lua_tostring(L, -1);
@@ -134,22 +134,22 @@ void Room::print_table(lua_State *L)
 			printf("%s = %d", lua_tostring(L, -2), (int)lua_tonumber(L, -1));
 		}
 		else if (lua_istable(L, -1)) {
-			if ((std::string)lua_tostring(L, -2) == "position") 
+			if ((std::string)lua_tostring(L, -2) == "position")
 			{
 				glm::vec3* position = fill_vector3(L);
 				vectors[0] = *position;
 			}
-			else if ((std::string)lua_tostring(L, -2) == "scale") 
+			else if ((std::string)lua_tostring(L, -2) == "scale")
 			{
 				glm::vec3* scale = fill_vector3(L);
 				vectors[1] = *scale;
 			}
-			else if ((std::string)lua_tostring(L, -2) == "rotation") 
+			else if ((std::string)lua_tostring(L, -2) == "rotation")
 			{
 				glm::vec3* rotation = fill_vector3(L);
 				vectors[2] = *rotation;
 			}
-			else 
+			else
 			{
 				print_table(L);
 			}
@@ -157,7 +157,7 @@ void Room::print_table(lua_State *L)
 		lua_pop(L, 1);
 
 	}
-	if (params[0][0] != "") 
+	if (params[0][0] != "")
 	{
 		addObject(params, vectors);
 	}
@@ -169,19 +169,19 @@ glm::vec3* Room::fill_vector3(lua_State *L)
 	glm::vec3* vector = new glm::vec3();
 	int index = 0;
 
-	while (lua_next(L, -2) != 0) 
+	while (lua_next(L, -2) != 0)
 	{
-		if (lua_isnumber(L, -1)) 
+		if (lua_isnumber(L, -1))
 		{
-			if ((std::string)lua_tostring(L, -2) == "x") 
+			if ((std::string)lua_tostring(L, -2) == "x")
 			{
 				vector->x = (float)lua_tonumber(L, -1);
 			}
-			else if ((std::string)lua_tostring(L, -2) == "y") 
+			else if ((std::string)lua_tostring(L, -2) == "y")
 			{
 				vector->y = (float)lua_tonumber(L, -1);
 			}
-			else if ((std::string)lua_tostring(L, -2) == "z") 
+			else if ((std::string)lua_tostring(L, -2) == "z")
 			{
 				vector->z = (float)lua_tonumber(L, -1);
 			}
@@ -198,7 +198,15 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	GameObject* object = new GameObject("object", pVectors[0]);
 
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
-	AbstractMaterial* material = new TextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]));
+	AbstractMaterial* material;
+	if (pProperties[1][1] == "shadow") 
+	{
+		material = new RenderToTextureMaterial(_renderToTexture->getTexture()); //Very important
+	}
+	else 
+	{
+		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]), glm::vec3(0,0,0));
+	}
 
 	object->setMesh(mesh);
 	object->setMaterial(material);
@@ -209,9 +217,44 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
+void Room::togglePause() {
+	_pauseTimer = 0.5f;
+
+	_paused = !_paused;
+	_puzzle->Paused = !_puzzle->Paused;
+	_gameHud->Paused = !_gameHud->Paused;
+}
+
+void Room::MoveToPreviousLevel()
+{
+	_levelIndex--;
+	if (_levelIndex < 1) { _levelIndex = 1; return; }
+	_roomParent->remove(_puzzle);
+	delete(_puzzle);
+	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_world->add(_puzzle);
+}
+
+void Room::MoveToNextLevel()
+{
+	_levelIndex++;
+	if (_levelIndex > 10) { _levelIndex = 10; return; }
+	_roomParent->remove(_puzzle);
+	delete(_puzzle);
+	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_roomParent->add(_puzzle);
+}
+
 void Room::_render()
 {
-	_timer->draw();
+	glm::mat4 lightTransform = light->getWorldTransform();
+	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
+
+	_puzzle->PuzzleTimer->draw();
+	_paused;
+	if (_paused) {
+		_gameHud->draw();
+	}
 }
 
 

@@ -9,5 +9,6 @@ void main( void )
 {
 	vec4 color = texture(diffuseTexture,texCoord);
 	color.a = 1.0;
+	
 	fragment_color = color;
 }

@@ -49,7 +49,7 @@ private:
 	glm::vec3 _color = glm::vec3(1, 0.96f, 0.84f); //default unity light colour
 	glm::vec3& _colour = _color; //same as _color;
 	float _intensity = 1;
-	float _ambientContribution = 1;
+	float _ambientContribution = 0;
 
 	float _coneAngle = 30.0f;
 	float _fallOffAngle = 10.0f;

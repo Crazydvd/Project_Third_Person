@@ -1,15 +1,13 @@
 #include "glm.hpp"
 
-#include "TextureMaterial.hpp"
+#include "RenderToTextureMaterial.hpp"
+
 #include "mge/core/Texture.hpp"
 #include "mge/core/Light.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/ShaderProgram.hpp"
-#include "mge/materials/LitTextureMaterial.hpp"
-#include "mge/materials/LitMaterial.hpp"
-#include "mge/materials/RenderToTextureMaterial.hpp"
 #include "ThirdPerson/config.hpp"
 
 ShaderProgram* RenderToTextureMaterial::_shader = NULL;
@@ -21,7 +19,7 @@ GLint RenderToTextureMaterial::_aVertex = 0;
 GLint RenderToTextureMaterial::_aNormal = 0;
 GLint RenderToTextureMaterial::_aUV = 0;
 
-RenderToTextureMaterial::RenderToTextureMaterial(Texture* pDiffuseTexture, Texture* pRenderTexture, glm::vec3 pSpecularColor) :_diffuseTexture(pDiffuseTexture), _specularColor(pSpecularColor)
+RenderToTextureMaterial::RenderToTextureMaterial(Texture * pDiffuseTexture) :_diffuseTexture(pDiffuseTexture)
 {
 	_lazyInitializeShader();
 }
@@ -30,11 +28,10 @@ RenderToTextureMaterial::~RenderToTextureMaterial() {}
 
 void RenderToTextureMaterial::_lazyInitializeShader()
 {
-	if (!_shader) 
-	{
+	if (!_shader) {
 		_shader = new ShaderProgram();
-		_shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH + "litRenderToTexture.vs");
-		_shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH + "litRenderToTexture.fs");
+		_shader->addShader(GL_VERTEX_SHADER, config::THIRDPERSON_SHADER_PATH + "RenderToTexture.vs");
+		_shader->addShader(GL_FRAGMENT_SHADER, config::THIRDPERSON_SHADER_PATH + "RenderToTexture.fs");
 		_shader->finalize();
 
 		//cache all the uniform and attribute indexes
@@ -58,12 +55,6 @@ void RenderToTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4
 
 	_shader->use();
 
-	//Print the number of lights in the scene and the position of the first light.
-	//It is not used, but this demo is just meant to show you THAT materials can access the lights in a world
-	//if (pWorld->getLightCount() > 0) {
-	//    std::cout << "TextureMaterial has discovered light is at position:" << pWorld->getLightAt(0)->getLocalPosition() << std::endl;
-	//}
-
 	//setup texture slot 0
 	glActiveTexture(GL_TEXTURE0);
 	//bind the texture to the current active slot
@@ -71,46 +62,9 @@ void RenderToTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4
 	//tell the shader the texture slot for the diffuse texture is slot 0
 	glUniform1i(_uDiffuseTexture, 0);
 
-	/**/
-	//set the material color
-	glUniform3fv(_shader->getUniformLocation("diffuseColor"), 1, glm::value_ptr(_diffuseColor));
-	glUniform1i(_shader->getUniformLocation("shininess"), _shininess);
-	glUniform1i(_shader->getUniformLocation("lightCount"), LitMaterial::GetLightCount());
-
-
-	glm::vec3 specularColor = _specularColor;
-
-	std::vector<Light*> _lights = LitMaterial::getLights();
-
-	//pass in the light properties
-	for (int i = 0; i < _lights.size(); i++)
-	{
-		if (!_overrideSpecularLight)
-		{
-			specularColor = _lights[i]->GetColor();
-		}
-
-		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].specularColor"), 1, glm::value_ptr(specularColor));
-
-		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightColor"), 1, glm::value_ptr(_lights[i]->GetColor()));
-		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].ambientLightColor"), 1, glm::value_ptr(_lights[i]->GetAmbientColor()));
-		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightPosition"), 1, glm::value_ptr(_lights[i]->GetPosition()));
-		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightForward"), 1, glm::value_ptr(_lights[i]->GetForwardDirection()));
-		glUniform1i(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightType"), _lights[i]->GetType());
-
-		//spotLight properties
-		if (_lights[i]->GetType() == LightType::SPOT)
-		{
-			glUniform1f(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].coneAngle"), _lights[i]->GetConeAngle());
-			glUniform1f(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].fallOffAngle"), _lights[i]->GetFallOffAngle());
-		}
-	}
-
-	//pass in all MVP matrices separately
-	glUniformMatrix4fv(_shader->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
-	glUniformMatrix4fv(_shader->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
-	glUniformMatrix4fv(_shader->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
-	/**/
+	//pass in a precalculate mvp matrix (see texture material for the opposite)
+	glm::mat4 mvpMatrix = pProjectionMatrix * pViewMatrix * pModelMatrix;
+	glUniformMatrix4fv(_uMVPMatrix, 1, GL_FALSE, glm::value_ptr(mvpMatrix));
 
 	//now inform mesh of where to stream its data
 	pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);

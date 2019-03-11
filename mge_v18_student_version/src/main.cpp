@@ -18,10 +18,11 @@
  * All documentation is contained within the HEADER files, not the CPP files if possible.
  *
  */
+
 int main()
 {
+	std::srand((unsigned int)time(NULL));
     std::cout << "Starting Game" << std::endl;
-
     AbstractGame* game = new TPerson();
     game->initialize();
     game->run();
@@ -30,6 +31,3 @@ int main()
 
     return 0;
 }
-
-
-
