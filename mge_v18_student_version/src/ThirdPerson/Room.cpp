@@ -68,7 +68,7 @@ void Room::Initialize(int levelIndex)
 
 	lua_close(L);
 
-	GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
+	//GameObject* puzzleObject = _puzzle->LoadObject(model, texture /*, scale*/);
 
 	////load a bunch of meshes we will be using throughout this demo
 	////each mesh only has to be loaded once, but can be used multiple times:

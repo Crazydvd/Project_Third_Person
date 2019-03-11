@@ -106,7 +106,7 @@ void TPerson::_initializeScene()
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, renderToTexture);
 	_world->add(room);
 
 	//a light to light the scene!
@@ -158,7 +158,7 @@ void TPerson::_initializeScene()
 	puzzleObject1 = new GameObject("puzzleObject1", glm::vec3(0, 2, 0));
 	puzzleObject1->scale(glm::vec3(0.1, 0.1, 0.1));
 	puzzleObject1->rotate(glm::radians(95.0f), glm::vec3(1, 0.5f, 0.6f));
-	puzzleObject1->setMesh(syringeMesh);
+	puzzleObject1->setMesh(scissorMesh);
 	puzzleObject1->setMaterial(umbrellaMaterial);
 	puzzleObject1->setBehaviour(new MouseRotatingBehaviour(_window, _world));
 	_world->add(puzzleObject1);
@@ -202,24 +202,6 @@ void TPerson::_render()
 		_checkOnePuzzle();
 	}
 
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-	{
-		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(1, 0, 0));
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-	{
-		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(0, 1, 0));
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-	{
-		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(0, 0, 1));
-	}
 }
 
 void TPerson::_updateHud()
@@ -234,38 +216,61 @@ void TPerson::_updateHud()
 
 void TPerson::_checkOnePuzzle()
 {
-	glm::vec3 rotation = puzzleObject1->getWorldRotation();// -glm::vec3(solutionDegreesX, solutionDegreesY, solutionDegreesZ);
-
-	//std::cout << tolerance << std::endl;
-	//std::cout << solutionDegreesX << ", ";
-	//std::cout << solutionDegreesY << ", ";
-	//std::cout << solutionDegreesZ << std::endl;
-	std::cout << rotation.x << ", ";
-	std::cout << rotation.y << ", ";
-	std::cout << rotation.z << std::endl;
-
-
-	if (rotation.y <= 8 || rotation.y >= 172)
+	glm::vec3 rotation = puzzleObject1->getWorldRotation();
+	
+	//Check if we in solution range
+	if ((rotation.y <= 8 || rotation.y >= 172) && !completed)
 	{
-		std::cout << "BITCH LASAGNA" << std::endl;
-		puzzleObject1->setBehaviour(new EmptyBehaviour());
+		//puzzleObject1->setBehaviour(new EmptyBehaviour());
 
 		completed = true;
 	}
 
+	//Slowly rotate to perfect rotation and put a win screen
 	if (completed)
 	{
+		//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
+		if (rotation.y >= 0.1 && rotation.y <= 179.9)
+		{
+			glm::mat4 newMatrix = puzzleObject1->getTransform();
 
-		/*if (rotation.y >= 5 && rotation.y <= 175)
-		{*/
-			glm::vec3 yAxis = puzzleObject1->getTransform()[1];
-			glm::vec3 diffirenceVec = yAxis - glm::vec3(0, 1, 0);
-			puzzleObject1->rotate(glm::radians(0.3f), glm::vec3(diffirenceVec));
-			//puzzleObject1->setWorldRotation(glm::vec3(0, 0, 0));
+			//x
+			if (newMatrix[1].x != 0)
+			{
+				newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0001;
+			}
+			else
+			{
+				newMatrix[1] = glm::vec4(0, newMatrix[1].y, newMatrix[1].z, 0);
+			}
 
-		/*}
+			//z
+			if (newMatrix[1].z != 0)
+			{
+				newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0001;
+			}
+			else
+			{
+				newMatrix[1] = glm::vec4(newMatrix[1].x, newMatrix[1].y, 0, 0);
+			}
+					
+			//Orthonormolize the matrix according to Y-axis
+			newMatrix[1] = glm::normalize(newMatrix[1]) * glm::length(puzzleObject1->getTransform()[1]);
+			glm::mat3 normolizedMatrix = newMatrix;
+
+			normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * glm::length(newMatrix[0]);
+			newMatrix[0] = glm::vec4(normolizedMatrix[0].x, normolizedMatrix[0].y, normolizedMatrix[0].z, 0);
+
+			normolizedMatrix[2] = glm::orthonormalize(normolizedMatrix[2], normolizedMatrix[1]) * glm::length(newMatrix[2]);
+			newMatrix[2] = glm::vec4(normolizedMatrix[2].x, normolizedMatrix[2].y, normolizedMatrix[2].z, 0);
+
+			newMatrix[3] = puzzleObject1->getTransform()[3];					
+
+			puzzleObject1->setTransform(newMatrix);	
+		}
+		//Put a winscreen
 		else
-		{*/
+		{
 			++victoryDelay;
 
 			if (victoryDelay >= 240)
@@ -275,10 +280,40 @@ void TPerson::_checkOnePuzzle()
 				_userInterface->Add(winScreen);
 
 				victoryDelay = 0;
-				completed = false;
+				//completed = false;
 			}
-		//}
+		}
 	}
+	else
+	{
+		_rotateWithKeys();
+	}
+}
+
+void TPerson::_rotateWithKeys()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		puzzleObject1->setWorldRotation(glm::vec3(0, 180, 0));
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		puzzleObject1->rotate(glm::radians(-1.0f), glm::vec3(1, 0, 0));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(1, 0, 0));
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		puzzleObject1->rotate(glm::radians(-1.0f), glm::vec3(0, 1, 0));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(0, 1, 0));
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		puzzleObject1->rotate(glm::radians(-1.0f), glm::vec3(0, 0, 1));
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(0, 0, 1));
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		puzzleObject1->rotate(glm::radians(1.0f), glm::vec3(1, 0, 1));
+
 }
 
 void TPerson::MoveToPreviousLevel()
@@ -287,7 +322,7 @@ void TPerson::MoveToPreviousLevel()
 	if (_levelIndex < 1) { _levelIndex = 1; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, renderToTexture);
 	_world->add(room);
 }
 
@@ -297,7 +332,7 @@ void TPerson::MoveToNextLevel()
 	if (_levelIndex > 2) { _levelIndex = 2; return; }
 	_world->remove(room);
 	delete(room);
-	room = new Room(this, _world, _window, _levelIndex);
+	room = new Room(this, _world, _window, _levelIndex, renderToTexture);
 	_world->add(room);
 }
 
