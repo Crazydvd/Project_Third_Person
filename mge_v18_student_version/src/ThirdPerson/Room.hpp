@@ -10,6 +10,7 @@
 #include "mge/core/Light.hpp"
 #include "ThirdPerson/Timer.hpp"
 #include "ThirdPerson/Puzzle.hpp"
+#include "ThirdPerson/UserInterface.hpp"
 
 class TPerson;
 class RenderToTexture;
@@ -29,9 +30,11 @@ private:
 	void addObject(std::string pProperties[2][2], glm::vec3 pVectors[3]);
 	void Initialize(int levelIndex);
 
+	void togglePause();
 	void MoveToNextLevel();
 	void MoveToPreviousLevel();
 
+	UserInterface* _gameHud;
 	sf::RenderWindow* _window;
 	Puzzle* _puzzle;
 	RenderToTexture* _renderToTexture;
@@ -41,6 +44,8 @@ private:
 	GameObject* _roomParent;
 	int _levelIndex = 1;
 	AbstractMaterial* _blackMaterial;
+	bool _paused = false;
+	float _pauseTimer = 0;
 };
 
 #endif

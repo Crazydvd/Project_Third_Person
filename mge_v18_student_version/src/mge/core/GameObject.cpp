@@ -2,6 +2,8 @@
 #include "GameObject.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
 
+#include <glm/gtx/rotate_vector.hpp>
+
 GameObject::GameObject(const std::string& pName, const glm::vec3& pPosition)
 	: _name(pName), _transform(glm::translate(pPosition)), _parent(nullptr), _children(),
 	_mesh(nullptr), _behaviour(nullptr), _material(nullptr), _world(nullptr)
@@ -175,7 +177,7 @@ glm::vec3 GameObject::getWorldRotation() const
 
 	dot = glm::dot(glm::normalize(getTransform()[2]), glm::vec4(0, 0, 1, 1));
 	float degreesZ = glm::degrees(glm::acos(dot));
-
+	
 	return glm::vec3(degreesX, degreesY, degreesZ);
 }
 

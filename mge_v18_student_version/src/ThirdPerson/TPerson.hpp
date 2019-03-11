@@ -12,6 +12,7 @@ class DebugHud;
 class Camera;
 class Light;
 
+
 /**
  * An example subclass of AbstractGame showing how we can setup a scene.
  */
@@ -44,7 +45,7 @@ protected:
 private:
 	UserInterface* _userInterface;
 	Room* room;
-	RenderToTexture* _renderToTexture;
+	RenderToTexture* renderToTexture;
 	DebugHud* _hud;                   //hud display
 	UITexture* _texture;
 	Camera* camera;
@@ -60,8 +61,10 @@ private:
 	bool completed = false;
 	float victoryDelay = 0;
 
+
 	void _updateHud();
 	void _checkOnePuzzle();
+	void _rotateWithKeys();
 
 	TPerson(const TPerson&);
 	TPerson& operator=(const TPerson&);
