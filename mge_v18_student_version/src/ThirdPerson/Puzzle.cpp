@@ -23,7 +23,7 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 
 	lua_getglobal(L, "puzzle");
 
-	getPuzzles(L);
+	getPuzzles(L, "Puzzle");
 
 	lua_close(L);
 
@@ -32,19 +32,26 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	}
 }
 
-void Puzzle::loadObject(std::string pProperties[2][2], glm::vec3 pVectors[2])
+void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3])
 {
 	GameObject* object = new GameObject("puzzleObject", pVectors[0]);
 	object->setMesh(Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]));
 	object->scale(pVectors[1]);
 	object->setMaterial(new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1])));
-	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
-	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
-	object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
+
 
 	this->add(object);
-
-	_puzzleObjects.push_back(object);
+	if (pName != "polaroid") {
+		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
+		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
+		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
+		_puzzleObjects.push_back(object);
+	}
+	else {
+		object->rotate(glm::radians(pVectors[2].x), glm::vec3(1.0f, 0, 0));
+		object->rotate(glm::radians(pVectors[2].y), glm::vec3(0, 1.0f, 0));
+		object->rotate(glm::radians(pVectors[2].z), glm::vec3(0, 0, 1.0f));
+	}
 }
 
 void Puzzle::update(float pStep) {
@@ -70,7 +77,7 @@ void Puzzle::update(float pStep) {
 }
 
 
-void Puzzle::getPuzzles(lua_State *L)
+void Puzzle::getPuzzles(lua_State *L, std::string name)
 {
 	lua_pushnil(L);
 	std::string params[2][2];
@@ -99,9 +106,14 @@ void Puzzle::getPuzzles(lua_State *L)
 				glm::vec3* scale = fill_vector3(L);
 				vectors[1] = *scale;
 			}
+			else if ((std::string)lua_tostring(L, -2) == "rotation")
+			{
+				glm::vec3* rotation = fill_vector3(L);
+				vectors[2] = *rotation;
+			}
 			else
 			{
-				getPuzzles(L);
+				getPuzzles(L, lua_tostring(L, -2));
 			}
 		}
 		lua_pop(L, 1);
@@ -109,7 +121,7 @@ void Puzzle::getPuzzles(lua_State *L)
 	}
 	if (params[0][0] != "")
 	{
-		loadObject(params, vectors);
+		loadObject(name, params, vectors);
 	}
 }
 
@@ -155,7 +167,7 @@ void Puzzle::checkOnePuzzle()
 	if ((rotation.y <= 8 || rotation.y >= 172) && !_completed)
 	{
 		std::cout << "BITCH LASAGNA" << std::endl;
-		_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
+		//_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
 
 		_completed = true;
 	}
@@ -227,7 +239,12 @@ void Puzzle::checkOnePuzzle()
 void Puzzle::rotateWithKeys()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-		_puzzleObjects[0]->setWorldRotation(glm::vec3(0, 180, 0));
+	{
+		for (int i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setWorldRotation(glm::vec3(0, 0, 0));
+		}
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		_puzzleObjects[0]->rotate(glm::radians(-1.0f), glm::vec3(1, 0, 0));

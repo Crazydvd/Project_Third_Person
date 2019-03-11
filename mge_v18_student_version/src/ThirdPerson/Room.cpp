@@ -58,6 +58,14 @@ void Room::loadRoom() {
 	print_table(L);
 
 	lua_close(L);
+	 //second light
+	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
+	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
+	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
+
+	AMlight->SetLightIntensity(1.0f);
+	_roomParent->add(AMlight);
+	LitMaterial::AddLight(AMlight);
 
 	//a light to light the scene!
 	glm::vec3 color(1, 1, 1);

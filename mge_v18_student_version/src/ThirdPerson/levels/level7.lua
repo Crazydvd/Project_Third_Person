@@ -1,14 +1,14 @@
 puzzle = {
 	object = {
-		texture = "AlbedoBottle.png",
-		model = "Bottle.obj",
-		position = { x = 0, y = 2, z = 0},
-		scale = { x = 0.1, y = 0.1, z = 0.1},
+		texture = "AlbedoWrench1.png",
+		model = "Wrench1.obj",
+		position = { x = 0, y = 1.499, z = 0.5},
+		scale = { x = 0.1958159, y = 0.1958159, z = 0.1958159},
 	},
 	object2 = {
-		texture = "AlbedoBottle.png",
-		model = "Bottle.obj",
-		position = { x = 0, y = 3, z = 0},
-		scale = { x = 0.1, y = 0.1, z = 0.1},
+		texture = "AlbedoWrench2.png",
+		model = "Wrench2.obj",
+		position = { x = 0, y = 2.038, z = 0.5216191},
+		scale = { x = 0.1491363, y = 0.1491363, z = 0.1491363},
 	},
 }

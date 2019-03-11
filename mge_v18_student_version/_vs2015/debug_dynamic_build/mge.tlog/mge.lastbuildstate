@@ -1,2 +1,10 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.16299.0
+<<<<<<< HEAD
 Debug Dynamic|Win32|D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\|
+=======
+<<<<<<< HEAD
+Debug Dynamic|Win32|D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\|
+=======
+Debug Dynamic|Win32|D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\|
+>>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
+>>>>>>> 885654a27c7f04acc2064633cf244550a8b4158c
