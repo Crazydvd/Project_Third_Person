@@ -34,18 +34,15 @@
 //construct the game class into _window, _renderer and hud (other parts are initialized by build)
 TPerson::TPerson() :AbstractGame(), _hud(0)
 {
-<<<<<<< HEAD
 	//Audio* audio = new Audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Don't do this, for more information ask Daniel.
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/paper2.wav"); //Use lines like this instead.
 	//audio->SetLoop(true);
 	//audio->Play();
-=======
 	Audio* audio = new Audio(SoundType::MUSIC, config::THIRDPERSON_AUDIO_PATH + "National_Anthem_of_the_USSR.ogg"); //Don't do this, for more information ask Daniel.
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/National_Anthem_of_the_USSR.ogg"); //Use lines like this instead.
 	audio->SetVolume(50.0f);
 	audio->SetLoop(true);
-	audio->Play();
->>>>>>> 3b81d33baa4ce30dc9b60abb9f11e0d6af4e920d
+	//audio->Play();
 }
 
 void TPerson::initialize()
@@ -65,10 +62,6 @@ void TPerson::_initializeScene()
 	_renderToTexture = new RenderToTexture();
 	_renderToTexture->setTPerson(this);
 
-	//UI
-	_userInterface = new UserInterface(_window);
-	_world->add(_userInterface);
-
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 3.0f));
 	camera->rotate(glm::radians(-35.0f), glm::vec3(1, 0, 0));
@@ -79,6 +72,11 @@ void TPerson::_initializeScene()
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);
+
+	//UI
+	MainMenu = new UserInterface(_window);
+	MainMenu->LoadMainMenu(room);
+	_world->add(MainMenu);
 }
 
 void TPerson::Render()
@@ -109,7 +107,7 @@ void TPerson::_updateHud()
 
 	_hud->setDebugInfo(debugInfo);
 	_hud->draw();
-	_userInterface->draw();
+	MainMenu->draw();
 }
 
 

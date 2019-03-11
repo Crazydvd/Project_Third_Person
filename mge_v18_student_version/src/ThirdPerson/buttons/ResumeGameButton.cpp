@@ -12,6 +12,7 @@ ResumeGameButton::ResumeGameButton(sf::RenderWindow * aWindow, Room* pRoom, std:
 }
 
 void ResumeGameButton::OnClick() {
+	_room->TogglePause();
 }
 
 ResumeGameButton::~ResumeGameButton()

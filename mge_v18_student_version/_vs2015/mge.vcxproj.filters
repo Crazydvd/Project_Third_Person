@@ -142,6 +142,12 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -250,6 +256,12 @@
       <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
   </ItemGroup>

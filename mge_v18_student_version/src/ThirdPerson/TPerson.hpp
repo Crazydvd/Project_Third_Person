@@ -31,8 +31,9 @@ public:
 	World* GetWorld();
 
 	void Render();
-
 	Renderer* getRenderer(void) const;
+
+	UserInterface* MainMenu;
 
 protected:
 	//override so we can construct the actual scene
@@ -42,7 +43,6 @@ protected:
 	virtual void _render();
 
 private:
-	UserInterface* _userInterface;
 	Room* room;
 	RenderToTexture* _renderToTexture;
 	DebugHud* _hud;                   //hud display
