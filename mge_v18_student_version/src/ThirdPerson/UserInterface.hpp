@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+class Room;
+
 /**
  * Very simple class capable of rendering a simple piece of text through SFML.
  */
@@ -19,6 +21,9 @@ public:
 	virtual ~UserInterface();
 	void Add(UITexture* pObject);
 	void AddButton(MenuButton* pObject);
+	void LoadMainMenu(Room* pRoom);
+	void QueueClear();
+	void EmptyInterface();
 	void draw();
 	virtual void update(float pStep);
 
@@ -28,6 +33,8 @@ private:
 	sf::RenderWindow * _window;
 	std::vector<UITexture*> _objects;
 	std::vector<MenuButton*> _buttons;
+
+	bool _queueClearing = false;
 
 	UserInterface(const UserInterface&);
 	UserInterface& operator=(const UserInterface&);
