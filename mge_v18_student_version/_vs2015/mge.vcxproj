@@ -101,21 +101,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-<<<<<<< HEAD
       <AdditionalIncludeDirectories>../src;D:\ProjectThirdPerson\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-=======
-      <AdditionalIncludeDirectories>../src;C:\Mycourses\2ndyear\3rdPersonProject\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
->>>>>>> 04304e50af2a8bfc8248fba8fdb111346f7f1bdf
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-<<<<<<< HEAD
       <AdditionalLibraryDirectories>D:\ProjectThirdPerson\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-=======
-      <AdditionalLibraryDirectories>C:\Mycourses\2ndyear\3rdPersonProject\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
->>>>>>> 04304e50af2a8bfc8248fba8fdb111346f7f1bdf
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -196,6 +188,7 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Audio.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
@@ -233,6 +226,7 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Audio.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
@@ -248,8 +242,16 @@
     <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\src\ThirdPerson\level1.lua" />
-    <None Include="..\src\ThirdPerson\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level1.lua" />
+    <None Include="..\src\ThirdPerson\levels\level10.lua" />
+    <None Include="..\src\ThirdPerson\levels\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level3.lua" />
+    <None Include="..\src\ThirdPerson\levels\level4.lua" />
+    <None Include="..\src\ThirdPerson\levels\level5.lua" />
+    <None Include="..\src\ThirdPerson\levels\level6.lua" />
+    <None Include="..\src\ThirdPerson\levels\level7.lua" />
+    <None Include="..\src\ThirdPerson\levels\level8.lua" />
+    <None Include="..\src\ThirdPerson\levels\level9.lua" />
     <None Include="..\src\ThirdPerson\room.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -155,7 +155,7 @@ void Puzzle::checkOnePuzzle()
 	if ((rotation.y <= 8 || rotation.y >= 172) && !_completed)
 	{
 		std::cout << "BITCH LASAGNA" << std::endl;
-		_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
+		//_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
 
 		_completed = true;
 	}
@@ -227,7 +227,12 @@ void Puzzle::checkOnePuzzle()
 void Puzzle::rotateWithKeys()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-		_puzzleObjects[0]->setWorldRotation(glm::vec3(0, 180, 0));
+	{
+		for (int i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setWorldRotation(glm::vec3(0, 0, 0));
+		}
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		_puzzleObjects[0]->rotate(glm::radians(-1.0f), glm::vec3(1, 0, 0));
