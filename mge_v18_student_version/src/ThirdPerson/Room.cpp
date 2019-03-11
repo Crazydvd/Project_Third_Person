@@ -6,6 +6,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
+#include "ThirdPerson/UITexture.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
@@ -13,6 +14,7 @@
 #include "mge/materials/LitTextureMaterial.hpp"
 #include "mge/materials/LitMaterial.hpp"
 #include "mge/materials/RenderToTextureMaterial.hpp"
+#include "ThirdPerson/buttons/QuitGameButton.hpp"
 
 #include "mge/behaviours/RotatingBehaviour.hpp"
 #include "ThirdPerson/config.hpp"
@@ -37,10 +39,21 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTex
 
 void Room::Initialize(int levelIndex)
 {
+	// add parent object to world
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
 
+	// add puzzle
 	_roomParent->add(_puzzle);
+
+	// pause menu
+	_gameHud = new UserInterface(_window);
+	_roomParent->add(_gameHud);
+	_gameHud->Paused = true;
+	_gameHud->Add(new UITexture(_window, "pausemenu.png"));
+	_gameHud->AddButton(new QuitGameButton(_window, "Continuepause.png", "continuecelectedpause.png", glm::vec2(150, 250)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Restartpause.png", "restartselectedpause.png", glm::vec2(150, 350)));
+	_gameHud->AddButton(new QuitGameButton(_window, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(150, 500)));
 
 	/* Load LUA */
 	lua_State* L = luaL_newstate();
@@ -80,10 +93,22 @@ void Room::update(float pStep)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) 
 	{
 		MoveToNextLevel();
+		if(_paused)
+			togglePause();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) 
 	{
 		MoveToPreviousLevel();
+		if (_paused)
+			togglePause();
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U) && _pauseTimer <= 0)
+	{
+		togglePause();
+	}
+	if (_pauseTimer > 0) {
+		_pauseTimer -= pStep;
 	}
 }
 
@@ -187,6 +212,14 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
+void Room::togglePause() {
+	_pauseTimer = 0.5f;
+
+	_paused = !_paused;
+	_puzzle->Paused = !_puzzle->Paused;
+	_gameHud->Paused = !_gameHud->Paused;
+}
+
 void Room::MoveToPreviousLevel()
 {
 	_levelIndex--;
@@ -207,13 +240,16 @@ void Room::MoveToNextLevel()
 	_roomParent->add(_puzzle);
 }
 
-
 void Room::_render()
 {
 	glm::mat4 lightTransform = light->getTransform();
 	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
 
 	_puzzle->PuzzleTimer->draw();
+	_paused;
+	if (_paused) {
+		_gameHud->draw();
+	}
 }
 
 

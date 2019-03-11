@@ -194,6 +194,7 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp" />
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
@@ -232,6 +233,7 @@
     <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />

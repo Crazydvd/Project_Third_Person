@@ -1,46 +1,19 @@
-<<<<<<< HEAD
-﻿  main.cpp
-  AbstractBehaviour.cpp
-  KeysBehaviour.cpp
-  MouseRotatingBehaviour.cpp
-  RotatingBehaviour.cpp
-  AbstractGame.cpp
-  Camera.cpp
-  GameObject.cpp
-  Light.cpp
-  Mesh.cpp
-  Renderer.cpp
-  ShaderProgram.cpp
-  Texture.cpp
-  World.cpp
-  AbstractMaterial.cpp
-  ColorMaterial.cpp
-  LitMaterial.cpp
-  LitTextureMaterial.cpp
-  RenderToTextureMaterial.cpp
-  TextureMaterial.cpp
-  Generating Code...
-  Compiling...
-  DebugHud.cpp
-  Audio.cpp
-  ContinueButton.cpp
-  LevelSelectButton.cpp
-  MenuButton.cpp
-  NewGameButton.cpp
-  QuitGameButton.cpp
-  UITexture.cpp
-  Puzzle.cpp
-  Ray.cpp
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+﻿  Puzzle.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(174): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(184): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   RenderToTexture.cpp
   Room.cpp
-  Timer.cpp
   TPerson.cpp
-  UserInterface.cpp
+  ResumeGameButton.cpp
+  main.cpp
+  MouseRotatingBehaviour.cpp
   Generating Code...
-  LINK : debug_dynamic_exe/mge.exe not found or not built by the last incremental link; performing full link
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  Puzzle.cpp
-  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 4ab520f9dd88325f8f3275c9ade307f9d941e30f

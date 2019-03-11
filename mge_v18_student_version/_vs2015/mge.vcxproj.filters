@@ -139,6 +139,9 @@
     <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -245,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Audio.cpp">
       <Filter>ThirdPerson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
