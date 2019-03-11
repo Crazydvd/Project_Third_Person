@@ -1,7 +1,7 @@
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\vc141.pdb
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\vc141.idb
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\puzzle.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rotatingbehaviour.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\texturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\littexturematerial.obj
@@ -17,12 +17,15 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\light.
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\gameobject.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\camera.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractgame.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rotatingbehaviour.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mouserotatingbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\keysbehaviour.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\main.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\userinterface.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\ray.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\puzzle.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\uitexture.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\quitgamebutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\newgamebutton.obj
@@ -31,13 +34,10 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\levels
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\continuebutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\audio.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\debughud.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mouserotatingbehaviour.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
-d:\desktop storage\uni 2\third person repo\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
-d:\desktop storage\uni 2\third person repo\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
-d:\desktop storage\uni 2\third person repo\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\main.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.command.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.read.1.tlog

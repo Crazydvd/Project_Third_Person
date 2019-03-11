@@ -63,7 +63,7 @@ void Room::Initialize(int levelIndex)
 	//a light to light the scene!
 	glm::vec3 color(1, 1, 1);
 	AbstractMaterial* lightMaterial = new ColorMaterial(color);
-	light = new Light("light", glm::vec3(0, 4, 0), LightType::SPOT); //0, 4, 0
+	light = new Light("light", glm::vec3(0, 4, .5f), LightType::SPOT); //0, 4, 0
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	//light->translate(glm::vec3(0, 0, 3));
@@ -76,6 +76,14 @@ void Room::Initialize(int levelIndex)
 
 	_roomParent->add(light);
 	LitMaterial::AddLight(light);
+
+	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
+	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
+	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
+
+	AMlight->SetLightIntensity(1.0f);
+	_roomParent->add(AMlight);
+	LitMaterial::AddLight(AMlight);
 }
 
 void Room::update(float pStep)
