@@ -35,6 +35,11 @@ glm::vec3 Light::GetForwardDirection()
 	return getWorldTransform()[2];
 }
 
+float Light::getFalloff()
+{
+	return _falloff;
+}
+
 float Light::GetConeAngle()
 {
 	return _coneAngle;
@@ -64,6 +69,12 @@ void Light::setAmbientContribution(float pContribution)
 {
 	_ambientContribution = pContribution;
 }
+
+void Light::setFalloff(float pFalloff)
+{
+	_falloff = pFalloff;
+}
+
 
 void Light::setConeAngle(float pAngle)
 {

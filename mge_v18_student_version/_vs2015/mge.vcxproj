@@ -101,13 +101,21 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+<<<<<<< HEAD
       <AdditionalIncludeDirectories>../src;D:\ProjectThirdPerson\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>../src;D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+>>>>>>> 69f37c684e991eb19f67fb55f6324d86aa085c2c
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+<<<<<<< HEAD
       <AdditionalLibraryDirectories>D:\ProjectThirdPerson\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+=======
+      <AdditionalLibraryDirectories>D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+>>>>>>> 69f37c684e991eb19f67fb55f6324d86aa085c2c
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -259,9 +267,6 @@
     <None Include="..\src\ThirdPerson\levels\level8.lua" />
     <None Include="..\src\ThirdPerson\levels\level9.lua" />
     <None Include="..\src\ThirdPerson\room.lua" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="paper2.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

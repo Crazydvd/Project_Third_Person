@@ -300,9 +300,4 @@
       <Filter>ThirdPerson\levels</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Media Include="paper2.wav">
-      <Filter>ThirdPerson</Filter>
-    </Media>
-  </ItemGroup>
 </Project>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   KeysBehaviour.cpp
@@ -52,3 +53,7 @@ d:\projectthirdperson\mge_v18_student_version\src\thirdperson\ray.cpp(95): warni
   UserInterface.cpp
   Generating Code...
   mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Room.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 69f37c684e991eb19f67fb55f6324d86aa085c2c
