@@ -13,3 +13,7 @@ puzzle = {
 		scale = { x = 0.3, y = 0.5, z = 0.5},
 	},
 }
+
+
+triplestar = 30
+doublestar = 60
