@@ -58,12 +58,13 @@ void Room::loadRoom() {
 	print_table(L);
 
 	lua_close(L);
-	 //second light
-	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::AMBIENT);
+	
+	//second light
+	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
 	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
 	AMlight->rotate(glm::radians(45.0f), glm::vec3(1, 0, 0));
 
-	AMlight->SetLightIntensity(1.0f);
+	AMlight->SetLightIntensity(.8f);
 	_roomParent->add(AMlight);
 	LitMaterial::AddLight(AMlight);
 
@@ -83,6 +84,26 @@ void Room::loadRoom() {
 
 	_roomParent->add(light);
 	LitMaterial::AddLight(light);
+
+	//Cigar light
+	Light* cigarlight = new Light("CigarLight", glm::vec3(-1.49f, .9f, 0.7f), LightType::POINT);
+	cigarlight->SetLightColor(glm::vec3(0.886f, 0.15f, 0));
+	cigarlight->setFalloff(35);
+	_roomParent->add(cigarlight);
+	LitMaterial::AddLight(cigarlight);
+
+	////Lamp light
+	//Light* lamplight = new Light("lampLight", glm::vec3(2.2f, 2.0f, -1.0f), LightType::SPOT);
+	//lamplight->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
+	////mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
+	//lamplight->SetLightColor(glm::vec3(0.917f, 0.917f, 0.259f));/*
+	//lamplight->setMesh(mesh);
+	//lamplight->setMaterial(new ColorMaterial(lamplight->GetColor()));
+	//lamplight->scale(glm::vec3(0.05f, 0.05f, 0.05f));*/
+	//lamplight->SetLightIntensity(.6f);
+	//_roomParent->add(lamplight);
+	//LitMaterial::AddLight(lamplight);
+
 
 	// pause menu
 	_gameHud = new UserInterface(_window);

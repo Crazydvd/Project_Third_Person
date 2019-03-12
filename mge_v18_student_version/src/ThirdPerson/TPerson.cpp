@@ -38,6 +38,7 @@ TPerson::TPerson() :AbstractGame(), _hud(0)
 	Audio* audio = new Audio(SoundType::MUSIC, config::THIRDPERSON_AUDIO_PATH + "backgroundmusic.flac"); //Don't do this, for more information ask Daniel.
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/National_Anthem_of_the_USSR.ogg"); //Use lines like this instead.
 	audio->SetVolume(50.0f);
+	//audio->SetPitch(0.5f);
 	audio->SetLoop(true);
 	//audio->Play();
 }

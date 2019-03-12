@@ -26,7 +26,7 @@ private:
 	MenuButton& operator=(const MenuButton&);
 
 	Audio _audio;
-	bool _played = false;
+	static bool _played;
 };
 
 #endif // MENUBUTTON_HPP
