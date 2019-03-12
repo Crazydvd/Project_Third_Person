@@ -37,28 +37,16 @@ class Puzzle : public GameObject
 		void checkMultiplePuzzles();
 		void rotateWithKeys();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
-		bool _inTolereance = false;
-		bool _completed = false;
-		int _levelIndex;
-		int _victoryDelay = 0;
-<<<<<<< HEAD
->>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
-=======
->>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
 		World* _world;
 		std::vector<GameObject*> _puzzleObjects;
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
 		bool _started = false;
 		bool _tutorial = false;
+		bool _inTolereance = false;
 		bool _completed = false;
 		int _levelIndex;
-		int _victoryDelay;
+		int _victoryDelay = 0;
 		float _tripleStarTime = 30.0f;
 		float _doubleStarTime = 60.0f;
 
