@@ -25,8 +25,8 @@ class Puzzle : public GameObject
 		bool Paused = false;
 
 	private:
-		void loadObject(std::string pProperties[2][2], glm::vec3 pVectors[2]);
-		void getPuzzles(lua_State* L);
+		void loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3]);
+		void getPuzzles(lua_State* L, std::string name = "gameobject");
 		glm::vec3* fill_vector3(lua_State* L);
 		void checkOnePuzzle();
 		void checkMultiplePuzzles();

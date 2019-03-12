@@ -2,6 +2,7 @@
 #define ROOM_HPP
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <lua.hpp>
@@ -24,15 +25,20 @@ public:
 	virtual void update(float pStep);
 	virtual void _render();
 
+	void Initialize();
+	void Deinitialize();
+	void TogglePause();
+	void LoadLevel(int pLevel = 1, bool pReload = false);
+	void MoveToNextLevel();
+	void MoveToPreviousLevel();
+
 private:
+	void loadRoom();
+	void saveLevel();
 	void print_table(lua_State* L);
 	glm::vec3* fill_vector3(lua_State* L);
 	void addObject(std::string pProperties[2][2], glm::vec3 pVectors[3]);
-	void Initialize(int levelIndex);
 
-	void togglePause();
-	void MoveToNextLevel();
-	void MoveToPreviousLevel();
 
 	UserInterface* _gameHud;
 	sf::RenderWindow* _window;
@@ -42,8 +48,10 @@ private:
 	TPerson* _game;
 	Light* light;
 	GameObject* _roomParent;
-	int _levelIndex = 1;
 	AbstractMaterial* _blackMaterial;
+
+	int _levelIndex = 1;
+	bool _active = false;
 	bool _paused = false;
 	float _pauseTimer = 0;
 };

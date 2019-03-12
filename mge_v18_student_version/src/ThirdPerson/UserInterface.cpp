@@ -16,13 +16,6 @@ UserInterface::UserInterface(sf::RenderWindow * aWindow, std::string pName, glm:
 {
 	assert(_window != NULL);
 	UserInterface::_objects = std::vector<UITexture*>();
-
-	UITexture* corkBoard = new UITexture(_window, "corkboard.png");
-
-	NewGameButton* newGame = new NewGameButton(_window, "New_Game.png", "New_Game_selected.png", glm::vec2(100, 40));
-	ContinueButton* continueButton = new ContinueButton(_window, "continue.png", "Continue_selected.png", glm::vec2(100, 300));
-	LevelSelectButton* levelSelect = new LevelSelectButton(_window, "level_select.png", "level_select_selected.png", glm::vec2(100, 620));
-	QuitGameButton* quitGame = new QuitGameButton(_window, "quitpin.png", "quitselected.png", glm::vec2(550, 700));
 }
 
 void UserInterface::update(float pStep) {
@@ -46,6 +39,11 @@ void UserInterface::update(float pStep) {
 		else if(_buttons[i]->_hovering) {
 			_buttons[i]->OnStopHover();
 		}
+	}
+
+	if (_queueClearing) {
+		EmptyInterface();
+		_queueClearing = false;
 	}
 }
 
@@ -71,6 +69,33 @@ void UserInterface::draw()
 			_buttons[i]->draw();
 		}
 	}
+}
+
+void UserInterface::LoadMainMenu(Room* pRoom) {
+	EmptyInterface();
+
+	UITexture* corkBoard = new UITexture(_window, "corkboard.png");
+
+	NewGameButton* newGame = new NewGameButton(_window, pRoom, this, "New_Game.png", "New_Game_selected.png", glm::vec2(100, 40));
+	ContinueButton* continueButton = new ContinueButton(_window, pRoom, this, "continue.png", "Continue_selected.png", glm::vec2(100, 300));
+	LevelSelectButton* levelSelect = new LevelSelectButton(_window, "level_select.png", "level_select_selected.png", glm::vec2(100, 620));
+	QuitGameButton* quitGame = new QuitGameButton(_window, "quitpin.png", "quitselected.png", glm::vec2(550, 700));
+
+	Add(corkBoard);
+	AddButton(newGame);
+	AddButton(continueButton);
+	AddButton(levelSelect);
+	AddButton(quitGame);
+}
+
+// queue it instead of doing it immediatly so it doesn't interfere with the update loop
+void UserInterface::QueueClear() {
+	_queueClearing = true;
+}
+
+void UserInterface::EmptyInterface() {
+	_objects.clear();
+	_buttons.clear();
 }
 
 UserInterface::~UserInterface()
