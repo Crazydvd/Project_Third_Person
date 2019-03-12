@@ -29,11 +29,13 @@ class Puzzle : public GameObject
 		void getPuzzles(lua_State* L);
 		glm::vec3* fill_vector3(lua_State* L);
 		void checkOnePuzzle();
+		void checkMultiplePuzzles();
 		void rotateWithKeys();
 
+		bool _inTolereance = false;
 		bool _completed = false;
 		int _levelIndex;
-		int _victoryDelay;
+		int _victoryDelay = 0;
 		World* _world;
 		std::vector<GameObject*> _puzzleObjects;
 		sf::RenderWindow* _window;

@@ -188,6 +188,7 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Audio.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
@@ -225,6 +226,7 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Audio.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
@@ -242,6 +244,14 @@
   <ItemGroup>
     <None Include="..\src\ThirdPerson\level1.lua" />
     <None Include="..\src\ThirdPerson\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level10.lua" />
+    <None Include="..\src\ThirdPerson\levels\level3.lua" />
+    <None Include="..\src\ThirdPerson\levels\level4.lua" />
+    <None Include="..\src\ThirdPerson\levels\level5.lua" />
+    <None Include="..\src\ThirdPerson\levels\level6.lua" />
+    <None Include="..\src\ThirdPerson\levels\level7.lua" />
+    <None Include="..\src\ThirdPerson\levels\level8.lua" />
+    <None Include="..\src\ThirdPerson\levels\level9.lua" />
     <None Include="..\src\ThirdPerson\room.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
