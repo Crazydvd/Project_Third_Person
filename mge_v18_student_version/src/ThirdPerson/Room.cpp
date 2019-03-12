@@ -90,10 +90,12 @@ void Room::loadRoom() {
 	_gameHud = new UserInterface(_window);
 	_roomParent->add(_gameHud);
 	_gameHud->Paused = true;
-	_gameHud->Add(new UITexture(_window, "pausemenu.png"));
-	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png", glm::vec2(150, 250)));
-	_gameHud->AddButton(new RestartGameButton(_window, this, "Restartpause.png", "restartselectedpause.png", glm::vec2(150, 350)));
-	_gameHud->AddButton(new ReturnToMenuButton(_window, this, _game, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(150, 500)));
+	UITexture* pauseMenu = new UITexture(_window, "pausemenu.png");
+	pauseMenu->SetPosition(glm::vec2((_window->getSize().x / 2) - (pauseMenu->GetRect().width / 2), (_window->getSize().y / 2) - (pauseMenu->GetRect().height / 2)));
+	_gameHud->Add(pauseMenu);
+	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png",  glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 250)));
+	_gameHud->AddButton(new RestartGameButton(_window, this, "Restartpause.png", "restartselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 350)));
+	_gameHud->AddButton(new ReturnToMenuButton(_window, this, _game, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 500)));
 }
 
 void Room::Initialize()
@@ -304,7 +306,7 @@ void Room::_render()
 	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
 
 	_puzzle->PuzzleTimer->draw();
-	_paused;
+	_puzzle->draw();
 	if (_paused) {
 		_gameHud->draw();
 	}

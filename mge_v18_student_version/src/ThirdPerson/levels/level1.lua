@@ -13,3 +13,8 @@ puzzle = {
 		scale = { x = 0.1, y = 0.1, z = 0.1},
 	},
 }
+
+letter = "Storypopupintro.png"
+triplestar = 30
+doublestar = 60
+

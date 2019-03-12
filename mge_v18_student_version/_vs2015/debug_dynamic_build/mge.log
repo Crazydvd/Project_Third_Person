@@ -1,25 +1,2 @@
-﻿  Puzzle.cpp
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  RenderToTexture.cpp
-  Room.cpp
-  TPerson.cpp
-  UserInterface.cpp
-  ContinueButton.cpp
-  MenuButton.cpp
-  NewGameButton.cpp
-  RestartGameButton.cpp
-  ResumeGameButton.cpp
-  ReturnToMenuButton.cpp
-  main.cpp
-  MouseRotatingBehaviour.cpp
-  Generating Code...
+﻿  Room.cpp
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe

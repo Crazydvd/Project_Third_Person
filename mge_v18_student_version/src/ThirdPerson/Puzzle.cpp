@@ -13,6 +13,7 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 {
 	PuzzleTimer = new Timer(pWindow);
 	_puzzleObjects = std::vector<GameObject*>();
+	_popups = new UserInterface(_window);
 
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
@@ -24,6 +25,10 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	lua_getglobal(L, "puzzle");
 
 	getPuzzles(L, "Puzzle");
+	
+	loadScoreTimes(L);
+
+	loadLetter(L);
 
 	lua_close(L);
 
@@ -57,6 +62,22 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 void Puzzle::update(float pStep) {
 	if (Paused)
 		return;
+
+	// check for the game starting
+	if (!_started) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+			if (_levelIndex == 1 && !_tutorial) {
+				UITexture* tutorial = new UITexture(_window, "storypopuptutorial.png");
+				_popups->EmptyInterface();
+				_popups->Add(tutorial);
+				_tutorial = true;
+				return;
+			}
+			_started = true;
+			_popups->QueueClear();
+		}
+		return;
+	}
 
 	GameObject::update(pStep);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
@@ -154,6 +175,37 @@ glm::vec3* Puzzle::fill_vector3(lua_State *L)
 	return vector;
 }
 
+void Puzzle::loadScoreTimes(lua_State* L) {
+	lua_getglobal(L, "triplestar");
+
+	if (lua_isnumber(L, -1)) {
+		_tripleStarTime = (float)lua_tonumber(L, -1);
+	}
+
+	lua_getglobal(L, "doublestar");
+
+	if (lua_isnumber(L, -1)) {
+		_doubleStarTime = (float)lua_tonumber(L, -1);
+	}
+}
+
+void Puzzle::loadLetter(lua_State* L) {
+	std::string letter;
+	lua_getglobal(L, "letter");
+
+	if (lua_isnil(L, -1)) {
+		_started = true;
+		printf("no letter\n");
+		return;
+	}
+	else {
+		letter = lua_tostring(L, -1);
+	}
+
+	UITexture* letterUI = new UITexture(_window, letter);
+	_popups->Add(letterUI);
+	this->add(_popups);
+}
 
 std::vector<GameObject*> Puzzle::getObjects() {
 	return _puzzleObjects;
@@ -234,6 +286,10 @@ void Puzzle::checkOnePuzzle()
 	{
 		rotateWithKeys();
 	}
+}
+
+void Puzzle::draw() {
+	_popups->draw();
 }
 
 void Puzzle::rotateWithKeys()
