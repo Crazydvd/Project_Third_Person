@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Room.cpp
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
 ﻿  Puzzle.cpp
 c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(176): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
 c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
@@ -74,4 +77,7 @@ d:\projectthirdperson\mge_v18_student_version\src\thirdperson\ray.cpp(95): warni
   mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
 >>>>>>> 69f37c684e991eb19f67fb55f6324d86aa085c2c
 >>>>>>> 3dc0fc01dd891887a7a32a562b3e9a3dd426c31e
+<<<<<<< HEAD
+>>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
+=======
 >>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
