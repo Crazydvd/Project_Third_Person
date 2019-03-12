@@ -1,2 +1,77 @@
+<<<<<<< HEAD
 ﻿  Room.cpp
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  Puzzle.cpp
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(176): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(233): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(251): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(261): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(273): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(283): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4018: '<': signed/unsigned mismatch
+  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  main.cpp
+  AbstractBehaviour.cpp
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  LitMaterial.cpp
+  LitTextureMaterial.cpp
+  RenderToTextureMaterial.cpp
+  TextureMaterial.cpp
+  Generating Code...
+  Compiling...
+  DebugHud.cpp
+  Audio.cpp
+  ContinueButton.cpp
+  LevelSelectButton.cpp
+  MenuButton.cpp
+  NewGameButton.cpp
+  QuitGameButton.cpp
+  RestartGameButton.cpp
+  ResumeGameButton.cpp
+  ReturnToMenuButton.cpp
+  UITexture.cpp
+  Puzzle.cpp
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(243): warning C4018: '<': signed/unsigned mismatch
+  Ray.cpp
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+  RenderToTexture.cpp
+  Room.cpp
+  Timer.cpp
+  TPerson.cpp
+  UserInterface.cpp
+  Generating Code...
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Room.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 69f37c684e991eb19f67fb55f6324d86aa085c2c
+>>>>>>> 3dc0fc01dd891887a7a32a562b3e9a3dd426c31e
+>>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84

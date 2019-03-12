@@ -5,6 +5,7 @@
 #include <iostream>
 #include "glm.hpp"
 #include "ThirdPerson/UITexture.hpp"
+#include "ThirdPerson/Audio.hpp"
 
 /**
  * Very simple class capable of rendering a simple piece of text through SFML.
@@ -23,7 +24,9 @@ private:
 	sf::Texture _hoverTexture;
 	MenuButton(const MenuButton&);
 	MenuButton& operator=(const MenuButton&);
-protected:
+
+	Audio _audio;
+	static bool _played;
 };
 
 #endif // MENUBUTTON_HPP

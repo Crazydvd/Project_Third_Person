@@ -104,6 +104,7 @@ void LitTextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pMo
 		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightPosition"), 1, glm::value_ptr(_lights[i]->GetPosition()));
 		glUniform3fv(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightForward"), 1, glm::value_ptr(_lights[i]->GetForwardDirection()));
 		glUniform1i(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].lightType"), _lights[i]->GetType());
+		glUniform1f(_shader->getUniformLocation("Lights[" + std::to_string(i) + "].falloff"), _lights[i]->getFalloff());
 
 		//spotLight properties
 		if (_lights[i]->GetType() == LightType::SPOT)

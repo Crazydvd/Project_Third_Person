@@ -34,8 +34,16 @@ class Puzzle : public GameObject
 		void loadScoreTimes(lua_State* L);
 		void loadLetter(lua_State* L);
 		void checkOnePuzzle();
+		void checkMultiplePuzzles();
 		void rotateWithKeys();
 
+<<<<<<< HEAD
+=======
+		bool _inTolereance = false;
+		bool _completed = false;
+		int _levelIndex;
+		int _victoryDelay = 0;
+>>>>>>> ffcd45bd2e98a98b3d324a3dfe4d3fc5b8e4dd84
 		World* _world;
 		std::vector<GameObject*> _puzzleObjects;
 		sf::RenderWindow* _window;

@@ -25,6 +25,8 @@ struct Light
 	vec3 lightForward;
 	int lightType;
 	
+	float falloff;
+	
 	float coneAngle;
 	float fallOffAngle;
  };
@@ -48,6 +50,7 @@ vec3 specularColor;
 vec3 lightPosition;
 vec3 lightForward;
 int lightType;
+float falloff;
 	
 float coneAngle;
 float fallOffAngle;
@@ -77,6 +80,7 @@ void main(void)
 		lightPosition = Lights[i].lightPosition;
 		lightForward = Lights[i].lightForward;
 		lightType = Lights[i].lightType;
+		falloff = Lights[i].falloff;
 		
 		coneAngle = Lights[i].coneAngle;
 		fallOffAngle = Lights[i].fallOffAngle;
@@ -130,8 +134,8 @@ vec3 getDiffuseTerm()
 	float distance = length(LightVector);
 	float squareDistance = distance * distance;
 	float c1 = 1;
-	float c2 = 1;
-	float c3 = 0;
+	float c2 = falloff; //Linear falloff
+	float c3 = 0; //Quadratic falloff
 	Attenuation = (c1 + c2 * distance + c3 * squareDistance);
 	diffuseIntensity /= Attenuation;
 	

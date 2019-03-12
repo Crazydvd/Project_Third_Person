@@ -32,6 +32,8 @@ public:
 	glm::vec3 GetAmbientColour() { return GetAmbientColor(); }; //same as GetAmbientColor()
 	glm::vec3 GetPosition();
 	glm::vec3 GetForwardDirection();
+	float getFalloff();
+
 	float GetConeAngle();
 	float GetFallOffAngle();
 
@@ -40,6 +42,7 @@ public:
 	void SetLightColor(glm::vec3 pColor);
 	void SetLightColour(glm::vec3 pColour) { SetLightColor(pColour); }; //same as SetLightColor(glm::vec3)
 	void setAmbientContribution(float pContribution);
+	void setFalloff(float pFalloff);
 	void setConeAngle(float pAngle);
 	void setFallOffAngle(float pAngle);
 
@@ -50,6 +53,7 @@ private:
 	glm::vec3& _colour = _color; //same as _color;
 	float _intensity = 1;
 	float _ambientContribution = 0;
+	float _falloff = 1;
 
 	float _coneAngle = 30.0f;
 	float _fallOffAngle = 10.0f;
