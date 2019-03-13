@@ -287,21 +287,6 @@
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
     </None>
-    <None Include="..\src\ThirdPerson\level1.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\level2.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level4.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level5.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level6.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
     <None Include="..\src\ThirdPerson\levels\level7.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
@@ -314,7 +299,22 @@
     <None Include="..\src\ThirdPerson\levels\level10.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
+    <None Include="..\src\ThirdPerson\levels\level1.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level2.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
     <None Include="..\src\ThirdPerson\levels\level3.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level4.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level5.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level6.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
   </ItemGroup>
