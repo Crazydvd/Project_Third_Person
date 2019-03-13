@@ -27,11 +27,7 @@
       <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThirdPerson\levels">
-<<<<<<< HEAD
       <UniqueIdentifier>{bccab474-9d34-4185-b9a8-481768dfe364}</UniqueIdentifier>
-=======
-      <UniqueIdentifier>{e4dd1be2-b47c-438d-9885-59dd3118f242}</UniqueIdentifier>
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -143,8 +139,6 @@
     <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-<<<<<<< HEAD
-=======
     <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
@@ -154,7 +148,9 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -262,8 +258,6 @@
     <ClCompile Include="..\src\ThirdPerson\Audio.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
-<<<<<<< HEAD
-=======
     <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
@@ -273,13 +267,14 @@
     <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
     </None>
-<<<<<<< HEAD
     <None Include="..\src\ThirdPerson\levels\level3.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
@@ -308,21 +303,6 @@
       <Filter>ThirdPerson\levels</Filter>
     </None>
     <None Include="..\src\ThirdPerson\levels\level2.lua">
-=======
-    <None Include="..\src\ThirdPerson\levels\level1.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level2.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level3.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level4.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level5.lua">
->>>>>>> 552af79e03eba9dbcd2a5cffd350f96d04c4392f
       <Filter>ThirdPerson\levels</Filter>
     </None>
     <None Include="..\src\ThirdPerson\levels\level6.lua">

@@ -11,7 +11,9 @@ ReturnToMenuButton::ReturnToMenuButton(sf::RenderWindow * aWindow, Room* pRoom, 
 
 }
 
-void ReturnToMenuButton::OnClick() {
+void ReturnToMenuButton::OnClick()
+{
+	MenuButton::OnClick();
 	_room->TogglePause();
 	_room->Deinitialize();
 	_game->MainMenu->LoadMainMenu(_room);

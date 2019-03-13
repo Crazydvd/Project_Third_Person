@@ -7,6 +7,7 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/UITexture.hpp"
+#include "mge/core/Camera.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
@@ -74,12 +75,11 @@ void Room::loadRoom() {
 	light = new Light("light", glm::vec3(0, 4, .5f), LightType::SPOT); //0, 4, 0
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
-	//light->translate(glm::vec3(0, 0, 3));
 	light->SetLightIntensity(2);
 	light->setAmbientContribution(0.2f);
-	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
-	light->setMesh(mesh);
-	light->setMaterial(lightMaterial);
+	//Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
+	//light->setMesh(mesh);
+	//light->setMaterial(lightMaterial);
 	light->SetLightColor(color); //1, 0, 0.8f
 
 	_roomParent->add(light);
@@ -103,7 +103,6 @@ void Room::loadRoom() {
 	//lamplight->SetLightIntensity(.6f);
 	//_roomParent->add(lamplight);
 	//LitMaterial::AddLight(lamplight);
-
 
 	// pause menu
 	_gameHud = new UserInterface(_window);
@@ -154,6 +153,18 @@ void Room::update(float pStep)
 	}
 	if (_pauseTimer > 0) {
 		_pauseTimer -= pStep;
+	}
+
+
+	//TODO: Remove/Replace this
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowPath("test");
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
 	}
 }
 

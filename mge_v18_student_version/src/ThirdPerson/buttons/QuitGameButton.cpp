@@ -11,7 +11,9 @@ QuitGameButton::QuitGameButton(sf::RenderWindow * aWindow, std::string fileName,
 
 }
 
-void QuitGameButton::OnClick() {
+void QuitGameButton::OnClick()
+{
+	MenuButton::OnClick();
 	_window->close();
 }
 

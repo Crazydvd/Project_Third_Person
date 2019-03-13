@@ -1,2 +1,30 @@
-﻿  Room.cpp
+﻿  Puzzle.cpp
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(243): warning C4018: '<': signed/unsigned mismatch
+  RenderToTexture.cpp
+  Room.cpp
+  TPerson.cpp
+  UserInterface.cpp
+  ContinueButton.cpp
+  NewGameButton.cpp
+  RestartGameButton.cpp
+  ResumeGameButton.cpp
+  ReturnToMenuButton.cpp
+  main.cpp
+  AbstractBehaviour.cpp
+  CameraMovementBehaviour.cpp
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+  RotatingBehaviour.cpp
+  GameObject.cpp
+  Generating Code...
   mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe

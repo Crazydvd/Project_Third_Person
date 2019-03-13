@@ -30,7 +30,7 @@ struct Light
 	float coneAngle;
 	float fallOffAngle;
  };
- 
+
 //array to store all lights
 uniform Light Lights[99];
 
@@ -46,12 +46,12 @@ vec3 diffuseColor;
 vec3 lightColor;
 vec3 ambientLightColor;
 vec3 specularColor;
- 
+
 vec3 lightPosition;
 vec3 lightForward;
 int lightType;
 float falloff;
-	
+
 float coneAngle;
 float fallOffAngle;
 

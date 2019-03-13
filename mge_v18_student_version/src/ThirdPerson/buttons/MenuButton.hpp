@@ -25,7 +25,9 @@ private:
 	MenuButton(const MenuButton&);
 	MenuButton& operator=(const MenuButton&);
 
-	Audio _audio;
+	Audio _selectSound;
+	Audio _clickSound;
+
 	static bool _played;
 };
 

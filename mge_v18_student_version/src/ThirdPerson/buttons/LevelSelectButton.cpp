@@ -11,7 +11,9 @@ LevelSelectButton::LevelSelectButton(sf::RenderWindow * aWindow, std::string fil
 
 }
 
-void LevelSelectButton::OnClick() {
+void LevelSelectButton::OnClick()
+{
+	MenuButton::OnClick();
 	std::cout << "level select";
 }
 
