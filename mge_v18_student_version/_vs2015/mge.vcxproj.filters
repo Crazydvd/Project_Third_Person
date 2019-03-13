@@ -148,6 +148,18 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\NextLevelButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\LoadLevelButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -262,6 +274,18 @@
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\NextLevelButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\LoadLevelButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
   </ItemGroup>

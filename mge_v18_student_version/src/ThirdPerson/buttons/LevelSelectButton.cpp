@@ -15,9 +15,7 @@ void LevelSelectButton::OnClick()
 {
 	MenuButton::OnClick();
 	std::cout << "level select";
-}
 
-void LevelSelectButton::OnClick() {
 	_game->MainMenu->LoadLevelSelect(_room, _game);
 }
 

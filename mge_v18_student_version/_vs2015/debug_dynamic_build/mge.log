@@ -1,62 +1,6 @@
-<<<<<<< HEAD
-﻿  Puzzle.cpp
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(247): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(257): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(305): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(323): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(333): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(345): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(355): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(383): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(425): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(432): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(434): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(437): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(439): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(442): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(444): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(448): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  UserInterface.cpp
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\userinterface.cpp(41): warning C4018: '<': signed/unsigned mismatch
-  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  Puzzle.cpp
-d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(186): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(196): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-d:\school\projects\project_third_person\mge_v18_student_version\src\thirdperson\puzzle.cpp(243): warning C4018: '<': signed/unsigned mismatch
-  RenderToTexture.cpp
-  Room.cpp
-  TPerson.cpp
-  UserInterface.cpp
-  ContinueButton.cpp
-  NewGameButton.cpp
-  RestartGameButton.cpp
-  ResumeGameButton.cpp
-  ReturnToMenuButton.cpp
-  main.cpp
-  AbstractBehaviour.cpp
-  CameraMovementBehaviour.cpp
-  KeysBehaviour.cpp
-  MouseRotatingBehaviour.cpp
-  RotatingBehaviour.cpp
-  GameObject.cpp
+﻿  CameraMovementBehaviour.cpp
+  BackToMainButton.cpp
+  LoadLevelButton.cpp
+  NextLevelButton.cpp
   Generating Code...
   mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-﻿  GameObject.cpp
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
->>>>>>> 041bcb6ec94a61bc2c88a5246b4874cad60435c3
->>>>>>> 23d464fa985bf5a8198db41df3f9b9a05897b4b0
->>>>>>> 2b29a0bb2ffc9d46f468860454f967a9cd6e67e3

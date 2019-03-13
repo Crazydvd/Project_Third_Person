@@ -15,10 +15,7 @@ void ReturnToMenuButton::OnClick()
 {
 	MenuButton::OnClick();
 	_room->TogglePause();
-}
 
-void ReturnToMenuButton::OnClick()
-{
 	_room->DisablePause();
 	_room->Deinitialize();
 	_game->MainMenu->LoadMainMenu(_room, _game);
