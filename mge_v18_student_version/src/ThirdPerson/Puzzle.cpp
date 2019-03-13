@@ -8,11 +8,15 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/behaviours/EmptyBehaviour.hpp"
+#include "ThirdPerson/buttons/ReturnToMenuButton.hpp"
+#include "ThirdPerson/buttons/NextLevelButton.hpp"
 
-Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld)
+Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld), _game(pGame), _room(pRoom)
 {
 	PuzzleTimer = new Timer(pWindow);
 	_puzzleObjects = std::vector<GameObject*>();
+	_popups = new UserInterface(_window);
+	add(_popups);
 
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
@@ -24,12 +28,12 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	lua_getglobal(L, "puzzle");
 
 	getPuzzles(L, "Puzzle");
+	
+	loadScoreTimes(L);
+
+	loadLetter(L);
 
 	lua_close(L);
-
-	for (size_t i = 0; i < _puzzleObjects.size(); i++) {
-		_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
-	}
 }
 
 void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3])
@@ -41,7 +45,7 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 
 
 	this->add(object);
-	if (pName != "polaroid") {
+	if ((((pName != "polaroid" && pName != "polaroid2") && pName != "polaroid3" )&& pName != "polaroid4") && pName != "polaroid5") {
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
@@ -54,26 +58,55 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 	}
 }
 
-void Puzzle::update(float pStep) {
+void Puzzle::update(float pStep)
+{
 	if (Paused)
 		return;
 
-	GameObject::update(pStep);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-	{
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(1, 0, 0));
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-	{
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(0, 1, 0));
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-	{
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(0, 0, 1));
+	// check for the game starting
+	if (!_started) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+			if (_levelIndex == 1 && !_tutorial) {
+				UITexture* tutorial = new UITexture(_window, "storypopuptutorial.png");
+				_popups->EmptyInterface();
+				_popups->Add(tutorial);
+				_tutorial = true;
+				return;
+			}
+
+			_queueBehaviour = true;
+			_started = true;
+			_popups->QueueClear();
+		}
+		return;
 	}
 
-	checkOnePuzzle();
-	PuzzleTimer->SetTime(PuzzleTimer->GetTime() + pStep);
+	if (_queueBehaviour && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
+		_queueBehaviour = false;
+	}
+
+	if (!Paused) {
+		GameObject::update(pStep);
+	}
+	if (Paused)
+		return;
+
+	if (_puzzleObjects.size() > 1)
+	{
+		checkMultiplePuzzles();
+	}
+	else if (_puzzleObjects.size() > 0)
+	{
+		checkOnePuzzle();
+	}
+	
+	if (!_completed) {
+		PuzzleTimer->SetTime(PuzzleTimer->GetTime() + pStep);
+	}
 }
 
 
@@ -92,10 +125,12 @@ void Puzzle::getPuzzles(lua_State *L, std::string name)
 			params[index][1] = lua_tostring(L, -1);
 			index++;
 		}
-		else if (lua_isnumber(L, -1)) {
+		else if (lua_isnumber(L, -1))
+		{
 			printf("%s = %d", lua_tostring(L, -2), (int)lua_tonumber(L, -1));
 		}
-		else if (lua_istable(L, -1)) {
+		else if (lua_istable(L, -1))
+		{
 			if ((std::string)lua_tostring(L, -2) == "position")
 			{
 				glm::vec3* position = fill_vector3(L);
@@ -154,26 +189,67 @@ glm::vec3* Puzzle::fill_vector3(lua_State *L)
 	return vector;
 }
 
+void Puzzle::loadScoreTimes(lua_State* L) {
+	lua_getglobal(L, "triplestar");
 
-std::vector<GameObject*> Puzzle::getObjects() {
+	if (lua_isnumber(L, -1)) {
+		_tripleStarTime = (float)lua_tonumber(L, -1);
+	}
+
+	lua_getglobal(L, "doublestar");
+
+	if (lua_isnumber(L, -1)) {
+		_doubleStarTime = (float)lua_tonumber(L, -1);
+	}
+}
+
+void Puzzle::loadLetter(lua_State* L) {
+	std::string letter;
+	lua_getglobal(L, "letter");
+
+	if (lua_isnil(L, -1)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
+		_started = true;
+		printf("no letter\n");
+		return;
+	}
+	else {
+		letter = lua_tostring(L, -1);
+	}
+
+	UITexture* letterUI = new UITexture(_window, letter);
+	_popups->Add(letterUI);
+	this->add(_popups);
+}
+
+std::vector<GameObject*> Puzzle::getObjects()
+{
 	return _puzzleObjects;
 }
 
 void Puzzle::checkOnePuzzle()
 {
+	if (_puzzleObjects.size() < 1)
+		return;
+
 	glm::vec3 rotation = _puzzleObjects[0]->getWorldRotation();
 
 	//Check if we in solution range
-	if ((rotation.y <= 8 || rotation.y >= 172) && !_completed)
+	if ((rotation.y <= 8 || rotation.y >= 172) && !_inTolereance)
 	{
-		std::cout << "BITCH LASAGNA" << std::endl;
-		//_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
+		/*for (int i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new EmptyBehaviour());
+		}	*/
 
-		_completed = true;
+		_inTolereance = true;
 	}
 
 	//Slowly rotate to perfect rotation and put a win screen
-	if (_completed)
+	if (_inTolereance)
 	{
 		//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
 		if (rotation.y >= 0.1 && rotation.y <= 179.9)
@@ -204,10 +280,10 @@ void Puzzle::checkOnePuzzle()
 			newMatrix[1] = glm::normalize(newMatrix[1]) * glm::length(_puzzleObjects[0]->getTransform()[1]);
 			glm::mat3 normolizedMatrix = newMatrix;
 
-			normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * 0.1;
+			normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * glm::length(newMatrix[0]);
 			newMatrix[0] = glm::vec4(normolizedMatrix[0].x, normolizedMatrix[0].y, normolizedMatrix[0].z, 0);
 
-			normolizedMatrix[2] = glm::orthonormalize(normolizedMatrix[2], normolizedMatrix[1]) * 0.1;
+			normolizedMatrix[2] = glm::orthonormalize(normolizedMatrix[2], normolizedMatrix[1]) * glm::length(newMatrix[2]);
 			newMatrix[2] = glm::vec4(normolizedMatrix[2].x, normolizedMatrix[2].y, normolizedMatrix[2].z, 0);
 
 			newMatrix[3] = _puzzleObjects[0]->getTransform()[3];
@@ -225,8 +301,7 @@ void Puzzle::checkOnePuzzle()
 				winScreen->SetPosition(glm::vec3((_window->getSize().x - winScreen->GetRect().width) / 2, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
 				//_userInterface->Add(winScreen);
 
-				//victoryDelay = 0;
-				//completed = false;
+				_victoryDelay = 0;
 			}
 		}
 	}
@@ -234,6 +309,130 @@ void Puzzle::checkOnePuzzle()
 	{
 		rotateWithKeys();
 	}
+}
+
+void Puzzle::checkMultiplePuzzles()
+{
+	//Check if we in solution range
+	if (!_inTolereance)
+	{
+		for (int i = 0; i < _puzzleObjects.size(); i++)
+		{
+			if (_puzzleObjects.size() < 1)
+				return;
+
+			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
+
+			if (rotation.x <= 25 && rotation.y <= 25 && rotation.z <= 25)
+			{
+				_inTolereance = true;
+			}
+			else
+			{
+				_inTolereance = false;
+				break;
+			}
+		}
+
+		//Disable the rotation if completed
+		if (_inTolereance == true)
+		{
+			for (int i = 0; i < _puzzleObjects.size(); i++)
+			{
+				_puzzleObjects[i]->setBehaviour(new EmptyBehaviour());
+			}
+		}
+	}
+
+	//Slowly rotate to perfect rotation and put a win screen
+	if (_inTolereance)
+	{
+		for (int i = 0; i < _puzzleObjects.size(); i++)
+		{
+			if (_puzzleObjects.size() < 1 || _puzzleObjects.size() > 100)
+				return;
+
+			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
+
+			//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
+			if (rotation.y >= 1 && rotation.y <= 179)
+			{
+				glm::mat4 newMatrix = _puzzleObjects[i]->getTransform();
+
+				//x
+				if (newMatrix[1].x != 0)
+				{
+					newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.001;
+				}
+				else
+				{
+					newMatrix[1] = glm::vec4(0, newMatrix[1].y, newMatrix[1].z, 0);
+				}
+
+				//z
+				if (newMatrix[1].z != 0)
+				{
+					newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.001;
+				}
+				else
+				{
+					newMatrix[1] = glm::vec4(newMatrix[1].x, newMatrix[1].y, 0, 0);
+				}
+
+				//Orthonormolize the matrix according to Y-axis
+				newMatrix[1] = glm::normalize(newMatrix[1]) * glm::length(_puzzleObjects[i]->getTransform()[1]);
+				glm::mat3 normolizedMatrix = newMatrix;
+
+				normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * glm::length(newMatrix[0]);
+				newMatrix[0] = glm::vec4(normolizedMatrix[0].x, normolizedMatrix[0].y, normolizedMatrix[0].z, 0);
+
+				normolizedMatrix[2] = glm::orthonormalize(normolizedMatrix[2], normolizedMatrix[1]) * glm::length(newMatrix[2]);
+				newMatrix[2] = glm::vec4(normolizedMatrix[2].x, normolizedMatrix[2].y, normolizedMatrix[2].z, 0);
+
+				newMatrix[3] = _puzzleObjects[i]->getTransform()[3];
+
+				_puzzleObjects[i]->setTransform(newMatrix);
+			}
+			else
+			{
+				//Rotate around Y to perfection
+				if (rotation.x >= 2 && rotation.z >= 2)
+				{
+					float _direction = glm::sign(_puzzleObjects[i]->getTransform()[2].x);
+					_puzzleObjects[i]->rotate(glm::radians(-0.05f * _direction), glm::vec3(0, 1, 0));
+					_completed = false;
+				}
+				else
+				{
+					_completed = true;
+				}
+			}
+		}
+
+		//Put a winscreen
+		if (_completed)
+		{
+			++_victoryDelay;
+
+			if (_victoryDelay >= 240)
+			{
+				UITexture* winScreen = new UITexture(_window, "winscreen.png");
+				winScreen->SetPosition(glm::vec3(((_window->getSize().x - winScreen->GetRect().width) / 2) + 200, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
+				//_userInterface->Add(winScreen);
+
+				_victoryDelay = -200000;
+				epicVictoryRoyale();
+			}
+		}
+	}
+	else
+	{
+		rotateWithKeys();
+	}
+}
+
+void Puzzle::draw() {
+	_popups->draw();
 }
 
 void Puzzle::rotateWithKeys()
@@ -267,7 +466,49 @@ void Puzzle::rotateWithKeys()
 
 }
 
+void Puzzle::epicVictoryRoyale() {
+	UITexture* winscreen;
+	int time = PuzzleTimer->GetTime();
+
+	if (time < _tripleStarTime) {
+		winscreen = new UITexture(_window, "triplestar.png");
+	}
+	else if (time < _doubleStarTime) {
+		winscreen = new UITexture(_window, "doublestar.png");
+	}
+	else {
+		winscreen = new UITexture(_window, "onestar.png");
+	}
+
+	winscreen->SetPosition(glm::vec2((_window->getSize().x / 2) - (winscreen->GetRect().width / 2) + 100, (_window->getSize().y / 2) - (winscreen->GetRect().height / 2)));
+
+	// set final time
+	PuzzleTimer->SetTime(time, true);
+	PuzzleTimer->SetPosition(glm::vec2(((_window->getSize().x / 2) - (winscreen->GetRect().width / 2)) + 680, ((_window->getSize().y / 2) - (winscreen->GetRect().height / 2)) + 490));
+	PuzzleTimer->SetRotation(-70);
+	PuzzleTimer->SetFont("Hamilton.ttf");
+	PuzzleTimer->SetColor(sf::Color::Black);
+	PuzzleTimer->SetFontSize(100);
+	_popups->Add(winscreen);
+
+	// add buttons
+	ReturnToMenuButton* returnButton = new ReturnToMenuButton(_window, _room, _game, "menuwin.png", "menuwinselected.png", glm::vec2(0,0));
+	returnButton->SetPosition(glm::vec2(((_window->getSize().x / 2) - (winscreen->GetRect().width / 2)) + 150, ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
+
+	NextLevelButton* nextLevelButton = new NextLevelButton(_window, _room, "continuewin.png", "continuewinselected.png", glm::vec2(0, 0));
+	nextLevelButton->SetPosition(glm::vec2(((_window->getSize().x / 2) + (winscreen->GetRect().width / 2)) - (nextLevelButton->GetRect().width + 150), ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
+
+	_popups->AddButton(returnButton);
+	_popups->AddButton(nextLevelButton);
+
+	std::ofstream savefile;
+	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
+	savefile << _levelIndex + 1;
+	savefile.close();
+}
+
 Puzzle::~Puzzle()
 {
+	delete(PuzzleTimer);
 	//dtor
 }

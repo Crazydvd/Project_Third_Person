@@ -81,7 +81,7 @@ void TPerson::_initializeScene()
 
 	//UI
 	MainMenu = new UserInterface(_window);
-	MainMenu->LoadMainMenu(room);
+	MainMenu->LoadMainMenu(room, this);
 	_world->add(MainMenu);
 }
 

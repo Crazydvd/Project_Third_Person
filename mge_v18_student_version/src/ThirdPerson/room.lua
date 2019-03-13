@@ -28,13 +28,13 @@ objects =
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = 180, z = 0,},
   },
-  desklamp = {
-  	  texture = "DeskLampBase.png",
-	  model = "DeskLamp.obj",
-	  position = { x = 2.25 , y = 1.6 , z = -0.9 ,},
-	  scale = { x = 3, y = 3, z = 3,},
-      rotation = { x = 0, y = -42, z = 0,},
-  },
+  --desklamp = {
+  	-- texture = "DeskLampBase.png",
+	  --model = "DeskLamp.obj",
+	  --position = { x = 2.25 , y = 1.6 , z = -0.9 ,},
+	  --scale = { x = 3, y = 3, z = 3,},
+      --rotation = { x = 0, y = -42, z = 0,},
+  --},
   clipboard = {
   	  texture = "ClipboardBase.png",
 	  model = "Clipboard.obj",
@@ -45,14 +45,14 @@ objects =
  ashtray = {
   	  texture = "AshtrayBase.png",
 	  model = "Ashtray.obj",
-	  position = { x = 2.95 , y = -0.3 , z = 1.7,},
+	  position = { x = 6.3 , y = -0.3 , z = 1.7,},
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = -11.7, z = 0,},
   },
   revolver = {
   	  texture = "RevolverBase.png",
 	  model = "Revolver.obj",
-	  position = { x = -2.16 , y = 0.92 , z = 0.3,},
+	  position = { x = -2 , y = 0.92 , z = 0.5,},
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 100, y = -186, z = -116,},
   },
@@ -68,7 +68,7 @@ objects =
 	  model = "CigarBox.obj",
 	  position = { x = 2.235 , y = 1.074 , z = 0.115 ,},
 	  scale = { x = 3, y = 3, z = 3,},
-      rotation = { x = 0, y = -7, z = 0,},
+      rotation = { x = 0, y = -30, z = 0,},
   },
   pen = {
   	  texture = "PenBaseBlack.png",

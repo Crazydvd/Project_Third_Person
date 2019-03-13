@@ -2,6 +2,7 @@
 #define TIMER_HPP
 
 #include <SFML/Graphics.hpp>
+#include <glm.hpp>
 #include <iostream>
 
 /**
@@ -13,7 +14,12 @@ public:
 	Timer(sf::RenderWindow * aWindow);
 	virtual ~Timer();
 	float GetTime();
-	void SetTime(float pTime);
+	void SetTime(float pTime, bool pText = false);
+	void SetPosition(glm::vec2 pPos);
+	void SetRotation(float pDeg);
+	void SetFont(std::string pFont);
+	void SetColor(sf::Color);
+	void SetFontSize(int pSize);
 	void draw();
 
 private:
