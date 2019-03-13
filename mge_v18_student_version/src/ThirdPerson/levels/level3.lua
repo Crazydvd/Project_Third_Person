@@ -24,3 +24,4 @@ puzzle = {
 letter = "StoryDoctor.png"
 triplestar = 30
 doublestar = 60
+tolerance = 5

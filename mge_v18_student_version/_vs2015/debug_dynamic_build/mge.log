@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Puzzle.cpp
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(102): warning C4018: '<': signed/unsigned mismatch
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(303): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
@@ -27,3 +28,7 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdper
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(512): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(527): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Room.cpp
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 1b0b0710387ac52a890eaf473815ade08115a360

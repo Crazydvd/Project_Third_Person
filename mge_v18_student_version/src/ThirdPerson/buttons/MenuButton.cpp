@@ -8,7 +8,7 @@
 
 bool MenuButton::_played = false;
 
-MenuButton::MenuButton(sf::RenderWindow * aWindow, std::string fileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName) : UITexture(aWindow, fileName, pPosition, pName), _audio(SoundType::SOUND, config::THIRDPERSON_AUDIO_PATH + "hoveringoverpaperoptions.wav")
+MenuButton::MenuButton(sf::RenderWindow * aWindow, std::string fileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName) : UITexture(aWindow, fileName, pPosition, pName), _selectSound(SoundType::SOUND, config::THIRDPERSON_AUDIO_PATH + "selectsound.flac"), _clickSound(SoundType::SOUND, config::THIRDPERSON_AUDIO_PATH + "penclick.wav")
 {
 	assert(_window != NULL);
 
@@ -29,14 +29,14 @@ MenuButton::MenuButton(sf::RenderWindow * aWindow, std::string fileName, std::st
 
 void MenuButton::OnClick()
 {
-	std::cout << "just a button, bitch";
+	_clickSound.Play();
 }
 
 void MenuButton::OnHover()
 {
 	if (!_played)
 	{
-		_audio.Play();
+		_selectSound.Play();
 		_played = true;
 	}
 	_sprite.setTexture(_hoverTexture);

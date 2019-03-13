@@ -13,6 +13,8 @@ ContinueButton::ContinueButton(sf::RenderWindow * aWindow, Room* pRoom, UserInte
 }
 
 void ContinueButton::OnClick() {
+	MenuButton::OnClick();
+	
 	int level;
 
 	std::string line;

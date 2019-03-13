@@ -11,7 +11,11 @@ LevelSelectButton::LevelSelectButton(sf::RenderWindow * aWindow, Room* pRoom, TP
 
 }
 
-void LevelSelectButton::OnClick() {
+void LevelSelectButton::OnClick()
+{
+	MenuButton::OnClick();
+	std::cout << "level select";
+
 	_game->MainMenu->LoadLevelSelect(_room, _game);
 }
 

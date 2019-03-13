@@ -148,6 +148,9 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\NextLevelButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
@@ -276,6 +279,9 @@
     <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\NextLevelButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
@@ -292,6 +298,15 @@
   <ItemGroup>
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level4.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level5.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level6.lua">
+      <Filter>ThirdPerson\levels</Filter>
     </None>
     <None Include="..\src\ThirdPerson\levels\level7.lua">
       <Filter>ThirdPerson\levels</Filter>
@@ -312,15 +327,6 @@
       <Filter>ThirdPerson\levels</Filter>
     </None>
     <None Include="..\src\ThirdPerson\levels\level3.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level4.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level5.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level6.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
   </ItemGroup>

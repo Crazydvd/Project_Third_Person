@@ -53,14 +53,19 @@ class Puzzle : public GameObject
 		bool _tutorial = false;
 		bool _inTolereance = false;
 		bool _completed = false;
+<<<<<<< HEAD
 		bool _firstEnvelope = false;
 		bool _secondEnvelope = false;
 		bool _showingEnvelope = false;
 		float _hintTimer = 0;
+=======
+		bool _easyMode = false;
+>>>>>>> 1b0b0710387ac52a890eaf473815ade08115a360
 		int _levelIndex;
 		int _victoryDelay = 0;
 		float _tripleStarTime = 30.0f;
 		float _doubleStarTime = 60.0f;
+		float _tolerance = 10.0f;
 
 };
 

@@ -7,6 +7,7 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/UITexture.hpp"
+#include "mge/core/Camera.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
@@ -38,7 +39,8 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTex
 	loadRoom();
 }
 
-void Room::loadRoom() {
+void Room::loadRoom()
+{
 	// add parent object to world
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
@@ -58,7 +60,7 @@ void Room::loadRoom() {
 	print_table(L);
 
 	lua_close(L);
-	
+
 	//second light
 	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
 	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
@@ -77,9 +79,9 @@ void Room::loadRoom() {
 	//light->translate(glm::vec3(0, 0, 3));
 	light->SetLightIntensity(1.8f);
 	light->setAmbientContribution(0.2f);
-	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
-	light->setMesh(mesh);
-	light->setMaterial(lightMaterial);
+	//Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
+	//light->setMesh(mesh);
+	//light->setMaterial(lightMaterial);
 	light->SetLightColor(color); //1, 0, 0.8f
 
 	_roomParent->add(light);
@@ -104,7 +106,6 @@ void Room::loadRoom() {
 	//_roomParent->add(lamplight);
 	//LitMaterial::AddLight(lamplight);
 
-
 	// pause menu
 	_gameHud = new UserInterface(_window);
 	_roomParent->add(_gameHud);
@@ -112,7 +113,7 @@ void Room::loadRoom() {
 	UITexture* pauseMenu = new UITexture(_window, "pausemenu.png");
 	pauseMenu->SetPosition(glm::vec2((_window->getSize().x / 2) - (pauseMenu->GetRect().width / 2), (_window->getSize().y / 2) - (pauseMenu->GetRect().height / 2)));
 	_gameHud->Add(pauseMenu);
-	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png",  glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 250)));
+	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 250)));
 	_gameHud->AddButton(new RestartGameButton(_window, this, "Restartpause.png", "restartselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 350)));
 	_gameHud->AddButton(new ReturnToMenuButton(_window, this, _game, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 500)));
 }
@@ -126,7 +127,8 @@ void Room::Initialize()
 	_active = true;
 }
 
-void Room::Deinitialize() {
+void Room::Deinitialize()
+{
 	_roomParent->remove(_puzzle);
 	remove(_puzzle);
 	delete(_puzzle);
@@ -141,7 +143,7 @@ void Room::update(float pStep)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		MoveToNextLevel();
-		if(_paused)
+		if (_paused)
 			TogglePause();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
@@ -157,6 +159,19 @@ void Room::update(float pStep)
 	}
 	if (_pauseTimer > 0) {
 		_pauseTimer -= pStep;
+	}
+
+	//TODO: Remove/Replace this
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+	{
+		std::cout << "T has been pressed.";
+		_game->GetMainCamera()->getBehaviour()->FollowPath("test");
+	}
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		std::cout << "G has been pressed.";
+		_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
 	}
 }
 
@@ -244,13 +259,13 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
 	AbstractMaterial* material;
-	if (pProperties[1][1] == "shadow") 
+	if (pProperties[1][1] == "shadow")
 	{
 		material = new RenderToTextureMaterial(_renderToTexture->getTexture()); //Very important
 	}
-	else 
+	else
 	{
-		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]), glm::vec3(0,0,0));
+		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]), glm::vec3(0, 0, 0));
 	}
 
 	object->setMesh(mesh);
@@ -262,7 +277,8 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
-void Room::TogglePause() {
+void Room::TogglePause()
+{
 	_pauseTimer = 0.5f;
 
 	_paused = !_paused;
@@ -270,7 +286,8 @@ void Room::TogglePause() {
 	_gameHud->Paused = !_gameHud->Paused;
 }
 
-void Room::DisablePause() {
+void Room::DisablePause()
+{
 	_pauseTimer = 0.5f;
 
 	_paused = false;
@@ -278,7 +295,8 @@ void Room::DisablePause() {
 	_gameHud->Paused = true;
 }
 
-void Room::LoadLevel(int pLevel, bool pReload) {
+void Room::LoadLevel(int pLevel, bool pReload)
+{
 	if (!pReload){
 		_levelIndex = pLevel;
 	}
@@ -313,7 +331,8 @@ void Room::MoveToNextLevel()
 	saveLevel();
 }
 
-void Room::saveLevel() {
+void Room::saveLevel()
+{
 	int level;
 
 	// check if a new higher level has been reached and save it

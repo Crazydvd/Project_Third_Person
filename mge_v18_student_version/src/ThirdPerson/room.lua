@@ -91,4 +91,25 @@ objects =
 	  scale = { x = 1.5, y = 1.5, z = 1.5, },
       rotation = { x = 0, y = 0, z = 0,},
   },
+  bookshelf = {
+  	  texture = "BookCaseTexture.png",
+	  model = "bookshelf.obj",
+	  position = { x = -1, y = 2, z = -2,},
+	  scale = { x = 1.8, y = 1.8, z = 1.8,},
+      rotation = { x = 0, y = 90, z = 0,},
+  },
+    wallframes = {
+  	  texture = "Frog.png",
+	  model = "WallFrames.obj",
+	  position = { x = 2 , y = 2, z = -2,},
+	  scale = { x = 1.5, y = 1.5, z = 1.5,},
+      rotation = { x = 0, y = 90, z = 0,},
+  },
+      FileCabinet = {
+  	  texture = "Frog.png",
+	  model = "FileCabinet.obj",
+	  position = { x = 5 , y = 0, z = -2,},
+	  scale = { x = 1.8, y = 1.8, z = 1.8,},
+      rotation = { x = 0, y = 135, z = 0,},
+  },
 }

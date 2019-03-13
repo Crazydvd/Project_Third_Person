@@ -84,12 +84,12 @@ void UserInterface::LoadMainMenu(Room* pRoom, TPerson* pGame) {
 	UITexture* corkBoard = new UITexture(_window, "corkboard.png");
 
 	
-	_level1 = new UITexture(_window, "1formenudark.png", glm::vec2(500, 0));
-	_level2 = new UITexture(_window, "2formenudark.png", glm::vec2(800, 0));
-	_level3 = new UITexture(_window, "3formenudark.png", glm::vec2(1200, 0));
-	_level4 = new UITexture(_window, "4formenudark.png", glm::vec2(500, 600));
-	_level5 = new UITexture(_window, "5formenudark.png", glm::vec2(800, 600));
-	_string = new UITexture(_window, "yarnonly.png", glm::vec2(500, 500));
+	_level1 = new UITexture(_window, "1formenudark.png", glm::vec2(760, 10));
+	_level2 = new UITexture(_window, "2formenudark.png", glm::vec2(1530, 520));
+	_level3 = new UITexture(_window, "3formenudark.png", glm::vec2(1135, 300));
+	_level4 = new UITexture(_window, "4formenudark.png", glm::vec2(775, 400));
+	_level5 = new UITexture(_window, "5formenudark.png", glm::vec2(1450, 18));
+	_string = new UITexture(_window, "yarnonly.png", glm::vec2(0, 0));
 
 
 	NewGameButton* newGame = new NewGameButton(_window, pRoom, this, "New_Game.png", "New_Game_selected.png", glm::vec2(100, 40));
