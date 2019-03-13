@@ -12,9 +12,7 @@ CameraMovementBehaviour::~CameraMovementBehaviour()
 }
 
 void CameraMovementBehaviour::update(float pStep)
-{
-	std::cout << "this is being called" << std::endl;
-
+{	
 	if (_moving)
 	{
 		SetPosition(_oldPosition + _deltaVector * _interValue);

@@ -413,12 +413,11 @@ void Puzzle::checkMultiplePuzzles()
 			else
 			{
 				//Rotate around Y to perfection
-				if (_puzzleObjects[i]->getWorldRotation().x >= 3 && _puzzleObjects[i]->getWorldRotation().z >= 3)
+				if (_puzzleObjects[i]->getWorldRotation().x >= 4 && _puzzleObjects[i]->getWorldRotation().z >= 4)
 				{
 					float _direction = glm::sign(_puzzleObjects[i]->getTransform()[2].x);
 					_puzzleObjects[i]->rotate(glm::radians(-0.07 * _direction), glm::vec3(0, 1, 0));
 					_completed = false;
-					std::cout << _puzzleObjects[i]->getWorldRotation() << std::endl;
 				}
 				else
 				{
@@ -449,6 +448,7 @@ void Puzzle::checkMultiplePuzzles()
 		rotateWithKeys();
 	}
 }
+
 
 void Puzzle::draw()
 {

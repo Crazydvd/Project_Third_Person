@@ -24,8 +24,7 @@ UserInterface::UserInterface(sf::RenderWindow * aWindow, std::string pName, glm:
 void UserInterface::update(float pStep) {
 	if (Paused)
 		return;
-	std::cout << _name;
-
+	
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
 	//check for hovering over objects
 	for (int i = _buttons.size() - 1; i > -1; i--) {

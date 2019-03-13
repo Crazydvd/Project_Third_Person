@@ -54,9 +54,10 @@ class Puzzle : public GameObject
 		bool _easyMode = false;
 		int _levelIndex;
 		int _victoryDelay = 0;
+		int correctPuzzles = 0;
 		float _tripleStarTime = 30.0f;
 		float _doubleStarTime = 60.0f;
-		float _tolerance = 10.0f;
+		float _tolerance = 20.0f;
 
 };
 
