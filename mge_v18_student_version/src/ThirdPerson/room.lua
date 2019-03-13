@@ -91,4 +91,11 @@ objects =
 	  scale = { x = 1.5, y = 1.5, z = 1.5, },
       rotation = { x = 0, y = 0, z = 0,},
   },
+  --bookshelf = {
+  	--  texture = "Frog.png",
+	  --model = "bookshelf.obj",
+	  --position = { x = 0 , y = 2, z = 0,},
+	  --scale = { x = 1, y = 1, z = 1,},
+      --rotation = { x = 0, y = 0, z = 0,},
+  --},
 }
