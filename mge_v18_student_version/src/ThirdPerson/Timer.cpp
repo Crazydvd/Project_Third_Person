@@ -32,9 +32,38 @@ void Timer::_createTimer() {
 	_timerText.setPosition(10, 100);
 }
 
-void Timer::SetTime(float pTime) {
+void Timer::SetPosition(glm::vec2 pPos) {
+	_timerText.setPosition(pPos.x, pPos.y);
+}
+
+void Timer::SetRotation(float pDeg) {
+	_timerText.rotate(pDeg);
+}
+
+void Timer::SetTime(float pTime, bool pText) {
 	_time = pTime;
-	_timerText.setString(std::to_string((int)_time));
+	if (pText) {
+		_timerText.setString(std::to_string((int)_time) + " seconds");
+	}
+	else {
+		_timerText.setString(std::to_string((int)_time));
+	}
+}
+
+void Timer::SetFont(std::string pFont) {
+	if (!_font.loadFromFile(config::THIRDPERSON_FONT_PATH + pFont)) {
+		std::cout << "Could not load font, exiting..." << std::endl;
+		return;
+	}
+	_timerText.setFont(_font);
+}
+
+void Timer::SetColor(sf::Color pColor) {
+	_timerText.setFillColor(pColor);
+}
+
+void Timer::SetFontSize(int pSize) {
+	_timerText.setCharacterSize(pSize);
 }
 
 float Timer::GetTime() {

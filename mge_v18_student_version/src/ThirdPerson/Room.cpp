@@ -120,7 +120,7 @@ void Room::loadRoom() {
 void Room::Initialize()
 {
 	// add puzzle
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_roomParent->add(_puzzle);
 
 	_active = true;
@@ -128,6 +128,7 @@ void Room::Initialize()
 
 void Room::Deinitialize() {
 	_roomParent->remove(_puzzle);
+	remove(_puzzle);
 	delete(_puzzle);
 	_active = false;
 }
@@ -269,17 +270,22 @@ void Room::TogglePause() {
 	_gameHud->Paused = !_gameHud->Paused;
 }
 
+void Room::DisablePause() {
+	_pauseTimer = 0.5f;
+
+	_paused = false;
+	_puzzle->Paused = false;
+	_gameHud->Paused = true;
+}
+
 void Room::LoadLevel(int pLevel, bool pReload) {
-	if (pReload) {
-		
-	}
-	else {
+	if (!pReload){
 		_levelIndex = pLevel;
 	}
 
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_world->add(_puzzle);
 }
 
@@ -289,7 +295,7 @@ void Room::MoveToPreviousLevel()
 	if (_levelIndex < 1) { _levelIndex = 1; return; }
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_world->add(_puzzle);
 
 	saveLevel();
@@ -301,17 +307,34 @@ void Room::MoveToNextLevel()
 	if (_levelIndex > 10) { _levelIndex = 10; return; }
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_roomParent->add(_puzzle);
 
 	saveLevel();
 }
 
 void Room::saveLevel() {
-	std::ofstream savefile;
-	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
-	savefile << _levelIndex;
-	savefile.close();
+	int level;
+
+	// check if a new higher level has been reached and save it
+	std::string line;
+	std::ifstream myfile("save.txt");
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+			std::cout << line;
+			level = std::stoi(line);
+		}
+		myfile.close();
+	}
+
+	if (_levelIndex > level) {
+		std::ofstream savefile;
+		savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
+		savefile << _levelIndex;
+		savefile.close();
+	}
 }
 
 void Room::_render()
@@ -322,8 +345,8 @@ void Room::_render()
 	glm::mat4 lightTransform = light->getWorldTransform();
 	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
 
-	_puzzle->PuzzleTimer->draw();
 	_puzzle->draw();
+	_puzzle->PuzzleTimer->draw();
 	if (_paused) {
 		_gameHud->draw();
 	}

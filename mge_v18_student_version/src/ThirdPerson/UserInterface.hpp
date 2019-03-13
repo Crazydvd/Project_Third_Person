@@ -9,6 +9,7 @@
 #include <iostream>
 
 class Room;
+class TPerson;
 
 /**
  * Very simple class capable of rendering a simple piece of text through SFML.
@@ -21,7 +22,8 @@ public:
 	virtual ~UserInterface();
 	void Add(UITexture* pObject);
 	void AddButton(MenuButton* pObject);
-	void LoadMainMenu(Room* pRoom);
+	void LoadMainMenu(Room* pRoom, TPerson* pGame);
+	void LoadLevelSelect(Room* pRoom, TPerson* pGame);
 	void QueueClear();
 	void EmptyInterface();
 	void draw();
@@ -33,6 +35,12 @@ private:
 	sf::RenderWindow * _window;
 	std::vector<UITexture*> _objects;
 	std::vector<MenuButton*> _buttons;
+	UITexture* _level1;
+	UITexture* _level2;
+	UITexture* _level3;
+	UITexture* _level4;
+	UITexture* _level5;
+	UITexture* _string;
 
 	bool _queueClearing = false;
 

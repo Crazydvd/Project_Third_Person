@@ -1,2 +1,36 @@
+<<<<<<< HEAD
 ﻿  Room.cpp
+=======
+<<<<<<< HEAD
+﻿  UserInterface.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\userinterface.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Puzzle.cpp
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(240): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(250): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(297): warning C4018: '<': signed/unsigned mismatch
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(315): warning C4018: '<': signed/unsigned mismatch
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(325): warning C4018: '<': signed/unsigned mismatch
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(337): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(347): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(413): warning C4018: '<': signed/unsigned mismatch
+>>>>>>> 1afb8bd1a6ab1f8648374908501100e4f4995abb
   mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 4143af67dbef18541429df8f3b31c4c8f719d2ad
