@@ -7,11 +7,13 @@
 #include "ThirdPerson/buttons/MenuButton.hpp"
 #include "ThirdPerson/TPerson.hpp"
 #include "ThirdPerson/Room.hpp"
+#include "ThirdPerson/UserInterface.hpp"
+#include "ThirdPerson/Puzzle.hpp"
 
 class NextLevelButton : public MenuButton
 {
 public:
-	NextLevelButton(sf::RenderWindow* aWindow, Room* pRoom, std::string pfileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName = "NextLevelButton");
+	NextLevelButton(sf::RenderWindow* aWindow, Room* pRoom, Puzzle* pPuzzle, UserInterface* pUI, int pLevelIndex, float* pTimer, bool* pEnd, std::string pfileName, std::string hoverFileName, glm::vec2 pPosition, std::string pName = "NextLevelButton");
 	void OnClick();
 	virtual ~NextLevelButton();
 
@@ -20,6 +22,12 @@ private:
 	NextLevelButton(const NextLevelButton&);
 	NextLevelButton& operator=(const NextLevelButton&);
 	Room* _room;
+	UserInterface* _UI;
+	int _level;
+	float* _endTimer;
+	bool* _endBool;
+	Puzzle* _puzzle;
+
 protected:
 };
 

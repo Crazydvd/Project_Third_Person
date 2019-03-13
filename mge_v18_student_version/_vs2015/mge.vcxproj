@@ -101,13 +101,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../src;D:\ProjectThirdPerson\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../src;D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;lua5.1.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\ProjectThirdPerson\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\Lua\5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -201,6 +201,7 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ShowHintButton.hpp" />
     <ClInclude Include="..\src\ThirdPerson\config.hpp" />
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp" />
     <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
@@ -246,6 +247,7 @@
     <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ShowHintButton.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
     <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
     <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
