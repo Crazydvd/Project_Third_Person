@@ -75,7 +75,7 @@ void Room::loadRoom() {
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	//light->translate(glm::vec3(0, 0, 3));
-	light->SetLightIntensity(2);
+	light->SetLightIntensity(1.8f);
 	light->setAmbientContribution(0.2f);
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
 	light->setMesh(mesh);
@@ -86,13 +86,13 @@ void Room::loadRoom() {
 	LitMaterial::AddLight(light);
 
 	//Cigar light
-	Light* cigarlight = new Light("CigarLight", glm::vec3(-1.49f, .9f, 0.7f), LightType::POINT);
+	Light* cigarlight = new Light("CigarLight", glm::vec3(1.94f, .9f, 0.7f), LightType::POINT);
 	cigarlight->SetLightColor(glm::vec3(0.886f, 0.15f, 0));
 	cigarlight->setFalloff(35);
 	_roomParent->add(cigarlight);
 	LitMaterial::AddLight(cigarlight);
 
-	////Lamp light
+	//Lamp light
 	//Light* lamplight = new Light("lampLight", glm::vec3(2.2f, 2.0f, -1.0f), LightType::SPOT);
 	//lamplight->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	////mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");

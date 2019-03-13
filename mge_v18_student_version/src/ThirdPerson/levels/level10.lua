@@ -18,6 +18,34 @@ puzzle = {
 		rotation = { x = 0, y = -10, z = 0,},
 		scale = { x = 0.3, y = 0.5, z = 0.5},
 	},
+		polaroid2 = {
+		texture = "LevelStreet.png",
+		model = "plane.obj",
+		position = { x = 1.1 , y = 0.89, z = 0.4 ,},
+		rotation = { x = 0, y = 0, z = 0,},
+		scale = { x = 0.3, y = 0.5, z = 0.5},
+	},
+		polaroid3 = {
+		texture = "LevelBath.png",
+		model = "plane.obj",
+		position = { x = 1.1 , y = 0.895 , z = 0.38,},
+		rotation = { x = 0, y = -5, z = 0,},
+		scale = { x = 0.3, y = 0.5, z = 0.5},
+	},
+		polaroid4 = {
+		texture = "LevelBath.png",
+		model = "plane.obj",
+		position = { x = 1.1 , y = 0.8955 , z = 0.38,},
+		rotation = { x = 0, y = -15, z = 0,},
+		scale = { x = 0.3, y = 0.5, z = 0.5},
+	},
+		polaroid5 = {
+		texture = "LevelChopShop.png",
+		model = "plane.obj",
+		position = { x = 1.1 , y = 0.89555 , z = 0.4,},
+		rotation = { x = 0, y = 7, z = 0,},
+		scale = { x = 0.3, y = 0.5, z = 0.5},
+	},
 }
 
 

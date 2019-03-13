@@ -42,6 +42,7 @@ class Puzzle : public GameObject
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
 		bool _started = false;
+		bool _queueBehaviour = false;
 		bool _tutorial = false;
 		bool _inTolereance = false;
 		bool _completed = false;

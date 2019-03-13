@@ -31,11 +31,6 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	loadLetter(L);
 
 	lua_close(L);
-
-	for (size_t i = 0; i < _puzzleObjects.size(); i++)
-	{
-		_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
-	}
 }
 
 void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3])
@@ -47,7 +42,7 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 
 
 	this->add(object);
-	if (pName != "polaroid") {
+	if ((((pName != "polaroid" && pName != "polaroid2") && pName != "polaroid3" )&& pName != "polaroid4") && pName != "polaroid5") {
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
@@ -67,7 +62,7 @@ void Puzzle::update(float pStep)
 
 	// check for the game starting
 	if (!_started) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
 			if (_levelIndex == 1 && !_tutorial) {
 				UITexture* tutorial = new UITexture(_window, "storypopuptutorial.png");
 				_popups->EmptyInterface();
@@ -75,10 +70,20 @@ void Puzzle::update(float pStep)
 				_tutorial = true;
 				return;
 			}
+
+			_queueBehaviour = true;
 			_started = true;
 			_popups->QueueClear();
 		}
 		return;
+	}
+
+	if (_queueBehaviour && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
+		_queueBehaviour = false;
 	}
 
 	GameObject::update(pStep);
@@ -193,6 +198,10 @@ void Puzzle::loadLetter(lua_State* L) {
 	lua_getglobal(L, "letter");
 
 	if (lua_isnil(L, -1)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
 		_started = true;
 		printf("no letter\n");
 		return;
