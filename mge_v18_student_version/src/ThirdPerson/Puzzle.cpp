@@ -67,6 +67,21 @@ void Puzzle::update(float pStep)
 	if (Paused)
 		return;
 
+	if (_endStory) {
+		if (_endStoryTimer > 0) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+				_room->TogglePause();
+
+				_room->DisablePause();
+				_game->MainMenu->LoadMainMenu(_room, _game);
+				_room->Deinitialize();
+			}
+		}
+		else {
+			_endStoryTimer -= pStep;
+		}
+	}
+
 	// check for the game starting
 	if (!_started) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -99,10 +114,9 @@ void Puzzle::update(float pStep)
 	if (Paused)
 		return;
 
-<<<<<<< HEAD
 	if (_showingEnvelope && _hintTimer <= 0) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-			for (int i = 0; i < _hints.size(); i++) {
+			for (size_t i = 0; i < _hints.size(); i++) {
 				_hints[i]->Enabled = false;
 			}
 			_showingEnvelope = false;
@@ -115,12 +129,10 @@ void Puzzle::update(float pStep)
 	
 
 	checkForTips();
-=======
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
 	{
 		_easyMode = true;
 	}
->>>>>>> 1b0b0710387ac52a890eaf473815ade08115a360
 
 	if (_puzzleObjects.size() > 1)
 	{
@@ -375,7 +387,7 @@ void Puzzle::checkMultiplePuzzles()
 	//Check if we in solution range
 	if (!_inTolereance)
 	{
-		for (int i = 0; i < _puzzleObjects.size(); i++)
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
 		{
 			if (_puzzleObjects.size() < 1)
 				return;
@@ -396,7 +408,7 @@ void Puzzle::checkMultiplePuzzles()
 		//Disable the rotation if completed
 		if (_inTolereance == true)
 		{
-			for (int i = 0; i < _puzzleObjects.size(); i++)
+			for (size_t i = 0; i < _puzzleObjects.size(); i++)
 			{
 				_puzzleObjects[i]->setBehaviour(new EmptyBehaviour());
 			}
@@ -558,16 +570,18 @@ void Puzzle::epicVictoryRoyale() {
 	ReturnToMenuButton* returnButton = new ReturnToMenuButton(_window, _room, _game, "menuwin.png", "menuwinselected.png", glm::vec2(0,0));
 	returnButton->SetPosition(glm::vec2(((_window->getSize().x / 2) - (winscreen->GetRect().width / 2)) + 150, ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
 
-	NextLevelButton* nextLevelButton = new NextLevelButton(_window, _room, "continuewin.png", "continuewinselected.png", glm::vec2(0, 0));
+	NextLevelButton* nextLevelButton = new NextLevelButton(_window, _room, this, _popups, _levelIndex, &_endStoryTimer, &_endStory, "continuewin.png", "continuewinselected.png", glm::vec2(0, 0));
 	nextLevelButton->SetPosition(glm::vec2(((_window->getSize().x / 2) + (winscreen->GetRect().width / 2)) - (nextLevelButton->GetRect().width + 150), ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
 
 	_popups->AddButton(returnButton);
 	_popups->AddButton(nextLevelButton);
 
-	std::ofstream savefile;
-	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
-	savefile << _levelIndex + 1;
-	savefile.close();
+	if (_levelIndex < 10) {
+		std::ofstream savefile;
+		savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
+		savefile << _levelIndex + 1;
+		savefile.close();
+	}
 }
 
 Puzzle::~Puzzle()
