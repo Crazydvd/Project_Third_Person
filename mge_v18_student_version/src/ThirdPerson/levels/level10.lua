@@ -51,3 +51,4 @@ puzzle = {
 
 triplestar = 30
 doublestar = 60
+tolerance = 10
