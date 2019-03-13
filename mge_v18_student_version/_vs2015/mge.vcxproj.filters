@@ -27,7 +27,7 @@
       <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
     </Filter>
     <Filter Include="ThirdPerson\levels">
-      <UniqueIdentifier>{6d93e03a-d3a0-4dd9-b75b-fdb859722328}</UniqueIdentifier>
+      <UniqueIdentifier>{bccab474-9d34-4185-b9a8-481768dfe364}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -133,29 +133,23 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
+    <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
+      <Filter>ThirdPerson</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\NextLevelButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\LoadLevelButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -262,30 +256,36 @@
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Audio.cpp">
-      <Filter>MGE Source files</Filter>
+      <Filter>ThirdPerson</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\NextLevelButton.cpp">
+    <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\LoadLevelButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp">
+      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\ThirdPerson\room.lua">
       <Filter>ThirdPerson</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level3.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level4.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level5.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level6.lua">
+      <Filter>ThirdPerson\levels</Filter>
     </None>
     <None Include="..\src\ThirdPerson\levels\level7.lua">
       <Filter>ThirdPerson\levels</Filter>
@@ -305,16 +305,19 @@
     <None Include="..\src\ThirdPerson\levels\level2.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
-    <None Include="..\src\ThirdPerson\levels\level3.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level4.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level5.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
     <None Include="..\src\ThirdPerson\levels\level6.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level7.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level8.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level9.lua">
+      <Filter>ThirdPerson\levels</Filter>
+    </None>
+    <None Include="..\src\ThirdPerson\levels\level10.lua">
       <Filter>ThirdPerson\levels</Filter>
     </None>
   </ItemGroup>

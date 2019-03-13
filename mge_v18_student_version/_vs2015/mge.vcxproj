@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
@@ -213,6 +214,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />

@@ -11,7 +11,9 @@ RestartGameButton::RestartGameButton(sf::RenderWindow * aWindow, Room* pRoom, st
 
 }
 
-void RestartGameButton::OnClick() {
+void RestartGameButton::OnClick()
+{
+	MenuButton::OnClick();
 	_room->TogglePause();
 	_room->LoadLevel(0, true);
 }
