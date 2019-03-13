@@ -66,7 +66,7 @@ void TPerson::_initializeScene()
 	path.push_back(camera->getWorldPosition());
 	path.push_back(glm::vec3(0, 0, 0));
 
-	//camera->setBehaviour(new KeysBehaviour(25, 90));
+	camera->setBehaviour(new KeysBehaviour(25, 90)); //<--
 
 	_world->add(camera);
 	_world->setMainCamera(camera);
@@ -74,7 +74,7 @@ void TPerson::_initializeScene()
 	CameraMovementBehaviour* testing = new CameraMovementBehaviour(camera);
 	testing->AddPath(path, "test");
 
-	camera->setBehaviour(testing);
+	//camera->setBehaviour(testing);
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);
