@@ -38,7 +38,7 @@ void UserInterface::update(float pStep) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
 				_buttons[i]->OnClick();
 			}
-			if (_buttons.size() < i + 1 || _buttons.size() > 1000) 
+			if (_buttons.size() < i + 1 || _buttons.size() > 100) 
 				return; // be gone if the thot is gone
 
 			_buttons[i]->OnHover();

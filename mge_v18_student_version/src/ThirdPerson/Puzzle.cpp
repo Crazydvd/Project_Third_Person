@@ -89,7 +89,9 @@ void Puzzle::update(float pStep)
 		_queueBehaviour = false;
 	}
 
-	GameObject::update(pStep);
+	if (!Paused) {
+		GameObject::update(pStep);
+	}
 	if (Paused)
 		return;
 
