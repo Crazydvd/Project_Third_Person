@@ -10,11 +10,13 @@
 #include "mge/behaviours/EmptyBehaviour.hpp"
 #include "ThirdPerson/buttons/ReturnToMenuButton.hpp"
 #include "ThirdPerson/buttons/NextLevelButton.hpp"
+#include "ThirdPerson/buttons/ShowHintButton.hpp"
 
 Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld), _game(pGame), _room(pRoom)
 {
 	PuzzleTimer = new Timer(pWindow);
 	_puzzleObjects = std::vector<GameObject*>();
+	_hints = std::vector<UITexture*>();
 	_popups = new UserInterface(_window);
 	add(_popups);
 
@@ -94,6 +96,22 @@ void Puzzle::update(float pStep)
 	}
 	if (Paused)
 		return;
+
+	if (_showingEnvelope && _hintTimer <= 0) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+			for (int i = 0; i < _hints.size(); i++) {
+				_hints[i]->Enabled = false;
+			}
+			_showingEnvelope = false;
+			return;
+		}
+	}
+	else if (_hintTimer > 0) {
+		_hintTimer -= pStep;
+	}
+	
+
+	checkForTips();
 
 	if (_puzzleObjects.size() > 1)
 	{
@@ -228,6 +246,29 @@ void Puzzle::loadLetter(lua_State* L) {
 std::vector<GameObject*> Puzzle::getObjects()
 {
 	return _puzzleObjects;
+}
+
+void Puzzle::checkForTips() {
+	if (PuzzleTimer->GetTime() > _tripleStarTime && !_firstEnvelope) {
+		UITexture* hint = new UITexture(_window, "/hints/" + std::to_string(_levelIndex) + "level1.png");
+		hint->SetPosition(glm::vec2((_window->getSize().x / 2) - (hint->GetRect().width / 2), (_window->getSize().y / 2) - (hint->GetRect().height / 2)));
+		ShowHintButton* envelope1 = new ShowHintButton(_window, hint, &_showingEnvelope, &_hintTimer, "/hints/E1.png", "/hints/E1open.png", glm::vec2(_window->getSize().x - 200, 20));
+		_hints.push_back(hint);
+		hint->Enabled = false;
+		_popups->AddButton(envelope1);
+		_popups->Add(hint);
+		_firstEnvelope = true;
+	}
+	else if (PuzzleTimer->GetTime() > _doubleStarTime && !_secondEnvelope) {
+		UITexture* hint = new UITexture(_window, "/hints/" + std::to_string(_levelIndex) + "level2.png");
+		hint->SetPosition(glm::vec2((_window->getSize().x / 2) - (hint->GetRect().width / 2), (_window->getSize().y / 2) - (hint->GetRect().height / 2)));
+		ShowHintButton* envelope2 = new ShowHintButton(_window, hint, &_showingEnvelope, &_hintTimer, "/hints/E2.png", "/hints/E2open.png", glm::vec2(_window->getSize().x - 400, 20));
+		_hints.push_back(hint);
+		hint->Enabled = false;
+		_popups->AddButton(envelope2);
+		_popups->Add(hint);
+		_secondEnvelope = true;
+	}
 }
 
 void Puzzle::checkOnePuzzle()

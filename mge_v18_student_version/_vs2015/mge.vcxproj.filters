@@ -157,6 +157,9 @@
     <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\buttons\ShowHintButton.hpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -280,6 +283,9 @@
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp">
+      <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\buttons\ShowHintButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
     </ClCompile>
   </ItemGroup>

@@ -39,11 +39,13 @@ class Puzzle : public GameObject
 		void checkMultiplePuzzles();
 		void rotateWithKeys();
 		void epicVictoryRoyale();
+		void checkForTips();
 
 		World* _world;
 		TPerson* _game;
 		Room* _room;
 		std::vector<GameObject*> _puzzleObjects;
+		std::vector<UITexture*> _hints;
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
 		bool _started = false;
@@ -51,6 +53,10 @@ class Puzzle : public GameObject
 		bool _tutorial = false;
 		bool _inTolereance = false;
 		bool _completed = false;
+		bool _firstEnvelope = false;
+		bool _secondEnvelope = false;
+		bool _showingEnvelope = false;
+		float _hintTimer = 0;
 		int _levelIndex;
 		int _victoryDelay = 0;
 		float _tripleStarTime = 30.0f;
