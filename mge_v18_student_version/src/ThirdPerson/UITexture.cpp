@@ -56,9 +56,11 @@ UITexture::~UITexture()
 
 void UITexture::draw()
 {
-	glDisable( GL_CULL_FACE );
-	glActiveTexture(GL_TEXTURE0);
-	_window->pushGLStates();
-	_window->draw(_sprite);
-	_window->popGLStates();
+	if (Enabled) {
+		glDisable(GL_CULL_FACE);
+		glActiveTexture(GL_TEXTURE0);
+		_window->pushGLStates();
+		_window->draw(_sprite);
+		_window->popGLStates();
+	}
 }

@@ -140,7 +140,7 @@ void UserInterface::LoadLevelSelect(Room* pRoom, TPerson* pGame) {
 														this,
 														(1 + index * 2),
 														std::to_string(index + 1) + "formenu.png",
-														std::to_string(index + 1) + "formenudark.png",
+														std::to_string(index + 1) + "selectedpolaroid.png",
 														glm::vec2(polaroids[index]->GetPosition().x, polaroids[index]->GetPosition().y));
 		AddButton(button);
 		index++;

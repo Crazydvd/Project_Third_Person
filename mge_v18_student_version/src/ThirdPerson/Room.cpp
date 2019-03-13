@@ -161,15 +161,16 @@ void Room::update(float pStep)
 		_pauseTimer -= pStep;
 	}
 
-
 	//TODO: Remove/Replace this
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 	{
+		std::cout << "T has been pressed.";
 		_game->GetMainCamera()->getBehaviour()->FollowPath("test");
 	}
-
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
 	{
+		std::cout << "G has been pressed.";
 		_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
 	}
 }

@@ -17,5 +17,5 @@ puzzle = {
 letter = "Storypopupintro.png"
 triplestar = 30
 doublestar = 60
-tolerance = 20
+tolerance = 10
 
