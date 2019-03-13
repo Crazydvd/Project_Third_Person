@@ -97,6 +97,11 @@ void Puzzle::update(float pStep)
 	if (Paused)
 		return;
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	{
+		_easyMode = true;
+	}
+
 	if (_puzzleObjects.size() > 1)
 	{
 		checkMultiplePuzzles();
@@ -206,6 +211,13 @@ void Puzzle::loadScoreTimes(lua_State* L)
 	{
 		_doubleStarTime = (float)lua_tonumber(L, -1);
 	}
+
+	lua_getglobal(L, "tolerance");
+
+	if (lua_isnumber(L, -1))
+	{
+		_tolerance = (float)lua_tonumber(L, -1);
+	}
 }
 
 void Puzzle::loadLetter(lua_State* L)
@@ -245,7 +257,7 @@ void Puzzle::checkOnePuzzle()
 	glm::vec3 rotation = _puzzleObjects[0]->getWorldRotation();
 
 	//Check if we in solution range
-	if ((rotation.y <= 8 || rotation.y >= 172) && !_inTolereance)
+	if ((rotation.y <= _tolerance || rotation.y >= 180 - _tolerance) && !_inTolereance)
 	{
 		_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
 		_inTolereance = true;
@@ -262,7 +274,7 @@ void Puzzle::checkOnePuzzle()
 			//x
 			if (newMatrix[1].x <= -0.001 || newMatrix[1].x >= 0.001)
 			{
-				newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0005;
+				newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0001;
 			}
 			else
 			{
@@ -272,7 +284,7 @@ void Puzzle::checkOnePuzzle()
 			//z
 			if (newMatrix[1].z <= -0.001 || newMatrix[1].z >= 0.001)
 			{
-				newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0005;
+				newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0001;
 			}
 			else
 			{
@@ -327,7 +339,7 @@ void Puzzle::checkMultiplePuzzles()
 
 			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
 
-			if (rotation.x <= 25 && rotation.y <= 25 && rotation.z <= 25)
+			if (rotation.x <= _tolerance && rotation.y <= _tolerance && rotation.z <= _tolerance)
 			{
 				_inTolereance = true;
 			}
