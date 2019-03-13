@@ -51,10 +51,12 @@ class Puzzle : public GameObject
 		bool _tutorial = false;
 		bool _inTolereance = false;
 		bool _completed = false;
+		bool _easyMode = false;
 		int _levelIndex;
 		int _victoryDelay = 0;
 		float _tripleStarTime = 30.0f;
 		float _doubleStarTime = 60.0f;
+		float _tolerance = 10.0f;
 
 };
 
