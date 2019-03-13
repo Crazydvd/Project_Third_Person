@@ -1,6 +1,5 @@
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\vc141.pdb
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\vc141.idb
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\texturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\littexturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\litmaterial.obj
@@ -18,9 +17,9 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstra
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rotatingbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mouserotatingbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\keysbehaviour.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\cameramovementbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\main.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
@@ -40,11 +39,13 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\contin
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\backtomainbutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\audio.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\debughud.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\texturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\userinterface.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\cameramovementbehaviour.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
+d:\school\projects\project_third_person\mge_v18_student_version\_vs2015\debug_dynamic_build/vcpkg.applocal.log
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.command.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.read.1.tlog

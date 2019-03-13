@@ -36,5 +36,5 @@ puzzle = {
 
 letter = "StoryBathroom.png"
 triplestar = 30
-doublestar = 60
+doublestar = 120
 tolerance = 10
