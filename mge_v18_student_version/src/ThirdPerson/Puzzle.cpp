@@ -25,7 +25,7 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	lua_getglobal(L, "puzzle");
 
 	getPuzzles(L, "Puzzle");
-	
+
 	loadScoreTimes(L);
 
 	loadLetter(L);
@@ -47,13 +47,15 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 
 
 	this->add(object);
-	if (pName != "polaroid") {
+	if (pName != "polaroid")
+	{
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
 		_puzzleObjects.push_back(object);
 	}
-	else {
+	else
+	{
 		object->rotate(glm::radians(pVectors[2].x), glm::vec3(1.0f, 0, 0));
 		object->rotate(glm::radians(pVectors[2].y), glm::vec3(0, 1.0f, 0));
 		object->rotate(glm::radians(pVectors[2].z), glm::vec3(0, 0, 1.0f));
@@ -66,9 +68,12 @@ void Puzzle::update(float pStep)
 		return;
 
 	// check for the game starting
-	if (!_started) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-			if (_levelIndex == 1 && !_tutorial) {
+	if (!_started)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		{
+			if (_levelIndex == 1 && !_tutorial)
+			{
 				UITexture* tutorial = new UITexture(_window, "storypopuptutorial.png");
 				_popups->EmptyInterface();
 				_popups->Add(tutorial);
@@ -174,30 +179,36 @@ glm::vec3* Puzzle::fill_vector3(lua_State *L)
 	return vector;
 }
 
-void Puzzle::loadScoreTimes(lua_State* L) {
+void Puzzle::loadScoreTimes(lua_State* L)
+{
 	lua_getglobal(L, "triplestar");
 
-	if (lua_isnumber(L, -1)) {
+	if (lua_isnumber(L, -1))
+	{
 		_tripleStarTime = (float)lua_tonumber(L, -1);
 	}
 
 	lua_getglobal(L, "doublestar");
 
-	if (lua_isnumber(L, -1)) {
+	if (lua_isnumber(L, -1))
+	{
 		_doubleStarTime = (float)lua_tonumber(L, -1);
 	}
 }
 
-void Puzzle::loadLetter(lua_State* L) {
+void Puzzle::loadLetter(lua_State* L)
+{
 	std::string letter;
 	lua_getglobal(L, "letter");
 
-	if (lua_isnil(L, -1)) {
+	if (lua_isnil(L, -1))
+	{
 		_started = true;
 		printf("no letter\n");
 		return;
 	}
-	else {
+	else
+	{
 		letter = lua_tostring(L, -1);
 	}
 
@@ -218,11 +229,7 @@ void Puzzle::checkOnePuzzle()
 	//Check if we in solution range
 	if ((rotation.y <= 8 || rotation.y >= 172) && !_inTolereance)
 	{
-		/*for (int i = 0; i < _puzzleObjects.size(); i++)
-		{
-			_puzzleObjects[i]->setBehaviour(new EmptyBehaviour());
-		}	*/
-
+		_puzzleObjects[0]->setBehaviour(new EmptyBehaviour());
 		_inTolereance = true;
 	}
 
@@ -230,14 +237,14 @@ void Puzzle::checkOnePuzzle()
 	if (_inTolereance)
 	{
 		//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
-		if (rotation.y >= 0.1 && rotation.y <= 179.9)
+		if (rotation.y >= 0.01 && rotation.y <= 179.99)
 		{
 			glm::mat4 newMatrix = _puzzleObjects[0]->getTransform();
 
 			//x
-			if (newMatrix[1].x != 0)
+			if (newMatrix[1].x <= -0.001 || newMatrix[1].x >= 0.001)
 			{
-				newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0001;
+				newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0005;
 			}
 			else
 			{
@@ -245,9 +252,9 @@ void Puzzle::checkOnePuzzle()
 			}
 
 			//z
-			if (newMatrix[1].z != 0)
+			if (newMatrix[1].z <= -0.001 || newMatrix[1].z >= 0.001)
 			{
-				newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0001;
+				newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0005;
 			}
 			else
 			{
@@ -256,6 +263,7 @@ void Puzzle::checkOnePuzzle()
 
 			//Orthonormolize the matrix according to Y-axis
 			newMatrix[1] = glm::normalize(newMatrix[1]) * glm::length(_puzzleObjects[0]->getTransform()[1]);
+
 			glm::mat3 normolizedMatrix = newMatrix;
 
 			normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * glm::length(newMatrix[0]);
@@ -264,7 +272,7 @@ void Puzzle::checkOnePuzzle()
 			normolizedMatrix[2] = glm::orthonormalize(normolizedMatrix[2], normolizedMatrix[1]) * glm::length(newMatrix[2]);
 			newMatrix[2] = glm::vec4(normolizedMatrix[2].x, normolizedMatrix[2].y, normolizedMatrix[2].z, 0);
 
-			newMatrix[3] = _puzzleObjects[0]->getTransform()[3];
+			newMatrix[3] = _puzzleObjects[0]->getTransform()[3];		
 
 			_puzzleObjects[0]->setTransform(newMatrix);
 		}
@@ -279,7 +287,7 @@ void Puzzle::checkOnePuzzle()
 				winScreen->SetPosition(glm::vec3((_window->getSize().x - winScreen->GetRect().width) / 2, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
 				//_userInterface->Add(winScreen);
 
-				_victoryDelay = 0;
+				_victoryDelay = -20000;
 			}
 		}
 	}
@@ -327,14 +335,14 @@ void Puzzle::checkMultiplePuzzles()
 			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
 
 			//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
-			if (rotation.y >= 1 && rotation.y <= 179)
+			if (rotation.y >= 0.01 && rotation.y <= 179.99)
 			{
 				glm::mat4 newMatrix = _puzzleObjects[i]->getTransform();
 
 				//x
-				if (newMatrix[1].x != 0)
+				if (newMatrix[1].x <= -0.001 || newMatrix[1].x >= 0.001)
 				{
-					newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.001;
+					newMatrix[1].x -= glm::sign(newMatrix[1].x) * 0.0005;
 				}
 				else
 				{
@@ -342,9 +350,9 @@ void Puzzle::checkMultiplePuzzles()
 				}
 
 				//z
-				if (newMatrix[1].z != 0)
+				if (newMatrix[1].z <= -0.001 || newMatrix[1].z >= 0.001)
 				{
-					newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.001;
+					newMatrix[1].z -= glm::sign(newMatrix[1].z) * 0.0005;
 				}
 				else
 				{
@@ -353,6 +361,7 @@ void Puzzle::checkMultiplePuzzles()
 
 				//Orthonormolize the matrix according to Y-axis
 				newMatrix[1] = glm::normalize(newMatrix[1]) * glm::length(_puzzleObjects[i]->getTransform()[1]);
+
 				glm::mat3 normolizedMatrix = newMatrix;
 
 				normolizedMatrix[0] = glm::orthonormalize(normolizedMatrix[0], normolizedMatrix[1]) * glm::length(newMatrix[0]);
@@ -362,20 +371,22 @@ void Puzzle::checkMultiplePuzzles()
 				newMatrix[2] = glm::vec4(normolizedMatrix[2].x, normolizedMatrix[2].y, normolizedMatrix[2].z, 0);
 
 				newMatrix[3] = _puzzleObjects[i]->getTransform()[3];
-
-				_puzzleObjects[i]->setTransform(newMatrix);
+			
+				_puzzleObjects[i]->setTransform(newMatrix);		
 			}
 			else
 			{
 				//Rotate around Y to perfection
-				if (rotation.x >= 2 && rotation.z >= 2)
+				if (_puzzleObjects[i]->getWorldRotation().x >= 3 && _puzzleObjects[i]->getWorldRotation().z >= 3)
 				{
 					float _direction = glm::sign(_puzzleObjects[i]->getTransform()[2].x);
-					_puzzleObjects[i]->rotate(glm::radians(-0.05f * _direction), glm::vec3(0, 1, 0));
+					_puzzleObjects[i]->rotate(glm::radians(-0.07 * _direction), glm::vec3(0, 1, 0));
 					_completed = false;
+					std::cout << _puzzleObjects[i]->getWorldRotation() << std::endl;
 				}
 				else
 				{
+					_puzzleObjects[i]->setWorldRotation(glm::vec3(0, 0, 0));
 					_completed = true;
 				}
 			}
@@ -402,7 +413,8 @@ void Puzzle::checkMultiplePuzzles()
 	}
 }
 
-void Puzzle::draw() {
+void Puzzle::draw()
+{
 	_popups->draw();
 }
 
@@ -417,23 +429,23 @@ void Puzzle::rotateWithKeys()
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0f), glm::vec3(1, 0, 0));
+		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(1, 0, 0));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(1, 0, 0));
+		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(1, 0, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0f), glm::vec3(0, 1, 0));
+		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(0, 1, 0));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(0, 1, 0));
+		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(0, 1, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0f), glm::vec3(0, 0, 1));
+		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(0, 0, 1));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(0, 0, 1));
+		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(0, 0, 1));
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		_puzzleObjects[0]->rotate(glm::radians(1.0f), glm::vec3(1, 0, 1));
+		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(1, 0, 1));
 
 }
 

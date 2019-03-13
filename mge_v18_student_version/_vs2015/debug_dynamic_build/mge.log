@@ -1,5 +1,18 @@
-﻿  RestartGameButton.cpp
-  ResumeGameButton.cpp
-  ReturnToMenuButton.cpp
-  Generating Code...
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+﻿  Puzzle.cpp
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(247): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(257): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(305): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(323): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(333): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(345): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(355): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(383): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(425): warning C4018: '<': signed/unsigned mismatch
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(432): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(434): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(437): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(439): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(442): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(444): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(448): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
