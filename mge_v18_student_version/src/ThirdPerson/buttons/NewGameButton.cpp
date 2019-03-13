@@ -12,7 +12,9 @@ NewGameButton::NewGameButton(sf::RenderWindow * aWindow, Room* pRoom, UserInterf
 
 }
 
-void NewGameButton::OnClick() {
+void NewGameButton::OnClick()
+{
+	MenuButton::OnClick();
 	std::ofstream savefile;
 	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
 	savefile << "1";

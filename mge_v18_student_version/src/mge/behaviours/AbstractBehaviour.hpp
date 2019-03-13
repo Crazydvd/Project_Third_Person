@@ -1,6 +1,8 @@
 #ifndef ABSTRACTBEHAVIOUR_HPP
 #define ABSTRACTBEHAVIOUR_HPP
 
+#include <iostream>
+
 class GameObject;
 
 /**
@@ -22,6 +24,9 @@ class AbstractBehaviour
 
         //behaviour should be able to update itself every step and MUST be implemented
 		virtual void update(float pStep) = 0;
+
+		virtual void FollowPath(std::string pName);
+		virtual void FollowReversePath(std::string pName);
 
     protected:
 

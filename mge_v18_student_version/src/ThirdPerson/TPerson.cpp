@@ -21,6 +21,7 @@
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/behaviours/MouseRotatingBehaviour.hpp"
 #include "mge/behaviours/EmptyBehaviour.hpp"
+#include "mge/behaviours/CameraMovementBehaviour.hpp"
 
 #include "mge/util/DebugHud.hpp"
 
@@ -37,10 +38,8 @@ TPerson::TPerson() :AbstractGame(), _hud(0)
 	//TODO: move this FFS.
 	Audio* audio = new Audio(SoundType::MUSIC, config::THIRDPERSON_AUDIO_PATH + "backgroundmusic.flac"); //Don't do this, for more information ask Daniel.
 	//Audio audio(SoundType::SOUND, "ThirdPerson/sounds/National_Anthem_of_the_USSR.ogg"); //Use lines like this instead.
-	audio->SetVolume(50.0f);
-	//audio->SetPitch(0.5f);
 	audio->SetLoop(true);
-	//audio->Play();
+	audio->Play();
 }
 
 void TPerson::initialize()
@@ -63,17 +62,26 @@ void TPerson::_initializeScene()
    //add camera first (it will be updated last)
 	camera = new Camera("camera", glm::vec3(0, 3, 3.0f));
 	camera->rotate(glm::radians(-35.0f), glm::vec3(1, 0, 0));
-	camera->setBehaviour(new KeysBehaviour(25, 90));
+	std::vector<glm::vec3> path;
+	path.push_back(camera->getWorldPosition());
+	path.push_back(glm::vec3(0, 0, 0));
+
+	//camera->setBehaviour(new KeysBehaviour(25, 90));
 
 	_world->add(camera);
 	_world->setMainCamera(camera);
+
+	CameraMovementBehaviour* testing = new CameraMovementBehaviour(camera);
+	testing->AddPath(path, "test");
+
+	camera->setBehaviour(testing);
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);
 
 	//UI
 	MainMenu = new UserInterface(_window);
-	MainMenu->LoadMainMenu(room);
+	MainMenu->LoadMainMenu(room, this);
 	_world->add(MainMenu);
 }
 
@@ -89,7 +97,6 @@ Renderer* TPerson::getRenderer(void) const
 
 void TPerson::_render()
 {
-
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	AbstractGame::_render();

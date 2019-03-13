@@ -12,4 +12,15 @@ puzzle = {
 		rotation = { x = 0, y = -10, z = 0,},
 		scale = { x = 0.3, y = 0.5, z = 0.5},
 	},
+		polaroid2 = {
+		texture = "LevelStreet.png",
+		model = "plane.obj",
+		position = { x = 1.1 , y = 0.89, z = 0.4 ,},
+		rotation = { x = 0, y = 0, z = 0,},
+		scale = { x = 0.3, y = 0.5, z = 0.5},
+	},
 }
+
+letter = "StoryDoctor.png"
+triplestar = 30
+doublestar = 60

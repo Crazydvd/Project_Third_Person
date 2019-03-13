@@ -28,6 +28,7 @@ public:
 	void Initialize();
 	void Deinitialize();
 	void TogglePause();
+	void DisablePause();
 	void LoadLevel(int pLevel = 1, bool pReload = false);
 	void MoveToNextLevel();
 	void MoveToPreviousLevel();

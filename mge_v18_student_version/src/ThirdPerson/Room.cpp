@@ -7,6 +7,7 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/GameObject.hpp"
 #include "ThirdPerson/UITexture.hpp"
+#include "mge/core/Camera.hpp"
 
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/ColorMaterial.hpp"
@@ -38,7 +39,8 @@ Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTex
 	loadRoom();
 }
 
-void Room::loadRoom() {
+void Room::loadRoom()
+{
 	// add parent object to world
 	_roomParent = new GameObject("room", glm::vec3(0, 0, 0));
 	_roomWorld->add(_roomParent);
@@ -58,7 +60,7 @@ void Room::loadRoom() {
 	print_table(L);
 
 	lua_close(L);
-	
+
 	//second light
 	Light* AMlight = new Light("AMlight", glm::vec3(0, -4, 0), LightType::DIRECTIONAL);
 	AMlight->rotate(glm::radians(180.0f), glm::vec3(0, 1, 0));
@@ -75,24 +77,24 @@ void Room::loadRoom() {
 	light->scale(glm::vec3(0.1f, 0.1f, 0.1f));
 	light->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	//light->translate(glm::vec3(0, 0, 3));
-	light->SetLightIntensity(2);
+	light->SetLightIntensity(1.8f);
 	light->setAmbientContribution(0.2f);
-	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
-	light->setMesh(mesh);
-	light->setMaterial(lightMaterial);
+	//Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "cone_smooth.obj");
+	//light->setMesh(mesh);
+	//light->setMaterial(lightMaterial);
 	light->SetLightColor(color); //1, 0, 0.8f
 
 	_roomParent->add(light);
 	LitMaterial::AddLight(light);
 
 	//Cigar light
-	Light* cigarlight = new Light("CigarLight", glm::vec3(-1.49f, .9f, 0.7f), LightType::POINT);
+	Light* cigarlight = new Light("CigarLight", glm::vec3(1.94f, .9f, 0.7f), LightType::POINT);
 	cigarlight->SetLightColor(glm::vec3(0.886f, 0.15f, 0));
 	cigarlight->setFalloff(35);
 	_roomParent->add(cigarlight);
 	LitMaterial::AddLight(cigarlight);
 
-	////Lamp light
+	//Lamp light
 	//Light* lamplight = new Light("lampLight", glm::vec3(2.2f, 2.0f, -1.0f), LightType::SPOT);
 	//lamplight->rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	////mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + "sphere_smooth.obj");
@@ -104,7 +106,6 @@ void Room::loadRoom() {
 	//_roomParent->add(lamplight);
 	//LitMaterial::AddLight(lamplight);
 
-
 	// pause menu
 	_gameHud = new UserInterface(_window);
 	_roomParent->add(_gameHud);
@@ -112,7 +113,7 @@ void Room::loadRoom() {
 	UITexture* pauseMenu = new UITexture(_window, "pausemenu.png");
 	pauseMenu->SetPosition(glm::vec2((_window->getSize().x / 2) - (pauseMenu->GetRect().width / 2), (_window->getSize().y / 2) - (pauseMenu->GetRect().height / 2)));
 	_gameHud->Add(pauseMenu);
-	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png",  glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 250)));
+	_gameHud->AddButton(new ResumeGameButton(_window, this, "Continuepause.png", "continuecelectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 250)));
 	_gameHud->AddButton(new RestartGameButton(_window, this, "Restartpause.png", "restartselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 350)));
 	_gameHud->AddButton(new ReturnToMenuButton(_window, this, _game, "Quitpausemenu.png", "quitselectedpause.png", glm::vec2(pauseMenu->GetPosition().x + 150, pauseMenu->GetPosition().y + 500)));
 }
@@ -120,14 +121,16 @@ void Room::loadRoom() {
 void Room::Initialize()
 {
 	// add puzzle
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_roomParent->add(_puzzle);
 
 	_active = true;
 }
 
-void Room::Deinitialize() {
+void Room::Deinitialize()
+{
 	_roomParent->remove(_puzzle);
+	remove(_puzzle);
 	delete(_puzzle);
 	_active = false;
 }
@@ -140,7 +143,7 @@ void Room::update(float pStep)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 	{
 		MoveToNextLevel();
-		if(_paused)
+		if (_paused)
 			TogglePause();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
@@ -156,6 +159,18 @@ void Room::update(float pStep)
 	}
 	if (_pauseTimer > 0) {
 		_pauseTimer -= pStep;
+	}
+
+
+	//TODO: Remove/Replace this
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowPath("test");
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
 	}
 }
 
@@ -243,13 +258,13 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 
 	Mesh* mesh = Mesh::load(config::THIRDPERSON_MODEL_PATH + pProperties[0][1]);
 	AbstractMaterial* material;
-	if (pProperties[1][1] == "shadow") 
+	if (pProperties[1][1] == "shadow")
 	{
 		material = new RenderToTextureMaterial(_renderToTexture->getTexture()); //Very important
 	}
-	else 
+	else
 	{
-		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]), glm::vec3(0,0,0));
+		material = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + pProperties[1][1]), glm::vec3(0, 0, 0));
 	}
 
 	object->setMesh(mesh);
@@ -261,7 +276,8 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	_roomParent->add(object);
 }
 
-void Room::TogglePause() {
+void Room::TogglePause()
+{
 	_pauseTimer = 0.5f;
 
 	_paused = !_paused;
@@ -269,17 +285,24 @@ void Room::TogglePause() {
 	_gameHud->Paused = !_gameHud->Paused;
 }
 
-void Room::LoadLevel(int pLevel, bool pReload) {
-	if (pReload) {
-		
-	}
-	else {
+void Room::DisablePause()
+{
+	_pauseTimer = 0.5f;
+
+	_paused = false;
+	_puzzle->Paused = false;
+	_gameHud->Paused = true;
+}
+
+void Room::LoadLevel(int pLevel, bool pReload)
+{
+	if (!pReload){
 		_levelIndex = pLevel;
 	}
 
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_world->add(_puzzle);
 }
 
@@ -289,7 +312,7 @@ void Room::MoveToPreviousLevel()
 	if (_levelIndex < 1) { _levelIndex = 1; return; }
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_world->add(_puzzle);
 
 	saveLevel();
@@ -301,17 +324,35 @@ void Room::MoveToNextLevel()
 	if (_levelIndex > 10) { _levelIndex = 10; return; }
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _levelIndex);
+	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_roomParent->add(_puzzle);
 
 	saveLevel();
 }
 
-void Room::saveLevel() {
-	std::ofstream savefile;
-	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
-	savefile << _levelIndex;
-	savefile.close();
+void Room::saveLevel()
+{
+	int level;
+
+	// check if a new higher level has been reached and save it
+	std::string line;
+	std::ifstream myfile("save.txt");
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+			std::cout << line;
+			level = std::stoi(line);
+		}
+		myfile.close();
+	}
+
+	if (_levelIndex > level) {
+		std::ofstream savefile;
+		savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
+		savefile << _levelIndex;
+		savefile.close();
+	}
 }
 
 void Room::_render()
@@ -322,8 +363,8 @@ void Room::_render()
 	glm::mat4 lightTransform = light->getWorldTransform();
 	_renderToTexture->Render(_puzzle->getObjects(), _blackMaterial, lightTransform);
 
-	_puzzle->PuzzleTimer->draw();
 	_puzzle->draw();
+	_puzzle->PuzzleTimer->draw();
 	if (_paused) {
 		_gameHud->draw();
 	}

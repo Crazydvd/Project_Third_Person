@@ -2,7 +2,7 @@ puzzle = {
 	object = {
 		texture = "AlbedoUmbrella.png",
 		model = "Umbrella.obj",
-		position = { x = 0, y = 2, z = 0.5},
+		position = { x = -0.05, y = 2, z = 0.55},
 		scale = { x = 0.1, y = 0.1, z = 0.1},
 	},
 	polaroid = {

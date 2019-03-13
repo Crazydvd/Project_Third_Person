@@ -8,12 +8,15 @@
 #include "mge/core/Texture.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/behaviours/EmptyBehaviour.hpp"
+#include "ThirdPerson/buttons/ReturnToMenuButton.hpp"
+#include "ThirdPerson/buttons/NextLevelButton.hpp"
 
-Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld)
+Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld), _game(pGame), _room(pRoom)
 {
 	PuzzleTimer = new Timer(pWindow);
 	_puzzleObjects = std::vector<GameObject*>();
 	_popups = new UserInterface(_window);
+	add(_popups);
 
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
@@ -31,11 +34,6 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, int pLevelIndex, std::s
 	loadLetter(L);
 
 	lua_close(L);
-
-	for (size_t i = 0; i < _puzzleObjects.size(); i++)
-	{
-		_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
-	}
 }
 
 void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3])
@@ -47,8 +45,8 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 
 
 	this->add(object);
-	if (pName != "polaroid")
-	{
+
+	if ((((pName != "polaroid" && pName != "polaroid2") && pName != "polaroid3" )&& pName != "polaroid4") && pName != "polaroid5") {
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
@@ -68,35 +66,49 @@ void Puzzle::update(float pStep)
 		return;
 
 	// check for the game starting
-	if (!_started)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-		{
-			if (_levelIndex == 1 && !_tutorial)
-			{
+	if (!_started) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+			if (_levelIndex == 1 && !_tutorial) {
 				UITexture* tutorial = new UITexture(_window, "storypopuptutorial.png");
 				_popups->EmptyInterface();
 				_popups->Add(tutorial);
 				_tutorial = true;
 				return;
 			}
+
+			_queueBehaviour = true;
 			_started = true;
 			_popups->QueueClear();
 		}
 		return;
 	}
 
-	GameObject::update(pStep);
+	if (_queueBehaviour && !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
+		_queueBehaviour = false;
+	}
+
+	if (!Paused) {
+		GameObject::update(pStep);
+	}
+	if (Paused)
+		return;
 
 	if (_puzzleObjects.size() > 1)
 	{
 		checkMultiplePuzzles();
 	}
-	else
+	else if (_puzzleObjects.size() > 0)
 	{
 		checkOnePuzzle();
 	}
-	PuzzleTimer->SetTime(PuzzleTimer->GetTime() + pStep);
+	
+	if (!_completed) {
+		PuzzleTimer->SetTime(PuzzleTimer->GetTime() + pStep);
+	}
 }
 
 
@@ -201,8 +213,11 @@ void Puzzle::loadLetter(lua_State* L)
 	std::string letter;
 	lua_getglobal(L, "letter");
 
-	if (lua_isnil(L, -1))
-	{
+	if (lua_isnil(L, -1)) {
+		for (size_t i = 0; i < _puzzleObjects.size(); i++)
+		{
+			_puzzleObjects[i]->setBehaviour(new MouseRotatingBehaviour(_window, _world, _puzzleObjects));
+		}
 		_started = true;
 		printf("no letter\n");
 		return;
@@ -224,6 +239,9 @@ std::vector<GameObject*> Puzzle::getObjects()
 
 void Puzzle::checkOnePuzzle()
 {
+	if (_puzzleObjects.size() < 1)
+		return;
+
 	glm::vec3 rotation = _puzzleObjects[0]->getWorldRotation();
 
 	//Check if we in solution range
@@ -304,6 +322,9 @@ void Puzzle::checkMultiplePuzzles()
 	{
 		for (int i = 0; i < _puzzleObjects.size(); i++)
 		{
+			if (_puzzleObjects.size() < 1)
+				return;
+
 			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
 
 			if (rotation.x <= 25 && rotation.y <= 25 && rotation.z <= 25)
@@ -332,6 +353,9 @@ void Puzzle::checkMultiplePuzzles()
 	{
 		for (int i = 0; i < _puzzleObjects.size(); i++)
 		{
+			if (_puzzleObjects.size() < 1 || _puzzleObjects.size() > 100)
+				return;
+
 			glm::vec3 rotation = _puzzleObjects[i]->getWorldRotation();
 
 			//Rotate (slowly set X and Z of Y-axis to 0 so it points up)
@@ -400,10 +424,11 @@ void Puzzle::checkMultiplePuzzles()
 			if (_victoryDelay >= 240)
 			{
 				UITexture* winScreen = new UITexture(_window, "winscreen.png");
-				winScreen->SetPosition(glm::vec3((_window->getSize().x - winScreen->GetRect().width) / 2, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
+				winScreen->SetPosition(glm::vec3(((_window->getSize().x - winScreen->GetRect().width) / 2) + 200, (_window->getSize().y - winScreen->GetRect().height) / 2, 0));
 				//_userInterface->Add(winScreen);
 
 				_victoryDelay = -200000;
+				epicVictoryRoyale();
 			}
 		}
 	}
@@ -449,7 +474,49 @@ void Puzzle::rotateWithKeys()
 
 }
 
+void Puzzle::epicVictoryRoyale() {
+	UITexture* winscreen;
+	int time = PuzzleTimer->GetTime();
+
+	if (time < _tripleStarTime) {
+		winscreen = new UITexture(_window, "triplestar.png");
+	}
+	else if (time < _doubleStarTime) {
+		winscreen = new UITexture(_window, "doublestar.png");
+	}
+	else {
+		winscreen = new UITexture(_window, "onestar.png");
+	}
+
+	winscreen->SetPosition(glm::vec2((_window->getSize().x / 2) - (winscreen->GetRect().width / 2) + 100, (_window->getSize().y / 2) - (winscreen->GetRect().height / 2)));
+
+	// set final time
+	PuzzleTimer->SetTime(time, true);
+	PuzzleTimer->SetPosition(glm::vec2(((_window->getSize().x / 2) - (winscreen->GetRect().width / 2)) + 680, ((_window->getSize().y / 2) - (winscreen->GetRect().height / 2)) + 490));
+	PuzzleTimer->SetRotation(-70);
+	PuzzleTimer->SetFont("Hamilton.ttf");
+	PuzzleTimer->SetColor(sf::Color::Black);
+	PuzzleTimer->SetFontSize(100);
+	_popups->Add(winscreen);
+
+	// add buttons
+	ReturnToMenuButton* returnButton = new ReturnToMenuButton(_window, _room, _game, "menuwin.png", "menuwinselected.png", glm::vec2(0,0));
+	returnButton->SetPosition(glm::vec2(((_window->getSize().x / 2) - (winscreen->GetRect().width / 2)) + 150, ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
+
+	NextLevelButton* nextLevelButton = new NextLevelButton(_window, _room, "continuewin.png", "continuewinselected.png", glm::vec2(0, 0));
+	nextLevelButton->SetPosition(glm::vec2(((_window->getSize().x / 2) + (winscreen->GetRect().width / 2)) - (nextLevelButton->GetRect().width + 150), ((_window->getSize().y / 2) + (winscreen->GetRect().height / 2)) - 100));
+
+	_popups->AddButton(returnButton);
+	_popups->AddButton(nextLevelButton);
+
+	std::ofstream savefile;
+	savefile.open("save.txt", std::fstream::in | std::fstream::trunc);
+	savefile << _levelIndex + 1;
+	savefile.close();
+}
+
 Puzzle::~Puzzle()
 {
+	delete(PuzzleTimer);
 	//dtor
 }

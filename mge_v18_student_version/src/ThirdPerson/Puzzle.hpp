@@ -13,11 +13,13 @@
 //class GameObject;
 class RenderWindow;
 class World;
+class Room;
+class TPerson;
 
 class Puzzle : public GameObject
 {
 	public:
-		Puzzle(sf::RenderWindow* pWindow, World* pWorld, int plevelIndex, std::string pName = "puzzle", glm::vec3 pPosition = glm::vec3(0,0,0));
+		Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int plevelIndex, std::string pName = "puzzle", glm::vec3 pPosition = glm::vec3(0,0,0));
 
 		virtual ~Puzzle();
 		virtual void update(float pStep);
@@ -36,12 +38,16 @@ class Puzzle : public GameObject
 		void checkOnePuzzle();
 		void checkMultiplePuzzles();
 		void rotateWithKeys();
+		void epicVictoryRoyale();
 
 		World* _world;
+		TPerson* _game;
+		Room* _room;
 		std::vector<GameObject*> _puzzleObjects;
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
 		bool _started = false;
+		bool _queueBehaviour = false;
 		bool _tutorial = false;
 		bool _inTolereance = false;
 		bool _completed = false;
