@@ -220,6 +220,7 @@ void Room::update(float pStep)
 		{
 			PlayAnimation("poloroid", _poloroidReversed);
 			_menuReversed = false;
+			_poloroidReversed = !_poloroidReversed;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
