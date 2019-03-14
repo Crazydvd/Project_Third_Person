@@ -1,44 +1,14 @@
-<<<<<<< HEAD
-﻿  ContinueButton.cpp
-  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  Puzzle.cpp
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(365): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(375): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(445): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(460): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(470): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(498): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(523): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(536): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(556): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(568): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(578): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(606): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(637): warning C4018: '<': signed/unsigned mismatch
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(644): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(646): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(649): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(651): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(654): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(656): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(660): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(667): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\mycourses\2ndyear\3rdpersonproject\mge_v18_student_version\src\thirdperson\puzzle.cpp(685): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  mge.vcxproj -> C:\Mycourses\2ndyear\3rdPersonProject\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   CameraMovementBehaviour.cpp
-d:\projectthirdperson\mge_v18_student_version\src\mge\behaviours\cameramovementbehaviour.cpp(100): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\behaviours\cameramovementbehaviour.cpp(100): warning C4018: '<': signed/unsigned mismatch
   KeysBehaviour.cpp
   MouseRotatingBehaviour.cpp
   RotatingBehaviour.cpp
   AbstractGame.cpp
   Camera.cpp
   GameObject.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\core\gameobject.cpp(226): warning C4018: '>=': signed/unsigned mismatch
   Light.cpp
   Mesh.cpp
   Renderer.cpp
@@ -68,96 +38,98 @@ d:\projectthirdperson\mge_v18_student_version\src\mge\behaviours\cameramovementb
   ReturnToMenuButton.cpp
   ShowHintButton.cpp
   Puzzle.cpp
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
-=======
-<<<<<<< HEAD
-﻿  Room.cpp
-  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-=======
-<<<<<<< HEAD
-﻿  Puzzle.cpp
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
->>>>>>> a2a194bbf0682b7a4e555a71a71fb08d05e14400
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(375): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(356): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(385): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(435): warning C4018: '<': signed/unsigned mismatch
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(450): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(455): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(470): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(460): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(480): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(488): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(508): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(531): warning C4018: '<': signed/unsigned mismatch
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(538): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(533): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(546): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(566): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(578): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(588): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(616): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(540): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(647): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(654): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(543): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(656): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(545): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(659): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(548): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(661): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(550): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(664): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(554): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(666): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
           with
           [
               genType=double
           ]
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(560): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(575): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(670): warning C4244: 'argument': conversion from 'genType' to 'float', possible loss of data
+          with
+          [
+              genType=double
+          ]
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(677): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(695): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Room.cpp
   TPerson.cpp
   UITexture.cpp
   Ray.cpp
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Compiling...
   RenderToTexture.cpp
   Timer.cpp
   UserInterface.cpp
-d:\projectthirdperson\mge_v18_student_version\src\thirdperson\userinterface.cpp(40): warning C4018: '<': signed/unsigned mismatch
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\userinterface.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-<<<<<<< HEAD
-=======
->>>>>>> 564884d2b430f7a57a63d8cc3cd5475aee63c4fe
->>>>>>> 7ee1fef085743ba0eb7649d444aa66df7b3aeb50
->>>>>>> a2a194bbf0682b7a4e555a71a71fb08d05e14400
->>>>>>> 200d6643c771f5bb0878bb8a12e523a52c5af710
->>>>>>> 1881ff9bd8afbc1be1c40a97dfccda2e025db46a
+  mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
