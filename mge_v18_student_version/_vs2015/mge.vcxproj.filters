@@ -103,9 +103,6 @@
     <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Room.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
       <Filter>ThirdPerson</Filter>
     </ClInclude>
@@ -159,6 +156,9 @@
     </ClInclude>
     <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp">
       <Filter>ThirdPerson\Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ThirdPerson\Room.hpp">
+      <Filter>ThirdPerson</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +231,6 @@
     <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Room.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
       <Filter>ThirdPerson</Filter>
     </ClCompile>
@@ -287,6 +284,9 @@
     </ClCompile>
     <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp">
       <Filter>ThirdPerson\Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ThirdPerson\Room.cpp">
+      <Filter>ThirdPerson</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

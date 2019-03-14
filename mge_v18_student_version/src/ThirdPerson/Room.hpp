@@ -33,6 +33,9 @@ public:
 	void MoveToNextLevel();
 	void MoveToPreviousLevel();
 
+	void PlayAnimation(std::string pName, bool pReverse);
+	void PlayPoloroidAnimation();
+
 private:
 	void loadRoom();
 	void saveLevel();

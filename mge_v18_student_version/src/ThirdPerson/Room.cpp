@@ -161,19 +161,42 @@ void Room::update(float pStep)
 		_pauseTimer -= pStep;
 	}
 
-	////TODO: Remove/Replace this
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
-	//{
-	//	std::cout << "T has been pressed.";
-	//	_game->GetMainCamera()->getBehaviour()->FollowPath("test");
-	//}
-	//
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-	//{
-	//	std::cout << "G has been pressed.";
-	//	_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
-	//}
+	//TODO: Remove/Replace this
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+	{
+		PlayAnimation("poloroid", false);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		PlayAnimation("poloroid", true);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+	{
+		PlayAnimation("whiskey", false);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
+	{
+		PlayAnimation("whiskey", true);
+	}
 }
+
+
+void Room::PlayAnimation(std::string pName, bool pReverse)
+{
+	if (!pReverse)
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowPath(pName);
+	}
+	else
+	{
+		_game->GetMainCamera()->getBehaviour()->FollowReversePath(pName);
+	}
+}
+
+
 
 void Room::print_table(lua_State *L)
 {
