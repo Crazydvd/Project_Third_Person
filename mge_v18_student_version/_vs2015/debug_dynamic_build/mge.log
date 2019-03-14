@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   CameraMovementBehaviour.cpp
@@ -38,6 +39,15 @@ d:\projectthirdperson\mge_v18_student_version\src\mge\behaviours\cameramovementb
   ShowHintButton.cpp
   Puzzle.cpp
 d:\projectthirdperson\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+=======
+<<<<<<< HEAD
+﻿  Room.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+<<<<<<< HEAD
+﻿  Puzzle.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+>>>>>>> a2a194bbf0682b7a4e555a71a71fb08d05e14400
           with
           [
               T=float
@@ -114,3 +124,8 @@ d:\projectthirdperson\mge_v18_student_version\src\thirdperson\ray.cpp(95): warni
 d:\projectthirdperson\mge_v18_student_version\src\thirdperson\userinterface.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+<<<<<<< HEAD
+=======
+>>>>>>> 564884d2b430f7a57a63d8cc3cd5475aee63c4fe
+>>>>>>> 7ee1fef085743ba0eb7649d444aa66df7b3aeb50
+>>>>>>> a2a194bbf0682b7a4e555a71a71fb08d05e14400
