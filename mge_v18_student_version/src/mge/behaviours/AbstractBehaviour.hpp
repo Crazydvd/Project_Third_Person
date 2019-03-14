@@ -2,6 +2,8 @@
 #define ABSTRACTBEHAVIOUR_HPP
 
 #include <iostream>
+#include <vector>
+#include "glm.hpp"
 
 class GameObject;
 
@@ -25,8 +27,11 @@ class AbstractBehaviour
         //behaviour should be able to update itself every step and MUST be implemented
 		virtual void update(float pStep) = 0;
 
+		virtual void AddPath(std::vector<glm::vec3> pPath, std::vector<glm::vec3> pRotations, std::string pName);
+		virtual void RemovePath(std::string pName);
 		virtual void FollowPath(std::string pName);
 		virtual void FollowReversePath(std::string pName);
+		virtual bool IsPlayingAnimation();
 
     protected:
 

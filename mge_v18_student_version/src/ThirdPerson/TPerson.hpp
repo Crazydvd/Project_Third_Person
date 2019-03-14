@@ -36,6 +36,8 @@ public:
 
 	UserInterface* MainMenu;
 
+	void addCameraPath(std::vector<glm::vec3> pPositions, std::vector<glm::vec3> pRotations, std::string pName);
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();
@@ -68,6 +70,12 @@ private:
 
 	TPerson(const TPerson&);
 	TPerson& operator=(const TPerson&);
+
+	std::vector<glm::vec3> _poloroidPath;
+	std::vector<glm::vec3> _poloroidRotations;
+
+	std::vector<glm::vec3> _menuPath;
+	std::vector<glm::vec3> _menuRotations;
 };
 
 #endif // TPERSON_HPP

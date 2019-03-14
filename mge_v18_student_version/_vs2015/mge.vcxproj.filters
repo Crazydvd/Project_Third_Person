@@ -1,333 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="MGE Source files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="MGE Source files\mge">
-      <UniqueIdentifier>{5808a1e3-17c6-41a4-bf66-b872468a8c7c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MGE Source files\mge\behaviours">
-      <UniqueIdentifier>{62606aaf-8ae3-4195-9a83-22a2c9d20af1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MGE Source files\mge\core">
-      <UniqueIdentifier>{4394d90a-ffa0-485d-98ea-1e91842edda6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MGE Source files\mge\materials">
-      <UniqueIdentifier>{88a48024-4c44-40c0-a658-f27957d6b003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MGE Source files\mge\util">
-      <UniqueIdentifier>{7d824c34-4bb6-43a4-a48a-0d68b7aad6e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ThirdPerson">
-      <UniqueIdentifier>{576a6bee-4963-4af8-9100-f9262d580e7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ThirdPerson\Buttons">
-      <UniqueIdentifier>{4ff68d32-e8af-4499-a7c5-20fcc05eff9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ThirdPerson\levels">
-      <UniqueIdentifier>{6d93e03a-d3a0-4dd9-b75b-fdb859722328}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
+    <ClCompile Include="..\src\mge\core\Camera.cpp" />
+    <ClCompile Include="..\src\mge\core\GameObject.cpp" />
+    <ClCompile Include="..\src\mge\core\Light.cpp" />
+    <ClCompile Include="..\src\mge\core\Mesh.cpp" />
+    <ClCompile Include="..\src\mge\core\Renderer.cpp" />
+    <ClCompile Include="..\src\mge\core\ShaderProgram.cpp" />
+    <ClCompile Include="..\src\mge\core\Texture.cpp" />
+    <ClCompile Include="..\src\mge\core\World.cpp" />
+    <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\LitMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\LitTextureMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp" />
+    <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
+    <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Audio.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\LoadLevelButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\NextLevelButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\buttons\ShowHintButton.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Ray.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Timer.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\TPerson.cpp" />
+    <ClCompile Include="..\src\ThirdPerson\Room.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\glm.hpp">
-      <Filter>MGE Source files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\AbstractGame.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\util\DebugHud.hpp">
-      <Filter>MGE Source files\mge\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\GameObject.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Mesh.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Renderer.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\ShaderProgram.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Texture.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\World.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Light.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\TPerson.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\config.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Ray.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\LitMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\LitTextureMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Room.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Timer.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\core\Camera.hpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Audio.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp">
-      <Filter>ThirdPerson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\NextLevelButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\LoadLevelButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ThirdPerson\buttons\ShowHintButton.hpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClInclude>
+    <ClInclude Include="..\src\glm.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\CameraMovementBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\MouseRotatingBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
+    <ClInclude Include="..\src\mge\core\Camera.hpp" />
+    <ClInclude Include="..\src\mge\core\GameObject.hpp" />
+    <ClInclude Include="..\src\mge\core\Light.hpp" />
+    <ClInclude Include="..\src\mge\core\Mesh.hpp" />
+    <ClInclude Include="..\src\mge\core\Renderer.hpp" />
+    <ClInclude Include="..\src\mge\core\ShaderProgram.hpp" />
+    <ClInclude Include="..\src\mge\core\Texture.hpp" />
+    <ClInclude Include="..\src\mge\core\World.hpp" />
+    <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\LitMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\LitTextureMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\RenderToTextureMaterial.hpp" />
+    <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
+    <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Audio.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\BackToMainButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ContinueButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\LevelSelectButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\LoadLevelButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\MenuButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\NewGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\NextLevelButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\QuitGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\RestartGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ResumeGameButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\buttons\ShowHintButton.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\config.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Puzzle.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\UITexture.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Ray.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\RenderToTexture.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Timer.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\UserInterface.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\TPerson.hpp" />
+    <ClInclude Include="..\src\ThirdPerson\Room.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp">
-      <Filter>MGE Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\AbstractGame.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\util\DebugHud.cpp">
-      <Filter>MGE Source files\mge\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\GameObject.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Mesh.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Renderer.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\ShaderProgram.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Texture.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\World.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Light.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\TPerson.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Ray.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\MouseRotatingBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\LitMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\LitTextureMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\RenderToTexture.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\materials\RenderToTextureMaterial.cpp">
-      <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Room.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Timer.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Camera.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\UITexture.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\UserInterface.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\LevelSelectButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\NewGameButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\QuitGameButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\ContinueButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Puzzle.cpp">
-      <Filter>ThirdPerson</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\MenuButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\Audio.cpp">
-      <Filter>MGE Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\ResumeGameButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\ReturnToMenuButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\RestartGameButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\CameraMovementBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\NextLevelButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\LoadLevelButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\BackToMainButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ThirdPerson\buttons\ShowHintButton.cpp">
-      <Filter>ThirdPerson\Buttons</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\src\ThirdPerson\room.lua">
-      <Filter>ThirdPerson</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level4.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level5.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level6.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level7.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level8.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level9.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level10.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level1.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level2.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
-    <None Include="..\src\ThirdPerson\levels\level3.lua">
-      <Filter>ThirdPerson\levels</Filter>
-    </None>
+    <None Include="..\src\ThirdPerson\levels\level1.lua" />
+    <None Include="..\src\ThirdPerson\levels\level10.lua" />
+    <None Include="..\src\ThirdPerson\levels\level2.lua" />
+    <None Include="..\src\ThirdPerson\levels\level3.lua" />
+    <None Include="..\src\ThirdPerson\levels\level4.lua" />
+    <None Include="..\src\ThirdPerson\levels\level5.lua" />
+    <None Include="..\src\ThirdPerson\levels\level6.lua" />
+    <None Include="..\src\ThirdPerson\levels\level7.lua" />
+    <None Include="..\src\ThirdPerson\levels\level8.lua" />
+    <None Include="..\src\ThirdPerson\levels\level9.lua" />
+    <None Include="..\src\ThirdPerson\room.lua" />
   </ItemGroup>
 </Project>

@@ -197,26 +197,51 @@ void Room::update(float pStep)
 		}
 	}
 
-
 	//TODO: Remove/Replace this
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+
+	if (!_game->GetMainCamera()->getBehaviour()->IsPlayingAnimation())
 	{
-		std::cout << "T has been pressed.";
-		_game->GetMainCamera()->getBehaviour()->FollowPath("test");
-	}
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-	{
-		std::cout << "G has been pressed.";
-		_game->GetMainCamera()->getBehaviour()->FollowReversePath("test");
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+		{
+			PlayAnimation("poloroid", _poloroidReversed);
+			_menuReversed = false;
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+		{
+			PlayAnimation("menu", _menuReversed);
+			_poloroidReversed = false;
+		}
 	}
 }
+
+
+void Room::PlayAnimation(std::string pName, bool& pReverse)
+{
+	if (_game->GetMainCamera()->getBehaviour()->IsPlayingAnimation())
+	{
+		return;
+	}
+
+	if (!pReverse)
+	{
+		pReverse = true;
+		_game->GetMainCamera()->getBehaviour()->FollowPath(pName);
+	}
+	else
+	{
+		pReverse = false;
+		_game->GetMainCamera()->getBehaviour()->FollowReversePath(pName);
+	}
+}
+
+
 
 void Room::print_table(lua_State *L)
 {
 	lua_pushnil(L);
 	std::string params[2][2];
-	glm::vec3 vectors[3] = {glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1}};
+	glm::vec3 vectors[3] = { glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1} };
 	int index = 0;
 
 	while (lua_next(L, -2) != 0)
@@ -334,7 +359,7 @@ void Room::DisablePause()
 
 void Room::LoadLevel(int pLevel, bool pReload)
 {
-	if (!pReload){
+	if (!pReload) {
 		_levelIndex = pLevel;
 	}
 
