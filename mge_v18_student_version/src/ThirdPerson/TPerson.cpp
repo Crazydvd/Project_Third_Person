@@ -69,14 +69,29 @@ void TPerson::_initializeScene()
 	_poloroidRotations.push_back(glm::vec3(0, 0, 0));
 	_poloroidRotations.push_back(glm::vec3(-60, 0, 0));
 
+	/////////////////////////////////
+	glm::vec3 translation(0, 3, -0.95);
+
+	_menuPath.push_back(camera->getWorldPosition());
+	_menuPath.push_back(translation);
+
+	_menuRotations.push_back(glm::vec3(0, 0, 0));
+	_menuRotations.push_back(glm::vec3(35, 0, 0));
+	
+
 	//camera->setBehaviour(new KeysBehaviour(25, 90)); //<--
 
 	_world->add(camera);
 	_world->setMainCamera(camera);
+	float seconds = 2;
+	camera->setBehaviour(new CameraMovementBehaviour(camera, seconds)); //problem's here
 
-	camera->setBehaviour(new CameraMovementBehaviour(camera));
+	glm::mat4 camTrans = camera->getTransform();
+	camTrans[3] = glm::vec4(translation, 1);
+	camera->setTransform(glm::rotate(camTrans, glm::radians(35.0f), glm::vec3(1, 0, 0)));
 
 	addCameraPath(_poloroidPath, _poloroidRotations, "poloroid");
+	addCameraPath(_menuPath, _menuRotations, "menu");
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);

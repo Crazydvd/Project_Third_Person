@@ -109,14 +109,14 @@ objects =
   	  texture = "PinBoardtexture.png",
 	  model = "PinBoard.obj",
 	  position = { x = 0, y = 3, z = -2.2,},
-	  scale = { x = 0.11, y = 0.15, z = 0.15,},
+	  scale = { x = 0.115, y = 0.15, z = 0.16,},
       rotation = { x = 90, y = 90, z = 0,},
   },
       Cork = {
   	  texture = "marisading.png",
 	  model = "plane.obj",
-	  position = { x = 0, y = 3, z = -2.18,},
-	  scale = { x = 0.9, y = 0.7, z = 0.7,},
+	  position = { x = -0.002, y = 2.995, z = -2.18,},
+	  scale = { x = 0.92, y = 0.69, z = 0.65,},
       rotation = { x = 90, y = 0, z = 0,},
   },
     Phone = {

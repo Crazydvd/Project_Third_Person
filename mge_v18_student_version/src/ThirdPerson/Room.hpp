@@ -33,7 +33,7 @@ public:
 	void MoveToNextLevel();
 	void MoveToPreviousLevel();
 
-	void PlayAnimation(std::string pName, bool pReverse);
+	void PlayAnimation(std::string pName, bool& pReverse);
 	void PlayPoloroidAnimation();
 
 private:
@@ -62,7 +62,8 @@ private:
 	float _pauseTimer = 0;
 	float _aliudTimer = 0;
 
-	bool _reversed = false;
+	bool _poloroidReversed = false;
+	bool _menuReversed = true;
 };
 
 #endif

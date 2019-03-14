@@ -1,8 +1,8 @@
 #include "mge/behaviours/CameraMovementBehaviour.hpp"
 #include "mge/core/Camera.hpp"
 
-CameraMovementBehaviour::CameraMovementBehaviour(Camera* pCamera) : AbstractBehaviour(),
-_camera(pCamera), _oldPosition(pCamera->getWorldPosition()), _originalRotation(_camera->getTransform())
+CameraMovementBehaviour::CameraMovementBehaviour(Camera* pCamera, float pSeconds) : AbstractBehaviour(),
+_camera(pCamera), _oldPosition(pCamera->getWorldPosition()), _originalRotation(_camera->getTransform()), _seconds(pSeconds)
 {
 
 }
@@ -27,7 +27,7 @@ void CameraMovementBehaviour::update(float pStep)
 
 		SetPosition(_oldPosition + _deltaVector * _interValue);
 
-		_interValue = (_interValue < 1) ? _interValue += pStep : 1;
+		_interValue = (_interValue < 1) ? _interValue += (pStep / _seconds) : 1;
 
 		if (_interValue >= 1)
 		{
