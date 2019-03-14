@@ -50,11 +50,14 @@ private:
 	Light* light;
 	GameObject* _roomParent;
 	AbstractMaterial* _blackMaterial;
+	GameObject* _aliud;
 
 	int _levelIndex = 1;
 	bool _active = false;
 	bool _paused = false;
+	bool _aliudostium = false;
 	float _pauseTimer = 0;
+	float _aliudTimer = 0;
 };
 
 #endif

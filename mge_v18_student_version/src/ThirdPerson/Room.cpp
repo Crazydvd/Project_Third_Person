@@ -161,6 +161,43 @@ void Room::update(float pStep)
 		_pauseTimer -= pStep;
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11)) {
+		Audio* audio = new Audio(SoundType::MUSIC, config::THIRDPERSON_AUDIO_PATH + "aliud.wav"); // I Will do this
+		audio->Play();
+
+		_aliud = new GameObject("Aliud Alpha", glm::vec3(0, 1.5f, 0.5f));
+		Mesh* aliudpellis = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Aliud.obj");
+		LitTextureMaterial* aliudmateriales = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "aliud.png"), glm::vec3(0, 0, 0));
+		_aliud->setMesh(aliudpellis);
+		_aliud->setMaterial(aliudmateriales);
+		_aliud->scale(glm::vec3(0.01f, 0.01f, 0.01f));
+
+		GameObject* _aliudtelum = new GameObject("Aliud Telum", glm::vec3(0.95f, 1.2f, 0.5f));
+		Mesh* aliudtelumpellis = Mesh::load(config::THIRDPERSON_MODEL_PATH + "Revolver.obj");
+		LitTextureMaterial* aliudtelummateriales = new LitTextureMaterial(Texture::load(config::THIRDPERSON_TEXTURE_PATH + "RevolverBase.png"), glm::vec3(0, 0, 0));
+		_aliudtelum->setMesh(aliudtelumpellis);
+		_aliudtelum->setMaterial(aliudtelummateriales);
+		_aliudtelum->scale(glm::vec3(2, 2, 2));
+		_aliudtelum->rotate(1.57f, glm::vec3(0, 1, 0));
+
+
+		remove(_puzzle);
+		add(_aliud);
+		add(_aliudtelum);
+		_aliudTimer = 7;
+		_aliudostium = true;
+	}
+
+	if (_aliudostium) {
+		if (_aliudTimer > 0) {
+			_aliudTimer -= pStep;
+		}
+		else {
+			_window->close();
+		}
+	}
+
+
 	//TODO: Remove/Replace this
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 	{
