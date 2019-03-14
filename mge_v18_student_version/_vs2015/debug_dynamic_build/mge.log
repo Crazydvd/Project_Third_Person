@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  Puzzle.cpp
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.cpp(346): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
           with
@@ -67,3 +68,7 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdper
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\userinterface.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  AbstractGame.cpp
+  mge.vcxproj -> D:\ProjectThirdPerson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> 564884d2b430f7a57a63d8cc3cd5475aee63c4fe
