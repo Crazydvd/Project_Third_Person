@@ -1,0 +1,64 @@
+﻿  main.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  AbstractBehaviour.cpp
+  CameraMovementBehaviour.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\mge\behaviours\cameramovementbehaviour.cpp(100): warning C4018: '<': signed/unsigned mismatch
+  KeysBehaviour.cpp
+  MouseRotatingBehaviour.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  RotatingBehaviour.cpp
+  AbstractGame.cpp
+  Camera.cpp
+  GameObject.cpp
+  Light.cpp
+  Mesh.cpp
+  Renderer.cpp
+  ShaderProgram.cpp
+  Texture.cpp
+  World.cpp
+  AbstractMaterial.cpp
+  ColorMaterial.cpp
+  LitMaterial.cpp
+  LitTextureMaterial.cpp
+  RenderToTextureMaterial.cpp
+  Compiling...
+  TextureMaterial.cpp
+  DebugHud.cpp
+  Audio.cpp
+  BackToMainButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  ContinueButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  LevelSelectButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  LoadLevelButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  MenuButton.cpp
+  NewGameButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  NextLevelButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  QuitGameButton.cpp
+  RestartGameButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  ResumeGameButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  ReturnToMenuButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  ShowHintButton.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  Puzzle.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\puzzle.hpp(6): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  Room.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  TPerson.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  UITexture.cpp
+  Ray.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\ray.cpp(95): warning C4018: '<': signed/unsigned mismatch
+  Compiling...
+  RenderToTexture.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
+  Timer.cpp
+  UserInterface.cpp
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\room.hpp(8): fatal error C1083: Cannot open include file: 'lua.hpp': No such file or directory
