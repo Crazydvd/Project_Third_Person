@@ -61,6 +61,8 @@ private:
 	bool _aliudostium = false;
 	float _pauseTimer = 0;
 	float _aliudTimer = 0;
+
+	bool _reversed = false;
 };
 
 #endif

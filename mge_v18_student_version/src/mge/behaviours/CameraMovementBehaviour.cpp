@@ -177,6 +177,11 @@ void CameraMovementBehaviour::SetRotation(glm::mat4 pRotation)
 	_camera->setTransform(transform);
 }
 
+bool CameraMovementBehaviour::IsPlayingAnimation()
+{
+	return _moving;
+}
+
 void CameraMovementBehaviour::updateDeltaVector()
 {
 	_deltaVector = _newPosition - _oldPosition;

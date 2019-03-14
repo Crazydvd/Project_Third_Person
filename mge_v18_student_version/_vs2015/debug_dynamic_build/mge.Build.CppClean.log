@@ -20,12 +20,12 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\keysbe
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\cameramovementbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\main.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\ray.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\uitexture.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\puzzle.obj
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\showhintbutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\returntomenubutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\resumegamebutton.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\restartgamebutton.obj
@@ -42,10 +42,10 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\debugh
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\texturematerial.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\userinterface.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
+d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
-d:\school\projects\project_third_person\mge_v18_student_version\_vs2015\debug_dynamic_build/vcpkg.applocal.log
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.command.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.read.1.tlog
@@ -53,4 +53,3 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tl
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.command.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.read.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.write.1.tlog
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\mge.write.1u.tlog

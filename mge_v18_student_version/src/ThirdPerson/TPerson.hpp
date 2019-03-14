@@ -70,6 +70,9 @@ private:
 
 	TPerson(const TPerson&);
 	TPerson& operator=(const TPerson&);
+
+	std::vector<glm::vec3> _poloroidPath;
+	std::vector<glm::vec3> _poloroidRotations;
 };
 
 #endif // TPERSON_HPP

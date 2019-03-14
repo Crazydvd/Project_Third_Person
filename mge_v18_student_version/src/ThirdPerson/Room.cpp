@@ -200,28 +200,20 @@ void Room::update(float pStep)
 	//TODO: Remove/Replace this
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
 	{
-		PlayAnimation("poloroid", false);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-	{
-		PlayAnimation("poloroid", true);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
-	{
-		PlayAnimation("whiskey", false);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-	{
-		PlayAnimation("whiskey", true);
+		PlayAnimation("poloroid", _reversed);
 	}
 }
 
 
 void Room::PlayAnimation(std::string pName, bool pReverse)
 {
+	if (_game->GetMainCamera()->getBehaviour()->IsPlayingAnimation())
+	{
+		return;
+	}
+
+	_reversed = !_reversed;
+
 	if (!pReverse)
 	{
 		_game->GetMainCamera()->getBehaviour()->FollowPath(pName);

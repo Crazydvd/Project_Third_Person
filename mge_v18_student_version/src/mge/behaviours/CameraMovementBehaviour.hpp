@@ -31,6 +31,8 @@ public:
 
 	void SetRotation(glm::mat4 pRotation);
 
+	bool IsPlayingAnimation();
+
 private:
 	Camera* _camera;
 

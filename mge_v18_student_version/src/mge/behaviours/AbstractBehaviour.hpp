@@ -31,6 +31,7 @@ class AbstractBehaviour
 		virtual void RemovePath(std::string pName);
 		virtual void FollowPath(std::string pName);
 		virtual void FollowReversePath(std::string pName);
+		virtual bool IsPlayingAnimation();
 
     protected:
 

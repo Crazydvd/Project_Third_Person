@@ -63,32 +63,20 @@ void TPerson::_initializeScene()
 	camera = new Camera("camera", glm::vec3(0, 3, 3.0f));
 	camera->rotate(glm::radians(-35.0f), glm::vec3(1, 0, 0));
 
-	std::vector<glm::vec3> path;
-	path.push_back(camera->getWorldPosition());
-	path.push_back(glm::vec3(1.1f, 1.9f, 0.3f));
+	_poloroidPath.push_back(camera->getWorldPosition());
+	_poloroidPath.push_back(glm::vec3(1.1f, 1.9f, 0.3f));
 
-	std::vector<glm::vec3> rotations;
-	rotations.push_back(glm::vec3(0, 0, 0));
-	rotations.push_back(glm::vec3(-60, 0, 0));
+	_poloroidRotations.push_back(glm::vec3(0, 0, 0));
+	_poloroidRotations.push_back(glm::vec3(-60, 0, 0));
 
-	camera->setBehaviour(new KeysBehaviour(25, 90)); //<--
+	//camera->setBehaviour(new KeysBehaviour(25, 90)); //<--
 
 	_world->add(camera);
 	_world->setMainCamera(camera);
 
 	camera->setBehaviour(new CameraMovementBehaviour(camera));
 
-	addCameraPath(path, rotations, "poloroid");
-	path.clear();
-	rotations.clear();
-
-	path.push_back(camera->getWorldPosition());
-	path.push_back(glm::vec3(-1.4f, 1.44f, 0.5f));
-
-	rotations.push_back(glm::vec3(0, 0, 0));
-	rotations.push_back(glm::vec3(0, 30, 0));
-
-	addCameraPath(path, rotations, "whiskey");
+	addCameraPath(_poloroidPath, _poloroidRotations, "poloroid");
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);
@@ -111,7 +99,7 @@ Renderer* TPerson::getRenderer(void) const
 
 void TPerson::addCameraPath(std::vector<glm::vec3> pPositions, std::vector<glm::vec3> pRotations, std::string pName)
 {
-	camera->getBehaviour()->AddPath(pPositions, pRotations, "whiskey");
+	camera->getBehaviour()->AddPath(pPositions, pRotations, pName);
 }
 
 void TPerson::_render()

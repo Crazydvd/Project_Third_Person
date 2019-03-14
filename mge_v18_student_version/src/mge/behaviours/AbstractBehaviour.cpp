@@ -27,3 +27,8 @@ void AbstractBehaviour::FollowReversePath(std::string pName)
 {
 
 }
+
+bool AbstractBehaviour::IsPlayingAnimation()
+{
+	return false;
+}
