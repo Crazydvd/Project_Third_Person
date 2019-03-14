@@ -36,6 +36,8 @@ public:
 
 	UserInterface* MainMenu;
 
+	void addCameraPath(std::vector<glm::vec3> pPositions, std::vector<glm::vec3> pRotations, std::string pName);
+
 protected:
 	//override so we can construct the actual scene
 	virtual void _initializeScene();

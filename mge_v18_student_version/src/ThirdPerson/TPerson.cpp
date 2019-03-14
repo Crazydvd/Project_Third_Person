@@ -78,7 +78,7 @@ void TPerson::_initializeScene()
 
 	camera->setBehaviour(new CameraMovementBehaviour(camera));
 
-	camera->getBehaviour()->AddPath(path, rotations, "poloroid");
+	addCameraPath(path, rotations, "poloroid");
 	path.clear();
 	rotations.clear();
 
@@ -88,7 +88,7 @@ void TPerson::_initializeScene()
 	rotations.push_back(glm::vec3(0, 0, 0));
 	rotations.push_back(glm::vec3(0, 30, 0));
 
-	camera->getBehaviour()->AddPath(path, rotations, "whiskey");
+	addCameraPath(path, rotations, "whiskey");
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);
@@ -107,6 +107,11 @@ void TPerson::Render()
 Renderer* TPerson::getRenderer(void) const
 {
 	return this->_renderer;
+}
+
+void TPerson::addCameraPath(std::vector<glm::vec3> pPositions, std::vector<glm::vec3> pRotations, std::string pName)
+{
+	camera->getBehaviour()->AddPath(pPositions, pRotations, "whiskey");
 }
 
 void TPerson::_render()
