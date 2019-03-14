@@ -24,6 +24,7 @@ public:
 	virtual void draw();
 
 	bool _hovering = false;
+	bool Enabled = true;
 
 private:
 	UITexture(const UITexture&);

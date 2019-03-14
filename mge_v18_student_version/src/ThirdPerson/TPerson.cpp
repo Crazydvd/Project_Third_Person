@@ -71,7 +71,7 @@ void TPerson::_initializeScene()
 	rotations.push_back(glm::vec3(0, 0, 0));
 	rotations.push_back(glm::vec3(-60, 0, 0));
 
-	//camera->setBehaviour(new KeysBehaviour(25, 90));
+	camera->setBehaviour(new KeysBehaviour(25, 90)); //<--
 
 	_world->add(camera);
 	_world->setMainCamera(camera);
@@ -89,7 +89,6 @@ void TPerson::_initializeScene()
 	rotations.push_back(glm::vec3(0, 30, 0));
 
 	camera->getBehaviour()->AddPath(path, rotations, "whiskey");
-
 
 	room = new Room(this, _world, _window, _renderToTexture);
 	_world->add(room);

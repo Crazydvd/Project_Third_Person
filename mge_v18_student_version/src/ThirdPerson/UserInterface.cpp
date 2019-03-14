@@ -24,8 +24,7 @@ UserInterface::UserInterface(sf::RenderWindow * aWindow, std::string pName, glm:
 void UserInterface::update(float pStep) {
 	if (Paused)
 		return;
-	std::cout << _name;
-
+	
 	sf::Vector2i mousePos = sf::Mouse::getPosition(*_window);
 	//check for hovering over objects
 	for (int i = _buttons.size() - 1; i > -1; i--) {
@@ -141,7 +140,7 @@ void UserInterface::LoadLevelSelect(Room* pRoom, TPerson* pGame) {
 														this,
 														(1 + index * 2),
 														std::to_string(index + 1) + "formenu.png",
-														std::to_string(index + 1) + "formenudark.png",
+														std::to_string(index + 1) + "selectedpolaroid.png",
 														glm::vec2(polaroids[index]->GetPosition().x, polaroids[index]->GetPosition().y));
 		AddButton(button);
 		index++;
