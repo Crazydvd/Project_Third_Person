@@ -37,6 +37,7 @@ class Puzzle : public GameObject
 		void loadLetter(lua_State* L);
 		void checkOnePuzzle();
 		void checkMultiplePuzzles();
+		void checkEasyMultiplePuzzles();
 		void rotateWithKeys();
 		void epicVictoryRoyale();
 		void checkForTips();
@@ -45,6 +46,7 @@ class Puzzle : public GameObject
 		TPerson* _game;
 		Room* _room;
 		std::vector<GameObject*> _puzzleObjects;
+		std::vector<GameObject*> _completedPuzzles;
 		std::vector<UITexture*> _hints;
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
