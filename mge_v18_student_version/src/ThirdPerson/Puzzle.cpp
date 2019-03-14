@@ -15,7 +15,7 @@
 Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld), _game(pGame), _room(pRoom)
 {
 	PuzzleTimer = new Timer(pWindow);
-	PuzzleTimer->SetPosition(glm::vec2(_window->getSize().x / 2, 20));
+	PuzzleTimer->SetPosition(glm::vec2(_window->getSize().x / 2 - 25, 20));
 	_mouseray = Ray::MouseRay(_window, 60.0f, _world);
 	_puzzleObjects = std::vector<GameObject*>();
 	_hints = std::vector<UITexture*>();

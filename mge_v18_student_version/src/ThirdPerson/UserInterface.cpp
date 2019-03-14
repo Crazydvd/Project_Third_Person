@@ -54,8 +54,13 @@ void UserInterface::update(float pStep) {
 }
 
 
-void UserInterface::Add(UITexture* pObject) {
-	_objects.push_back(pObject);
+void UserInterface::Add(UITexture* pObject, bool pTopLayer) {
+	if (pTopLayer) {
+		_topLayer.push_back(pObject);
+	}
+	else {
+		_objects.push_back(pObject);
+	}
 }
 
 void UserInterface::AddButton(MenuButton* pObject) {
@@ -73,6 +78,12 @@ void UserInterface::draw()
 	for (size_t i = 0; i < _buttons.size(); i++) {
 		if (i < _buttons.size()) {
 			_buttons[i]->draw();
+		}
+	}
+
+	for (size_t i = 0; i < _topLayer.size(); i++) {
+		if (i < _topLayer.size()) {
+			_topLayer[i]->draw();
 		}
 	}
 }
@@ -102,11 +113,14 @@ void UserInterface::LoadMainMenu(Room* pRoom, TPerson* pGame) {
 	Add(_level3);
 	Add(_level4);
 	Add(_level5);
-	Add(_string);
+	Add(_string, true);
 	AddButton(newGame);
 	AddButton(continueButton);
 	AddButton(levelSelect);
 	AddButton(quitGame);
+
+	UITexture* blackOverlay = new UITexture(_window, "filter.png");
+	Add(blackOverlay, true);
 }
 
 void UserInterface::LoadLevelSelect(Room* pRoom, TPerson* pGame) {
@@ -151,7 +165,10 @@ void UserInterface::LoadLevelSelect(Room* pRoom, TPerson* pGame) {
 		index++;
 	}
 		
-	Add(_string); // Overlay dem string boi
+	Add(_string, true); // Overlay dem string boi
+
+	UITexture* blackOverlay = new UITexture(_window, "filter.png");
+	Add(blackOverlay, true);
 }
 
 // queue it instead of doing it immediatly so it doesn't interfere with the update loop
@@ -162,6 +179,7 @@ void UserInterface::QueueClear() {
 void UserInterface::EmptyInterface() {
 	_objects.clear();
 	_buttons.clear();
+	_topLayer.clear();
 }
 
 UserInterface::~UserInterface()

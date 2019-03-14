@@ -20,7 +20,7 @@ public:
 	UserInterface(sf::RenderWindow * aWindow, std::string pName = "UserInterface",
 		glm::vec3 pPosition = glm::vec3(0.0f, 0.0f, 0.0f));
 	virtual ~UserInterface();
-	void Add(UITexture* pObject);
+	void Add(UITexture* pObject, bool topLayer = false);
 	void AddButton(MenuButton* pObject);
 	void LoadMainMenu(Room* pRoom, TPerson* pGame);
 	void LoadLevelSelect(Room* pRoom, TPerson* pGame);
@@ -34,6 +34,7 @@ public:
 private:
 	sf::RenderWindow * _window;
 	std::vector<UITexture*> _objects;
+	std::vector<UITexture*> _topLayer;
 	std::vector<MenuButton*> _buttons;
 	UITexture* _level1;
 	UITexture* _level2;
