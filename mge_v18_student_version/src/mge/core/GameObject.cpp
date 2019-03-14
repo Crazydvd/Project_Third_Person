@@ -223,7 +223,7 @@ void GameObject::update(float pStep)
 
 	for (int i = _children.size() - 1; i >= 0; --i)
 	{
-		if (_children.size() > 0 && _children.size() < 1000) {
+		if ((_children.size() > 0 && _children.size() < 1000) && _children.size() >= i) {
 			_children[i]->update(pStep);
 		}
 	}
