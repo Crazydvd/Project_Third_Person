@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
   AbstractBehaviour.cpp
   CameraMovementBehaviour.cpp
@@ -133,3 +134,7 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdper
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\src\thirdperson\userinterface.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   mge.vcxproj -> D:\Stack\Saxion\Q2.3\ThirdPerson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+=======
+﻿  Room.cpp
+  mge.vcxproj -> D:\SCHOOL\Projects\PROJECT_THIRD_PERSON\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
+>>>>>>> c961e8b2bbfdbd7c2e94b5cb3746fd35e32f032b
