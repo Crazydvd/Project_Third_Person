@@ -20,17 +20,10 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debu
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\cameramovementbehaviour.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\main.obj
-<<<<<<< HEAD
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\ray.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\uitexture.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
-=======
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\room.obj
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\ray.obj
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\uitexture.obj
->>>>>>> 564884d2b430f7a57a63d8cc3cd5475aee63c4fe
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\puzzle.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\showhintbutton.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\returntomenubutton.obj
@@ -48,25 +41,11 @@ d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debu
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\debughud.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\texturematerial.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\userinterface.obj
-<<<<<<< HEAD
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\rendertotexture.obj
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
+d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
 d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_exe/mge.exe
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.command.1.tlog
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.read.1.tlog
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\cl.write.1.tlog
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.command.1.tlog
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.read.1.tlog
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.write.1.tlog
-=======
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\tperson.obj
-d:\stack\saxion\q2.3\thirdperson\projectgit\mge_v18_student_version\_vs2015\debug_dynamic_build\timer.obj
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.exe
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.ilk
-d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_exe\mge.pdb
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractbehaviour.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractgame.obj
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\abstractmaterial.obj
@@ -119,4 +98,3 @@ d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tl
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.command.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.read.1.tlog
 d:\projectthirdperson\mge_v18_student_version\_vs2015\debug_dynamic_build\mge.tlog\link.write.1.tlog
->>>>>>> 564884d2b430f7a57a63d8cc3cd5475aee63c4fe

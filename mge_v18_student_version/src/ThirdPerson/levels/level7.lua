@@ -58,4 +58,4 @@ puzzle = {
 letter = "StoryChopShop.png"
 triplestar = 30
 doublestar = 120
-tolerance = 10
+tolerance = 15
