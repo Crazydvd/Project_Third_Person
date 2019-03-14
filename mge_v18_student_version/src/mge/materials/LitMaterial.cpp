@@ -94,7 +94,6 @@ void LitMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatr
 	glUniform1i(_shader->getUniformLocation("shininess"), _shininess);
 	glUniform1i(_shader->getUniformLocation("lightCount"), LitMaterial::_lightCount);
 
-
 	glm::vec3 specularColor = _specularColor;
 
 	//TODO: change this so you actually use the lights array from World class
