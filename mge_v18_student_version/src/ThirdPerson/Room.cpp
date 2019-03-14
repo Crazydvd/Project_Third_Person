@@ -30,7 +30,7 @@
 GameObject* _sphere;
 
 Room::Room(TPerson* pGame, World* pWorld, sf::RenderWindow* pWindow, RenderToTexture* pRender, std::string pName, glm::vec3 pPosition)
-	: GameObject(pName, pPosition), _renderToTexture(pRender), _window(pWindow), _roomWorld(pWorld)
+	: GameObject(pName, pPosition), _renderToTexture(pRender), _window(pWindow), _roomWorld(pWorld), _poloroidReversed(false), _menuReversed(true)
 {
 	_game = pGame;
 	_blackMaterial = new ColorMaterial(glm::vec3(0, 0, 0));
@@ -123,20 +123,35 @@ void Room::Initialize()
 	// add puzzle
 	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
 	_roomParent->add(_puzzle);
-
-	_active = true;
 }
 
 void Room::Deinitialize()
 {
 	_roomParent->remove(_puzzle);
+	_roomParent->remove(_shadowPlane);
 	remove(_puzzle);
 	delete(_puzzle);
 	_active = false;
+	_playingMenuAnimationReversed = true;
 }
 
 void Room::update(float pStep)
 {
+	if (_playingMenuAnimation){
+		if (endMenuAnimation()){
+			_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
+			_world->add(_puzzle);
+			_active = true;
+			_roomParent->add(_shadowPlane);
+		}
+	}
+
+	if (_playingMenuAnimationReversed){
+		if (endMenuAnimation()){
+			_game->MainMenu->LoadMainMenu(this, _game);
+		}
+	}
+
 	if (!_active)
 		return;
 
@@ -198,9 +213,20 @@ void Room::update(float pStep)
 	}
 
 	//TODO: Remove/Replace this
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+
+	if (!_game->GetMainCamera()->getBehaviour()->IsPlayingAnimation())
 	{
-		PlayAnimation("poloroid", _reversed);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+		{
+			PlayAnimation("poloroid", _poloroidReversed);
+			_menuReversed = false;
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+		{
+			PlayAnimation("menu", _menuReversed);
+			_poloroidReversed = false;
+		}
 	}
 }
 
@@ -212,7 +238,10 @@ void Room::PlayAnimation(std::string pName, bool pReverse)
 		return;
 	}
 
-	_reversed = !_reversed;
+	//if (pName == "menu")
+	//{
+	//	_playingMenuAnimation = true;
+	//}
 
 	if (!pReverse)
 	{
@@ -224,13 +253,23 @@ void Room::PlayAnimation(std::string pName, bool pReverse)
 	}
 }
 
+bool Room::endMenuAnimation()
+{
+	if ((_playingMenuAnimation || _playingMenuAnimationReversed) && !_game->GetMainCamera()->getBehaviour()->IsPlayingAnimation())
+	{
+		_playingMenuAnimation = false;
+		_playingMenuAnimationReversed = false;
+		return true;
+	}
 
+	return false;
+}
 
 void Room::print_table(lua_State *L)
 {
 	lua_pushnil(L);
 	std::string params[2][2];
-	glm::vec3 vectors[3] = {glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1}};
+	glm::vec3 vectors[3] = { glm::vec3{1,1,1}, glm::vec3{1,1,1}, glm::vec3{1,1,1} };
 	int index = 0;
 
 	while (lua_next(L, -2) != 0)
@@ -325,7 +364,12 @@ void Room::addObject(std::string pProperties[2][2], glm::vec3 pVectors[3])
 	object->rotate(glm::radians(pVectors[2].x), glm::vec3(1.0f, 0, 0));
 	object->rotate(glm::radians(pVectors[2].y), glm::vec3(0, 1.0f, 0));
 	object->rotate(glm::radians(pVectors[2].z), glm::vec3(0, 0, 1.0f));
-	_roomParent->add(object);
+	if (pProperties[1][1] != "shadow"){
+		_roomParent->add(object);
+	}
+	else{
+		_shadowPlane = object;
+	}
 }
 
 void Room::TogglePause()
@@ -348,14 +392,23 @@ void Room::DisablePause()
 
 void Room::LoadLevel(int pLevel, bool pReload)
 {
-	if (!pReload){
+	if (!pReload) {
 		_levelIndex = pLevel;
+
+		_playingMenuAnimation = true;
+		_menuReversed = true;
+		PlayAnimation("menu", true);
 	}
 
 	_roomParent->remove(_puzzle);
 	delete(_puzzle);
-	_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
-	_world->add(_puzzle);
+
+	if (pReload){
+		_puzzle = new Puzzle(_window, _world, _game, this, _levelIndex);
+		_world->add(_puzzle);
+		_active = true;
+		_roomParent->add(_shadowPlane);
+	}
 }
 
 void Room::MoveToPreviousLevel()

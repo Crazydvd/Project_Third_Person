@@ -34,7 +34,6 @@ public:
 	void MoveToPreviousLevel();
 
 	void PlayAnimation(std::string pName, bool pReverse);
-	void PlayPoloroidAnimation();
 
 private:
 	void loadRoom();
@@ -54,6 +53,7 @@ private:
 	GameObject* _roomParent;
 	AbstractMaterial* _blackMaterial;
 	GameObject* _aliud;
+	GameObject* _shadowPlane;
 
 	int _levelIndex = 1;
 	bool _active = false;
@@ -62,7 +62,13 @@ private:
 	float _pauseTimer = 0;
 	float _aliudTimer = 0;
 
-	bool _reversed = false;
+	bool _poloroidReversed = false;
+	bool _menuReversed = true;
+
+	bool _playingMenuAnimation = false;
+	bool _playingMenuAnimationReversed = false;
+
+	bool endMenuAnimation();
 };
 
 #endif

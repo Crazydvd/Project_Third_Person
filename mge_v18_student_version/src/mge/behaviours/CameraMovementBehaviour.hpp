@@ -11,7 +11,7 @@ class Camera;
 class CameraMovementBehaviour : public AbstractBehaviour
 {
 public:
-	CameraMovementBehaviour(Camera* pCamera);
+	CameraMovementBehaviour(Camera* pCamera, float pSeconds = 1);
 	~CameraMovementBehaviour();
 	virtual void update(float pStep);
 
@@ -63,6 +63,7 @@ private:
 	bool _reverse = false;
 
 	float _interValue = 0;
+	float _seconds = 1;
 };
 
 #endif // !CAMERAMOVEMENTBEHAVIOUR_HPP

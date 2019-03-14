@@ -98,25 +98,19 @@ objects =
 	  scale = { x = 1.8, y = 1.8, z = 1.8,},
       rotation = { x = 0, y = 90, z = 0,},
   },
-    wallframes = {
-  	  texture = "WallFramesTexture.png",
-	  model = "WallFrames.obj",
-	  position = { x = 2 , y = 2, z = -2,},
-	  scale = { x = 1.5, y = 1.5, z = 1.5,},
-      rotation = { x = 0, y = 90, z = 0,},
-  },
+
       Pinboard = {
   	  texture = "PinBoardtexture.png",
 	  model = "PinBoard.obj",
 	  position = { x = 0, y = 3, z = -2.2,},
-	  scale = { x = 0.11, y = 0.15, z = 0.15,},
+	  scale = { x = 0.115, y = 0.15, z = 0.16,},
       rotation = { x = 90, y = 90, z = 0,},
   },
       Cork = {
   	  texture = "marisading.png",
 	  model = "plane.obj",
-	  position = { x = 0, y = 3, z = -2.18,},
-	  scale = { x = 0.9, y = 0.7, z = 0.7,},
+	  position = { x = -0.002, y = 2.995, z = -2.18,},
+	  scale = { x = 0.92, y = 0.69, z = 0.65,},
       rotation = { x = 90, y = 0, z = 0,},
   },
     Phone = {
@@ -126,11 +120,5 @@ objects =
 	  scale = { x = 3, y = 3, z = 3,},
       rotation = { x = 0, y = 25, z = 0,},
   },
-    folders2 = {
-  	  texture = "FoldersBase.png",
-	  model = "Folders.obj",
-	  position = { x = 2 , y = 1.1 , z = -1.2 ,},
-	  scale = { x = 3, y = 3, z = 3,},
-      rotation = { x = 90, y = 0, z = 2,},
-  },
+
 }

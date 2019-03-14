@@ -9,6 +9,7 @@
 #include "ThirdPerson/Timer.hpp"
 #include "ThirdPerson/UITexture.hpp"
 #include "ThirdPerson/UserInterface.hpp"
+#include "ThirdPerson/Ray.hpp"
 
 //class GameObject;
 class RenderWindow;
@@ -50,6 +51,8 @@ class Puzzle : public GameObject
 		std::vector<UITexture*> _hints;
 		sf::RenderWindow* _window;
 		UserInterface* _popups;
+		Ray _mouseray;
+		GameObject* _selectedObject;
 		bool _started = false;
 		bool _queueBehaviour = false;
 		bool _tutorial = false;

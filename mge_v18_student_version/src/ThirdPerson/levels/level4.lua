@@ -19,6 +19,13 @@ puzzle = {
 		rotation = { x = 0, y = 0, z = 0,},
 		scale = { x = 0.3, y = 0.5, z = 0.5},
 	},
+		  wallframes = {
+  	  texture = "WallFramesTexture.png",
+	  model = "WallFrames.obj",
+	  position = { x = 2 , y = 2, z = -2,},
+	  scale = { x = 1.5, y = 1.5, z = 1.5,},
+      rotation = { x = 0, y = 90, z = 0,},
+  },
 }
 
 

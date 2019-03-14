@@ -73,6 +73,9 @@ private:
 
 	std::vector<glm::vec3> _poloroidPath;
 	std::vector<glm::vec3> _poloroidRotations;
+
+	std::vector<glm::vec3> _menuPath;
+	std::vector<glm::vec3> _menuRotations;
 };
 
 #endif // TPERSON_HPP

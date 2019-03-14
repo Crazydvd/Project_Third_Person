@@ -15,6 +15,8 @@
 Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* pRoom, int pLevelIndex, std::string pName, glm::vec3 pPosition) : GameObject(pName, pPosition), _levelIndex(pLevelIndex), _window(pWindow), _world(pWorld), _game(pGame), _room(pRoom)
 {
 	PuzzleTimer = new Timer(pWindow);
+	PuzzleTimer->SetPosition(glm::vec2(_window->getSize().x / 2 - 25, 20));
+	_mouseray = Ray::MouseRay(_window, 60.0f, _world);
 	_puzzleObjects = std::vector<GameObject*>();
 	_completedPuzzles = std::vector<GameObject*>();
 	_hints = std::vector<UITexture*>();
@@ -37,6 +39,8 @@ Puzzle::Puzzle(sf::RenderWindow* pWindow, World* pWorld, TPerson* pGame, Room* p
 	loadLetter(L);
 
 	lua_close(L);
+
+	_selectedObject = _puzzleObjects[0];
 }
 
 void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::vec3 pVectors[3])
@@ -49,8 +53,7 @@ void Puzzle::loadObject(std::string pName, std::string pProperties[2][2], glm::v
 
 	this->add(object);
 
-	if ((((pName != "polaroid" && pName != "polaroid2") && pName != "polaroid3") && pName != "polaroid4") && pName != "polaroid5")
-	{
+	if (pName.find("object") != std::string::npos) {
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(1, 0, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 1, 0));
 		object->rotate(glm::radians((float)(std::rand() % 120) + 60.0f), glm::vec3(0, 0, 1));
@@ -125,12 +128,19 @@ void Puzzle::update(float pStep)
 	if (Paused)
 		return;
 
-	if (_showingEnvelope && _hintTimer <= 0)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	// set selected object
+	_mouseray = Ray::MouseRay(_window, 60.0f, _world);
+	for (size_t i = 0; i < _puzzleObjects.size(); i++) {
+		if (_mouseray.GetCollision(_puzzleObjects) == _puzzleObjects[i])
 		{
-			for (size_t i = 0; i < _hints.size(); i++)
-			{
+			_selectedObject = _puzzleObjects[i];
+		}
+	}
+
+
+	if (_showingEnvelope && _hintTimer <= 0) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) || sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+			for (size_t i = 0; i < _hints.size(); i++) {
 				_hints[i]->Enabled = false;
 			}
 			_showingEnvelope = false;
@@ -328,7 +338,7 @@ void Puzzle::checkForTips()
 	{
 		UITexture* hint = new UITexture(_window, "/hints/" + std::to_string(_levelIndex) + "level2.png");
 		hint->SetPosition(glm::vec2((_window->getSize().x / 2) - (hint->GetRect().width / 2), (_window->getSize().y / 2) - (hint->GetRect().height / 2)));
-		ShowHintButton* envelope2 = new ShowHintButton(_window, hint, &_showingEnvelope, &_hintTimer, "/hints/E2.png", "/hints/E2open.png", glm::vec2(_window->getSize().x - 400, 20));
+		ShowHintButton* envelope2 = new ShowHintButton(_window, hint, &_showingEnvelope, &_hintTimer, "/hints/E2.png", "/hints/E2open.png", glm::vec2(_window->getSize().x - 200, 150));
 		_hints.push_back(hint);
 		hint->Enabled = false;
 		_popups->AddButton(envelope2);
@@ -641,23 +651,23 @@ void Puzzle::rotateWithKeys()
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(1, 0, 0));
+		_selectedObject->rotate(glm::radians(-1.0), glm::vec3(1, 0, 0));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(1, 0, 0));
+		_selectedObject->rotate(glm::radians(1.0), glm::vec3(1, 0, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(0, 1, 0));
+		_selectedObject->rotate(glm::radians(-1.0), glm::vec3(0, 1, 0));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(0, 1, 0));
+		_selectedObject->rotate(glm::radians(1.0), glm::vec3(0, 1, 0));
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		_puzzleObjects[0]->rotate(glm::radians(-1.0), glm::vec3(0, 0, 1));
+		_selectedObject->rotate(glm::radians(-1.0), glm::vec3(0, 0, 1));
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(0, 0, 1));
+		_selectedObject->rotate(glm::radians(1.0), glm::vec3(0, 0, 1));
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		_puzzleObjects[0]->rotate(glm::radians(1.0), glm::vec3(1, 0, 1));
+		_selectedObject->rotate(glm::radians(1.0), glm::vec3(1, 0, 1));
 
 }
 
