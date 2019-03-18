@@ -16,7 +16,6 @@ UITexture::UITexture(sf::RenderWindow * aWindow, std::string fileName, glm::vec2
 	}
 
 	_sprite.setTexture(_texture);
-	std::cout << _sprite.getTextureRect().height;
 
 	_sprite.setPosition(sf::Vector2f(pPosition.x, pPosition.y));
 }
@@ -26,7 +25,7 @@ void UITexture::SetPosition(glm::vec2 pPosition) {
 }
 
 void UITexture::OnClick() {
-	std::cout << _name << "click";
+	//std::cout << _name << "click";
 }
 
 void UITexture::OnHover() {

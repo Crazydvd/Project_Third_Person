@@ -135,6 +135,7 @@ void AbstractGame::run()
 
 void AbstractGame::_update(float pStep)
 {
+	std::cout << pStep << std::endl;
 	_world->update(pStep);
 }
 

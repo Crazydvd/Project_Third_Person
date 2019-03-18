@@ -48,7 +48,7 @@ void Room::loadRoom()
 	/* Load LUA */
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
-	if (luaL_loadfile(L, "../src/ThirdPerson/room.lua") || lua_pcall(L, 0, 0, 0))
+	if (luaL_loadfile(L, "ThirdPerson/room.lua") || lua_pcall(L, 0, 0, 0))
 	{
 		printf("Cannot run file\n");
 		return;

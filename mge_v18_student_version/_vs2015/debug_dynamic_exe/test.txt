@@ -1,0 +1,183 @@
+Starting Game
+Initializing engine...
+
+Initializing window...
+Window initialized.
+
+Context info:
+----------------------------------
+GL Vendor : NVIDIA Corporation
+GL Renderer : GeForce GTX 1050/PCIe/SSE2
+GL Version (string) : 4.6.0 NVIDIA 419.35
+GL Version (integer) : 4.6
+GLSL Version : 4.60 NVIDIA
+----------------------------------
+
+Initializing GLEW...
+Initialized GLEW, status (1 == OK, 0 == FAILED):1
+
+Initializing renderer...
+Renderer done.
+
+Initializing world...
+World initialized.
+
+
+Program created with id:1
+Reading shader file... ThirdPerson/shaders/color.vs
+Compiling shader... 
+Shader compiled ok.
+Reading shader file... ThirdPerson/shaders/color.fs
+Compiling shader... 
+Shader compiled ok.
+Program linked ok.
+
+Loading ThirdPerson/models/Chair.obj...Mesh loaded and buffered:8512 triangles.
+
+Program created with id:4
+Reading shader file... ThirdPerson/shaders/litTexture.vs
+Compiling shader... 
+Shader compiled ok.
+Reading shader file... ThirdPerson/shaders/litTexture.fs
+Compiling shader... 
+Shader compiled ok.
+Program linked ok.
+
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+Loading ThirdPerson/models/plane20x20_2048tris_aligned_uvs.obj...Mesh loaded and buffered:2048 triangles.
+Loading ThirdPerson/models/PinBoard.obj...Mesh loaded and buffered:440 triangles.
+Loading ThirdPerson/models/Phone.obj...Mesh loaded and buffered:11172 triangles.
+Loading ThirdPerson/models/bookshelf.obj...Mesh loaded and buffered:1876 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+
+Program created with id:7
+Reading shader file... ThirdPerson/shaders/RenderToTexture.vs
+Compiling shader... 
+Shader compiled ok.
+Reading shader file... ThirdPerson/shaders/RenderToTexture.fs
+Compiling shader... 
+Shader compiled ok.
+Program linked ok.
+
+Loading ThirdPerson/models/Wall.obj...Mesh loaded and buffered:570 triangles.
+Loading ThirdPerson/models/Pen.obj...Mesh loaded and buffered:624 triangles.
+Loading ThirdPerson/models/CigarBox.obj...Mesh loaded and buffered:2808 triangles.
+Loading ThirdPerson/models/Folders.obj...Mesh loaded and buffered:1120 triangles.
+Loading ThirdPerson/models/Desk.obj...Mesh loaded and buffered:1984 triangles.
+Loading ThirdPerson/models/Ashtray.obj...Mesh loaded and buffered:680 triangles.
+Loading ThirdPerson/models/Clipboard.obj...Mesh loaded and buffered:1728 triangles.
+Loading ThirdPerson/models/Revolver.obj...Mesh loaded and buffered:16654 triangles.
+Loading ThirdPerson/models/WhiskeyBottle.obj...Mesh loaded and buffered:672 triangles.
+Registering light AMlight
+Registering light light
+Registering light CigarLight
+879
+94
+94146
+146194
+1941080
+375
+385
+385
+372
+361
+1080
+350
+350355
+355350
+350330
+3301080
+
+Engine initialized.
+
+Initializing HUD
+HUD initialized.
+
+Loading ThirdPerson/models/Umbrella.obj...Mesh loaded and buffered:952 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+1080
+GC running on:puzzle
+GC running on:puzzleObject
+GC running on:puzzleObject
+GC running on:UserInterface
+Loading ThirdPerson/models/Umbrella.obj...Mesh loaded and buffered:952 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+1080
+1080
+851
+91
+9177
+77GC running on:puzzle
+GC running on:puzzleObject
+GC running on:puzzleObject
+GC running on:UserInterface
+1080
+375
+385
+385
+372
+361
+1080
+350
+350355
+355350
+350330
+3301080
+level select1080
+330
+3302375
+Could not load hover texture, exiting...
+1080
+Loading ThirdPerson/models/Umbrella.obj...Mesh loaded and buffered:952 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+1080
+GC running on:puzzle
+GC running on:puzzleObject
+GC running on:puzzleObject
+GC running on:UserInterface
+Loading ThirdPerson/models/Umbrella.obj...Mesh loaded and buffered:952 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+1080
+1080
+851
+91
+9177
+77GC running on:puzzle
+GC running on:puzzleObject
+GC running on:puzzleObject
+GC running on:UserInterface
+Loading ThirdPerson/models/Bottle.obj...Mesh loaded and buffered:1530 triangles.
+Loading ThirdPerson/models/plane.obj...Mesh loaded and buffered:2 triangles.
+no letter
+2GC running on:root
+GC running on:camera
+Unregistering light CigarLight
+Unregistering light light
+Unregistering light AMlight
+GC running on:room
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:object
+GC running on:AMlight
+GC running on:light
+GC running on:CigarLight
+GC running on:UserInterface
+GC running on:object
+GC running on:puzzle
+GC running on:UserInterface
+GC running on:puzzleObject
+GC running on:puzzleObject
+GC running on:room
+GC running on:UserInterface
